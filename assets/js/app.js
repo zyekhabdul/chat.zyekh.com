@@ -2,7 +2,10 @@
   'use strict';
 
   // Config & State
-  const API_BASE = ''; // Menggunakan relative path ke internal reverse proxy
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const API_BASE = isLocal 
+    ? (window.location.port === '3000' ? '' : (window.location.port === '3001' ? '' : 'http://localhost:3000'))
+    : 'https://api.zyekh.com';
   const SESSIONS_KEY = 'zyekh_companion_sessions';
   const ACTIVE_SESSION_KEY = 'zyekh_active_companion_session_id';
 
