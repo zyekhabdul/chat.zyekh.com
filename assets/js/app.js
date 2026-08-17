@@ -187,19 +187,19 @@
       <p class="welcome-subtitle">Saya adalah Zyekh AI Companion — siap jadi teman ngobrol santai, bertukar pikiran, brainstorming ide kreatif, atau diskusi mendalam.</p>
       <div class="suggestions-grid">
         <div class="suggestion-card" onclick="sendSuggestedPrompt('Hai! Kenalin diri kamu dong, gaya ngobrol dan apa saja yang bisa kita bahas?')">
-          <h4>💬 Ngobrol & Perkenalan</h4>
+          <h4>[ PERKENALAN ] Ngobrol & Perkenalan</h4>
           <p>Kenali kemampuan dan gaya ngobrol asisten companion.</p>
         </div>
         <div class="suggestion-card" onclick="sendSuggestedPrompt('Gw lagi punya ide proyek menarik, bantu gw brainstorming konsepnya yuk!')">
-          <h4>💡 Brainstorming Ide Proyek</h4>
+          <h4>[ IDE ] Brainstorming Ide Proyek</h4>
           <p>Eksplorasi konsep, validasi ide, dan rencana langkah kerja.</p>
         </div>
         <div class="suggestion-card" onclick="sendSuggestedPrompt('Gimana tips produktivitas dan fokus ngoding tanpa gampang burnout?')">
-          <h4>🌱 Refleksi & Produktivitas</h4>
+          <h4>[ REFLEKSI ] Refleksi & Produktivitas</h4>
           <p>Diskusi manajemen energi, fokus, dan pengembangan diri.</p>
         </div>
         <div class="suggestion-card" onclick="sendSuggestedPrompt('Bahas konsep arsitektur software dan optimasi performa modern yuk!')">
-          <h4>⚡ Diskusi Teknis & Arsitektur</h4>
+          <h4>[ TEKNIS ] Diskusi Teknis & Arsitektur</h4>
           <p>Pembahasan teknologi, desain sistem, dan prinsip rekayasa.</p>
         </div>
       </div>
@@ -266,7 +266,7 @@
       appendMessageElement('bot', botReply);
     } catch (err) {
       removeTypingIndicator();
-      appendMessageElement('bot', `⚠️ Maaf, gagal terhubung ke Zyekh AI Core API (${err.message}). Pastikan server aktif.`);
+      appendMessageElement('bot', `[ ERROR ] Gagal terhubung ke Zyekh AI Core API (${err.message}). Pastikan server aktif.`);
     } finally {
       btnSend.disabled = false;
       chatInput.focus();

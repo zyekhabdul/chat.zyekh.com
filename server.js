@@ -50,6 +50,6 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`[CHAT-ZYEKH-COM] 🚀 Web App aktif di http://localhost:${PORT}`);
-  console.log(`[CHAT-ZYEKH-COM] 🌐 Reverse Proxy /api -> ${API_TARGET}/api`);
+  console.log(`[CHAT-ZYEKH-COM] [ VERIFIED ] Web App aktif di http://localhost:${PORT}`);
+  console.log(`[CHAT-ZYEKH-COM] [ PROXY ] Reverse Proxy /api -> ${API_TARGET}/api`);
 });

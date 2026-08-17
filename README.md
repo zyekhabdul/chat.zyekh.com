@@ -4,7 +4,7 @@ Antarmuka web interaktif mandiri (*Full-Screen Standalone Web App*) untuk **Zyek
 
 ---
 
-## ⚡ Fitur Utama
+## Fitur Utama
 * **Local-First & Zero-Framework**: Dibangun murni menggunakan Vanilla JS (ESNext), semantic HTML5, dan modern CSS variables tanpa beban bundle SPA yang lambat.
 * **Multi-Session Storage**: Manajemen riwayat percakapan tersimpan secara privat di local browser (`localStorage`) pengguna.
 * **Syntax Highlighting & Copy Button**: Format penulisan kode program otomatis rapi dengan tombol *Copy to Clipboard* 1 klik.
@@ -13,7 +13,7 @@ Antarmuka web interaktif mandiri (*Full-Screen Standalone Web App*) untuk **Zyek
 
 ---
 
-## 🚀 Menjalankan Secara Lokal
+## Menjalankan Secara Lokal
 ```bash
 # Masuk ke direktori
 cd Projects/chat.zyekh.com
@@ -25,6 +25,6 @@ Akses di browser: `http://localhost:3001`
 
 ---
 
-## 🔒 Privasi & Keamanan
+## Privasi & Keamanan
 * Zero telemetry / zero tracking.
 * Konfigurasi backend, token, dan infrastruktur cloud terisolasi di sisi server (zero client-side leakage).
