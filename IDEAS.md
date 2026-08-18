@@ -70,3 +70,13 @@ Berdasarkan arsitektur `chat.zyekh.com` (Zero-Framework, Vanilla JS, Local-First
 ## 9. Export & Knowledge Base Integration
 - [ PROPOSED ] **One-Click Export to Obsidian Markdown & PDF**:
   - Fitur ekspor sesi obrolan atau artefak langsung menjadi file format Obsidian Vault (`.md` dengan frontmatter YAML) atau PDF siap arsip.
+
+---
+
+## 10. Mobile App & App Store Distribution (PWA / TWA / Capacitor)
+- [ PROPOSED ] **Trusted Web Activity (TWA) / Google Play Store APK**:
+  - Mengemas `chat.zyekh.com` menjadi Android App Bundle (`.aab` / `.apk`) resmi via Google Bubblewrap / TWA tanpa overhead framework native yang berat.
+  - Memanfaatkan Service Worker & Web App Manifest (`manifest.json`) untuk performa native-like, zero-lag launch, dan update otomatis tanpa perlu update berkala dari store.
+  - **Offline Resilience**: Cache shell UI dan local memory storage (IndexedDB) agar obrolan offline tetap dapat dibuka.
+  - **Native Features**: Push Notifications untuk AI responses/reminders, Web Share Target, dan ikon badge di launcher pengguna.
+  - **Apple App Store & iOS Strategy**: PWA Home-Screen install banner dengan iOS splash screens, atau Capacitor wrapper untuk integrasi Apple Store compliance.
