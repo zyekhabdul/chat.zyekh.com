@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const API_TARGET = 'http://127.0.0.1:3000';
+const API_TARGET = process.env.CORE_API_URL ? process.env.CORE_API_URL.replace('/api/chat', '').replace('/api', '') : 'http://127.0.0.1:3000';
 
 app.use(express.json({ limit: '10mb' }));
 
