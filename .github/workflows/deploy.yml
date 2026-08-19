@@ -35,3 +35,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Trigger Dokploy Deployment
+        if: github.ref == 'refs/heads/main' && success()
+        run: |
+          curl -s -X POST "https://dokploy.zyekh.com/api/deploy/compose/WWFGliaFo6Brh8yEsA7rIwb5npGVO7Td"
