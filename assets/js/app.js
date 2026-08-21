@@ -183,12 +183,12 @@
   }
 
   // Initialization
-  async function init() {
+  function init() {
     initTheme();
     initUserProfileUI();
+    renderModelDropdown();
+    updateActiveModelUI();
     renderHistoryList();
-    loadSessionToView(currentSessionId);
-    await initModels();
 
     // Event: Theme Toggle
     btnThemeToggle?.addEventListener('click', toggleTheme);
@@ -244,6 +244,7 @@
     // Event: Model Selector Toggle & Dropdown
     btnModelSelector?.addEventListener('click', (e) => {
       e.stopPropagation();
+      e.preventDefault();
       toggleModelDropdown();
     });
 
@@ -289,7 +290,7 @@
 
     // Global Click Dismiss for Dropdowns & Modals
     document.addEventListener('click', (e) => {
-      if (modelSelectorWrap?.classList.contains('open') && !modelSelectorWrap.contains(e.target)) {
+      if (modelSelectorWrap && !modelSelectorWrap.contains(e.target) && !modelDropdown?.contains(e.target)) {
         closeModelDropdown();
       }
       if (sidebar?.classList.contains('open') && !sidebar.contains(e.target) && !btnMenuToggle?.contains(e.target)) {
@@ -323,6 +324,9 @@
       chatInput.style.height = 'auto';
       chatInput.style.height = Math.min(chatInput.scrollHeight, 140) + 'px';
     });
+
+    loadSessionToView(currentSessionId);
+    initModels();
   }
 
   // === Dynamic Models Management ===
@@ -394,20 +398,35 @@
     showToast(`[ MODEL ] Beralih ke ${model?.name || id}`);
   }
 
-  function toggleModelDropdown() {
-    if (modelSelectorWrap?.classList.contains('open')) {
-      closeModelDropdown();
-    } else {
-      modelSelectorWrap?.classList.add('open');
-      modelDropdown?.classList.add('open');
-      btnModelSelector?.setAttribute('aria-expanded', 'true');
+  function openModelDropdown() {
+    if (modelSelectorWrap) modelSelectorWrap.classList.add('open');
+    if (modelDropdown) {
+      modelDropdown.classList.add('open');
+      modelDropdown.setAttribute('aria-hidden', 'false');
+      modelDropdown.style.display = 'block';
     }
+    btnModelSelector?.setAttribute('aria-expanded', 'true');
   }
 
   function closeModelDropdown() {
-    modelSelectorWrap?.classList.remove('open');
-    modelDropdown?.classList.remove('open');
+    if (modelSelectorWrap) modelSelectorWrap.classList.remove('open');
+    if (modelDropdown) {
+      modelDropdown.classList.remove('open');
+      modelDropdown.setAttribute('aria-hidden', 'true');
+      modelDropdown.style.display = 'none';
+    }
     btnModelSelector?.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleModelDropdown() {
+    const isCurrentlyOpen = modelSelectorWrap?.classList.contains('open') || 
+                            modelDropdown?.classList.contains('open') || 
+                            (modelDropdown && modelDropdown.style.display === 'block');
+    if (isCurrentlyOpen) {
+      closeModelDropdown();
+    } else {
+      openModelDropdown();
+    }
   }
 
   // === User Profile & Custom Avatar (PP) Management ===
