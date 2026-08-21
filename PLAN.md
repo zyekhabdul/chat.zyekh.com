@@ -180,34 +180,63 @@
 
 ---
 
-## Phase 10: Segmented Control Dock vs Interactive Action Cards Distinction (`[ IN_PROGRESS ]`)
+## Phase 10: Segmented Control Dock vs Interactive Action Cards Distinction (`[ DONE ]`)
 
-### Chunk 10.1: Segmented Dock & Action Card Grid CSS Overhaul
-- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css) (lines ~670-765)
+### Chunk 10.1: Segmented Dock & Action Card Grid CSS Overhaul (`[ DONE ]`)
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
 - **Scope**:
-  - Refactor `.starter-tabs-nav` into a single cohesive pill dock container (`display: inline-flex`, `background: var(--bg-card)`, `border: 1px solid var(--border-color)`, `padding: 3px`, `border-radius: var(--radius-full)`, `gap: 2px`).
-  - Refactor `.starter-tab-btn` into borderless tab buttons with smooth active pill slider fill (`.starter-tab-btn.active`).
-  - Refactor `.starter-pills-wrap` into a clean 2x2 responsive action card grid (`display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))`).
-  - Refactor `.starter-pill` into distinct interactive prompt cards with badge tag (`.starter-pill-prefix`), strong title (`.starter-pill-label`), and directional indicator (`.starter-pill-arrow`).
-- **DoD**: 100% visual differentiation between category switcher dock and prompt action cards.
+  - Refactored `.starter-tabs-nav` into a single cohesive pill dock and prompt cards into a 2x2 grid with interactive arrows.
+- **DoD**: 100% visual differentiation achieved.
 
-### Chunk 10.2: Prompt Card Markup & Template Alignment in JS
-- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js) (lines ~1390-1430)
+### Chunk 10.2: Prompt Card Markup & Template Alignment in JS (`[ DONE ]`)
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
 - **Scope**:
-  - Update `renderWelcomeScreen()` to render `.starter-pill` with `.starter-pill-content` (`.starter-pill-prefix`, `.starter-pill-label`) and `.starter-pill-arrow`.
-- **DoD**: Prompt cards render cleanly with distinct badge, label, and arrow across all categories and languages.
+  - Updated `renderWelcomeScreen()` with `.starter-pill-content` and `.starter-pill-arrow`.
+- **DoD**: Cards render cleanly with action arrows.
 
-### Chunk 10.3: Cache Query String Bumping
+### Chunk 10.3: Cache Query String Bumping (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - Bump stylesheet query to `app.css?v=20260821_v409`.
-  - Bump script query to `app.js?v=20260821_v448`.
+  - Bumped stylesheet query to `app.css?v=20260821_v409` and script query to `app.js?v=20260821_v448`.
 - **DoD**: Cache strings incremented cleanly.
 
-### Chunk 10.4: Empirical Verification, Docker Rebuild & Direct Remote Push
+### Chunk 10.4: Empirical Verification, Docker Rebuild & Direct Remote Push (`[ DONE ]`)
 - **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
 - **Scope**:
-  - Verify syntax with `node -c` and emojis with `check_emojis.py`.
+  - Pushed to remote repositories (commit `4479abb`).
+- **DoD**: Remote push completed and live on Cloudflare.
+
+---
+
+## Phase 11: Elimination of Terminal Bracket Syntax & Consumer Polish Standard (`[ IN_PROGRESS ]`)
+
+### Chunk 11.1: Removal of Brackets in Prompt Starters & Toasts (JS Layer)
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
+- **Scope**:
+  - Remove all bracket prefixes (`[ ? ]`, `[ ! ]`, `[ > ]`, `[ * ]`, `[ + ]`, `[ ~ ]`, `[ & ]`, `[ $ ]`, `[ / ]`, `[ # ]`) from `I18N_DICT.en.starters` and `I18N_DICT.id.starters`.
+  - Remove CLI-style prefixes (`[ INFO ]`, `[ VERIFIED ]`, `[ ERROR ]`, `[ WARN ]`, `[ MODEL ]`, `[ THEME ]`) from all toast notifications and inline messages, replacing them with clean, natural sentences.
+  - Simplify `renderWelcomeScreen()` markup to pure typography cards without bracket prefix spans.
+- **DoD**: 0 bracket tokens in starter cards and toast messages.
+
+### Chunk 11.2: Modal Header Badges & Keyboard Hints HTML Standardization
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html), [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
+- **Scope**:
+  - Convert modal badges from `[ MODAL TITLE ]` to clean uppercase tags `MODAL TITLE` (`PROFILE & SETTINGS`, `EXPORT CONVERSATION`, `EMBED AI WIDGET`, `SHARE CONVERSATION`, `WEBGPU NEURAL ENGINE`).
+  - Convert `[ GATEWAY 8317 ]` in model dropdown header to `GATEWAY 8317`.
+  - Convert `[ Enter ] Send • [ Shift + Enter ] New line` in input footer to standard `<kbd>Enter</kbd> Send • <kbd>Shift + Enter</kbd> New line` with crisp CSS styling.
+- **DoD**: Clean typography and `<kbd>` semantics across all HTML views.
+
+### Chunk 11.3: Cache Version Bumping
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Bump stylesheet query to `app.css?v=20260821_v410`.
+  - Bump script query to `app.js?v=20260821_v449`.
+- **DoD**: Cache strings incremented cleanly.
+
+### Chunk 11.4: Empirical Verification, Docker Rebuild & Remote Push
+- **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
+- **Scope**:
+  - Validate 0 emojis and 0 JS syntax errors via terminal.
   - Rebuild docker image and verify container convergence.
-  - Create local commit and push directly to remotes as requested.
-- **DoD**: Remote git push successful, live production verified.
+  - Create local commit and push to remotes.
+- **DoD**: Remote push completed with 0 errors.

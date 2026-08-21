@@ -37,8 +37,8 @@
       clear_title: 'Clear Current Conversation',
       chat_placeholder: 'Type a message or ask anything...',
       send_aria: 'Send Message',
-      hint_enter: '[ Enter ] Send',
-      hint_shift_enter: '[ Shift + Enter ] New line',
+      hint_enter: 'Enter to send',
+      hint_shift_enter: 'Shift + Enter for new line',
       hint_model_prefix: 'Model: ',
       welcome_badge: 'ZYEKH AI',
       welcome_title: 'Hello {name}! What would you like to explore today?',
@@ -49,69 +49,69 @@
       tab_dev: 'Developer & Code',
       starters: {
         general: [
-          { prefix: '[ ? ]', label: 'Critical Idea Roast', prompt: 'Roast and critically pressure-test this concept: [paste your idea/plan]. Point out flawed assumptions, blind spots, and realistic execution risks.' },
-          { prefix: '[ ! ]', label: 'Complex Problem Solver', prompt: 'I am facing this specific complex challenge: [describe situation]. Break down the root cause and provide 3 structured, actionable solutions.' },
-          { prefix: '[ > ]', label: "Explain Like I'm 5", prompt: 'Explain the core principles of quantum entanglement and quantum computing in simple, intuitive analogies that anyone can understand.' },
-          { prefix: '[ * ]', label: 'Productivity Blueprint', prompt: 'Help me design a hyper-focused, distraction-free daily routine and time-blocking workflow to accomplish 3 high-impact priorities.' }
+          { label: 'Critical Idea Roast', prompt: 'Roast and critically pressure-test this concept: [paste your idea/plan]. Point out flawed assumptions, blind spots, and realistic execution risks.' },
+          { label: 'Complex Problem Solver', prompt: 'I am facing this specific complex challenge: [describe situation]. Break down the root cause and provide 3 structured, actionable solutions.' },
+          { label: "Explain Like I'm 5", prompt: 'Explain the core principles of quantum entanglement and quantum computing in simple, intuitive analogies that anyone can understand.' },
+          { label: 'Productivity Blueprint', prompt: 'Help me design a hyper-focused, distraction-free daily routine and time-blocking workflow to accomplish 3 high-impact priorities.' }
         ],
         creative: [
-          { prefix: '[ + ]', label: 'Catchy Hook & Copy', prompt: 'Generate 5 high-converting, attention-grabbing opening hooks and copy angles for: [insert topic/product]. Avoid generic AI cliches.' },
-          { prefix: '[ ~ ]', label: 'Compelling Article Draft', prompt: 'Write an engaging, insightful, and well-structured deep dive article on: [topic]. Use conversational tone and strong storytelling.' },
-          { prefix: '[ & ]', label: 'Polish & Elevate Tone', prompt: 'Rewrite and elevate the tone of the following draft to make it punchy, authoritative, and memorable: [paste text]' },
-          { prefix: '[ $ ]', label: 'Viral Content Angle', prompt: 'Brainstorm 4 viral content formats (threads, carousels, short video scripts) around: [topic] that encourage comments and shares.' }
+          { label: 'Catchy Hook & Copy', prompt: 'Generate 5 high-converting, attention-grabbing opening hooks and copy angles for: [insert topic/product]. Avoid generic AI cliches.' },
+          { label: 'Compelling Article Draft', prompt: 'Write an engaging, insightful, and well-structured deep dive article on: [topic]. Use conversational tone and strong storytelling.' },
+          { label: 'Polish & Elevate Tone', prompt: 'Rewrite and elevate the tone of the following draft to make it punchy, authoritative, and memorable: [paste text]' },
+          { label: 'Viral Content Angle', prompt: 'Brainstorm 4 viral content formats (threads, carousels, short video scripts) around: [topic] that encourage comments and shares.' }
         ],
         research: [
-          { prefix: '[ @ ]', label: 'Counter-Argument Debate', prompt: 'Take the strongest opposing view against this premise: [state opinion]. Present compelling counter-arguments, historical precedents, and data.' },
-          { prefix: '[ % ]', label: 'Data & Logic Synthesis', prompt: 'Analyze and synthesize the logical connections, trade-offs, and second-order consequences of: [situation/trend].' },
-          { prefix: '[ * ]', label: 'Hard Reasoning Puzzle', prompt: 'Test your reasoning capabilities: Give me a sophisticated lateral thinking riddle or mathematical logic puzzle and guide me through the solution step-by-step.' },
-          { prefix: '[ ^ ]', label: 'Deep Topic Breakdown', prompt: 'Provide an exhaustive, academic-grade conceptual breakdown of: [topic], including fundamental axioms, key theorists, and real-world implications.' }
+          { label: 'Counter-Argument Debate', prompt: 'Take the strongest opposing view against this premise: [state opinion]. Present compelling counter-arguments, historical precedents, and data.' },
+          { label: 'Data & Logic Synthesis', prompt: 'Analyze and synthesize the logical connections, trade-offs, and second-order consequences of: [situation/trend].' },
+          { label: 'Hard Reasoning Puzzle', prompt: 'Test your reasoning capabilities: Give me a sophisticated lateral thinking riddle or mathematical logic puzzle and guide me through the solution step-by-step.' },
+          { label: 'Deep Topic Breakdown', prompt: 'Provide an exhaustive, academic-grade conceptual breakdown of: [topic], including fundamental axioms, key theorists, and real-world implications.' }
         ],
         dev: [
-          { prefix: '[ / ]', label: 'Roast Tech Stack', prompt: 'Roast my tech stack and system architecture: Node.js, Express, Docker Swarm, Vanilla JS client. Be brutally honest and highlight potential bottlenecks.' },
-          { prefix: '[ > ]', label: 'ASCII Architecture', prompt: 'Draw a complete ASCII system architecture diagram for a zero-trust microservice gateway with edge CDN caching and local-first client storage.' },
-          { prefix: '[ # ]', label: 'Zero-Bloat Refactor', prompt: 'Help me audit and strip third-party NPM bloat. Give me a strategy to replace heavy libraries with clean, zero-dependency native APIs.' },
-          { prefix: '[ * ]', label: 'Concurrency Benchmark', prompt: 'Solve this concurrency challenge: Implement a lock-free sliding window rate limiter in memory with sub-millisecond execution overhead.' }
+          { label: 'Roast Tech Stack', prompt: 'Roast my tech stack and system architecture: Node.js, Express, Docker Swarm, Vanilla JS client. Be brutally honest and highlight potential bottlenecks.' },
+          { label: 'ASCII Architecture', prompt: 'Draw a complete ASCII system architecture diagram for a zero-trust microservice gateway with edge CDN caching and local-first client storage.' },
+          { label: 'Zero-Bloat Refactor', prompt: 'Help me audit and strip third-party NPM bloat. Give me a strategy to replace heavy libraries with clean, zero-dependency native APIs.' },
+          { label: 'Concurrency Benchmark', prompt: 'Solve this concurrency challenge: Implement a lock-free sliding window rate limiter in memory with sub-millisecond execution overhead.' }
         ]
       },
-      toast_new_chat: '[ INFO ] New conversation ready',
-      toast_clear_chat: '[ INFO ] Active conversation cleared',
-      toast_webgpu_unsupported: '[ ERROR ] WebGPU is not supported in this browser. Please use Chrome or Edge desktop.',
-      toast_webgpu_active: '[ VERIFIED ] Neural Network WebGPU 0.5B active & 100% Offline',
-      toast_webgpu_fail: '[ ERROR ] Failed to load WebGPU: {err}',
-      toast_model_switch_webgpu: '[ MODEL ] Switched to WebGPU On-Device 0.5B (Offline)',
-      toast_model_switch: '[ MODEL ] Switched to {model}',
-      toast_max_file_size: '[ ERROR ] Max file size is 2MB',
-      toast_profile_saved: '[ VERIFIED ] Profile settings saved',
-      toast_widget_copied: '[ VERIFIED ] Widget embed code copied to clipboard',
-      toast_widget_copy_err: '[ ERROR ] Failed to copy embed code',
-      toast_empty_chat: '[ WARN ] Conversation is empty',
-      toast_share_created: '[ VERIFIED ] Public share link generated',
-      toast_share_no_link: '[ WARN ] No valid link to copy',
-      toast_share_copied: '[ VERIFIED ] Public link copied to clipboard',
-      toast_share_copy_err: '[ ERROR ] Failed to copy link',
-      toast_share_imported: '[ VERIFIED ] Public conversation imported into your sessions',
-      toast_theme_switched: '[ THEME ] Switched to {mode}',
-      toast_sess_deleted: '[ INFO ] Conversation deleted',
-      toast_msg_copied: '[ VERIFIED ] Message copied to clipboard',
-      toast_code_copied: '[ VERIFIED ] Code copied to clipboard',
-      toast_export_empty: '[ INFO ] No conversation history to export',
-      toast_export_ok: '[ VERIFIED ] Conversation exported to Markdown',
-      toast_lang_switched: '[ I18N ] Language switched to English',
-      hist_no_match: '[ INFO ] No matching conversations found',
-      hist_empty: '[ INFO ] No conversation history yet',
+      toast_new_chat: 'New conversation ready',
+      toast_clear_chat: 'Conversation history cleared',
+      toast_webgpu_unsupported: 'WebGPU is not supported in this browser. Please use Chrome or Edge desktop.',
+      toast_webgpu_active: 'WebGPU Neural Network active and running offline',
+      toast_webgpu_fail: 'Failed to load WebGPU: {err}',
+      toast_model_switch_webgpu: 'Switched to WebGPU On-Device 0.5B (Offline)',
+      toast_model_switch: 'Switched to {model}',
+      toast_max_file_size: 'Maximum file size is 2MB',
+      toast_profile_saved: 'Profile settings saved',
+      toast_widget_copied: 'Widget embed code copied to clipboard',
+      toast_widget_copy_err: 'Failed to copy embed code',
+      toast_empty_chat: 'Conversation is empty',
+      toast_share_created: 'Public share link generated',
+      toast_share_no_link: 'No valid link to copy',
+      toast_share_copied: 'Public link copied to clipboard',
+      toast_share_copy_err: 'Failed to copy link',
+      toast_share_imported: 'Public conversation imported into your sessions',
+      toast_theme_switched: 'Theme switched to {mode}',
+      toast_sess_deleted: 'Conversation session deleted',
+      toast_msg_copied: 'Message copied to clipboard',
+      toast_code_copied: 'Code copied to clipboard',
+      toast_export_empty: 'No conversation history to export',
+      toast_export_ok: 'Conversation exported to Markdown',
+      toast_lang_switched: 'Language switched to English',
+      hist_no_match: 'No matching conversations found',
+      hist_empty: 'No conversation history yet',
       hist_del_title: 'Delete Conversation',
       copy_btn: 'Copy',
       copied_btn: 'Copied!',
       export_card_btn: 'Card',
       export_card_title: 'Export as Visual Card (Image)',
-      card_modal_badge: '[ VISUAL CARD GENERATOR ]',
+      card_modal_badge: 'VISUAL CARD GENERATOR',
       card_modal_title: 'Export AI Response as Image',
       card_copy_btn: 'Copy PNG Image',
       card_copied_btn: 'Image Copied!',
       card_download_btn: 'Download PNG',
       card_close_btn: 'Close',
-      toast_card_copied: '[ VERIFIED ] Visual card copied to clipboard',
-      toast_card_downloaded: '[ VERIFIED ] Visual card downloaded',
+      toast_card_copied: 'Visual card copied to clipboard',
+      toast_card_downloaded: 'Visual card downloaded',
       share_x_btn: 'Post to X',
       share_telegram_btn: 'Telegram',
       share_threads_btn: 'Threads'
@@ -140,8 +140,8 @@
       clear_title: 'Bersihkan Obrolan Ini',
       chat_placeholder: 'Ketik pesan atau ceritakan sesuatu...',
       send_aria: 'Kirim Pesan',
-      hint_enter: '[ Enter ] Kirim',
-      hint_shift_enter: '[ Shift + Enter ] Baris baru',
+      hint_enter: 'Enter untuk kirim',
+      hint_shift_enter: 'Shift + Enter baris baru',
       hint_model_prefix: 'Model: ',
       welcome_badge: 'ZYEKH AI',
       welcome_title: 'Hai {name}! Mau eksplorasi apa hari ini?',
@@ -152,69 +152,69 @@
       tab_dev: 'Developer & Kode',
       starters: {
         general: [
-          { prefix: '[ ? ]', label: 'Kritik & Uji Ide', prompt: 'Beri kritik tajam dan uji ketahanan ide ini: [tulis ide/rencanamu]. Tunjukkan asumsi yang keliru, blind spot, dan risiko eksekusi nyata.' },
-          { prefix: '[ ! ]', label: 'Solusi Masalah Rumit', prompt: 'Gw menghadapi masalah rumit ini: [jelaskan situasi]. Bedah akar masalahnya dan berikan 3 solusi terstruktur yang bisa langsung dieksekusi.' },
-          { prefix: '[ > ]', label: 'Jelaskan Super Simpel', prompt: 'Jelaskan konsep komputasi kuantum dan entanglement secara sederhana dengan analogi sehari-hari yang mudah dipahami siapa saja.' },
-          { prefix: '[ * ]', label: 'Rencana Kerja Produktif', prompt: 'Bantu susun rencana kerja harian bebas distraksi dengan sistem time-blocking untuk menuntaskan 3 prioritas penting.' }
+          { label: 'Kritik & Uji Ide', prompt: 'Beri kritik tajam dan uji ketahanan ide ini: [tulis ide/rencanamu]. Tunjukkan asumsi yang keliru, blind spot, dan risiko eksekusi nyata.' },
+          { label: 'Solusi Masalah Rumit', prompt: 'Gw menghadapi masalah rumit ini: [jelaskan situasi]. Bedah akar masalahnya dan berikan 3 solusi terstruktur yang bisa langsung dieksekusi.' },
+          { label: 'Jelaskan Super Simpel', prompt: 'Jelaskan konsep komputasi kuantum dan entanglement secara sederhana dengan analogi sehari-hari yang mudah dipahami siapa saja.' },
+          { label: 'Rencana Kerja Produktif', prompt: 'Bantu susun rencana kerja harian bebas distraksi dengan sistem time-blocking untuk menuntaskan 3 prioritas penting.' }
         ],
         creative: [
-          { prefix: '[ + ]', label: 'Hook & Copy Menarik', prompt: 'Buatkan 5 hook pembuka dan sudut copy yang memikat dan berkonversi tinggi untuk: [topik/produk]. Hindari klise AI yang generik.' },
-          { prefix: '[ ~ ]', label: 'Draf Artikel Lengkap', prompt: 'Tulis draf artikel mendalam yang berbobot dan mengalir nyaman tentang: [topik]. Gunakan gaya bercerita yang kuat dan enak dibaca.' },
-          { prefix: '[ & ]', label: 'Perhalus Gaya Bahasa', prompt: 'Tulis ulang dan tingkatkan bobot teks berikut agar lebih berwibawa, padat, dan berkarakter kuat: [tempel teks]' },
-          { prefix: '[ $ ]', label: 'Ide Konten Viral', prompt: 'Brainstorm 4 sudut konten yang berpotensi viral (thread, carousel, skrip video) untuk topik: [topik] yang memicu diskusi dan share.' }
+          { label: 'Hook & Copy Menarik', prompt: 'Buatkan 5 hook pembuka dan sudut copy yang memikat dan berkonversi tinggi untuk: [topik/produk]. Hindari klise AI yang generik.' },
+          { label: 'Draf Artikel Lengkap', prompt: 'Tulis draf artikel mendalam yang berbobot dan mengalir nyaman tentang: [topik]. Gunakan gaya bercerita yang kuat dan enak dibaca.' },
+          { label: 'Perhalus Gaya Bahasa', prompt: 'Tulis ulang dan tingkatkan bobot teks berikut agar lebih berwibawa, padat, dan berkarakter kuat: [tempel teks]' },
+          { label: 'Ide Konten Viral', prompt: 'Brainstorm 4 sudut konten yang berpotensi viral (thread, carousel, skrip video) untuk topik: [topik] yang memicu diskusi dan share.' }
         ],
         research: [
-          { prefix: '[ @ ]', label: 'Debat Argumen Kritis', prompt: 'Ambil sudut pandang paling kontra terhadap pernyataan ini: [sebutkan opini]. Sajikan argumen tandingan yang kuat, fakta, dan preseden historis.' },
-          { prefix: '[ % ]', label: 'Sintesis Logika & Data', prompt: 'Analisis dan sintesiskan korelasi logika, trade-off, dan konsekuensi tingkat kedua dari: [situasi/tren].' },
-          { prefix: '[ * ]', label: 'Teka-Teki Logika Sulit', prompt: 'Uji kemampuan penalaranmu: Berikan teka-teki logika berpikir lateral tingkat lanjut dan pandu pemecahannya langkah demi langkah.' },
-          { prefix: '[ ^ ]', label: 'Riset & Bedah Konsep', prompt: 'Sajikan bedah konseptual mendalam berstandar akademik tentang: [topik], mencakup aksioma dasar, teori kunci, dan implikasi praktis.' }
+          { label: 'Debat Argumen Kritis', prompt: 'Ambil sudut pandang paling kontra terhadap pernyataan ini: [sebutkan opini]. Sajikan argumen tandingan yang kuat, fakta, dan preseden historis.' },
+          { label: 'Sintesis Logika & Data', prompt: 'Analisis dan sintesiskan korelasi logika, trade-off, dan konsekuensi tingkat kedua dari: [situasi/tren].' },
+          { label: 'Teka-Teki Logika Sulit', prompt: 'Uji kemampuan penalaranmu: Berikan teka-teki logika berpikir lateral tingkat lanjut dan pandu pemecahannya langkah demi langkah.' },
+          { label: 'Riset & Bedah Konsep', prompt: 'Sajikan bedah konseptual mendalam berstandar akademik tentang: [topik], mencakup aksioma dasar, teori kunci, dan implikasi praktis.' }
         ],
         dev: [
-          { prefix: '[ / ]', label: 'Roast Tech Stack', prompt: 'Roast arsitektur tech stack gw: Node.js, Docker, Nginx, Vanilla JS. Kasih kritik tajam dan tunjukkan mana bagian yang boros atau rentan!' },
-          { prefix: '[ > ]', label: 'Diagram ASCII', prompt: 'Buatkan diagram ASCII lengkap untuk alur microservice gateway AI dengan edge caching dan penyimpanan local-first.' },
-          { prefix: '[ # ]', label: 'Refactor Zero-Bloat', prompt: 'Bantu audit dan pangkas dependency berat. Berikan strategi mengganti framework/library besar dengan vanilla Web API.' },
-          { prefix: '[ * ]', label: 'Uji Logika Konkurensi', prompt: 'Selesaikan tantangan ini: Buatkan algoritma sliding window rate limiter in-memory tanpa lock dengan latensi eksekusi sub-milidetik.' }
+          { label: 'Roast Tech Stack', prompt: 'Roast arsitektur tech stack gw: Node.js, Docker, Nginx, Vanilla JS. Kasih kritik tajam dan tunjukkan mana bagian yang boros atau rentan!' },
+          { label: 'Diagram ASCII', prompt: 'Buatkan diagram ASCII lengkap untuk alur microservice gateway AI dengan edge caching dan penyimpanan local-first.' },
+          { label: 'Refactor Zero-Bloat', prompt: 'Bantu audit dan pangkas dependency berat. Berikan strategi mengganti framework/library besar dengan vanilla Web API.' },
+          { label: 'Uji Logika Konkurensi', prompt: 'Selesaikan tantangan ini: Buatkan algoritma sliding window rate limiter in-memory tanpa lock dengan latensi eksekusi sub-milidetik.' }
         ]
       },
-      toast_new_chat: '[ INFO ] Sesi obrolan baru siap digunakan',
-      toast_clear_chat: '[ INFO ] Riwayat obrolan aktif telah dibersihkan',
-      toast_webgpu_unsupported: '[ ERROR ] Browser tidak mendukung WebGPU. Gunakan Chrome/Edge desktop.',
-      toast_webgpu_active: '[ VERIFIED ] Neural Network WebGPU 0.5B aktif 100% Offline!',
-      toast_webgpu_fail: '[ ERROR ] Gagal memuat WebGPU: {err}',
-      toast_model_switch_webgpu: '[ MODEL ] Beralih ke WebGPU On-Device 0.5B (Offline)',
-      toast_model_switch: '[ MODEL ] Beralih ke {model}',
-      toast_max_file_size: '[ ERROR ] Ukuran file maksimal 2MB',
-      toast_profile_saved: '[ VERIFIED ] Pengaturan profil berhasil disimpan',
-      toast_widget_copied: '[ VERIFIED ] Kode semat widget berhasil disalin ke clipboard',
-      toast_widget_copy_err: '[ ERROR ] Gagal menyalin kode semat',
-      toast_empty_chat: '[ WARN ] Sesi obrolan masih kosong',
-      toast_share_created: '[ VERIFIED ] Tautan publik berhasil dibuat',
-      toast_share_no_link: '[ WARN ] Belum ada tautan valid untuk disalin',
-      toast_share_copied: '[ VERIFIED ] Tautan publik berhasil disalin ke clipboard',
-      toast_share_copy_err: '[ ERROR ] Gagal menyalin tautan',
-      toast_share_imported: '[ VERIFIED ] Percakapan publik berhasil diimpor ke sesi Anda',
-      toast_theme_switched: '[ THEME ] Mode diubah ke {mode}',
-      toast_sess_deleted: '[ INFO ] Sesi obrolan dihapus',
-      toast_msg_copied: '[ VERIFIED ] Pesan berhasil disalin ke clipboard',
-      toast_code_copied: '[ VERIFIED ] Kode berhasil disalin ke clipboard',
-      toast_export_empty: '[ INFO ] Tidak ada riwayat obrolan untuk diekspor',
-      toast_export_ok: '[ VERIFIED ] Riwayat obrolan berhasil diekspor ke Markdown',
-      toast_lang_switched: '[ I18N ] Bahasa diubah ke Bahasa Indonesia',
-      hist_no_match: '[ INFO ] Tidak ada riwayat yang cocok',
-      hist_empty: '[ INFO ] Belum ada riwayat obrolan',
+      toast_new_chat: 'Sesi obrolan baru siap digunakan',
+      toast_clear_chat: 'Riwayat obrolan aktif telah dibersihkan',
+      toast_webgpu_unsupported: 'Browser tidak mendukung WebGPU. Gunakan Chrome/Edge desktop.',
+      toast_webgpu_active: 'Neural Network WebGPU aktif dan berjalan offline',
+      toast_webgpu_fail: 'Gagal memuat WebGPU: {err}',
+      toast_model_switch_webgpu: 'Beralih ke WebGPU On-Device 0.5B (Offline)',
+      toast_model_switch: 'Beralih ke {model}',
+      toast_max_file_size: 'Ukuran file maksimal 2MB',
+      toast_profile_saved: 'Pengaturan profil berhasil disimpan',
+      toast_widget_copied: 'Kode semat widget berhasil disalin ke clipboard',
+      toast_widget_copy_err: 'Gagal menyalin kode semat',
+      toast_empty_chat: 'Sesi obrolan masih kosong',
+      toast_share_created: 'Tautan publik berhasil dibuat',
+      toast_share_no_link: 'Belum ada tautan valid untuk disalin',
+      toast_share_copied: 'Tautan publik berhasil disalin ke clipboard',
+      toast_share_copy_err: 'Gagal menyalin tautan',
+      toast_share_imported: 'Percakapan publik berhasil diimpor ke sesi Anda',
+      toast_theme_switched: 'Mode tampilan diubah ke {mode}',
+      toast_sess_deleted: 'Sesi obrolan berhasil dihapus',
+      toast_msg_copied: 'Pesan berhasil disalin ke clipboard',
+      toast_code_copied: 'Kode berhasil disalin ke clipboard',
+      toast_export_empty: 'Tidak ada riwayat obrolan untuk diekspor',
+      toast_export_ok: 'Riwayat obrolan berhasil diekspor ke Markdown',
+      toast_lang_switched: 'Bahasa diubah ke Bahasa Indonesia',
+      hist_no_match: 'Tidak ada riwayat yang cocok',
+      hist_empty: 'Belum ada riwayat obrolan',
       hist_del_title: 'Hapus Obrolan',
       copy_btn: 'Salin',
       copied_btn: 'Tersalin!',
       export_card_btn: 'Kartu',
       export_card_title: 'Ekspor sebagai Kartu Visual (Gambar)',
-      card_modal_badge: '[ GENERATOR KARTU VISUAL ]',
+      card_modal_badge: 'GENERATOR KARTU VISUAL',
       card_modal_title: 'Ekspor Respon AI Menjadi Gambar',
       card_copy_btn: 'Salin Gambar PNG',
       card_copied_btn: 'Gambar Tersalin!',
       card_download_btn: 'Unduh PNG',
       card_close_btn: 'Tutup',
-      toast_card_copied: '[ VERIFIED ] Kartu visual disalin ke clipboard',
-      toast_card_downloaded: '[ VERIFIED ] Kartu visual berhasil diunduh',
+      toast_card_copied: 'Kartu visual disalin ke clipboard',
+      toast_card_downloaded: 'Kartu visual berhasil diunduh',
       share_x_btn: 'Bagikan ke X',
       share_telegram_btn: 'Telegram',
       share_threads_btn: 'Threads'
@@ -596,7 +596,7 @@
       loadSessionToView(newId);
       closeSidebar();
       focusChatInputIfDesktop();
-      showToast('[ INFO ] New conversation ready');
+      showToast(t('toast_new_chat'));
     });
 
     // Event: Clear Active Chat
@@ -608,7 +608,7 @@
         saveSessions();
         renderHistoryList();
         loadSessionToView(currentSessionId);
-        showToast('[ INFO ] Active conversation cleared');
+        showToast(t('toast_clear_chat'));
       }
     });
 
@@ -824,7 +824,7 @@
 
   async function initializeWebGPUEngine() {
     if (!navigator.gpu) {
-      showToast('[ ERROR ] WebGPU is not supported in this browser. Please use Chrome or Edge desktop.');
+      showToast(t('toast_webgpu_unsupported'));
       return;
     }
 
@@ -857,10 +857,10 @@
       localStorage.setItem(ACTIVE_MODEL_KEY, activeModelId);
       updateActiveModelUI();
       renderModelDropdown();
-      showToast('[ VERIFIED ] Neural Network WebGPU 0.5B active & 100% Offline');
+      showToast(t('toast_webgpu_active'));
     } catch (err) {
       console.error('[WEBGPU INIT ERROR]', err);
-      showToast(`[ ERROR ] Failed to load WebGPU: ${err.message}`);
+      showToast(t('toast_webgpu_fail').replace('{err}', err.message));
       if (webgpuProgressWrap) webgpuProgressWrap.style.display = 'none';
       if (btnWebgpuModalConfirm) btnWebgpuModalConfirm.disabled = false;
       if (btnWebgpuModalCancel) btnWebgpuModalCancel.disabled = false;
@@ -876,7 +876,7 @@
         localStorage.setItem(ACTIVE_MODEL_KEY, id);
         updateActiveModelUI();
         renderModelDropdown();
-        showToast('[ MODEL ] Switched to WebGPU On-Device 0.5B (Offline)');
+        showToast(t('toast_model_switch_webgpu'));
       } else {
         openWebgpuModal();
       }
@@ -888,7 +888,7 @@
     updateActiveModelUI();
     renderModelDropdown();
     const model = availableModels.find(m => m.id === id);
-    showToast(`[ MODEL ] Switched to ${model?.name || id}`);
+    showToast(t('toast_model_switch').replace('{model}', model?.name || id));
   }
 
   function openModelDropdown() {
@@ -1052,7 +1052,7 @@
     if (!file) return;
 
     if (file.size > 2 * 1024 * 1024) {
-      showToast('[ ERROR ] Max file size is 2MB');
+      showToast(t('toast_max_file_size'));
       return;
     }
 
@@ -1092,7 +1092,7 @@
     closeProfileModal();
     // Re-render current chat to update avatars in conversation
     loadSessionToView(currentSessionId);
-    showToast('[ VERIFIED ] Profile settings saved');
+    showToast(t('toast_profile_saved'));
   }
 
   // === Widget Integration Modal Handlers ===
@@ -1121,9 +1121,9 @@
     const snippet = widgetCodeSnippet?.textContent || '';
     if (!snippet) return;
     navigator.clipboard.writeText(snippet).then(() => {
-      showToast('[ VERIFIED ] Widget embed code copied to clipboard');
+      showToast(t('toast_widget_copied'));
     }).catch(() => {
-      showToast('[ ERROR ] Failed to copy embed code');
+      showToast(t('toast_widget_copy_err'));
     });
   }
 
@@ -1141,7 +1141,7 @@
   async function handleShareChat() {
     const sess = getSession(currentSessionId);
     if (!sess || !sess.messages || sess.messages.length === 0) {
-      showToast('[ WARN ] Conversation is empty');
+      showToast(t('toast_empty_chat'));
       return;
     }
 
@@ -1191,13 +1191,13 @@
         sess.lastSharedMessageCount = sess.messages.length;
         saveSessions();
 
-        showToast('[ VERIFIED ] Public share link generated');
+        showToast(t('toast_share_created'));
       } else {
         throw new Error(data.error || 'Failed to generate link');
       }
     } catch (err) {
-      if (shareUrlPreview) shareUrlPreview.textContent = `[ ERROR ] ${err.message}`;
-      showToast(`[ ERROR ] ${err.message}`);
+      if (shareUrlPreview) shareUrlPreview.textContent = err.message;
+      showToast(err.message);
     }
   }
 
@@ -1211,14 +1211,14 @@
 
   function copyShareUrl() {
     const url = shareUrlPreview?.textContent || '';
-    if (!url || url.includes('[ ERROR ]') || url.includes('Generating') || url.includes('Saving')) {
-      showToast('[ WARN ] No valid link to copy');
+    if (!url || url.includes('Generating') || url.includes('Saving')) {
+      showToast(t('toast_share_no_link'));
       return;
     }
     navigator.clipboard.writeText(url).then(() => {
-      showToast('[ VERIFIED ] Public link copied to clipboard');
+      showToast(t('toast_share_copied'));
     }).catch(() => {
-      showToast('[ ERROR ] Failed to copy link');
+      showToast(t('toast_share_copy_err'));
     });
   }
 
@@ -1237,7 +1237,7 @@
           const newSessionId = 'sess_' + Date.now();
           const importedSession = {
             id: newSessionId,
-            title: `[Imported] ${data.title || 'Public Conversation'}`,
+            title: `Imported: ${data.title || 'Public Conversation'}`,
             createdAt: new Date().toISOString(),
             messages: data.messages
           };
@@ -1245,7 +1245,7 @@
           saveSessions();
           renderHistoryList();
           loadSessionToView(newSessionId);
-          showToast('[ VERIFIED ] Public conversation imported into your sessions');
+          showToast(t('toast_share_imported'));
           window.history.replaceState({}, document.title, window.location.pathname);
         }
       } catch (err) {
@@ -1272,7 +1272,7 @@
       localStorage.setItem(THEME_KEY, 'dark');
     }
     updateThemeUI(next);
-    showToast(`[ THEME ] Switched to ${next === 'light' ? 'Light Mode' : 'Dark Mode'}`);
+    showToast(t('toast_theme_switched').replace('{mode}', next === 'light' ? 'Light' : 'Dark'));
   }
 
   function updateThemeUI(theme) {
@@ -1406,10 +1406,7 @@
       const safePrompt = item.prompt.replace(/'/g, "\\'");
       return `
         <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${safePrompt}')">
-          <div class="starter-pill-content">
-            <span class="starter-pill-prefix">${escapeHtml(item.prefix)}</span>
-            <span class="starter-pill-label">${escapeHtml(item.label)}</span>
-          </div>
+          <span class="starter-pill-label">${escapeHtml(item.label)}</span>
           <span class="starter-pill-arrow">&rarr;</span>
         </button>
       `;
@@ -1575,7 +1572,7 @@
       appendMessageElement('bot', botReply, usedModel);
     } catch (err) {
       removeTypingIndicator();
-      appendMessageElement('bot', `[ ERROR ] Gagal terhubung ke Zyekh AI Core API (${err.message}). Pastikan server aktif.`);
+      appendMessageElement('bot', `Gagal terhubung ke Zyekh AI Core API (${err.message}). Pastikan server aktif.`);
     } finally {
       btnSend.disabled = false;
       focusChatInputIfDesktop();
@@ -1605,7 +1602,7 @@
 
       const modelLabel = availableModels.find(m => m.id === modelUsed)?.name || modelUsed || activeModelId;
       metaBar.innerHTML = `
-        <span class="model-used-tag">[ ${escapeHtml(modelLabel)} ]</span>
+        <span class="model-used-tag">${escapeHtml(modelLabel)}</span>
         <div class="message-actions-bar">
           <button class="btn-msg-action btn-copy-msg" type="button" title="${t('copy_btn')}">${t('copy_btn')}</button>
           <button class="btn-msg-action btn-card-export" type="button" title="${t('export_card_title')}">${t('export_card_btn')}</button>
@@ -1682,7 +1679,7 @@
     md += `- **User**: ${userProfile.name || 'User'}\n\n---\n\n`;
 
     sess.messages.forEach((msg) => {
-      const speaker = msg.role === 'user' ? `### [ ${userProfile.name || 'User'} ]` : `### [ Zyekh AI (${msg.modelUsed || 'Assistant'}) ]`;
+      const speaker = msg.role === 'user' ? `### ${userProfile.name || 'User'}` : `### Zyekh AI (${msg.modelUsed || 'Assistant'})`;
       md += `${speaker}\n\n${msg.content}\n\n---\n\n`;
     });
 
@@ -1772,7 +1769,7 @@
     ctx.fillText('chat.zyekh.com / zyekh-ai', 130, 72);
 
     // Model Tag Badge
-    const modelTag = `[ ${modelName || activeModelId} ]`;
+    const modelTag = `${modelName || activeModelId}`;
     ctx.fillStyle = '#fafafa';
     ctx.font = '700 17px monospace';
     ctx.textAlign = 'right';
