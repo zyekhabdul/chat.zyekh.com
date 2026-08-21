@@ -93,12 +93,25 @@
       </div>
 
       <div class="sidebar-footer">
-        <div style="display: flex; justify-content: space-between;">
+        <div class="sidebar-profile-card" id="sidebarProfileCard">
+          <div class="sidebar-profile-info">
+            <div class="profile-thumb" id="sidebarProfileThumb">U</div>
+            <div class="sidebar-profile-meta">
+              <strong id="sidebarProfileName">User</strong>
+              <span id="sidebarProfileStatus">Profil Kustom</span>
+            </div>
+          </div>
+          <button class="btn-sidebar-edit-profile" id="btnSidebarEditProfile" type="button" aria-label="Edit Profil">
+            Edit
+          </button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
           <a href="https://zyekh.com" target="_blank" rel="noopener">zyekh.com</a>
           <a href="https://shop.zyekh.com" target="_blank" rel="noopener">shop.zyekh.com</a>
         </div>
         <div style="font-size: 0.72rem; color: var(--text-faint); margin-top: 2px;">
-          Zyekh Private AI • Local-First
+          Zyekh Private AI • Multi-Model Gateway
         </div>
       </div>
     </aside>
@@ -115,14 +128,43 @@
             </svg>
           </button>
 
-          <div class="status-dot"></div>
-          <div class="navbar-title-wrap">
-            <h1>Zyekh AI Companion</h1>
-            <span>Teman diskusi cerdas, interaktif &amp; reflektif</span>
+          <!-- Dynamic Multi-Model Selector -->
+          <div class="model-selector-wrap" id="modelSelectorWrap">
+            <button class="model-select-btn" id="btnModelSelector" type="button" aria-haspopup="true" aria-expanded="false" title="Pilih Model AI">
+              <span class="model-dot"></span>
+              <span class="model-name" id="activeModelName">Gemini 3.7 Flash</span>
+              <span class="model-badge-tag" id="activeModelBadge">Default</span>
+              <svg class="model-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="model-dropdown" id="modelDropdown" aria-hidden="true">
+              <div class="model-dropdown-header">
+                <span>PILIH MODEL AI</span>
+                <span class="model-gateway-tag">[ GATEWAY 8317 ]</span>
+              </div>
+              <div class="model-options-list" id="modelOptionsList">
+                <!-- Injected via app.js -->
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="navbar-actions">
+          <button class="btn-action btn-profile" id="btnProfileToggle" type="button" title="Pengaturan Profil &amp; PP" aria-label="Profil Pengguna">
+            <span class="profile-thumb" id="navProfileThumb">U</span>
+            <span class="btn-text" id="navProfileName">Profil</span>
+          </button>
+
+          <button class="btn-action" id="btnExportChat" type="button" title="Ekspor Obrolan ke Markdown" aria-label="Ekspor Obrolan">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span class="btn-text">Ekspor</span>
+          </button>
+
           <button class="theme-toggle-btn" id="btnThemeToggle" type="button" title="Ganti Tema (Dark / Light)" aria-label="Ganti Tema">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="5"></circle>
@@ -169,12 +211,69 @@
           </button>
         </form>
         <div class="chat-input-hints">
-          <span>[ Enter ] Kirim</span> &bull; <span>[ Shift + Enter ] Baris baru</span>
+          <span>[ Enter ] Kirim</span> &bull; <span>[ Shift + Enter ] Baris baru</span> &bull; <span id="hintActiveModel">Model: Gemini 3.7 Flash</span>
         </div>
       </footer>
     </main>
   </div>
 
-  <script src="./assets/js/app.js?v=20260821_v303"></script>
+  <!-- Profile & Avatar Customization Modal -->
+  <div class="modal-backdrop" id="profileModalBackdrop" aria-hidden="true">
+    <div class="modal-card" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge">[ PROFIL &amp; KUSTOMISASI ]</span>
+          <h3 id="profileModalTitle">Pengaturan Profil Pengguna</h3>
+        </div>
+        <button class="modal-close-btn" id="btnProfileModalClose" type="button" aria-label="Tutup">&times;</button>
+      </div>
+      <form class="modal-body" id="profileForm">
+        <div class="form-group">
+          <label for="profileNameInput">Nama Pengguna / Display Name</label>
+          <input type="text" id="profileNameInput" class="form-input" placeholder="Masukkan nama panggilan..." maxlength="40" required />
+        </div>
+
+        <div class="form-group">
+          <label>Pilih Foto Profil (PP / Avatar)</label>
+          <div class="avatar-preview-wrap">
+            <div class="avatar-large" id="profileAvatarPreview">U</div>
+            <div class="avatar-type-selector">
+              <label class="radio-label"><input type="radio" name="avatarType" value="initial" checked /> Inisial Huruf</label>
+              <label class="radio-label"><input type="radio" name="avatarType" value="preset" /> Preset Cyberpunk</label>
+              <label class="radio-label"><input type="radio" name="avatarType" value="url" /> Custom URL / Upload</label>
+            </div>
+          </div>
+
+          <!-- Preset Avatars Grid -->
+          <div class="avatar-presets-grid" id="avatarPresetsGrid" style="display:none;">
+            <!-- Rendered via JS -->
+          </div>
+
+          <!-- Custom URL / Upload Box -->
+          <div class="avatar-custom-box" id="avatarCustomBox" style="display:none;">
+            <input type="url" id="profileAvatarUrlInput" class="form-input" placeholder="https://example.com/avatar.png" />
+            <div class="file-upload-wrap">
+              <label for="profileAvatarFileInput" class="btn-file-upload">Upload Gambar dari Komputer</label>
+              <input type="file" id="profileAvatarFileInput" accept="image/*" style="display:none;" />
+              <span class="file-upload-hint" id="fileUploadHint">Maksimal 2MB (disimpan lokal di browser)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="profileInstructionsInput">Instruksi Khusus untuk AI Companion (Opsional)</label>
+          <textarea id="profileInstructionsInput" class="form-textarea" rows="3" placeholder="Contoh: Selalu jawab langsung ke inti masalah, gunakan analogi coding, panggil saya 'Bro'..." maxlength="500"></textarea>
+          <span class="form-hint">Instruksi ini akan otomatis disematkan pada setiap percakapan.</span>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btnProfileModalCancel">Batal</button>
+          <button type="submit" class="btn-primary" id="btnProfileModalSave">Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./assets/js/app.js?v=20260821_v310"></script>
 </body>
 </html>
