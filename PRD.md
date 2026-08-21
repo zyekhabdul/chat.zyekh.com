@@ -63,12 +63,21 @@
   - [ ] Custom System Instructions per user (e.g. instruksi gaya respons khusus yang otomatis disematkan).
   - [ ] Mode Tamu (*Guest Mode*) tetap tersedia tanpa wajib login untuk akses instan.
 
-### Feature Group 7: Modern Glassmorphic Chat Canvas & Transparent Reasoning Trace
-- **User Story**: Sebagai pengguna, saya ingin antarmuka modern setara Claude/ChatGPT dengan Thought Reasoning Drawer dan Artifacts Canvas.
+### Feature Group 7: Modern Clean Chat Canvas & Transparent Reasoning Trace
+- **User Story**: Sebagai pengguna, saya ingin antarmuka modern solid zinc dengan Thought Reasoning Drawer dan Artifacts Canvas.
 - **Acceptance Criteria**:
-  - [ ] Tata letak modern glassmorphic slate dark mode dengan sidebar riwayat obrolan yang dapat dilipat (*collapsible*).
-  - [ ] Thought Accordion: Rantai penalaran AI ditampilkan transparan dalam blok yang dapat dibuka/tutup.
-  - [ ] Export obrolan ke format Markdown / Obsidian Vault.
+  - [x] Tata letak modern solid zinc monochrome dark/light mode dengan sidebar riwayat obrolan yang dapat dilipat (*collapsible*).
+  - [x] Thought Accordion: Rantai penalaran AI ditampilkan transparan dalam blok yang dapat dibuka/tutup.
+  - [x] Export obrolan ke format Markdown (`.md`).
+
+### Feature Group 8: SEO & Growth Engine (Technical SEO, Schema & Backlink Flywheel)
+- **User Story**: Sebagai pemilik produk, saya ingin `chat.zyekh.com` mudah diindeks oleh search engine, memiliki metadata kaya (*Rich Snippets*), dan terintegrasi dengan ekosistem `zyekh.com` untuk pertumbuhan organik cepat.
+- **Acceptance Criteria**:
+  - [ ] Sitemap XML W3C standard (`sitemap.xml`) dan panduan crawler (`robots.txt`) tersedia di root domain.
+  - [ ] Schema.org JSON-LD lengkap (`WebApplication`, `SoftwareApplication`, `FAQPage`, `Author`) terpasang di `index.html` dan `404.html`.
+  - [ ] Open Graph & Twitter Social Card tags beresolusi tinggi dengan judul dan deskripsi konversi tinggi.
+  - [ ] Atribusi backlink kontekstual pada `chat-widget.js` (`Powered by Zyekh AI Companion`).
+  - [ ] Fitur *Share Chat Snapshot* publik ber-schema `QAPage` untuk programmatic SEO.
 
 ---
 

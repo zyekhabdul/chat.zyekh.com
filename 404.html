@@ -8,32 +8,78 @@
   <title>Zyekh AI Companion — Teman Cerita &amp; Diskusi Pintar</title>
   <meta name="description" content="AI Companion interaktif dari Zyekh untuk teman ngobrol santai, diskusi ide, refleksi harian, riset teknis, dan asisten digital." />
   
-  <!-- Canonical & Social Meta Tags -->
+  <!-- Canonical, Robots & Social Meta Tags -->
   <link rel="canonical" href="https://chat.zyekh.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="keywords" content="AI Companion, Chat AI, Asisten AI Indonesia, Private AI, Multi-Model AI, Claude Sonnet, Gemini Flash, Developer Assistant, Zyekh" />
   <meta property="og:title" content="Zyekh AI Companion — Teman Cerita &amp; Diskusi Pintar" />
   <meta property="og:description" content="AI Companion interaktif dari Zyekh untuk teman ngobrol santai, diskusi ide, refleksi harian, riset teknis, dan asisten digital." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://chat.zyekh.com/" />
   <meta property="og:site_name" content="Zyekh AI Companion" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:image" content="https://chat.zyekh.com/assets/icons/apple-icon-180x180.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Zyekh AI Companion" />
   <meta name="twitter:description" content="Private high-speed conversational AI companion and technical brainstorm partner." />
+  <meta name="twitter:image" content="https://chat.zyekh.com/assets/icons/apple-icon-180x180.png" />
 
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org JSON-LD (@graph) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Zyekh AI Companion",
-    "url": "https://chat.zyekh.com/",
-    "description": "High-Speed Private Conversational AI Companion by Zyekh",
-    "applicationCategory": "ProductivityApplication",
-    "operatingSystem": "All",
-    "author": {
-      "@type": "Person",
-      "name": "Zyekh Abdul Qadir Jailani",
-      "url": "https://zyekh.com/about/"
-    }
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://chat.zyekh.com/#webapp",
+        "name": "Zyekh AI Companion",
+        "url": "https://chat.zyekh.com/",
+        "description": "Aplikasi web percakapan AI mandiri berkecepatan tinggi, berfokus privasi lokal, dan didukung multi-model inference gateway.",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript ES6 / Modern Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Zyekh Abdul Qadir Jailani",
+          "url": "https://zyekh.com/about/"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://chat.zyekh.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Apa itu Zyekh AI Companion?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Zyekh AI Companion adalah web app percakapan AI mandiri berkecepatan tinggi untuk teman diskusi cerdas, refleksi harian, brainstorming konsep, dan asisten riset teknologi."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Apakah riwayat percakapan di chat.zyekh.com aman dan privat?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ya, seluruh riwayat percakapan disimpan secara local-first di browser pengguna (localStorage) tanpa telemetri atau pelacakan pihak ketiga."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Model AI apa saja yang dapat digunakan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mendukung multi-model gateway dinamis termasuk Gemini 3.7 Flash High, Gemini 3.1 Flash Lite, Claude 3.7 Sonnet, Claude 3.7 Opus Thinking, Gemini Pro Agent, dan GPT OSS 120B."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
@@ -52,7 +98,7 @@
   <link as="font" crossorigin="" href="./assets/fonts/outfit-700-normal.woff2" rel="preload" type="font/woff2" />
   <link as="font" crossorigin="" href="./assets/fonts/inter-variable-latin.woff2" rel="preload" type="font/woff2" />
   <link rel="stylesheet" href="./assets/fonts/fonts.min.css?v=20260821_v315" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v350" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v360" />
 </head>
 <body>
   <div class="app-container">

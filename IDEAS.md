@@ -80,3 +80,23 @@ Berdasarkan arsitektur `chat.zyekh.com` (Zero-Framework, Vanilla JS, Local-First
   - **Offline Resilience**: Cache shell UI dan local memory storage (IndexedDB) agar obrolan offline tetap dapat dibuka.
   - **Native Features**: Push Notifications untuk AI responses/reminders, Web Share Target, dan ikon badge di launcher pengguna.
   - **Apple App Store & iOS Strategy**: PWA Home-Screen install banner dengan iOS splash screens, atau Capacitor wrapper untuk integrasi Apple Store compliance.
+
+---
+
+## 11. 4-Phase SEO Acceleration & Viral Growth Engine Roadmap
+- [ ROADMAP ] **Master SEO & Ecosystem Synergy Strategy**:
+  - **Tahap 1: Technical SEO Baseline & Google Search Console Integration**:
+    • Pembuatan `sitemap.xml` dan `robots.txt` berstandar ISO W3C.
+    • Implementasi Schema.org JSON-LD lengkap (`WebApplication`, `SoftwareApplication`, `FAQPage`).
+    • Open Graph meta tags beresolusi tinggi untuk WhatsApp/X/LinkedIn preview.
+    • Core Web Vitals audit (Lighthouse 100/100, FCP < 200ms, LCP < 0.8s, CLS 0).
+  - **Tahap 2: Omnichannel Backlink Flywheel (`chat-widget.js`)**:
+    • Penyematan widget chat di [zyekh.com](https://zyekh.com) dan [shop.zyekh.com](https://shop.zyekh.com).
+    • Atribusi tautan kontekstual `Powered by Zyekh AI Companion` untuk transfer otoritas domain (*PageRank authority flow*).
+  - **Tahap 3: Programmatic SEO via Shared Conversation Snapshots**:
+    • Fitur *Share Chat* publik yang menghasilkan halaman statis terindeks (`chat.zyekh.com/s/<slug>`).
+    • Schema `QAPage` / `DiscussionForumPosting` otomatis pada setiap snapshot diskusi teknis untuk dominasi kata kunci pencarian long-tail.
+  - **Tahap 4: Developer Community Launch & Viral Distribution**:
+    • Publikasi artikel arsitektur teknis di Dev.to, Hashnode, Medium.
+    • Peluncuran di Product Hunt, Show HN, Reddit (`r/webdev`, `r/SelfHosted`).
+
