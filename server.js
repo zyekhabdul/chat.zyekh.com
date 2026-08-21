@@ -81,6 +81,88 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
+// === Serverless & Resilient Snapshot Storage Adapter (Tahap 5.2) ===
+const SHARE_SNAPSHOT_CACHE = new Map();
+const SHARE_CACHE_TTL_MS = 15 * 60 * 1000; // 15-Minute In-Memory LRU Cache
+const MAX_SHARE_ENTRIES = 1000;
+
+const CF_KV_CONFIG = {
+  accountId: process.env.CLOUDFLARE_ACCOUNT_ID,
+  namespaceId: process.env.CLOUDFLARE_KV_NAMESPACE_ID,
+  apiToken: process.env.CLOUDFLARE_API_TOKEN
+};
+
+async function saveSnapshot(shareId, shareData) {
+  // 1. In-Memory LRU Cache
+  if (SHARE_SNAPSHOT_CACHE.size >= MAX_SHARE_ENTRIES) {
+    const oldest = SHARE_SNAPSHOT_CACHE.keys().next().value;
+    SHARE_SNAPSHOT_CACHE.delete(oldest);
+  }
+  SHARE_SNAPSHOT_CACHE.set(shareId, {
+    data: shareData,
+    expiresAt: Date.now() + SHARE_CACHE_TTL_MS
+  });
+
+  const payloadStr = JSON.stringify(shareData, null, 2);
+
+  // 2. Cloudflare KV Remote Edge Storage (If Configured)
+  if (CF_KV_CONFIG.accountId && CF_KV_CONFIG.namespaceId && CF_KV_CONFIG.apiToken) {
+    try {
+      const kvUrl = `https://api.cloudflare.com/client/v4/accounts/${CF_KV_CONFIG.accountId}/storage/kv/namespaces/${CF_KV_CONFIG.namespaceId}/values/${shareId}`;
+      const kvResp = await fetch(kvUrl, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${CF_KV_CONFIG.apiToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: payloadStr,
+        signal: AbortSignal.timeout(5000)
+      });
+      if (kvResp.ok) return { storage: 'cloudflare-kv' };
+    } catch (kvErr) {
+      console.warn('[KV STORAGE WARN] Cloudflare KV unreachable, fallback to disk:', kvErr.message);
+    }
+  }
+
+  // 3. Local Filesystem Disk Fallback
+  const filePath = path.join(SHARES_DIR, `${shareId}.json`);
+  await fs.writeFile(filePath, payloadStr, 'utf-8');
+  return { storage: 'local-disk' };
+}
+
+async function getSnapshot(shareId) {
+  // 1. Check In-Memory Cache (0.5ms TTFB)
+  const cached = SHARE_SNAPSHOT_CACHE.get(shareId);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.data;
+  }
+
+  // 2. Check Cloudflare KV Remote Edge (If Configured)
+  if (CF_KV_CONFIG.accountId && CF_KV_CONFIG.namespaceId && CF_KV_CONFIG.apiToken) {
+    try {
+      const kvUrl = `https://api.cloudflare.com/client/v4/accounts/${CF_KV_CONFIG.accountId}/storage/kv/namespaces/${CF_KV_CONFIG.namespaceId}/values/${shareId}`;
+      const kvResp = await fetch(kvUrl, {
+        headers: { 'Authorization': `Bearer ${CF_KV_CONFIG.apiToken}` },
+        signal: AbortSignal.timeout(5000)
+      });
+      if (kvResp.ok) {
+        const raw = await kvResp.json();
+        SHARE_SNAPSHOT_CACHE.set(shareId, { data: raw, expiresAt: Date.now() + SHARE_CACHE_TTL_MS });
+        return raw;
+      }
+    } catch (kvErr) {
+      console.warn('[KV RETRIEVAL WARN]', kvErr.message);
+    }
+  }
+
+  // 3. Local Filesystem Disk Fallback
+  const filePath = path.join(SHARES_DIR, `${shareId}.json`);
+  const content = await fs.readFile(filePath, 'utf-8');
+  const data = JSON.parse(content);
+  SHARE_SNAPSHOT_CACHE.set(shareId, { data, expiresAt: Date.now() + SHARE_CACHE_TTL_MS });
+  return data;
+}
+
 // === Programmatic SEO: Share Conversation Endpoints ===
 app.post('/api/share', async (req, res) => {
   try {
@@ -103,12 +185,12 @@ app.post('/api/share', async (req, res) => {
       messages: messages.slice(0, 100)
     };
 
-    const filePath = path.join(SHARES_DIR, `${shareId}.json`);
-    await fs.writeFile(filePath, JSON.stringify(shareData, null, 2), 'utf-8');
+    const result = await saveSnapshot(shareId, shareData);
 
     return res.json({
       success: true,
       shareId,
+      storage: result.storage,
       url: `/s/${shareId}`,
       fullUrl: `https://chat.zyekh.com/s/${shareId}`
     });
@@ -121,9 +203,8 @@ app.post('/api/share', async (req, res) => {
 app.get('/api/share/:id', async (req, res) => {
   try {
     const shareId = req.params.id.replace(/[^a-zA-Z0-9_-]/g, '');
-    const filePath = path.join(SHARES_DIR, `${shareId}.json`);
-    const content = await fs.readFile(filePath, 'utf-8');
-    res.json(JSON.parse(content));
+    const data = await getSnapshot(shareId);
+    res.json(data);
   } catch {
     res.status(404).json({ success: false, error: 'Snapshot percakapan tidak ditemukan.' });
   }
@@ -133,9 +214,7 @@ app.get('/api/share/:id', async (req, res) => {
 app.get(['/s/:id', '/share/:id'], async (req, res) => {
   try {
     const shareId = req.params.id.replace(/[^a-zA-Z0-9_-]/g, '');
-    const filePath = path.join(SHARES_DIR, `${shareId}.json`);
-    const fileContent = await fs.readFile(filePath, 'utf-8');
-    const data = JSON.parse(fileContent);
+    const data = await getSnapshot(shareId);
 
     const title = escapeHtml(data.title || 'Percakapan Zyekh AI');
     const firstUserMsg = data.messages.find(m => m.role === 'user')?.content || 'Pertanyaan teknis seputar AI dan programming.';
