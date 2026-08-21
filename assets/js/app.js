@@ -8,6 +8,7 @@
     : 'https://api.zyekh.com';
   const SESSIONS_KEY = 'zyekh_companion_sessions';
   const ACTIVE_SESSION_KEY = 'zyekh_active_companion_session_id';
+  const THEME_KEY = 'theme';
 
   let sessions = loadSessions();
   let currentSessionId = localStorage.getItem(ACTIVE_SESSION_KEY);
@@ -25,12 +26,18 @@
   const btnNewChat = document.getElementById('btnNewChat');
   const btnMenuToggle = document.getElementById('btnMenuToggle');
   const btnClearChat = document.getElementById('btnClearChat');
+  const btnThemeToggle = document.getElementById('btnThemeToggle');
+  const themeLabel = document.getElementById('themeLabel');
   const sidebar = document.getElementById('sidebar');
 
   // Initialization
   function init() {
+    initTheme();
     renderHistoryList();
     loadSessionToView(currentSessionId);
+
+    // Event: Theme Toggle
+    btnThemeToggle?.addEventListener('click', toggleTheme);
 
     // Event: Obrolan Baru
     btnNewChat.addEventListener('click', () => {
@@ -89,6 +96,32 @@
     });
   }
 
+  // Theme Management (Anti-FOUC Parity with zyekh.com)
+  function initTheme() {
+    const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    updateThemeUI(activeTheme);
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    const next = current === 'light' ? 'dark' : 'light';
+    
+    if (next === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem(THEME_KEY, 'light');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem(THEME_KEY, 'dark');
+    }
+    updateThemeUI(next);
+  }
+
+  function updateThemeUI(theme) {
+    if (themeLabel) {
+      themeLabel.textContent = theme === 'light' ? 'Light' : 'Dark';
+    }
+  }
+
   // Session Helpers
   function loadSessions() {
     try {
@@ -130,7 +163,7 @@
       item.className = `history-item ${sess.id === currentSessionId ? 'active' : ''}`;
       item.innerHTML = `
         <span style="overflow:hidden; text-overflow:ellipsis; flex:1;">${escapeHtml(sess.title)}</span>
-        <button class="btn-del-sess" title="Hapus Obrolan" style="background:none;border:none;color:var(--text-faint);cursor:pointer;padding:2px 6px;font-size:14px;">&times;</button>
+        <button class="btn-del-sess" title="Hapus Obrolan" aria-label="Hapus">&times;</button>
       `;
 
       item.addEventListener('click', (e) => {
@@ -179,28 +212,46 @@
     chatInput.focus();
   }
 
+  // Welcome Screen (Standard B Card Architecture from zyekh.com)
   function renderWelcomeScreen() {
     const welcome = document.createElement('div');
     welcome.className = 'chat-welcome';
     welcome.innerHTML = `
+      <span class="welcome-badge">ZYEKH AI COMPANION</span>
       <h2 class="welcome-title">Hai! Mau ngobrol atau bahas apa hari ini?</h2>
-      <p class="welcome-subtitle">Saya adalah Zyekh AI Companion — siap jadi teman ngobrol santai, bertukar pikiran, brainstorming ide kreatif, atau diskusi mendalam.</p>
+      <p class="welcome-subtitle">Saya adalah Zyekh AI Companion — siap jadi teman ngobrol santai, bertukar pikiran, brainstorming ide kreatif, atau diskusi arsitektur mendalam.</p>
       <div class="suggestions-grid">
         <div class="suggestion-card" onclick="sendSuggestedPrompt('Hai! Kenalin diri kamu dong, gaya ngobrol dan apa saja yang bisa kita bahas?')">
-          <h4>[ PERKENALAN ] Ngobrol & Perkenalan</h4>
-          <p>Kenali kemampuan dan gaya ngobrol asisten companion.</p>
+          <div>
+            <span class="suggestion-cat">[ PERKENALAN ]</span>
+            <h3 class="suggestion-title">Ngobrol &amp; Perkenalan</h3>
+            <p class="suggestion-desc">Kenali kemampuan, persona ramah, dan gaya ngobrol asisten companion.</p>
+          </div>
+          <span class="suggestion-action">Mulai Diskusi &rarr;</span>
         </div>
         <div class="suggestion-card" onclick="sendSuggestedPrompt('Gw lagi punya ide proyek menarik, bantu gw brainstorming konsepnya yuk!')">
-          <h4>[ IDE ] Brainstorming Ide Proyek</h4>
-          <p>Eksplorasi konsep, validasi ide, dan rencana langkah kerja.</p>
+          <div>
+            <span class="suggestion-cat">[ IDE ]</span>
+            <h3 class="suggestion-title">Brainstorming Proyek</h3>
+            <p class="suggestion-desc">Eksplorasi konsep, validasi ide, dan susun rencana langkah kerja terukur.</p>
+          </div>
+          <span class="suggestion-action">Mulai Diskusi &rarr;</span>
         </div>
         <div class="suggestion-card" onclick="sendSuggestedPrompt('Gimana tips produktivitas dan fokus ngoding tanpa gampang burnout?')">
-          <h4>[ REFLEKSI ] Refleksi & Produktivitas</h4>
-          <p>Diskusi manajemen energi, fokus, dan pengembangan diri.</p>
+          <div>
+            <span class="suggestion-cat">[ REFLEKSI ]</span>
+            <h3 class="suggestion-title">Refleksi &amp; Produktivitas</h3>
+            <p class="suggestion-desc">Diskusi manajemen energi, fokus, dan pengembangan diri jangka panjang.</p>
+          </div>
+          <span class="suggestion-action">Mulai Diskusi &rarr;</span>
         </div>
         <div class="suggestion-card" onclick="sendSuggestedPrompt('Bahas konsep arsitektur software dan optimasi performa modern yuk!')">
-          <h4>[ TEKNIS ] Diskusi Teknis & Arsitektur</h4>
-          <p>Pembahasan teknologi, desain sistem, dan prinsip rekayasa.</p>
+          <div>
+            <span class="suggestion-cat">[ TEKNIS ]</span>
+            <h3 class="suggestion-title">Teknis &amp; Arsitektur</h3>
+            <p class="suggestion-desc">Pembahasan teknologi, desain sistem modern, dan prinsip rekayasa bersih.</p>
+          </div>
+          <span class="suggestion-action">Mulai Diskusi &rarr;</span>
         </div>
       </div>
     `;
@@ -311,10 +362,10 @@
     row.id = 'activeTypingRow';
     row.innerHTML = `
       <div class="avatar bot">Z</div>
-      <div class="message-content" style="display:flex; gap:5px; padding:12px 18px; align-items:center;">
-        <span style="display:inline-block; width:6px; height:6px; background:#38bdf8; border-radius:50%; animation:zyekhPulse 1.2s infinite ease-in-out;"></span>
-        <span style="display:inline-block; width:6px; height:6px; background:#38bdf8; border-radius:50%; animation:zyekhPulse 1.2s infinite ease-in-out; animation-delay:0.2s;"></span>
-        <span style="display:inline-block; width:6px; height:6px; background:#38bdf8; border-radius:50%; animation:zyekhPulse 1.2s infinite ease-in-out; animation-delay:0.4s;"></span>
+      <div class="message-content" style="display:flex; gap:6px; padding:12px 18px; align-items:center;">
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
       </div>
     `;
     chatMessages.appendChild(row);
@@ -354,14 +405,6 @@
     // Newlines
     html = html.replace(/\n/g, '<br>');
     return html;
-  }
-
-  function debounce(fn, wait) {
-    let timeout;
-    return function (...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => fn.apply(this, args), wait);
-    };
   }
 
   // Run

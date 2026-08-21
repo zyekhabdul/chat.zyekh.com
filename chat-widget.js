@@ -21,58 +21,58 @@
     localStorage.setItem(CHAT_ID_KEY, userId);
   }
 
-  // Inject Styles
+  // Inject Styles (Pure Monochrome Zinc Parity)
   const style = document.createElement('style');
   style.innerHTML = `
     .zyekh-chat-toggle {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 56px;
-      height: 56px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: #0f172a;
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      background: #141417;
+      color: #fafafa;
+      border: 1px solid #27272a;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 999999;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .zyekh-chat-toggle:hover {
-      transform: scale(1.08);
-      border-color: #38bdf8;
-      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.25);
+      transform: scale(1.06);
+      border-color: #52525b;
+      box-shadow: 0 12px 28px rgba(255, 255, 255, 0.08);
     }
     .zyekh-chat-toggle svg {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       fill: currentColor;
     }
     .zyekh-chat-window {
       position: fixed;
-      bottom: 92px;
+      bottom: 88px;
       right: 24px;
       width: 380px;
       height: 540px;
       max-width: calc(100vw - 32px);
-      max-height: calc(100vh - 120px);
-      background: #090d16;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
+      max-height: calc(100vh - 110px);
+      background: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 8px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
       display: flex;
       flex-direction: column;
       overflow: hidden;
       z-index: 999999;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       opacity: 0;
       pointer-events: none;
-      transform: translateY(16px) scale(0.96);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(12px) scale(0.97);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .zyekh-chat-window.open {
       opacity: 1;
@@ -80,9 +80,9 @@
       transform: translateY(0) scale(1);
     }
     .zyekh-chat-header {
-      padding: 16px;
-      background: #0f172a;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 14px 16px;
+      background: #141417;
+      border-bottom: 1px solid #27272a;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -93,157 +93,162 @@
       gap: 2px;
     }
     .zyekh-chat-header-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: #f8fafc;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fafafa;
       letter-spacing: -0.01em;
     }
     .zyekh-chat-header-status {
-      font-size: 12px;
-      color: #38bdf8;
+      font-size: 11.5px;
+      color: #a1a1aa;
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .zyekh-chat-header-status::before {
       content: '';
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: #38bdf8;
-      box-shadow: 0 0 8px #38bdf8;
+      background: #fafafa;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
     }
     .zyekh-chat-close {
       background: transparent;
       border: none;
-      color: #94a3b8;
+      color: #71717a;
       cursor: pointer;
-      padding: 6px;
-      border-radius: 6px;
+      padding: 4px;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: color 0.15s;
     }
     .zyekh-chat-close:hover {
-      color: #f8fafc;
+      color: #fafafa;
     }
     .zyekh-chat-messages {
       flex: 1;
-      padding: 16px;
+      padding: 14px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       scroll-behavior: smooth;
     }
     .zyekh-chat-bubble {
-      max-width: 85%;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 13.5px;
+      max-width: 86%;
+      padding: 9px 13px;
+      border-radius: 6px;
+      font-size: 13px;
       line-height: 1.5;
       word-break: break-word;
     }
     .zyekh-chat-bubble.user {
       align-self: flex-end;
-      background: #0284c7;
-      color: #ffffff;
-      border-bottom-right-radius: 4px;
+      background: #18181b;
+      color: #fafafa;
+      border: 1px solid #27272a;
     }
     .zyekh-chat-bubble.bot {
       align-self: flex-start;
-      background: #1e293b;
-      color: #e2e8f0;
-      border-bottom-left-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: #141417;
+      color: #fafafa;
+      border: 1px solid #27272a;
     }
     .zyekh-chat-bubble p {
-      margin: 0 0 8px 0;
+      margin: 0 0 6px 0;
     }
     .zyekh-chat-bubble p:last-child {
       margin-bottom: 0;
     }
     .zyekh-chat-bubble code {
-      background: rgba(0, 0, 0, 0.3);
+      background: #000000;
+      color: #fafafa;
       padding: 2px 5px;
+      border: 1px solid #27272a;
       border-radius: 4px;
-      font-family: monospace;
+      font-family: 'Fira Code', monospace;
       font-size: 12px;
     }
     .zyekh-chat-bubble pre {
-      background: #050811;
+      background: #000000;
+      border: 1px solid #27272a;
       padding: 8px 10px;
       border-radius: 6px;
       overflow-x: auto;
       margin: 6px 0;
+      font-family: 'Fira Code', monospace;
     }
     .zyekh-chat-bubble a {
-      color: #38bdf8;
+      color: #fafafa;
       text-decoration: underline;
     }
     .zyekh-chat-typing {
       display: flex;
       gap: 4px;
       padding: 8px 12px;
-      background: #1e293b;
-      border-radius: 12px;
+      background: #141417;
+      border: 1px solid #27272a;
+      border-radius: 6px;
       align-self: flex-start;
       width: fit-content;
     }
     .zyekh-chat-typing span {
-      width: 6px;
-      height: 6px;
-      background: #94a3b8;
+      width: 5px;
+      height: 5px;
+      background: #a1a1aa;
       border-radius: 50%;
       animation: zyekhPulse 1.2s infinite ease-in-out;
     }
     .zyekh-chat-typing span:nth-child(2) { animation-delay: 0.2s; }
     .zyekh-chat-typing span:nth-child(3) { animation-delay: 0.4s; }
     @keyframes zyekhPulse {
-      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-      40% { transform: scale(1); opacity: 1; }
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
+      40% { transform: scale(1.1); opacity: 1; }
     }
     .zyekh-chat-input-area {
-      padding: 12px 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      background: #0f172a;
+      padding: 10px 12px;
+      border-top: 1px solid #27272a;
+      background: #141417;
       display: flex;
       gap: 8px;
     }
     .zyekh-chat-input {
       flex: 1;
-      background: #090d16;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
-      padding: 9px 12px;
-      color: #f8fafc;
-      font-size: 13.5px;
+      background: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 4px;
+      padding: 7px 10px;
+      color: #fafafa;
+      font-size: 13px;
       outline: none;
       transition: border-color 0.15s;
+      font-family: inherit;
     }
     .zyekh-chat-input:focus {
-      border-color: #38bdf8;
+      border-color: #52525b;
     }
     .zyekh-chat-send {
-      background: #0284c7;
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
-      padding: 0 14px;
-      font-size: 13.5px;
-      font-weight: 500;
+      background: #fafafa;
+      color: #09090b;
+      border: 1px solid #fafafa;
+      border-radius: 4px;
+      padding: 0 12px;
+      font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.15s;
+      transition: all 0.15s;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .zyekh-chat-send:hover {
-      background: #0369a1;
+      background: #e4e4e7;
     }
     .zyekh-chat-send:disabled {
-      opacity: 0.5;
+      opacity: 0.4;
       cursor: not-allowed;
     }
   `;
@@ -287,7 +292,7 @@
         <div class="zyekh-chat-header-status">${CHAT_SUBTITLE}</div>
       </div>
       <button class="zyekh-chat-close" aria-label="Close Chat">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
