@@ -536,11 +536,16 @@
     updateAvatarPreview(userProfile.avatarType, userProfile.avatarValue);
 
     profileModalBackdrop?.classList.add('open');
+    profileModalBackdrop?.setAttribute('aria-hidden', 'false');
     profileNameInput?.focus();
   }
 
   function closeProfileModal() {
+    if (profileModalBackdrop?.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
     profileModalBackdrop?.classList.remove('open');
+    profileModalBackdrop?.setAttribute('aria-hidden', 'true');
   }
 
   function handleAvatarTypeChange(type) {
@@ -638,11 +643,16 @@
   // === Widget Integration Modal Handlers ===
   function openWidgetModal() {
     widgetModalBackdrop?.classList.add('open');
+    widgetModalBackdrop?.setAttribute('aria-hidden', 'false');
     updateWidgetCodeSnippet();
   }
 
   function closeWidgetModal() {
+    if (widgetModalBackdrop?.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
     widgetModalBackdrop?.classList.remove('open');
+    widgetModalBackdrop?.setAttribute('aria-hidden', 'true');
   }
 
   function updateWidgetCodeSnippet() {
@@ -671,6 +681,14 @@
     }
 
     shareModalBackdrop?.classList.add('open');
+    shareModalBackdrop?.setAttribute('aria-hidden', 'false');
+
+    // 1. Session-bound caching: reuse existing share link if message count hasn't changed
+    if (sess.shareUrl && sess.lastSharedMessageCount === sess.messages.length) {
+      if (shareUrlPreview) shareUrlPreview.textContent = sess.shareUrl;
+      return;
+    }
+
     if (shareUrlPreview) shareUrlPreview.textContent = 'Menyimpan snapshot percakapan...';
 
     try {
@@ -678,6 +696,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          shareId: sess.shareId || undefined,
           title: sess.title || 'Percakapan Zyekh AI',
           messages: sess.messages,
           modelUsed: activeModelId,
@@ -698,6 +717,13 @@
       if (data && data.success && (data.fullUrl || data.url)) {
         const fullLink = data.fullUrl || (window.location.origin + data.url);
         if (shareUrlPreview) shareUrlPreview.textContent = fullLink;
+        
+        // Cache share metadata in session object
+        sess.shareId = data.shareId;
+        sess.shareUrl = fullLink;
+        sess.lastSharedMessageCount = sess.messages.length;
+        saveSessions();
+
         showToast('[ VERIFIED ] Tautan publik berhasil dibuat');
       } else {
         throw new Error(data.error || 'Gagal membuat tautan');
@@ -709,7 +735,11 @@
   }
 
   function closeShareModal() {
+    if (shareModalBackdrop?.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
     shareModalBackdrop?.classList.remove('open');
+    shareModalBackdrop?.setAttribute('aria-hidden', 'true');
   }
 
   function copyShareUrl() {

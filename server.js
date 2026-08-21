@@ -28,6 +28,17 @@ const CANDIDATE_TARGETS = [
 
 app.use(express.json({ limit: '10mb' }));
 
+// Global Security & CSP Middleware (Permits Cloudflare Web Analytics)
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://api.zyekh.com https://chat.zyekh.com https://shop.zyekh.com https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self';"
+  );
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  next();
+});
+
 // Helper: Escape HTML
 function escapeHtml(str) {
   if (!str) return '';
@@ -42,12 +53,16 @@ function escapeHtml(str) {
 // === Programmatic SEO: Share Conversation Endpoints ===
 app.post('/api/share', async (req, res) => {
   try {
-    const { title, messages, modelUsed, authorName } = req.body || {};
+    const { shareId: existingId, title, messages, modelUsed, authorName } = req.body || {};
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ success: false, error: 'Daftar pesan tidak valid.' });
     }
 
-    const shareId = 's_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 7);
+    let shareId = existingId ? String(existingId).replace(/[^a-zA-Z0-9_-]/g, '') : null;
+    if (!shareId || !shareId.startsWith('s_')) {
+      shareId = 's_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 7);
+    }
+
     const shareData = {
       id: shareId,
       title: title || 'Percakapan Zyekh AI',
