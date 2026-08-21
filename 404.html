@@ -417,12 +417,45 @@
           </button>
         </div>
       </div>
+  <!-- WebGPU Model Confirmation & Initialization Modal -->
+  <div class="modal-backdrop" id="webgpuModalBackdrop" aria-hidden="true">
+    <div class="modal-card" id="webgpuModal" role="dialog" aria-modal="true" aria-labelledby="webgpuModalTitle">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge" style="color: var(--accent-color); border-color: var(--accent-color);">[ ON-DEVICE WEBGPU AI ]</span>
+          <h3 id="webgpuModalTitle">Inisialisasi Model AI Lokal</h3>
+        </div>
+        <button class="modal-close-btn" id="btnWebgpuModalClose" type="button" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.84rem; color: var(--text-main); line-height: 1.5; margin-bottom: 0.75rem;">
+          Anda akan mengaktifkan <strong>Neural Network LLM Lokal</strong> yang berjalan 100% di kartu grafis (GPU) browser Anda tanpa koneksi server backend.
+        </p>
+        
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.8rem; line-height: 1.5; margin-bottom: 0.75rem;">
+          <div style="font-weight: 600; color: var(--accent-color); margin-bottom: 0.25rem;">[ SPESIFIKASI &amp; DAMPAK ]</div>
+          <div>&bull; <strong>Ukuran Bobot Model:</strong> ~185 MB (Diunduh 1x &amp; disimpan di IndexedDB browser).</div>
+          <div>&bull; <strong>Kebutuhan Sistem:</strong> Browser dengan WebGPU aktif (Chrome/Edge/Brave).</div>
+          <div>&bull; <strong>Privasi:</strong> 100% Offline, Zero Tracking, Zero Server Cost.</div>
+        </div>
+
+        <div id="webgpuProgressWrap" style="display: none; margin-top: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 4px;">
+            <span id="webgpuProgressStatus">Mengunduh bobot model...</span>
+            <span id="webgpuProgressPercent">0%</span>
+          </div>
+          <div style="width: 100%; height: 6px; background: var(--bg-hover); border-radius: 3px; overflow: hidden;">
+            <div id="webgpuProgressBar" style="width: 0%; height: 100%; background: var(--accent-color); transition: width 0.2s ease;"></div>
+          </div>
+        </div>
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn-secondary" id="btnShareModalCancel">Tutup</button>
+        <button type="button" class="btn-secondary" id="btnWebgpuModalCancel">Batal (Gunakan Cloud)</button>
+        <button type="button" class="btn-primary" id="btnWebgpuModalConfirm">Unduh &amp; Aktifkan</button>
       </div>
     </div>
   </div>
 
-  <script src="./assets/js/app.js?v=20260821_v420"></script>
+  <script src="./assets/js/app.js?v=20260821_v430"></script>
 </body>
 </html>
