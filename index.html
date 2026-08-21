@@ -210,6 +210,17 @@
             <span class="btn-text">Ekspor</span>
           </button>
 
+          <button class="btn-action" id="btnShareChat" type="button" title="Bagikan Percakapan Ini (Tautan Publik)" aria-label="Bagikan Percakapan">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <span class="btn-text">Bagikan</span>
+          </button>
+
           <button class="theme-toggle-btn" id="btnThemeToggle" type="button" title="Ganti Tema (Dark / Light)" aria-label="Ganti Tema">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="5"></circle>
@@ -384,6 +395,34 @@
     </div>
   </div>
 
-  <script src="./assets/js/app.js?v=20260821_v370"></script>
+  <!-- Share Conversation Modal -->
+  <div class="modal-backdrop" id="shareModalBackdrop" aria-hidden="true">
+    <div class="modal-card" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge">[ BAGIKAN PERCAKAPAN ]</span>
+          <h3 id="shareModalTitle">Tautan Publik Percakapan</h3>
+        </div>
+        <button class="modal-close-btn" id="btnShareModalClose" type="button" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.5;">
+          Tautan publik ini menyajikan snapshot percakapan statis yang terindeks oleh mesin pencari (*Programmatic SEO*) dan dapat dibuka langsung oleh siapa saja.
+        </p>
+        <div class="form-group">
+          <label>URL Snapshot Publik</label>
+          <div class="widget-code-preview" id="shareUrlPreview" style="font-size: 0.84rem;">Membuat tautan...</div>
+          <button type="button" class="btn-primary" id="btnCopyShareUrl" style="margin-top: 6px; width: 100%;">
+            Salin Tautan Publik
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="btnShareModalCancel">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/app.js?v=20260821_v390"></script>
 </body>
 </html>

@@ -14,3 +14,7 @@ Thumbs.db
 __pycache__/
 *.pyc
 
+# Public Shared Snapshots
+data/shares/*.json
+!data/shares/.gitkeep
+

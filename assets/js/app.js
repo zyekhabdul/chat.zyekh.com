@@ -146,6 +146,14 @@
   const widgetCodeSnippet = document.getElementById('widgetCodeSnippet');
   const btnCopyWidgetCode = document.getElementById('btnCopyWidgetCode');
 
+  // Share Modal Elements
+  const btnShareChat = document.getElementById('btnShareChat');
+  const shareModalBackdrop = document.getElementById('shareModalBackdrop');
+  const btnShareModalClose = document.getElementById('btnShareModalClose');
+  const btnShareModalCancel = document.getElementById('btnShareModalCancel');
+  const shareUrlPreview = document.getElementById('shareUrlPreview');
+  const btnCopyShareUrl = document.getElementById('btnCopyShareUrl');
+
   // Sidebar Controls
   function openSidebar() {
     sidebar?.classList.add('open');
@@ -278,6 +286,15 @@
       radio.addEventListener('change', updateWidgetCodeSnippet);
     });
 
+    // Event: Share Conversation Modal
+    btnShareChat?.addEventListener('click', handleShareChat);
+    btnShareModalClose?.addEventListener('click', closeShareModal);
+    btnShareModalCancel?.addEventListener('click', closeShareModal);
+    shareModalBackdrop?.addEventListener('click', (e) => {
+      if (e.target === shareModalBackdrop) closeShareModal();
+    });
+    btnCopyShareUrl?.addEventListener('click', copyShareUrl);
+
     // Event: Avatar Type Radio Changes
     document.querySelectorAll('input[name="avatarType"]').forEach((radio) => {
       radio.addEventListener('change', (e) => {
@@ -347,6 +364,7 @@
 
     loadSessionToView(currentSessionId);
     initModels();
+    checkUrlParams();
   }
 
   // === Dynamic Models Management ===
@@ -642,6 +660,87 @@
     }).catch(() => {
       showToast('[ ERROR ] Gagal menyalin kode semat');
     });
+  }
+
+  // === Programmatic SEO: Share Conversation Handlers ===
+  async function handleShareChat() {
+    const sess = getSession(currentSessionId);
+    if (!sess || !sess.messages || sess.messages.length === 0) {
+      showToast('[ WARN ] Sesi obrolan masih kosong');
+      return;
+    }
+
+    shareModalBackdrop?.classList.add('open');
+    if (shareUrlPreview) shareUrlPreview.textContent = 'Menyimpan snapshot percakapan...';
+
+    try {
+      const res = await fetch(`${API_BASE}/api/share`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: sess.title || 'Percakapan Zyekh AI',
+          messages: sess.messages,
+          modelUsed: activeModelId,
+          authorName: userProfile.name || 'Pengguna'
+        })
+      });
+
+      const data = await res.json();
+      if (data && data.success && (data.fullUrl || data.url)) {
+        const fullLink = data.fullUrl || (window.location.origin + data.url);
+        if (shareUrlPreview) shareUrlPreview.textContent = fullLink;
+        showToast('[ VERIFIED ] Tautan publik berhasil dibuat');
+      } else {
+        throw new Error(data.error || 'Gagal membuat tautan');
+      }
+    } catch (err) {
+      if (shareUrlPreview) shareUrlPreview.textContent = `[ ERROR ] ${err.message}`;
+      showToast(`[ ERROR ] ${err.message}`);
+    }
+  }
+
+  function closeShareModal() {
+    shareModalBackdrop?.classList.remove('open');
+  }
+
+  function copyShareUrl() {
+    const url = shareUrlPreview?.textContent || '';
+    if (!url || url.includes('[ ERROR ]') || url.includes('Menyimpan')) return;
+    navigator.clipboard.writeText(url).then(() => {
+      showToast('[ VERIFIED ] Tautan publik berhasil disalin ke clipboard');
+    }).catch(() => {
+      showToast('[ ERROR ] Gagal menyalin tautan');
+    });
+  }
+
+  async function checkUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    const importShareId = params.get('import_share');
+    if (importShareId) {
+      try {
+        const cleanId = importShareId.replace(/[^a-zA-Z0-9_-]/g, '');
+        const res = await fetch(`${API_BASE}/api/share/${cleanId}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && data.messages && Array.isArray(data.messages) && data.messages.length > 0) {
+          const newSessionId = 'sess_' + Date.now();
+          const importedSession = {
+            id: newSessionId,
+            title: `[Impor] ${data.title || 'Percakapan Publik'}`,
+            createdAt: new Date().toISOString(),
+            messages: data.messages
+          };
+          sessions.unshift(importedSession);
+          saveSessions();
+          renderHistoryList();
+          loadSessionToView(newSessionId);
+          showToast('[ VERIFIED ] Percakapan publik berhasil diimpor ke sesi Anda');
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      } catch (err) {
+        console.error('[IMPORT ERROR]', err);
+      }
+    }
   }
 
   // Theme Management
