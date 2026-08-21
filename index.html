@@ -8,8 +8,11 @@
   <title>Zyekh AI Companion — Free, Fast &amp; Private Multi-Model AI</title>
   <meta name="description" content="Free open-source high-speed conversational AI companion and technical research assistant with local-first privacy, zero telemetry, and multi-model gateway." />
   
-  <!-- Canonical, Robots & Social Meta Tags -->
+  <!-- Canonical, Alternate Hreflang & Robots -->
   <link rel="canonical" href="https://chat.zyekh.com/" />
+  <link rel="alternate" hreflang="en" href="https://chat.zyekh.com/" />
+  <link rel="alternate" hreflang="id" href="https://chat.zyekh.com/?lang=id" />
+  <link rel="alternate" hreflang="x-default" href="https://chat.zyekh.com/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="keywords" content="AI Companion, AI Chat, Open Source AI, Private AI, Multi-Model AI, Claude Sonnet, Gemini Flash, Developer Assistant, Zyekh" />
   <meta property="og:title" content="Zyekh AI Companion — Free, Fast &amp; Private Multi-Model AI" />
@@ -98,7 +101,7 @@
   <link as="font" crossorigin="" href="./assets/fonts/outfit-700-normal.woff2" rel="preload" type="font/woff2" />
   <link as="font" crossorigin="" href="./assets/fonts/inter-variable-latin.woff2" rel="preload" type="font/woff2" />
   <link rel="stylesheet" href="./assets/fonts/fonts.min.css?v=20260821_v315" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v401" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v403" />
 </head>
 <body>
   <div class="app-container">
@@ -227,6 +230,15 @@
               <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
             </svg>
             <span class="btn-text">Share</span>
+          </button>
+
+          <button class="btn-action" id="btnLangToggle" type="button" title="Switch Language (English / Bahasa Indonesia)" aria-label="Switch Language">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span class="btn-text" id="activeLangTag">EN</span>
           </button>
 
           <button class="theme-toggle-btn" id="btnThemeToggle" type="button" title="Toggle Theme (Dark / Light)" aria-label="Toggle Theme">
@@ -470,6 +482,6 @@
     </div>
   </div>
 
-  <script src="./assets/js/app.js?v=20260821_v442"></script>
+  <script src="./assets/js/app.js?v=20260821_v443"></script>
 </body>
 </html>

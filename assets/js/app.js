@@ -9,6 +9,165 @@
   const ACTIVE_MODEL_KEY = 'zyekh_active_model';
   const PROFILE_KEY = 'zyekh_user_profile';
   const THEME_KEY = 'theme';
+  const PREF_LANG_KEY = 'zyekh_pref_lang';
+
+  // Zero-Dependency Client-Side Translation Dictionary
+  const I18N_DICT = {
+    en: {
+      new_chat_btn: 'New Chat',
+      new_chat_title: 'New Chat',
+      search_placeholder: 'Search conversations...',
+      search_aria: 'Search conversations',
+      user_profile_aria: 'Open User Profile & Settings',
+      gateway_active: 'Gateway Active',
+      select_model_title: 'Select AI Model',
+      select_model_hdr: 'SELECT AI MODEL',
+      github_btn: 'GitHub',
+      github_title: 'Star & Fork on GitHub (Open Source)',
+      widget_btn: 'Widget',
+      widget_title: 'Embed AI Widget on Your Website',
+      export_btn: 'Export',
+      export_title: 'Export Conversation to Markdown',
+      share_btn: 'Share',
+      share_title: 'Share Public Conversation Link',
+      lang_btn_title: 'Switch Language (English / Bahasa Indonesia)',
+      theme_btn_title: 'Toggle Theme (Dark / Light)',
+      theme_btn_label: 'Theme',
+      clear_btn: 'Clear',
+      clear_title: 'Clear Current Conversation',
+      chat_placeholder: 'Type a message or ask anything...',
+      send_aria: 'Send Message',
+      hint_enter: '[ Enter ] Send',
+      hint_shift_enter: '[ Shift + Enter ] New line',
+      hint_model_prefix: 'Model: ',
+      welcome_badge: 'ZYEKH AI COMPANION',
+      welcome_title: 'Hello {name}! What shall we build today?',
+      welcome_subtitle: 'High-speed AI companion ready for architectural design, code review, technical research, and strategic brainstorming.',
+      sug_1_cat: '[ OVERVIEW ]',
+      sug_1_title: 'Multi-Model Capabilities',
+      sug_1_desc: 'Explore Gemini 3.7 Flash, Claude 3.7 Sonnet/Opus, and GPT OSS capabilities.',
+      sug_1_prompt: 'Hello! Introduce your multi-model capabilities and explain what each model is best suited for.',
+      sug_2_cat: '[ ARCHITECTURE ]',
+      sug_2_title: 'System & Architecture Design',
+      sug_2_desc: 'Design zero-dependency systems, monorepo architectures, and scalable APIs.',
+      sug_2_prompt: 'I have an idea for a software project. Help me design a clean, resilient technical architecture.',
+      sug_3_cat: '[ PERFORMANCE ]',
+      sug_3_title: 'Code Review & Optimization',
+      sug_3_desc: 'Deep algorithm analysis, Core Web Vitals audit, and zero-bloat debugging.',
+      sug_3_prompt: 'Help me audit code performance, optimize algorithms, and achieve sub-second latency.',
+      sug_4_cat: '[ STRATEGY ]',
+      sug_4_title: 'Engineering Strategy & Growth',
+      sug_4_desc: 'Open-source distribution, developer productivity, and long-term engineering rhythm.',
+      sug_4_prompt: 'What are the best strategies for building and scaling an open-source developer tool globally?',
+      sug_action: 'Start Discussion ->',
+      toast_new_chat: '[ INFO ] New conversation ready',
+      toast_clear_chat: '[ INFO ] Active conversation cleared',
+      toast_webgpu_unsupported: '[ ERROR ] WebGPU is not supported in this browser. Please use Chrome or Edge desktop.',
+      toast_webgpu_active: '[ VERIFIED ] Neural Network WebGPU 0.5B active & 100% Offline',
+      toast_webgpu_fail: '[ ERROR ] Failed to load WebGPU: {err}',
+      toast_model_switch_webgpu: '[ MODEL ] Switched to WebGPU On-Device 0.5B (Offline)',
+      toast_model_switch: '[ MODEL ] Switched to {model}',
+      toast_max_file_size: '[ ERROR ] Max file size is 2MB',
+      toast_profile_saved: '[ VERIFIED ] Profile settings saved',
+      toast_widget_copied: '[ VERIFIED ] Widget embed code copied to clipboard',
+      toast_widget_copy_err: '[ ERROR ] Failed to copy embed code',
+      toast_empty_chat: '[ WARN ] Conversation is empty',
+      toast_share_created: '[ VERIFIED ] Public share link generated',
+      toast_share_no_link: '[ WARN ] No valid link to copy',
+      toast_share_copied: '[ VERIFIED ] Public link copied to clipboard',
+      toast_share_copy_err: '[ ERROR ] Failed to copy link',
+      toast_share_imported: '[ VERIFIED ] Public conversation imported into your sessions',
+      toast_theme_switched: '[ THEME ] Switched to {mode}',
+      toast_sess_deleted: '[ INFO ] Conversation deleted',
+      toast_msg_copied: '[ VERIFIED ] Message copied to clipboard',
+      toast_code_copied: '[ VERIFIED ] Code copied to clipboard',
+      toast_export_empty: '[ INFO ] No conversation history to export',
+      toast_export_ok: '[ VERIFIED ] Conversation exported to Markdown',
+      toast_lang_switched: '[ I18N ] Language switched to English',
+      hist_no_match: '[ INFO ] No matching conversations found',
+      hist_empty: '[ INFO ] No conversation history yet',
+      hist_del_title: 'Delete Conversation',
+      copy_btn: 'Copy',
+      copied_btn: 'Copied!'
+    },
+    id: {
+      new_chat_btn: 'Obrolan Baru',
+      new_chat_title: 'Obrolan Baru',
+      search_placeholder: 'Cari riwayat obrolan...',
+      search_aria: 'Cari riwayat obrolan',
+      user_profile_aria: 'Buka Pengaturan Profil Pengguna',
+      gateway_active: 'Gateway Aktif',
+      select_model_title: 'Pilih Model AI',
+      select_model_hdr: 'PILIH MODEL AI',
+      github_btn: 'GitHub',
+      github_title: 'Beri Bintang & Fork di GitHub (Open Source)',
+      widget_btn: 'Widget',
+      widget_title: 'Sematkan Widget di Website Anda',
+      export_btn: 'Ekspor',
+      export_title: 'Ekspor Obrolan ke Markdown',
+      share_btn: 'Bagikan',
+      share_title: 'Bagikan Percakapan Ini (Tautan Publik)',
+      lang_btn_title: 'Ganti Bahasa (English / Bahasa Indonesia)',
+      theme_btn_title: 'Ganti Tema (Gelap / Terang)',
+      theme_btn_label: 'Tema',
+      clear_btn: 'Bersihkan',
+      clear_title: 'Bersihkan Obrolan Ini',
+      chat_placeholder: 'Ketik pesan atau ceritakan sesuatu...',
+      send_aria: 'Kirim Pesan',
+      hint_enter: '[ Enter ] Kirim',
+      hint_shift_enter: '[ Shift + Enter ] Baris baru',
+      hint_model_prefix: 'Model: ',
+      welcome_badge: 'ZYEKH AI COMPANION',
+      welcome_title: 'Hai {name}! Mau bahas apa hari ini?',
+      welcome_subtitle: 'AI Companion siap berdiskusi, brainstorming arsitektur, riset teknis, dan refleksi harian dengan 6 model AI pilihan.',
+      sug_1_cat: '[ PERKENALAN ]',
+      sug_1_title: 'Fitur & Multi-Model',
+      sug_1_desc: 'Eksplorasi kemampuan model Gemini 3.7, Claude Sonnet/Opus, dan GPT OSS.',
+      sug_1_prompt: 'Hai! Kenalin kemampuan kamu dan model apa saja yang bisa digunakan?',
+      sug_2_cat: '[ ARSITEKTUR ]',
+      sug_2_title: 'Brainstorming Arsitektur',
+      sug_2_desc: 'Desain sistem monorepo, zero-dependency engine, dan validasi skala.',
+      sug_2_prompt: 'Gw lagi punya ide proyek software baru, bantu susun arsitektur teknisnya yuk!',
+      sug_3_cat: '[ CODING ]',
+      sug_3_title: 'Optimasi & Deep Coding',
+      sug_3_desc: 'Analisis kode presisi, algoritma efisien, dan debugging bebas bloat.',
+      sug_3_prompt: 'Bantu audit performa web dan strategi Core Web Vitals LCP < 1s!',
+      sug_4_cat: '[ REFLEKSI ]',
+      sug_4_title: 'Refleksi & Produktivitas',
+      sug_4_desc: 'Manajemen fokus, konsistensi kerja, dan ritme rekayasa berkelanjutan.',
+      sug_4_prompt: 'Gimana tips produktivitas dan fokus ngoding jangka panjang?',
+      sug_action: 'Mulai Diskusi ->',
+      toast_new_chat: '[ INFO ] Sesi obrolan baru siap digunakan',
+      toast_clear_chat: '[ INFO ] Riwayat obrolan aktif telah dibersihkan',
+      toast_webgpu_unsupported: '[ ERROR ] Browser tidak mendukung WebGPU. Gunakan Chrome/Edge desktop.',
+      toast_webgpu_active: '[ VERIFIED ] Neural Network WebGPU 0.5B aktif 100% Offline!',
+      toast_webgpu_fail: '[ ERROR ] Gagal memuat WebGPU: {err}',
+      toast_model_switch_webgpu: '[ MODEL ] Beralih ke WebGPU On-Device 0.5B (Offline)',
+      toast_model_switch: '[ MODEL ] Beralih ke {model}',
+      toast_max_file_size: '[ ERROR ] Ukuran file maksimal 2MB',
+      toast_profile_saved: '[ VERIFIED ] Pengaturan profil berhasil disimpan',
+      toast_widget_copied: '[ VERIFIED ] Kode semat widget berhasil disalin ke clipboard',
+      toast_widget_copy_err: '[ ERROR ] Gagal menyalin kode semat',
+      toast_empty_chat: '[ WARN ] Sesi obrolan masih kosong',
+      toast_share_created: '[ VERIFIED ] Tautan publik berhasil dibuat',
+      toast_share_no_link: '[ WARN ] Belum ada tautan valid untuk disalin',
+      toast_share_copied: '[ VERIFIED ] Tautan publik berhasil disalin ke clipboard',
+      toast_share_copy_err: '[ ERROR ] Gagal menyalin tautan',
+      toast_share_imported: '[ VERIFIED ] Percakapan publik berhasil diimpor ke sesi Anda',
+      toast_theme_switched: '[ THEME ] Mode diubah ke {mode}',
+      toast_sess_deleted: '[ INFO ] Sesi obrolan dihapus',
+      toast_msg_copied: '[ VERIFIED ] Pesan berhasil disalin ke clipboard',
+      toast_code_copied: '[ VERIFIED ] Kode berhasil disalin ke clipboard',
+      toast_export_empty: '[ INFO ] Tidak ada riwayat obrolan untuk diekspor',
+      toast_export_ok: '[ VERIFIED ] Riwayat obrolan berhasil diekspor ke Markdown',
+      toast_lang_switched: '[ I18N ] Bahasa diubah ke Bahasa Indonesia',
+      hist_no_match: '[ INFO ] Tidak ada riwayat yang cocok',
+      hist_empty: '[ INFO ] Belum ada riwayat obrolan',
+      hist_del_title: 'Hapus Obrolan',
+      copy_btn: 'Salin',
+      copied_btn: 'Tersalin!'
+    }
+  };
 
   // Default Model Definitions (Gateway port 8317 fallback)
   const DEFAULT_MODELS = [
@@ -116,6 +275,9 @@
   const btnExportChat = document.getElementById('btnExportChat');
   const btnThemeToggle = document.getElementById('btnThemeToggle');
   const themeLabel = document.getElementById('themeLabel');
+  const btnLangToggle = document.getElementById('btnLangToggle');
+  const activeLangTag = document.getElementById('activeLangTag');
+  let currentLang = 'en';
   const sidebar = document.getElementById('sidebar');
   const sidebarBackdrop = document.getElementById('sidebarBackdrop');
 
@@ -229,9 +391,93 @@
     }
   }
 
+  // Micro-i18n Translation Helper
+  function t(key, params = {}) {
+    const dict = I18N_DICT[currentLang] || I18N_DICT.en;
+    let str = dict[key] || I18N_DICT.en[key] || key;
+    Object.keys(params).forEach((p) => {
+      str = str.replace(new RegExp(`\\{${p}\\}`, 'g'), params[p]);
+    });
+    return str;
+  }
+
+  // Apply Language to UI Chrome
+  function applyLanguage(lang) {
+    currentLang = lang === 'id' ? 'id' : 'en';
+    document.documentElement.lang = currentLang;
+    localStorage.setItem(PREF_LANG_KEY, currentLang);
+    const dict = I18N_DICT[currentLang];
+
+    if (activeLangTag) activeLangTag.textContent = currentLang.toUpperCase();
+    if (btnNewChat) {
+      btnNewChat.innerHTML = `
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        ${dict.new_chat_btn}
+      `;
+    }
+    if (sessionSearchInput) {
+      sessionSearchInput.placeholder = dict.search_placeholder;
+      sessionSearchInput.setAttribute('aria-label', dict.search_aria);
+    }
+    if (btnSidebarEditProfile) btnSidebarEditProfile.setAttribute('aria-label', dict.user_profile_aria);
+    const statusText = document.querySelector('.sidebar-user-status span:last-child');
+    if (statusText) statusText.textContent = dict.gateway_active;
+
+    if (btnModelSelector) btnModelSelector.title = dict.select_model_title;
+    const modelHdr = document.querySelector('.model-dropdown-header span:first-child');
+    if (modelHdr) modelHdr.textContent = dict.select_model_hdr;
+
+    if (btnEmbedModal) {
+      btnEmbedModal.title = dict.widget_title;
+      const txt = btnEmbedModal.querySelector('.btn-text');
+      if (txt) txt.textContent = dict.widget_btn;
+    }
+    if (btnExportChat) {
+      btnExportChat.title = dict.export_title;
+      const txt = btnExportChat.querySelector('.btn-text');
+      if (txt) txt.textContent = dict.export_btn;
+    }
+    if (btnShareChat) {
+      btnShareChat.title = dict.share_title;
+      const txt = btnShareChat.querySelector('.btn-text');
+      if (txt) txt.textContent = dict.share_btn;
+    }
+    if (btnLangToggle) btnLangToggle.title = dict.lang_btn_title;
+    if (btnThemeToggle) btnThemeToggle.title = dict.theme_btn_title;
+    if (themeLabel) themeLabel.textContent = dict.theme_btn_label;
+    if (btnClearChat) {
+      btnClearChat.title = dict.clear_title;
+      const txt = btnClearChat.querySelector('.btn-text');
+      if (txt) txt.textContent = dict.clear_btn;
+    }
+
+    if (chatInput) chatInput.placeholder = dict.chat_placeholder;
+    if (btnSend) btnSend.setAttribute('aria-label', dict.send_aria);
+    updateActiveModelUI();
+    renderHistoryList();
+
+    const activeSess = getSession(currentSessionId);
+    if (activeSess && (!activeSess.messages || activeSess.messages.length === 0)) {
+      chatMessages.innerHTML = '';
+      renderWelcomeScreen();
+    }
+  }
+
+  function initLanguage() {
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get('lang');
+    const storedLang = localStorage.getItem(PREF_LANG_KEY);
+    const initialLang = urlLang === 'id' || storedLang === 'id' ? 'id' : 'en';
+    applyLanguage(initialLang);
+  }
+
   // Initialization
   function init() {
     initTheme();
+    initLanguage();
     initUserProfileUI();
     renderModelDropdown();
     updateActiveModelUI();
@@ -239,6 +485,13 @@
 
     // Event: Theme Toggle
     btnThemeToggle?.addEventListener('click', toggleTheme);
+
+    // Event: Language Toggle
+    btnLangToggle?.addEventListener('click', () => {
+      const next = currentLang === 'en' ? 'id' : 'en';
+      applyLanguage(next);
+      showToast(t('toast_lang_switched'));
+    });
 
     // Event: Search Filter
     sessionSearchInput?.addEventListener('input', (e) => {
@@ -438,7 +691,7 @@
     if (model) {
       if (activeModelName) activeModelName.textContent = model.name;
       if (activeModelBadge) activeModelBadge.textContent = model.badge || model.provider;
-      if (hintActiveModel) hintActiveModel.textContent = `Model: ${model.name}`;
+      if (hintActiveModel) hintActiveModel.textContent = `${t('hint_model_prefix')}${model.name}`;
     }
   }
 
@@ -978,7 +1231,7 @@
     if (filtered.length === 0) {
       const empty = document.createElement('div');
       empty.className = 'history-empty';
-      empty.textContent = searchQuery ? '[ INFO ] No matching conversations found' : '[ INFO ] No conversation history yet';
+      empty.textContent = searchQuery ? t('hist_no_match') : t('hist_empty');
       historyList.appendChild(empty);
       return;
     }
@@ -988,7 +1241,7 @@
       item.className = `history-item ${sess.id === currentSessionId ? 'active' : ''}`;
       item.innerHTML = `
         <span style="overflow:hidden; text-overflow:ellipsis; flex:1;">${escapeHtml(sess.title)}</span>
-        <button class="btn-del-sess" title="Delete Conversation" aria-label="Delete">&times;</button>
+        <button class="btn-del-sess" title="${t('hist_del_title')}" aria-label="Delete">&times;</button>
       `;
 
       item.addEventListener('click', (e) => {
@@ -1015,7 +1268,7 @@
     saveSessions();
     renderHistoryList();
     loadSessionToView(currentSessionId);
-    showToast('[ INFO ] Conversation deleted');
+    showToast(t('toast_sess_deleted'));
   }
 
   function loadSessionToView(sessionId) {
@@ -1042,42 +1295,46 @@
   function renderWelcomeScreen() {
     const welcome = document.createElement('div');
     welcome.className = 'chat-welcome';
+    const dict = I18N_DICT[currentLang] || I18N_DICT.en;
+    const defaultName = currentLang === 'id' ? 'Sobat' : 'Friend';
+    const titleText = dict.welcome_title.replace('{name}', escapeHtml(userProfile.name || defaultName));
+
     welcome.innerHTML = `
-      <span class="welcome-badge">ZYEKH AI COMPANION</span>
-      <h2 class="welcome-title">Hello ${escapeHtml(userProfile.name || 'Friend')}! What shall we build today?</h2>
-      <p class="welcome-subtitle">High-speed AI companion ready for architectural design, code review, technical research, and strategic brainstorming.</p>
+      <span class="welcome-badge">${dict.welcome_badge}</span>
+      <h2 class="welcome-title">${titleText}</h2>
+      <p class="welcome-subtitle">${dict.welcome_subtitle}</p>
       <div class="suggestions-grid">
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('Hello! Introduce your multi-model capabilities and explain what each model is best suited for.')">
+        <div class="suggestion-card" onclick="sendSuggestedPrompt('${dict.sug_1_prompt.replace(/'/g, "\\'")}')">
           <div>
-            <span class="suggestion-cat">[ OVERVIEW ]</span>
-            <h3 class="suggestion-title">Multi-Model Capabilities</h3>
-            <p class="suggestion-desc">Explore Gemini 3.7 Flash, Claude 3.7 Sonnet/Opus, and GPT OSS capabilities.</p>
+            <span class="suggestion-cat">${dict.sug_1_cat}</span>
+            <h3 class="suggestion-title">${dict.sug_1_title}</h3>
+            <p class="suggestion-desc">${dict.sug_1_desc}</p>
           </div>
-          <span class="suggestion-action">Start Discussion &rarr;</span>
+          <span class="suggestion-action">${dict.sug_action}</span>
         </div>
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('I have an idea for a software project. Help me design a clean, resilient technical architecture.')">
+        <div class="suggestion-card" onclick="sendSuggestedPrompt('${dict.sug_2_prompt.replace(/'/g, "\\'")}')">
           <div>
-            <span class="suggestion-cat">[ ARCHITECTURE ]</span>
-            <h3 class="suggestion-title">System &amp; Architecture Design</h3>
-            <p class="suggestion-desc">Design zero-dependency systems, monorepo architectures, and scalable APIs.</p>
+            <span class="suggestion-cat">${dict.sug_2_cat}</span>
+            <h3 class="suggestion-title">${dict.sug_2_title}</h3>
+            <p class="suggestion-desc">${dict.sug_2_desc}</p>
           </div>
-          <span class="suggestion-action">Start Discussion &rarr;</span>
+          <span class="suggestion-action">${dict.sug_action}</span>
         </div>
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('Help me audit code performance, optimize algorithms, and achieve sub-second latency.')">
+        <div class="suggestion-card" onclick="sendSuggestedPrompt('${dict.sug_3_prompt.replace(/'/g, "\\'")}')">
           <div>
-            <span class="suggestion-cat">[ PERFORMANCE ]</span>
-            <h3 class="suggestion-title">Code Review &amp; Optimization</h3>
-            <p class="suggestion-desc">Deep algorithm analysis, Core Web Vitals audit, and zero-bloat debugging.</p>
+            <span class="suggestion-cat">${dict.sug_3_cat}</span>
+            <h3 class="suggestion-title">${dict.sug_3_title}</h3>
+            <p class="suggestion-desc">${dict.sug_3_desc}</p>
           </div>
-          <span class="suggestion-action">Start Discussion &rarr;</span>
+          <span class="suggestion-action">${dict.sug_action}</span>
         </div>
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('What are the best strategies for building and scaling an open-source developer tool globally?')">
+        <div class="suggestion-card" onclick="sendSuggestedPrompt('${dict.sug_4_prompt.replace(/'/g, "\\'")}')">
           <div>
-            <span class="suggestion-cat">[ STRATEGY ]</span>
-            <h3 class="suggestion-title">Engineering Strategy &amp; Growth</h3>
-            <p class="suggestion-desc">Open-source distribution, developer productivity, and long-term engineering rhythm.</p>
+            <span class="suggestion-cat">${dict.sug_4_cat}</span>
+            <h3 class="suggestion-title">${dict.sug_4_title}</h3>
+            <p class="suggestion-desc">${dict.sug_4_desc}</p>
           </div>
-          <span class="suggestion-action">Start Discussion &rarr;</span>
+          <span class="suggestion-action">${dict.sug_action}</span>
         </div>
       </div>
     `;
@@ -1260,9 +1517,9 @@
       metaBar.querySelector('.btn-copy-msg')?.addEventListener('click', (e) => {
         navigator.clipboard.writeText(text);
         const btn = e.target;
-        btn.textContent = 'Copied!';
-        showToast('[ VERIFIED ] Message copied to clipboard');
-        setTimeout(() => (btn.textContent = 'Copy'), 2000);
+        btn.textContent = t('copied_btn');
+        showToast(t('toast_msg_copied'));
+        setTimeout(() => (btn.textContent = t('copy_btn')), 2000);
       });
 
       content.appendChild(metaBar);
@@ -1280,9 +1537,9 @@
         const code = wrapper?.querySelector('code')?.innerText || '';
         if (code) {
           navigator.clipboard.writeText(code);
-          btn.textContent = 'Copied!';
-          showToast('[ VERIFIED ] Code copied to clipboard');
-          setTimeout(() => (btn.textContent = 'Copy'), 2000);
+          btn.textContent = t('copied_btn');
+          showToast(t('toast_code_copied'));
+          setTimeout(() => (btn.textContent = t('copy_btn')), 2000);
         }
       });
     });
@@ -1313,7 +1570,7 @@
   function exportChatSession() {
     const sess = getSession(currentSessionId);
     if (!sess || sess.messages.length === 0) {
-      showToast('[ INFO ] No conversation history to export');
+      showToast(t('toast_export_empty'));
       return;
     }
 
@@ -1337,7 +1594,7 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 
-    showToast('[ VERIFIED ] Conversation exported to Markdown');
+    showToast(t('toast_export_ok'));
   }
 
   // Utilities

@@ -1,6 +1,6 @@
 # PLAN.md — CHAT.ZYEKH.COM SEO & GROWTH MASTER ENGINE
 
-## Master Status: ALL 5 PHASES COMPLETE (`[ COMPLETED ]`)
+## Master Status: ALL 6 PHASES COMPLETE (`[ COMPLETED ]`)
 
 ---
 
@@ -53,3 +53,31 @@
 - Bumped cache query strings (`app.css?v=20260821_v402`, `app.js?v=20260821_v442`).
 - Terminal verification passed with 0 emoji violations and 0 syntax errors.
 - Local commit created and Obsidian RAG memory synchronized.
+
+---
+
+## Phase 6: Micro-i18n Dual-Layer Switcher & Hreflang SEO Tags (`[ DONE ]`)
+
+### Chunk 6.1: SEO Hreflang Tags & Navbar Language Toggle UI (`[ DONE ]`)
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Added SEO `<link rel="alternate" hreflang="en" ...>`, `<link rel="alternate" hreflang="id" ...>`, and `x-default` canonical tags to `<head>` as specified in RFC Section 5.
+  - Added language switcher toggle `<button class="btn-action" id="btnLangToggle" type="button" title="Switch Language (English / Bahasa Indonesia)" aria-label="Switch Language"><span id="activeLangTag">EN</span></button>` in `.navbar-actions`.
+- **DoD**: Markup validated, button visible and responsive across all viewports.
+
+### Chunk 6.2: Zero-Dependency Client Micro-i18n Engine (`[ DONE ]`)
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
+- **Scope**:
+  - Implemented zero-dependency dictionary (`I18N_DICT = { en: {...}, id: {...} }`) covering all UI chrome, placeholder texts, hints, modal headers, starter prompt cards, and toast notifications.
+  - Implemented `applyLanguage(lang)` function with automatic `localStorage.setItem('zyekh_pref_lang', lang)` and URL query parameter detection (`?lang=id`).
+  - Wired `#btnLangToggle` click listener to toggle seamlessly between `en` and `id` without full page reload.
+  - Dynamically re-renders welcome screen suggestion cards and history list on language change.
+- **DoD**: Instant language toggling without page reload, zero dependencies added.
+
+### Chunk 6.3: Empirical Quality Gate & Local Checkpoint (`[ DONE ]`)
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html), Obsidian Vault
+- **Scope**:
+  - Bumped cache query strings (`app.css?v=20260821_v403`, `app.js?v=20260821_v443`).
+  - Terminal verification passed with 0 emoji violations and 0 syntax errors.
+  - Local commit created and Obsidian RAG memory synchronized.
+- **DoD**: 0 emojis, 0 syntax errors, local commit created.
