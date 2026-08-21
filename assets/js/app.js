@@ -43,23 +43,14 @@
       welcome_badge: 'ZYEKH AI',
       welcome_title: 'Hello {name}! What shall we build today?',
       welcome_subtitle: 'High-speed AI ready for architectural design, code review, technical research, and strategic brainstorming.',
-      sug_1_cat: '[ ROAST MODE ]',
-      sug_1_title: 'Roast My Architecture / Stack',
-      sug_1_desc: 'Deep architecture roast: uncover performance bottlenecks, bloat, and anti-patterns.',
-      sug_1_prompt: 'Roast my tech stack and system architecture: Node.js, Express, Docker Swarm, Vanilla JS client. Be brutally honest and highlight potential bottlenecks.',
-      sug_2_cat: '[ ASCII BLUEPRINT ]',
-      sug_2_title: 'ASCII Architecture Diagram',
-      sug_2_desc: 'Generate clear, text-based terminal architecture and network flow diagrams.',
-      sug_2_prompt: 'Draw a complete ASCII system architecture diagram for a zero-trust microservice gateway with edge CDN caching and local-first client storage.',
-      sug_3_cat: '[ ZERO-BLOAT ]',
-      sug_3_title: 'Strip Bloat & Dependencies',
-      sug_3_desc: 'Eliminate heavyweight dependencies and refactor into clean native JavaScript.',
-      sug_3_prompt: 'Help me audit and strip third-party NPM bloat. Give me a strategy to replace heavy libraries with clean, zero-dependency native APIs.',
-      sug_4_cat: '[ BENCHMARK ]',
-      sug_4_title: 'Multi-Model Logic Challenge',
-      sug_4_desc: 'Challenge reasoning speed, algorithmic precision, and memory efficiency.',
-      sug_4_prompt: 'Solve this concurrency challenge: Implement a lock-free sliding window rate limiter in memory with sub-millisecond execution overhead.',
-      sug_action: 'Start Discussion ->',
+      pill_roast: 'Roast Tech Stack',
+      pill_roast_prompt: 'Roast my tech stack and system architecture: Node.js, Express, Docker Swarm, Vanilla JS client. Be brutally honest and highlight potential bottlenecks.',
+      pill_ascii: 'ASCII Architecture',
+      pill_ascii_prompt: 'Draw a complete ASCII system architecture diagram for a zero-trust microservice gateway with edge CDN caching and local-first client storage.',
+      pill_zerobloat: 'Zero-Bloat Refactor',
+      pill_zerobloat_prompt: 'Help me audit and strip third-party NPM bloat. Give me a strategy to replace heavy libraries with clean, zero-dependency native APIs.',
+      pill_benchmark: 'Logic Benchmark',
+      pill_benchmark_prompt: 'Solve this concurrency challenge: Implement a lock-free sliding window rate limiter in memory with sub-millisecond execution overhead.',
       toast_new_chat: '[ INFO ] New conversation ready',
       toast_clear_chat: '[ INFO ] Active conversation cleared',
       toast_webgpu_unsupported: '[ ERROR ] WebGPU is not supported in this browser. Please use Chrome or Edge desktop.',
@@ -133,23 +124,14 @@
       welcome_badge: 'ZYEKH AI',
       welcome_title: 'Hai {name}! Mau bahas apa hari ini?',
       welcome_subtitle: 'AI siap berdiskusi, brainstorming arsitektur, riset teknis, dan refleksi harian dengan 6 model AI pilihan.',
-      sug_1_cat: '[ ROAST MODE ]',
-      sug_1_title: 'Roast Arsitektur & Stack',
-      sug_1_desc: 'Roasting tajam dan jujur: temukan bottleneck, bloat, dan anti-pattern dalam sistem.',
-      sug_1_prompt: 'Roast arsitektur tech stack gw: Node.js, Docker, Nginx, Vanilla JS. Kasih kritik tajam dan tunjukkan mana bagian yang boros atau rentan!',
-      sug_2_cat: '[ ASCII BLUEPRINT ]',
-      sug_2_title: 'Diagram Arsitektur ASCII',
-      sug_2_desc: 'Buat diagram arsitektur terminal visual berbasis teks ASCII rapi dan presisi.',
-      sug_2_prompt: 'Buatkan diagram ASCII lengkap untuk alur microservice gateway AI dengan edge caching dan penyimpanan local-first.',
-      sug_3_cat: '[ ZERO-BLOAT ]',
-      sug_3_title: 'Audit & Pangkas Bloat',
-      sug_3_desc: 'Ganti library berat pihak ketiga dengan native JavaScript murni bebas beban.',
-      sug_3_prompt: 'Bantu audit dan pangkas dependency berat. Berikan strategi mengganti framework/library besar dengan vanilla Web API.',
-      sug_4_cat: '[ BENCHMARK ]',
-      sug_4_title: 'Tantangan Logika AI',
-      sug_4_desc: 'Uji penalaran algoritma kompleks, konkurensi, dan efisiensi memori tingkat tinggi.',
-      sug_4_prompt: 'Selesaikan tantangan ini: Buatkan algoritma sliding window rate limiter in-memory tanpa lock dengan latensi eksekusi sub-milidetik.',
-      sug_action: 'Mulai Diskusi ->',
+      pill_roast: 'Roast Tech Stack',
+      pill_roast_prompt: 'Roast arsitektur tech stack gw: Node.js, Docker, Nginx, Vanilla JS. Kasih kritik tajam dan tunjukkan mana bagian yang boros atau rentan!',
+      pill_ascii: 'Diagram ASCII',
+      pill_ascii_prompt: 'Buatkan diagram ASCII lengkap untuk alur microservice gateway AI dengan edge caching dan penyimpanan local-first.',
+      pill_zerobloat: 'Refactor Zero-Bloat',
+      pill_zerobloat_prompt: 'Bantu audit dan pangkas dependency berat. Berikan strategi mengganti framework/library besar dengan vanilla Web API.',
+      pill_benchmark: 'Uji Logika & Benchmark',
+      pill_benchmark_prompt: 'Selesaikan tantangan ini: Buatkan algoritma sliding window rate limiter in-memory tanpa lock dengan latensi eksekusi sub-milidetik.',
       toast_new_chat: '[ INFO ] Sesi obrolan baru siap digunakan',
       toast_clear_chat: '[ INFO ] Riwayat obrolan aktif telah dibersihkan',
       toast_webgpu_unsupported: '[ ERROR ] Browser tidak mendukung WebGPU. Gunakan Chrome/Edge desktop.',
@@ -1371,39 +1353,23 @@
       <span class="welcome-badge">${dict.welcome_badge}</span>
       <h2 class="welcome-title">${titleText}</h2>
       <p class="welcome-subtitle">${dict.welcome_subtitle}</p>
-      <div class="suggestions-grid">
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('${dict.sug_1_prompt.replace(/'/g, "\\'")}')">
-          <div>
-            <span class="suggestion-cat">${dict.sug_1_cat}</span>
-            <h3 class="suggestion-title">${dict.sug_1_title}</h3>
-            <p class="suggestion-desc">${dict.sug_1_desc}</p>
-          </div>
-          <span class="suggestion-action">${dict.sug_action}</span>
-        </div>
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('${dict.sug_2_prompt.replace(/'/g, "\\'")}')">
-          <div>
-            <span class="suggestion-cat">${dict.sug_2_cat}</span>
-            <h3 class="suggestion-title">${dict.sug_2_title}</h3>
-            <p class="suggestion-desc">${dict.sug_2_desc}</p>
-          </div>
-          <span class="suggestion-action">${dict.sug_action}</span>
-        </div>
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('${dict.sug_3_prompt.replace(/'/g, "\\'")}')">
-          <div>
-            <span class="suggestion-cat">${dict.sug_3_cat}</span>
-            <h3 class="suggestion-title">${dict.sug_3_title}</h3>
-            <p class="suggestion-desc">${dict.sug_3_desc}</p>
-          </div>
-          <span class="suggestion-action">${dict.sug_action}</span>
-        </div>
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('${dict.sug_4_prompt.replace(/'/g, "\\'")}')">
-          <div>
-            <span class="suggestion-cat">${dict.sug_4_cat}</span>
-            <h3 class="suggestion-title">${dict.sug_4_title}</h3>
-            <p class="suggestion-desc">${dict.sug_4_desc}</p>
-          </div>
-          <span class="suggestion-action">${dict.sug_action}</span>
-        </div>
+      <div class="starter-pills-wrap">
+        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${dict.pill_roast_prompt.replace(/'/g, "\\'")}')">
+          <span class="starter-pill-prefix">[ / ]</span>
+          <span>${dict.pill_roast}</span>
+        </button>
+        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${dict.pill_ascii_prompt.replace(/'/g, "\\'")}')">
+          <span class="starter-pill-prefix">[ &gt; ]</span>
+          <span>${dict.pill_ascii}</span>
+        </button>
+        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${dict.pill_zerobloat_prompt.replace(/'/g, "\\'")}')">
+          <span class="starter-pill-prefix">[ # ]</span>
+          <span>${dict.pill_zerobloat}</span>
+        </button>
+        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${dict.pill_benchmark_prompt.replace(/'/g, "\\'")}')">
+          <span class="starter-pill-prefix">[ * ]</span>
+          <span>${dict.pill_benchmark}</span>
+        </button>
       </div>
     `;
     chatMessages.appendChild(welcome);

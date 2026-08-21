@@ -121,3 +121,36 @@
   - Terminal verification passed with 0 emoji violations and 0 syntax errors.
   - Local commit and Obsidian RAG memory synchronized.
 - **DoD**: 0 syntax errors, 0 emojis, local commit created.
+
+---
+
+## Phase 8: Industry Standard Capsule Starter Pills & Clean Hero Evolution (`[ IN_PROGRESS ]`)
+
+### Chunk 8.1: Clean Capsule Starter Pills CSS Architecture
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css) (lines ~670-730)
+- **Scope**:
+  - Replace heavy `.suggestions-grid` and multi-line `.suggestion-card` with clean, responsive horizontal capsule pills (`.starter-pills-wrap` & `.starter-pill`).
+  - Style specs: `display: inline-flex`, `padding: 6px 14px`, `border-radius: var(--radius-full)`, `border: 1px solid var(--border-color)`, `background: var(--bg-card)`, `font-size: 0.82rem`, `font-weight: 600`, monochrome subtle hover lift.
+- **DoD**: Vertical space reduced by 75%, sleek single/dual-row flex capsule alignment on all viewports.
+
+### Chunk 8.2: Streamlined Starter Pills Rendering & I18N Schema
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js) (lines ~45-65, ~135-155, ~1365-1415)
+- **Scope**:
+  - Refactor `I18N_DICT` to concise action labels (`pill_roast`, `pill_ascii`, `pill_zerobloat`, `pill_benchmark`).
+  - Refactor `renderWelcomeScreen()` in `app.js` to render `.starter-pills-wrap` with 4 interactive pill buttons with 1-click prompt dispatch.
+- **DoD**: Prompt execution intact upon clicking any capsule pill, seamless bilingual EN/ID support.
+
+### Chunk 8.3: Cache Query String Bumping
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Bump stylesheet query to `app.css?v=20260821_v407`.
+  - Bump script query to `app.js?v=20260821_v446`.
+- **DoD**: Cache-busting references updated cleanly across entrypoints.
+
+### Chunk 8.4: Empirical Verification, Docker Rebuild & RAG Checkpoint
+- **Target Files**: Local Git Tree, Obsidian Vault Memory
+- **Scope**:
+  - Silent terminal validation: syntax check, 0 emojis check.
+  - Rebuild docker service and verify live container convergence.
+  - Create git commit and sync `STATE.md` + `INDEX.md`.
+- **DoD**: Exit code 0 on all verification commands, container converged, commit hash recorded.
