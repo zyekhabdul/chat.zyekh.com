@@ -191,7 +191,9 @@
   }
 
   .sidebar-header {
-    padding: 1rem 1.1rem;
+    height: 54px;
+    box-sizing: border-box;
+    padding: 0 1.1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -200,18 +202,25 @@
 
   .brand-title {
     font-family: var(--font-heading);
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     font-weight: 700;
     color: var(--text-main);
     display: flex;
     align-items: center;
     gap: 8px;
     letter-spacing: -0.02em;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  .brand-name {
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .brand-badge {
     font-family: var(--font-sans);
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -220,6 +229,8 @@
     color: var(--text-muted);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   /* New Chat Button */
