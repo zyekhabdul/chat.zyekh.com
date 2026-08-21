@@ -18,6 +18,7 @@ if (!fsSync.existsSync(SHARES_DIR)) {
 const app = express();
 const PORT = process.env.PORT || 3001;
 const CANDIDATE_TARGETS = [
+  process.env.CLOUDFLARE_AI_GATEWAY_URL,
   process.env.CORE_API_URL ? process.env.CORE_API_URL.replace('/api/chat', '').replace('/api', '') : null,
   'http://zyekh-ai-core-nblqvy:3000',
   'http://zyekh-ai-core:3000',
@@ -25,6 +26,36 @@ const CANDIDATE_TARGETS = [
   'http://127.0.0.1:3000',
   'https://api.zyekh.com'
 ].filter(Boolean);
+
+// In-Memory Semantic Prompt Cache (5-Minute TTL & 500 Entry Cap)
+const AI_RESPONSE_CACHE = new Map();
+const CACHE_TTL_MS = 5 * 60 * 1000;
+const MAX_CACHE_ENTRIES = 500;
+
+function getCacheKey(req) {
+  if (req.method === 'GET') return `GET:${req.originalUrl}`;
+  if (req.method === 'POST' && req.originalUrl === '/api/chat' && req.body) {
+    const model = req.body.model || 'default';
+    const persona = req.body.persona || 'mentor';
+    const msg = req.body.message || (Array.isArray(req.body.messages) ? JSON.stringify(req.body.messages) : '');
+    return `POST:/api/chat:${model}:${persona}:${String(msg).trim().toLowerCase()}`;
+  }
+  return null;
+}
+
+function setCache(key, status, contentType, data) {
+  if (!key || status !== 200) return;
+  if (AI_RESPONSE_CACHE.size >= MAX_CACHE_ENTRIES) {
+    const oldestKey = AI_RESPONSE_CACHE.keys().next().value;
+    AI_RESPONSE_CACHE.delete(oldestKey);
+  }
+  AI_RESPONSE_CACHE.set(key, {
+    status,
+    contentType,
+    data,
+    expiresAt: Date.now() + CACHE_TTL_MS
+  });
+}
 
 app.use(express.json({ limit: '10mb' }));
 
@@ -245,9 +276,23 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
   }
 });
 
-// API Reverse Proxy ke zyekh-ai-core (Port 3000)
-// Mendukung Swarm discovery, bridge docker host, localhost dev, dan production fallback
+// API Reverse Proxy ke zyekh-ai-core (Port 3000) & Cloudflare AI Gateway
+// Mendukung Semantic Prompt Cache, Swarm discovery, streaming passthrough, dan failover
 app.all('/api/*', async (req, res) => {
+  // 1. Semantic In-Memory & Edge Prompt Cache Lookup
+  const cacheKey = getCacheKey(req);
+  if (cacheKey) {
+    const cached = AI_RESPONSE_CACHE.get(cacheKey);
+    if (cached && cached.expiresAt > Date.now()) {
+      return res
+        .status(cached.status)
+        .set('Content-Type', cached.contentType)
+        .set('cf-aig-cache-status', 'HIT')
+        .set('X-Cache-Lookup', 'MEMORY-EDGE-HIT')
+        .send(cached.data);
+    }
+  }
+
   const fetchOptions = {
     method: req.method,
     headers: {
@@ -264,11 +309,48 @@ app.all('/api/*', async (req, res) => {
   for (const baseTarget of CANDIDATE_TARGETS) {
     const targetUrl = `${baseTarget}${req.originalUrl}`;
     try {
+      const startTime = Date.now();
       const response = await fetch(targetUrl, { ...fetchOptions, signal: AbortSignal.timeout(35000) });
+      const cType = response.headers.get('content-type') || 'application/json';
+      const cacheStatus = response.headers.get('cf-aig-cache-status') || 'MISS';
+
+      // Streaming SSE Pass-Through
+      if (response.body && cType.includes('text/event-stream')) {
+        res.writeHead(response.status, {
+          'Content-Type': 'text/event-stream',
+          'Cache-Control': 'no-cache',
+          'Connection': 'keep-alive',
+          'X-Accel-Buffering': 'no',
+          'cf-aig-cache-status': cacheStatus
+        });
+        const reader = response.body.getReader ? response.body.getReader() : null;
+        if (reader) {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            res.write(value);
+          }
+          return res.end();
+        } else if (response.body.pipe) {
+          return response.body.pipe(res);
+        }
+      }
+
+      // JSON / Text Data
       const data = await response.text();
-      return res.status(response.status).set('Content-Type', response.headers.get('content-type') || 'application/json').send(data);
+      if (response.status === 200) {
+        setCache(cacheKey, response.status, cType, data);
+      }
+
+      return res
+        .status(response.status)
+        .set('Content-Type', cType)
+        .set('cf-aig-cache-status', cacheStatus)
+        .set('X-Response-Time', `${Date.now() - startTime}ms`)
+        .send(data);
     } catch (err) {
       lastError = err;
+      console.warn(`[PROXY FAILOVER] Target ${baseTarget} gagal (${err.message}). Beralih ke kandidat berikutnya...`);
     }
   }
 
