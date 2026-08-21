@@ -101,7 +101,7 @@
   <link as="font" crossorigin="" href="./assets/fonts/outfit-700-normal.woff2" rel="preload" type="font/woff2" />
   <link as="font" crossorigin="" href="./assets/fonts/inter-variable-latin.woff2" rel="preload" type="font/woff2" />
   <link rel="stylesheet" href="./assets/fonts/fonts.min.css?v=20260821_v315" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v404" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v405" />
 </head>
 <body>
   <div class="app-container">
@@ -434,10 +434,47 @@
           <button type="button" class="btn-primary" id="btnCopyShareUrl" style="margin-top: 6px; width: 100%;">
             Copy Public Link
           </button>
+          <div class="share-social-actions" style="display: flex; gap: 6px; margin-top: 10px;">
+            <a href="#" id="shareToX" target="_blank" rel="noopener noreferrer" class="btn-action" style="flex: 1; justify-content: center; text-decoration: none; padding: 7px 8px; font-size: 0.78rem;">
+              Post to X
+            </a>
+            <a href="#" id="shareToTelegram" target="_blank" rel="noopener noreferrer" class="btn-action" style="flex: 1; justify-content: center; text-decoration: none; padding: 7px 8px; font-size: 0.78rem;">
+              Telegram
+            </a>
+            <a href="#" id="shareToThreads" target="_blank" rel="noopener noreferrer" class="btn-action" style="flex: 1; justify-content: center; text-decoration: none; padding: 7px 8px; font-size: 0.78rem;">
+              Threads
+            </a>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-secondary" id="btnShareModalCancel">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual Card Exporter Modal -->
+  <div class="modal-backdrop" id="cardModalBackdrop" aria-hidden="true">
+    <div class="modal-card" id="cardModal" style="max-width: 680px;" role="dialog" aria-modal="true" aria-labelledby="cardModalTitle">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge" id="cardModalBadge">[ VISUAL CARD GENERATOR ]</span>
+          <h3 id="cardModalTitle">Export AI Response as Image</h3>
+        </div>
+        <button class="modal-close-btn" id="btnCardModalClose" type="button" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;">
+          High-resolution 1200x630 visual card generated client-side via HTML5 Canvas. Ready for X, Threads, Reddit, and LinkedIn.
+        </p>
+        <div class="card-preview-container" style="width: 100%; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: #09090b; display: flex; justify-content: center; align-items: center; padding: 8px;">
+          <canvas id="visualCardCanvas" width="1200" height="630" style="max-width: 100%; height: auto; display: block; border-radius: 4px;"></canvas>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; gap: 8px; justify-content: flex-end;">
+        <button type="button" class="btn-secondary" id="btnCardModalCancel">Close</button>
+        <button type="button" class="btn-primary" id="btnDownloadCardPng">Download PNG</button>
+        <button type="button" class="btn-primary" id="btnCopyCardPng">Copy PNG Image</button>
       </div>
     </div>
   </div>
@@ -481,6 +518,6 @@
     </div>
   </div>
 
-  <script src="./assets/js/app.js?v=20260821_v443"></script>
+  <script src="./assets/js/app.js?v=20260821_v444"></script>
 </body>
 </html>

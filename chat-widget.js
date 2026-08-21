@@ -458,8 +458,8 @@
     </form>
     <div class="zyekh-chat-footer-attr">
       <span>Powered by</span>
-      <a href="https://chat.zyekh.com/?utm_source=widget&utm_medium=referral&utm_campaign=ecosystem" target="_blank" rel="noopener">
-        Zyekh AI Companion
+      <a href="https://chat.zyekh.com/?utm_source=embed_widget&utm_medium=viral_referral&utm_campaign=open_source" target="_blank" rel="noopener" title="Zyekh AI Companion - Free & Open Source Multi-Model AI">
+        Zyekh AI (Free &amp; Open Source)
       </a>
     </div>
   `;

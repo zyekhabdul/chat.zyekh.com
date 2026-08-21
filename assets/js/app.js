@@ -43,22 +43,22 @@
       welcome_badge: 'ZYEKH AI COMPANION',
       welcome_title: 'Hello {name}! What shall we build today?',
       welcome_subtitle: 'High-speed AI companion ready for architectural design, code review, technical research, and strategic brainstorming.',
-      sug_1_cat: '[ OVERVIEW ]',
-      sug_1_title: 'Multi-Model Capabilities',
-      sug_1_desc: 'Explore Gemini 3.7 Flash, Claude 3.7 Sonnet/Opus, and GPT OSS capabilities.',
-      sug_1_prompt: 'Hello! Introduce your multi-model capabilities and explain what each model is best suited for.',
-      sug_2_cat: '[ ARCHITECTURE ]',
-      sug_2_title: 'System & Architecture Design',
-      sug_2_desc: 'Design zero-dependency systems, monorepo architectures, and scalable APIs.',
-      sug_2_prompt: 'I have an idea for a software project. Help me design a clean, resilient technical architecture.',
-      sug_3_cat: '[ PERFORMANCE ]',
-      sug_3_title: 'Code Review & Optimization',
-      sug_3_desc: 'Deep algorithm analysis, Core Web Vitals audit, and zero-bloat debugging.',
-      sug_3_prompt: 'Help me audit code performance, optimize algorithms, and achieve sub-second latency.',
-      sug_4_cat: '[ STRATEGY ]',
-      sug_4_title: 'Engineering Strategy & Growth',
-      sug_4_desc: 'Open-source distribution, developer productivity, and long-term engineering rhythm.',
-      sug_4_prompt: 'What are the best strategies for building and scaling an open-source developer tool globally?',
+      sug_1_cat: '[ ROAST MODE ]',
+      sug_1_title: 'Roast My Architecture / Stack',
+      sug_1_desc: 'Deep architecture roast: uncover performance bottlenecks, bloat, and anti-patterns.',
+      sug_1_prompt: 'Roast my tech stack and system architecture: Node.js, Express, Docker Swarm, Vanilla JS client. Be brutally honest and highlight potential bottlenecks.',
+      sug_2_cat: '[ ASCII BLUEPRINT ]',
+      sug_2_title: 'ASCII Architecture Diagram',
+      sug_2_desc: 'Generate clear, text-based terminal architecture and network flow diagrams.',
+      sug_2_prompt: 'Draw a complete ASCII system architecture diagram for a zero-trust microservice gateway with edge CDN caching and local-first client storage.',
+      sug_3_cat: '[ ZERO-BLOAT ]',
+      sug_3_title: 'Strip Bloat & Dependencies',
+      sug_3_desc: 'Eliminate heavyweight dependencies and refactor into clean native JavaScript.',
+      sug_3_prompt: 'Help me audit and strip third-party NPM bloat. Give me a strategy to replace heavy libraries with clean, zero-dependency native APIs.',
+      sug_4_cat: '[ BENCHMARK ]',
+      sug_4_title: 'Multi-Model Logic Challenge',
+      sug_4_desc: 'Challenge reasoning speed, algorithmic precision, and memory efficiency.',
+      sug_4_prompt: 'Solve this concurrency challenge: Implement a lock-free sliding window rate limiter in memory with sub-millisecond execution overhead.',
       sug_action: 'Start Discussion ->',
       toast_new_chat: '[ INFO ] New conversation ready',
       toast_clear_chat: '[ INFO ] Active conversation cleared',
@@ -88,7 +88,20 @@
       hist_empty: '[ INFO ] No conversation history yet',
       hist_del_title: 'Delete Conversation',
       copy_btn: 'Copy',
-      copied_btn: 'Copied!'
+      copied_btn: 'Copied!',
+      export_card_btn: 'Card',
+      export_card_title: 'Export as Visual Card (Image)',
+      card_modal_badge: '[ VISUAL CARD GENERATOR ]',
+      card_modal_title: 'Export AI Response as Image',
+      card_copy_btn: 'Copy PNG Image',
+      card_copied_btn: 'Image Copied!',
+      card_download_btn: 'Download PNG',
+      card_close_btn: 'Close',
+      toast_card_copied: '[ VERIFIED ] Visual card copied to clipboard',
+      toast_card_downloaded: '[ VERIFIED ] Visual card downloaded',
+      share_x_btn: 'Post to X',
+      share_telegram_btn: 'Telegram',
+      share_threads_btn: 'Threads'
     },
     id: {
       new_chat_btn: 'Obrolan Baru',
@@ -120,22 +133,22 @@
       welcome_badge: 'ZYEKH AI COMPANION',
       welcome_title: 'Hai {name}! Mau bahas apa hari ini?',
       welcome_subtitle: 'AI Companion siap berdiskusi, brainstorming arsitektur, riset teknis, dan refleksi harian dengan 6 model AI pilihan.',
-      sug_1_cat: '[ PERKENALAN ]',
-      sug_1_title: 'Fitur & Multi-Model',
-      sug_1_desc: 'Eksplorasi kemampuan model Gemini 3.7, Claude Sonnet/Opus, dan GPT OSS.',
-      sug_1_prompt: 'Hai! Kenalin kemampuan kamu dan model apa saja yang bisa digunakan?',
-      sug_2_cat: '[ ARSITEKTUR ]',
-      sug_2_title: 'Brainstorming Arsitektur',
-      sug_2_desc: 'Desain sistem monorepo, zero-dependency engine, dan validasi skala.',
-      sug_2_prompt: 'Gw lagi punya ide proyek software baru, bantu susun arsitektur teknisnya yuk!',
-      sug_3_cat: '[ CODING ]',
-      sug_3_title: 'Optimasi & Deep Coding',
-      sug_3_desc: 'Analisis kode presisi, algoritma efisien, dan debugging bebas bloat.',
-      sug_3_prompt: 'Bantu audit performa web dan strategi Core Web Vitals LCP < 1s!',
-      sug_4_cat: '[ REFLEKSI ]',
-      sug_4_title: 'Refleksi & Produktivitas',
-      sug_4_desc: 'Manajemen fokus, konsistensi kerja, dan ritme rekayasa berkelanjutan.',
-      sug_4_prompt: 'Gimana tips produktivitas dan fokus ngoding jangka panjang?',
+      sug_1_cat: '[ ROAST MODE ]',
+      sug_1_title: 'Roast Arsitektur & Stack',
+      sug_1_desc: 'Roasting tajam dan jujur: temukan bottleneck, bloat, dan anti-pattern dalam sistem.',
+      sug_1_prompt: 'Roast arsitektur tech stack gw: Node.js, Docker, Nginx, Vanilla JS. Kasih kritik tajam dan tunjukkan mana bagian yang boros atau rentan!',
+      sug_2_cat: '[ ASCII BLUEPRINT ]',
+      sug_2_title: 'Diagram Arsitektur ASCII',
+      sug_2_desc: 'Buat diagram arsitektur terminal visual berbasis teks ASCII rapi dan presisi.',
+      sug_2_prompt: 'Buatkan diagram ASCII lengkap untuk alur microservice gateway AI dengan edge caching dan penyimpanan local-first.',
+      sug_3_cat: '[ ZERO-BLOAT ]',
+      sug_3_title: 'Audit & Pangkas Bloat',
+      sug_3_desc: 'Ganti library berat pihak ketiga dengan native JavaScript murni bebas beban.',
+      sug_3_prompt: 'Bantu audit dan pangkas dependency berat. Berikan strategi mengganti framework/library besar dengan vanilla Web API.',
+      sug_4_cat: '[ BENCHMARK ]',
+      sug_4_title: 'Tantangan Logika AI',
+      sug_4_desc: 'Uji penalaran algoritma kompleks, konkurensi, dan efisiensi memori tingkat tinggi.',
+      sug_4_prompt: 'Selesaikan tantangan ini: Buatkan algoritma sliding window rate limiter in-memory tanpa lock dengan latensi eksekusi sub-milidetik.',
       sug_action: 'Mulai Diskusi ->',
       toast_new_chat: '[ INFO ] Sesi obrolan baru siap digunakan',
       toast_clear_chat: '[ INFO ] Riwayat obrolan aktif telah dibersihkan',
@@ -165,7 +178,20 @@
       hist_empty: '[ INFO ] Belum ada riwayat obrolan',
       hist_del_title: 'Hapus Obrolan',
       copy_btn: 'Salin',
-      copied_btn: 'Tersalin!'
+      copied_btn: 'Tersalin!',
+      export_card_btn: 'Kartu',
+      export_card_title: 'Ekspor sebagai Kartu Visual (Gambar)',
+      card_modal_badge: '[ GENERATOR KARTU VISUAL ]',
+      card_modal_title: 'Ekspor Respon AI Menjadi Gambar',
+      card_copy_btn: 'Salin Gambar PNG',
+      card_copied_btn: 'Gambar Tersalin!',
+      card_download_btn: 'Unduh PNG',
+      card_close_btn: 'Tutup',
+      toast_card_copied: '[ VERIFIED ] Kartu visual disalin ke clipboard',
+      toast_card_downloaded: '[ VERIFIED ] Kartu visual berhasil diunduh',
+      share_x_btn: 'Bagikan ke X',
+      share_telegram_btn: 'Telegram',
+      share_threads_btn: 'Threads'
     }
   };
 
@@ -327,6 +353,18 @@
   const btnShareModalCancel = document.getElementById('btnShareModalCancel');
   const shareUrlPreview = document.getElementById('shareUrlPreview');
   const btnCopyShareUrl = document.getElementById('btnCopyShareUrl');
+  const shareToX = document.getElementById('shareToX');
+  const shareToTelegram = document.getElementById('shareToTelegram');
+  const shareToThreads = document.getElementById('shareToThreads');
+
+  // Visual Card Generator Elements
+  const cardModalBackdrop = document.getElementById('cardModalBackdrop');
+  const btnCardModalClose = document.getElementById('btnCardModalClose');
+  const btnCardModalCancel = document.getElementById('btnCardModalCancel');
+  const btnCopyCardPng = document.getElementById('btnCopyCardPng');
+  const btnDownloadCardPng = document.getElementById('btnDownloadCardPng');
+  const cardModalBadge = document.getElementById('cardModalBadge');
+  const cardModalTitle = document.getElementById('cardModalTitle');
 
   // WebGPU Engine State & Modal Elements
   let webgpuEngine = null;
@@ -456,6 +494,15 @@
 
     if (chatInput) chatInput.placeholder = dict.chat_placeholder;
     if (btnSend) btnSend.setAttribute('aria-label', dict.send_aria);
+    if (cardModalBadge) cardModalBadge.textContent = dict.card_modal_badge;
+    if (cardModalTitle) cardModalTitle.textContent = dict.card_modal_title;
+    if (btnCopyCardPng) btnCopyCardPng.textContent = dict.card_copy_btn;
+    if (btnDownloadCardPng) btnDownloadCardPng.textContent = dict.card_download_btn;
+    if (btnCardModalCancel) btnCardModalCancel.textContent = dict.card_close_btn;
+    if (shareToX) shareToX.textContent = dict.share_x_btn;
+    if (shareToTelegram) shareToTelegram.textContent = dict.share_telegram_btn;
+    if (shareToThreads) shareToThreads.textContent = dict.share_threads_btn;
+
     updateActiveModelUI();
     renderHistoryList();
 
@@ -578,6 +625,15 @@
       if (e.target === shareModalBackdrop) closeShareModal();
     });
     btnCopyShareUrl?.addEventListener('click', copyShareUrl);
+
+    // Event: Visual Card Exporter Modal
+    btnCardModalClose?.addEventListener('click', closeVisualCardModal);
+    btnCardModalCancel?.addEventListener('click', closeVisualCardModal);
+    cardModalBackdrop?.addEventListener('click', (e) => {
+      if (e.target === cardModalBackdrop) closeVisualCardModal();
+    });
+    btnCopyCardPng?.addEventListener('click', copyVisualCardPng);
+    btnDownloadCardPng?.addEventListener('click', downloadVisualCardPng);
 
     // Event: WebGPU Warning & Download Modal
     btnWebgpuModalClose?.addEventListener('click', closeWebgpuModal);
@@ -1044,6 +1100,16 @@
     });
   }
 
+  function updateSocialShareLinks(link) {
+    if (!link) return;
+    const shareText = encodeURIComponent('Check out this conversation on Zyekh AI Companion:');
+    const shareLinkEncoded = encodeURIComponent(link);
+
+    if (shareToX) shareToX.href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareLinkEncoded}`;
+    if (shareToTelegram) shareToTelegram.href = `https://t.me/share/url?url=${shareLinkEncoded}&text=${shareText}`;
+    if (shareToThreads) shareToThreads.href = `https://threads.net/intent/post?text=${shareText}%20${shareLinkEncoded}`;
+  }
+
   // === Programmatic SEO: Share Conversation Handlers ===
   async function handleShareChat() {
     const sess = getSession(currentSessionId);
@@ -1058,6 +1124,7 @@
     // 1. Session-bound caching: reuse existing share link if message count hasn't changed
     if (sess.shareUrl && sess.lastSharedMessageCount === sess.messages.length) {
       if (shareUrlPreview) shareUrlPreview.textContent = sess.shareUrl;
+      updateSocialShareLinks(sess.shareUrl);
       return;
     }
 
@@ -1089,6 +1156,7 @@
       if (data && data.success && (data.fullUrl || data.url)) {
         const fullLink = data.fullUrl || (window.location.origin + data.url);
         if (shareUrlPreview) shareUrlPreview.textContent = fullLink;
+        updateSocialShareLinks(fullLink);
         
         // Cache share metadata in session object
         sess.shareId = data.shareId;
@@ -1510,7 +1578,8 @@
       metaBar.innerHTML = `
         <span class="model-used-tag">[ ${escapeHtml(modelLabel)} ]</span>
         <div class="message-actions-bar">
-          <button class="btn-msg-action btn-copy-msg" type="button" title="Copy Message">Copy</button>
+          <button class="btn-msg-action btn-copy-msg" type="button" title="${t('copy_btn')}">${t('copy_btn')}</button>
+          <button class="btn-msg-action btn-card-export" type="button" title="${t('export_card_title')}">${t('export_card_btn')}</button>
         </div>
       `;
 
@@ -1520,6 +1589,10 @@
         btn.textContent = t('copied_btn');
         showToast(t('toast_msg_copied'));
         setTimeout(() => (btn.textContent = t('copy_btn')), 2000);
+      });
+
+      metaBar.querySelector('.btn-card-export')?.addEventListener('click', () => {
+        openVisualCardModal(text, modelLabel);
       });
 
       content.appendChild(metaBar);
@@ -1595,6 +1668,186 @@
     URL.revokeObjectURL(url);
 
     showToast(t('toast_export_ok'));
+  }
+
+  // === Visual Card Generator (Ray.so / Carbon Style Client-Side Canvas 2D) ===
+  function openVisualCardModal(text, modelLabel) {
+    if (!cardModalBackdrop) return;
+    generateVisualCardCanvas(text, modelLabel);
+    cardModalBackdrop.classList.add('open');
+    cardModalBackdrop.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeVisualCardModal() {
+    if (!cardModalBackdrop) return;
+    if (cardModalBackdrop.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
+    cardModalBackdrop.classList.remove('open');
+    cardModalBackdrop.setAttribute('aria-hidden', 'true');
+  }
+
+  function generateVisualCardCanvas(text, modelName) {
+    const canvas = document.getElementById('visualCardCanvas');
+    if (!canvas) return null;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return null;
+
+    const width = 1200;
+    const height = 630;
+    canvas.width = width;
+    canvas.height = height;
+
+    // 1. Background
+    ctx.fillStyle = '#09090b';
+    ctx.fillRect(0, 0, width, height);
+
+    // 2. Subtle Outer Border
+    ctx.strokeStyle = '#27272a';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(16, 16, width - 32, height - 32);
+
+    // 3. Inner Card Container
+    ctx.fillStyle = '#121215';
+    ctx.fillRect(36, 36, width - 72, height - 72);
+    ctx.strokeStyle = '#3f3f46';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(36, 36, width - 72, height - 72);
+
+    // 4. Header Bar
+    ctx.fillStyle = '#18181b';
+    ctx.fillRect(36, 36, width - 72, 60);
+    ctx.strokeStyle = '#27272a';
+    ctx.strokeRect(36, 36, width - 72, 60);
+
+    // Header Terminal Dots
+    ctx.fillStyle = '#ef4444';
+    ctx.beginPath();
+    ctx.arc(64, 66, 7, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#eab308';
+    ctx.beginPath();
+    ctx.arc(88, 66, 7, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#22c55e';
+    ctx.beginPath();
+    ctx.arc(112, 66, 7, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Header Title
+    ctx.fillStyle = '#a1a1aa';
+    ctx.font = '600 18px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('chat.zyekh.com / ai-companion', 140, 72);
+
+    // Model Tag Badge
+    const modelTag = `[ ${modelName || activeModelId} ]`;
+    ctx.fillStyle = '#fafafa';
+    ctx.font = '700 17px monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText(modelTag, width - 60, 72);
+
+    // 5. Body Text Formatting
+    const cleanText = (text || '')
+      .replace(/:::thought[\s\S]*?:::/g, '')
+      .replace(/```[a-z]*\n?/gi, '')
+      .replace(/```/g, '')
+      .replace(/\*\*(.*?)\*\*/g, '$1')
+      .replace(/\*(.*?)\*/g, '$1')
+      .replace(/^#+\s+/gm, '')
+      .trim();
+
+    ctx.fillStyle = '#f4f4f5';
+    ctx.font = '500 23px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
+    ctx.textAlign = 'left';
+
+    const maxLineWidth = width - 130;
+    const startX = 64;
+    const startY = 145;
+    const lineHeight = 36;
+    const maxLines = 10;
+
+    const words = cleanText.split(/\s+/);
+    let line = '';
+    const lines = [];
+
+    for (let n = 0; n < words.length; n++) {
+      const testLine = line + (line ? ' ' : '') + words[n];
+      const metrics = ctx.measureText(testLine);
+      if (metrics.width > maxLineWidth && n > 0) {
+        lines.push(line);
+        line = words[n];
+        if (lines.length >= maxLines) break;
+      } else {
+        line = testLine;
+      }
+    }
+    if (line && lines.length < maxLines) {
+      lines.push(line);
+    }
+
+    if (lines.length >= maxLines && words.length > lines.join(' ').split(/\s+/).length) {
+      lines[maxLines - 1] = lines[maxLines - 1].replace(/\.*$/, '') + ' ...';
+    }
+
+    for (let i = 0; i < lines.length; i++) {
+      ctx.fillText(lines[i], startX, startY + (i * lineHeight));
+    }
+
+    // 6. Footer Attribution
+    ctx.fillStyle = '#27272a';
+    ctx.fillRect(36, height - 96, width - 72, 60);
+
+    ctx.fillStyle = '#a1a1aa';
+    ctx.font = '600 17px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('> Zyekh AI Companion -- Free, Fast & Private Multi-Model AI', 64, height - 60);
+
+    ctx.fillStyle = '#71717a';
+    ctx.font = '500 16px monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText('100% Zero-Telemetry / Local-First', width - 60, height - 60);
+
+    return canvas;
+  }
+
+  function downloadVisualCardPng() {
+    const canvas = document.getElementById('visualCardCanvas');
+    if (!canvas) return;
+    const a = document.createElement('a');
+    a.download = `zyekh-ai-card-${Date.now()}.png`;
+    a.href = canvas.toDataURL('image/png');
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    showToast(t('toast_card_downloaded'));
+  }
+
+  async function copyVisualCardPng() {
+    const canvas = document.getElementById('visualCardCanvas');
+    if (!canvas) return;
+    try {
+      canvas.toBlob(async (blob) => {
+        if (!blob) throw new Error('Failed to create image blob');
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({ 'image/png': blob })
+          ]);
+          const btn = document.getElementById('btnCopyCardPng');
+          if (btn) {
+            btn.textContent = t('card_copied_btn');
+            setTimeout(() => { btn.textContent = t('card_copy_btn'); }, 2000);
+          }
+          showToast(t('toast_card_copied'));
+        } catch (_) {
+          downloadVisualCardPng();
+        }
+      }, 'image/png');
+    } catch (err) {
+      showToast(`[ ERROR ] ${err.message}`);
+    }
   }
 
   // Utilities
