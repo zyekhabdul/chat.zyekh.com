@@ -553,12 +553,15 @@
     padding: 0.35rem 0.7rem;
     border-radius: var(--radius-md);
     cursor: pointer;
+    text-decoration: none;
     transition: background-color var(--transition), border-color var(--transition), transform var(--transition);
   }
 
   .btn-action:hover, .theme-toggle-btn:hover {
     background-color: var(--bg-secondary);
     border-color: var(--border-hover);
+    text-decoration: none;
+    transform: translateY(-1px);
   }
 
   .btn-action:active, .theme-toggle-btn:active {

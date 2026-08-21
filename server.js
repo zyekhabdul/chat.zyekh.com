@@ -168,7 +168,7 @@ app.post('/api/share', async (req, res) => {
   try {
     const { shareId: existingId, title, messages, modelUsed, authorName } = req.body || {};
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
-      return res.status(400).json({ success: false, error: 'Daftar pesan tidak valid.' });
+      return res.status(400).json({ success: false, error: 'Invalid messages list.' });
     }
 
     let shareId = existingId ? String(existingId).replace(/[^a-zA-Z0-9_-]/g, '') : null;
@@ -178,10 +178,10 @@ app.post('/api/share', async (req, res) => {
 
     const shareData = {
       id: shareId,
-      title: title || 'Percakapan Zyekh AI',
+      title: title || 'Zyekh AI Conversation',
       createdAt: new Date().toISOString(),
       modelUsed: modelUsed || 'gemini-3.7-flash-high',
-      authorName: authorName || 'Pengguna',
+      authorName: authorName || 'User',
       messages: messages.slice(0, 100)
     };
 
@@ -196,7 +196,7 @@ app.post('/api/share', async (req, res) => {
     });
   } catch (err) {
     console.error('[SHARE ERROR]', err);
-    res.status(500).json({ success: false, error: 'Gagal menyimpan snapshot percakapan.' });
+    res.status(500).json({ success: false, error: 'Failed to store conversation snapshot.' });
   }
 });
 
@@ -206,7 +206,7 @@ app.get('/api/share/:id', async (req, res) => {
     const data = await getSnapshot(shareId);
     res.json(data);
   } catch {
-    res.status(404).json({ success: false, error: 'Snapshot percakapan tidak ditemukan.' });
+    res.status(404).json({ success: false, error: 'Conversation snapshot not found.' });
   }
 });
 
@@ -216,15 +216,15 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
     const shareId = req.params.id.replace(/[^a-zA-Z0-9_-]/g, '');
     const data = await getSnapshot(shareId);
 
-    const title = escapeHtml(data.title || 'Percakapan Zyekh AI');
-    const firstUserMsg = data.messages.find(m => m.role === 'user')?.content || 'Pertanyaan teknis seputar AI dan programming.';
-    const firstBotMsg = data.messages.find(m => m.role === 'assistant' || m.role === 'bot')?.content || 'Jawaban analisis AI Zyekh.';
+    const title = escapeHtml(data.title || 'Zyekh AI Conversation');
+    const firstUserMsg = data.messages.find(m => m.role === 'user')?.content || 'Technical question on AI architecture and software engineering.';
+    const firstBotMsg = data.messages.find(m => m.role === 'assistant' || m.role === 'bot')?.content || 'AI response and analysis.';
     const desc = escapeHtml(firstBotMsg.slice(0, 160).replace(/\n/g, ' '));
     const shareUrl = `https://chat.zyekh.com/s/${shareId}`;
 
     const renderedMessages = data.messages.map((m) => {
       const isUser = m.role === 'user';
-      const roleLabel = isUser ? escapeHtml(data.authorName || 'Pengguna') : 'Zyekh AI Companion';
+      const roleLabel = isUser ? escapeHtml(data.authorName || 'User') : 'Zyekh AI Companion';
       const avatarLabel = isUser ? (data.authorName ? data.authorName.charAt(0).toUpperCase() : 'U') : 'Z';
       const escapedText = escapeHtml(m.content).replace(/\n/g, '<br>');
 
@@ -240,7 +240,7 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
     }).join('');
 
     const html = `<!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -274,7 +274,7 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
       "dateCreated": "${data.createdAt}",
       "author": {
         "@type": "Person",
-        "name": "${escapeHtml(data.authorName || 'Pengguna')}"
+        "name": "${escapeHtml(data.authorName || 'User')}"
       },
       "suggestedAnswer": [
         {
@@ -326,13 +326,13 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
         <span>ZYEKH AI COMPANION</span>
       </a>
       <a href="/?import_share=${shareId}" class="shared-btn-cta">
-        Lanjutkan Obrolan Ini &rarr;
+        Continue This Chat &rarr;
       </a>
     </header>
 
     <h1 class="shared-title">${title}</h1>
     <div class="shared-meta">
-      Model: ${escapeHtml(data.modelUsed)} &bull; ${new Date(data.createdAt).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
+      Model: ${escapeHtml(data.modelUsed)} &bull; ${new Date(data.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
     </div>
 
     <section class="shared-feed" id="answer">
@@ -340,9 +340,9 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
     </section>
 
     <div class="shared-footer-cta">
-      <h4>Mulai Obrolan Baru Anda Sendiri</h4>
-      <p>Diskusi interaktif, brainstorming teknis, dan asisten riset AI tanpa batas tanpa pelacakan data.</p>
-      <a href="/" class="shared-btn-cta">Buka Zyekh AI Companion</a>
+      <h4>Start Your Own Conversation</h4>
+      <p>High-speed, private multi-model AI companion for coding, research, and system design.</p>
+      <a href="/" class="shared-btn-cta">Open Zyekh AI Companion</a>
     </div>
   </main>
 </body>
@@ -351,7 +351,7 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
     res.send(html);
   } catch (err) {
     console.error('[SHARED VIEW ERROR]', err);
-    res.status(404).send('<!DOCTYPE html><html><head><title>404 Not Found</title></head><body style="background:#09090b;color:#fafafa;font-family:sans-serif;padding:2rem;text-align:center;"><h2>Percakapan Tidak Ditemukan</h2><p style="color:#a1a1aa;margin:1rem 0;">Snapshot percakapan ini mungkin sudah dihapus atau tidak valid.</p><a href="/" style="color:#fafafa;">Kembali ke Halaman Utama</a></body></html>');
+    res.status(404).send('<!DOCTYPE html><html><head><title>404 Not Found</title></head><body style="background:#09090b;color:#fafafa;font-family:sans-serif;padding:2rem;text-align:center;"><h2>Conversation Not Found</h2><p style="color:#a1a1aa;margin:1rem 0;">This conversation snapshot does not exist or has expired.</p><a href="/" style="color:#fafafa;">Return to Home</a></body></html>');
   }
 });
 

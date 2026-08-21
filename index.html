@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <script>var s=localStorage.getItem('theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.setAttribute('data-theme','light');</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content, viewport-fit=cover" />
   <meta name="theme-color" content="#09090b" />
-  <title>Zyekh AI Companion — Teman Cerita &amp; Diskusi Pintar</title>
-  <meta name="description" content="AI Companion interaktif dari Zyekh untuk teman ngobrol santai, diskusi ide, refleksi harian, riset teknis, dan asisten digital." />
+  <title>Zyekh AI Companion — Free, Fast &amp; Private Multi-Model AI</title>
+  <meta name="description" content="Free open-source high-speed conversational AI companion and technical research assistant with local-first privacy, zero telemetry, and multi-model gateway." />
   
   <!-- Canonical, Robots & Social Meta Tags -->
   <link rel="canonical" href="https://chat.zyekh.com/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="keywords" content="AI Companion, Chat AI, Asisten AI Indonesia, Private AI, Multi-Model AI, Claude Sonnet, Gemini Flash, Developer Assistant, Zyekh" />
-  <meta property="og:title" content="Zyekh AI Companion — Teman Cerita &amp; Diskusi Pintar" />
-  <meta property="og:description" content="AI Companion interaktif dari Zyekh untuk teman ngobrol santai, diskusi ide, refleksi harian, riset teknis, dan asisten digital." />
+  <meta name="keywords" content="AI Companion, AI Chat, Open Source AI, Private AI, Multi-Model AI, Claude Sonnet, Gemini Flash, Developer Assistant, Zyekh" />
+  <meta property="og:title" content="Zyekh AI Companion — Free, Fast &amp; Private Multi-Model AI" />
+  <meta property="og:description" content="Free open-source high-speed conversational AI companion and technical research assistant with local-first privacy, zero telemetry, and multi-model gateway." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://chat.zyekh.com/" />
   <meta property="og:site_name" content="Zyekh AI Companion" />
-  <meta property="og:locale" content="id_ID" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:image" content="https://chat.zyekh.com/assets/icons/apple-icon-180x180.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Zyekh AI Companion" />
@@ -34,7 +34,7 @@
         "@id": "https://chat.zyekh.com/#webapp",
         "name": "Zyekh AI Companion",
         "url": "https://chat.zyekh.com/",
-        "description": "Aplikasi web percakapan AI mandiri berkecepatan tinggi, berfokus privasi lokal, dan didukung multi-model inference gateway.",
+        "description": "High-speed, open-source conversational AI companion with local-first privacy and multi-model inference gateway.",
         "applicationCategory": "ProductivityApplication",
         "operatingSystem": "All",
         "browserRequirements": "Requires JavaScript ES6 / Modern Browser",
@@ -55,26 +55,26 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Apa itu Zyekh AI Companion?",
+            "name": "What is Zyekh AI Companion?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Zyekh AI Companion adalah web app percakapan AI mandiri berkecepatan tinggi untuk teman diskusi cerdas, refleksi harian, brainstorming konsep, dan asisten riset teknologi."
+              "text": "Zyekh AI Companion is a lightweight, zero-framework, open-source AI conversational web application for technical brainstorming, research, and coding assistance."
             }
           },
           {
             "@type": "Question",
-            "name": "Apakah riwayat percakapan di chat.zyekh.com aman dan privat?",
+            "name": "Is conversation history private and secure?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Ya, seluruh riwayat percakapan disimpan secara local-first di browser pengguna (localStorage) tanpa telemetri atau pelacakan pihak ketiga."
+              "text": "Yes, all conversation history is stored local-first in your browser localStorage with zero server-side telemetry or tracking."
             }
           },
           {
             "@type": "Question",
-            "name": "Model AI apa saja yang dapat digunakan?",
+            "name": "Which AI models are supported?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Mendukung multi-model gateway dinamis termasuk Gemini 3.7 Flash High, Gemini 3.1 Flash Lite, Claude 3.7 Sonnet, Claude 3.7 Opus Thinking, Gemini Pro Agent, dan GPT OSS 120B."
+              "text": "It supports a dynamic multi-model pool including Gemini 3.7 Flash High, Gemini 3.1 Flash Lite, Claude 3.7 Sonnet, Claude 3.7 Opus Thinking, Gemini Pro Agent, GPT OSS 120B, and on-device WebGPU."
             }
           }
         ]
@@ -111,6 +111,7 @@
         <div class="brand-title">
           <span>Zyekh AI</span>
           <span class="brand-badge">COMPANION</span>
+          <span class="brand-badge">OPEN SOURCE</span>
         </div>
       </div>
 
@@ -119,7 +120,7 @@
           <line x1="12" y1="5" x2="12" y2="19"></line>
           <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
-        Obrolan Baru
+        New Chat
       </button>
 
       <!-- Sidebar Search Filter -->
@@ -128,18 +129,18 @@
           type="text" 
           class="sidebar-search-input" 
           id="sessionSearchInput" 
-          placeholder="Cari riwayat obrolan..." 
+          placeholder="Search conversations..." 
           autocomplete="off" 
-          aria-label="Cari riwayat obrolan"
+          aria-label="Search conversations"
         />
       </div>
 
       <div class="history-list" id="historyList">
-        <!-- Riwayat Sesi Obrolan -->
+        <!-- Conversation Sessions History -->
       </div>
 
       <div class="sidebar-footer">
-        <button class="sidebar-user-row" id="btnSidebarEditProfile" type="button" aria-label="Buka Pengaturan Profil">
+        <button class="sidebar-user-row" id="btnSidebarEditProfile" type="button" aria-label="Open User Profile & Settings">
           <div class="sidebar-user-info">
             <div class="profile-thumb" id="sidebarProfileThumb">U</div>
             <div class="sidebar-user-meta">
@@ -162,7 +163,7 @@
     <main class="main-chat">
       <header class="chat-navbar">
         <div class="navbar-left">
-          <button class="btn-menu-toggle" id="btnMenuToggle" type="button" aria-label="Buka Sidebar Riwayat">
+          <button class="btn-menu-toggle" id="btnMenuToggle" type="button" aria-label="Toggle Conversation Sidebar">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -172,7 +173,7 @@
 
           <!-- Dynamic Multi-Model Selector -->
           <div class="model-selector-wrap" id="modelSelectorWrap">
-            <button class="model-select-btn" id="btnModelSelector" type="button" aria-haspopup="true" aria-expanded="false" title="Pilih Model AI">
+            <button class="model-select-btn" id="btnModelSelector" type="button" aria-haspopup="true" aria-expanded="false" title="Select AI Model">
               <span class="model-dot"></span>
               <span class="model-name" id="activeModelName">Gemini 3.7 Flash</span>
               <span class="model-badge-tag" id="activeModelBadge">Default</span>
@@ -182,7 +183,7 @@
             </button>
             <div class="model-dropdown" id="modelDropdown" aria-hidden="true">
               <div class="model-dropdown-header">
-                <span>PILIH MODEL AI</span>
+                <span>SELECT AI MODEL</span>
                 <span class="model-gateway-tag">[ GATEWAY 8317 ]</span>
               </div>
               <div class="model-options-list" id="modelOptionsList">
@@ -193,7 +194,14 @@
         </div>
 
         <div class="navbar-actions">
-          <button class="btn-action" id="btnEmbedModal" type="button" title="Sematkan Widget di Website Anda" aria-label="Sematkan Widget">
+          <a href="https://github.com/zyekhabdul/chat.zyekh.com" target="_blank" rel="noopener noreferrer" class="btn-action" title="Star &amp; Fork on GitHub (Open Source)" aria-label="GitHub Repository">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span class="btn-text">GitHub</span>
+          </a>
+
+          <button class="btn-action" id="btnEmbedModal" type="button" title="Embed AI Widget on Your Website" aria-label="Embed Widget">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="16 18 22 12 16 6"></polyline>
               <polyline points="8 6 2 12 8 18"></polyline>
@@ -201,16 +209,16 @@
             <span class="btn-text">Widget</span>
           </button>
 
-          <button class="btn-action" id="btnExportChat" type="button" title="Ekspor Obrolan ke Markdown" aria-label="Ekspor Obrolan">
+          <button class="btn-action" id="btnExportChat" type="button" title="Export Conversation to Markdown" aria-label="Export Conversation">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            <span class="btn-text">Ekspor</span>
+            <span class="btn-text">Export</span>
           </button>
 
-          <button class="btn-action" id="btnShareChat" type="button" title="Bagikan Percakapan Ini (Tautan Publik)" aria-label="Bagikan Percakapan">
+          <button class="btn-action" id="btnShareChat" type="button" title="Share Public Conversation Link" aria-label="Share Conversation">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="18" cy="5" r="3"></circle>
               <circle cx="6" cy="12" r="3"></circle>
@@ -218,10 +226,10 @@
               <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
               <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
             </svg>
-            <span class="btn-text">Bagikan</span>
+            <span class="btn-text">Share</span>
           </button>
 
-          <button class="theme-toggle-btn" id="btnThemeToggle" type="button" title="Ganti Tema (Dark / Light)" aria-label="Ganti Tema">
+          <button class="theme-toggle-btn" id="btnThemeToggle" type="button" title="Toggle Theme (Dark / Light)" aria-label="Toggle Theme">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -233,21 +241,21 @@
               <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
               <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
-            <span class="btn-text" id="themeLabel">Mode</span>
+            <span class="btn-text" id="themeLabel">Theme</span>
           </button>
 
-          <button class="btn-action" id="btnClearChat" type="button" title="Bersihkan Obrolan Ini" aria-label="Bersihkan Obrolan">
+          <button class="btn-action" id="btnClearChat" type="button" title="Clear Current Conversation" aria-label="Clear Conversation">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="3 6 5 6 21 6"></polyline>
               <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
             </svg>
-            <span class="btn-text">Bersihkan</span>
+            <span class="btn-text">Clear</span>
           </button>
         </div>
       </header>
 
       <section class="chat-messages" id="chatMessages">
-        <!-- Pesan akan dirender via app.js -->
+        <!-- Messages rendered via app.js -->
       </section>
 
       <footer class="chat-input-wrapper">
@@ -256,10 +264,10 @@
             class="chat-input"
             id="chatInput"
             rows="1"
-            placeholder="Ketik pesan atau ceritakan sesuatu..."
+            placeholder="Type a message or ask anything..."
             autocomplete="off"
           ></textarea>
-          <button type="submit" class="btn-send" id="btnSend" aria-label="Kirim Pesan">
+          <button type="submit" class="btn-send" id="btnSend" aria-label="Send Message">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="22" y1="2" x2="11" y2="13"></line>
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -267,7 +275,7 @@
           </button>
         </form>
         <div class="chat-input-hints">
-          <span>[ Enter ] Kirim</span> &bull; <span>[ Shift + Enter ] Baris baru</span> &bull; <span id="hintActiveModel">Model: Gemini 3.7 Flash</span>
+          <span>[ Enter ] Send</span> &bull; <span>[ Shift + Enter ] New line</span> &bull; <span id="hintActiveModel">Model: Gemini 3.7 Flash</span>
         </div>
       </footer>
     </main>
@@ -278,24 +286,24 @@
     <div class="modal-card" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
       <div class="modal-header">
         <div class="modal-title-wrap">
-          <span class="modal-badge">[ PROFIL &amp; KUSTOMISASI ]</span>
-          <h3 id="profileModalTitle">Pengaturan Profil Pengguna</h3>
+          <span class="modal-badge">[ PROFILE &amp; CUSTOMIZATION ]</span>
+          <h3 id="profileModalTitle">User Profile Settings</h3>
         </div>
-        <button class="modal-close-btn" id="btnProfileModalClose" type="button" aria-label="Tutup">&times;</button>
+        <button class="modal-close-btn" id="btnProfileModalClose" type="button" aria-label="Close">&times;</button>
       </div>
       <form class="modal-body" id="profileForm">
         <div class="form-group">
-          <label for="profileNameInput">Nama Pengguna / Display Name</label>
-          <input type="text" id="profileNameInput" class="form-input" placeholder="Masukkan nama panggilan..." maxlength="40" required />
+          <label for="profileNameInput">Display Name</label>
+          <input type="text" id="profileNameInput" class="form-input" placeholder="Enter your display name..." maxlength="40" required />
         </div>
 
         <div class="form-group">
-          <label>Pilih Foto Profil (PP / Avatar)</label>
+          <label>Profile Picture (Avatar)</label>
           <div class="avatar-preview-wrap">
             <div class="avatar-large" id="profileAvatarPreview">U</div>
             <div class="avatar-type-selector">
-              <label class="radio-label"><input type="radio" name="avatarType" value="initial" checked /> Inisial Huruf</label>
-              <label class="radio-label"><input type="radio" name="avatarType" value="preset" /> Preset Cyberpunk</label>
+              <label class="radio-label"><input type="radio" name="avatarType" value="initial" checked /> Initial Letter</label>
+              <label class="radio-label"><input type="radio" name="avatarType" value="preset" /> Cyberpunk Preset</label>
               <label class="radio-label"><input type="radio" name="avatarType" value="url" /> Custom URL / Upload</label>
             </div>
           </div>
@@ -309,22 +317,22 @@
           <div class="avatar-custom-box" id="avatarCustomBox" style="display:none;">
             <input type="url" id="profileAvatarUrlInput" class="form-input" placeholder="https://example.com/avatar.png" />
             <div class="file-upload-wrap">
-              <label for="profileAvatarFileInput" class="btn-file-upload">Upload Gambar dari Komputer</label>
+              <label for="profileAvatarFileInput" class="btn-file-upload">Upload Image from Device</label>
               <input type="file" id="profileAvatarFileInput" accept="image/*" style="display:none;" />
-              <span class="file-upload-hint" id="fileUploadHint">Maksimal 2MB (disimpan lokal di browser)</span>
+              <span class="file-upload-hint" id="fileUploadHint">Max 2MB (stored locally in browser)</span>
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="profileInstructionsInput">Instruksi Khusus untuk AI Companion (Opsional)</label>
-          <textarea id="profileInstructionsInput" class="form-textarea" rows="3" placeholder="Contoh: Selalu jawab langsung ke inti masalah, gunakan analogi coding, panggil saya 'Bro'..." maxlength="500"></textarea>
-          <span class="form-hint">Instruksi ini akan otomatis disematkan pada setiap percakapan.</span>
+          <label for="profileInstructionsInput">Custom System Instructions (Optional)</label>
+          <textarea id="profileInstructionsInput" class="form-textarea" rows="3" placeholder="e.g. Always be concise, code-first, explain architectural trade-offs..." maxlength="500"></textarea>
+          <span class="form-hint">These instructions are automatically attached to every conversation.</span>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn-secondary" id="btnProfileModalCancel">Batal</button>
-          <button type="submit" class="btn-primary" id="btnProfileModalSave">Simpan Perubahan</button>
+          <button type="button" class="btn-secondary" id="btnProfileModalCancel">Cancel</button>
+          <button type="submit" class="btn-primary" id="btnProfileModalSave">Save Changes</button>
         </div>
       </form>
     </div>
@@ -335,14 +343,14 @@
     <div class="modal-card" id="widgetModal" role="dialog" aria-modal="true" aria-labelledby="widgetModalTitle">
       <div class="modal-header">
         <div class="modal-title-wrap">
-          <span class="modal-badge">[ INTEGRASI EMBED ]</span>
-          <h3 id="widgetModalTitle">Sematkan Widget AI di Website Anda</h3>
+          <span class="modal-badge">[ EMBED INTEGRATION ]</span>
+          <h3 id="widgetModalTitle">Embed AI Widget on Your Website</h3>
         </div>
-        <button class="modal-close-btn" id="btnWidgetModalClose" type="button" aria-label="Tutup">&times;</button>
+        <button class="modal-close-btn" id="btnWidgetModalClose" type="button" aria-label="Close">&times;</button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label>Pilih Persona AI</label>
+          <label>Select AI Persona</label>
           <div class="avatar-type-selector">
             <label class="radio-label"><input type="radio" name="widgetPersona" value="tech_mentor" checked /> Tech Mentor</label>
             <label class="radio-label"><input type="radio" name="widgetPersona" value="cs_store" /> CS &amp; Store</label>
@@ -352,21 +360,21 @@
         </div>
 
         <div class="form-group">
-          <label>Kode Script 1-Baris (Salin &amp; Tempel di HTML Website)</label>
+          <label>1-Line Embed Code (Copy &amp; Paste into HTML)</label>
           <div class="widget-code-preview" id="widgetCodeSnippet">&lt;script src="https://chat.zyekh.com/chat-widget.js" data-persona="tech_mentor" defer&gt;&lt;/script&gt;</div>
           <button type="button" class="btn-primary" id="btnCopyWidgetCode" style="margin-top: 6px; width: 100%;">
-            Salin Kode Semat
+            Copy Embed Code
           </button>
         </div>
 
         <div class="form-group">
-          <label>Parameter Kustomisasi Atribut Data</label>
+          <label>Data Attribute Reference</label>
           <table class="widget-attr-table">
             <thead>
               <tr>
-                <th>Atribut</th>
-                <th>Nilai Default</th>
-                <th>Keterangan</th>
+                <th>Attribute</th>
+                <th>Default</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -377,20 +385,20 @@
               </tr>
               <tr>
                 <td><code>data-title</code></td>
-                <td>Otomatis</td>
-                <td>Judul header widget</td>
+                <td>Auto</td>
+                <td>Widget header title</td>
               </tr>
               <tr>
                 <td><code>data-api</code></td>
                 <td><code>https://api.zyekh.com</code></td>
-                <td>Endpoint gateway inferensi AI backend</td>
+                <td>AI inference gateway backend endpoint</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-secondary" id="btnWidgetModalCancel">Tutup</button>
+        <button type="button" class="btn-secondary" id="btnWidgetModalCancel">Close</button>
       </div>
     </div>
   </div>
@@ -400,25 +408,25 @@
     <div class="modal-card" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
       <div class="modal-header">
         <div class="modal-title-wrap">
-          <span class="modal-badge">[ BAGIKAN PERCAKAPAN ]</span>
-          <h3 id="shareModalTitle">Tautan Publik Percakapan</h3>
+          <span class="modal-badge">[ SHARE CONVERSATION ]</span>
+          <h3 id="shareModalTitle">Public Conversation Snapshot</h3>
         </div>
-        <button class="modal-close-btn" id="btnShareModalClose" type="button" aria-label="Tutup">&times;</button>
+        <button class="modal-close-btn" id="btnShareModalClose" type="button" aria-label="Close">&times;</button>
       </div>
       <div class="modal-body">
         <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.5;">
-          Tautan publik ini menyajikan snapshot percakapan statis yang terindeks oleh mesin pencari (*Programmatic SEO*) dan dapat dibuka langsung oleh siapa saja.
+          This public link serves a static, search-engine indexed conversation snapshot with Schema.org markup viewable by anyone.
         </p>
         <div class="form-group">
-          <label>URL Snapshot Publik</label>
-          <div class="widget-code-preview" id="shareUrlPreview" style="font-size: 0.84rem;">Membuat tautan...</div>
+          <label>Public Snapshot URL</label>
+          <div class="widget-code-preview" id="shareUrlPreview" style="font-size: 0.84rem;">Generating link...</div>
           <button type="button" class="btn-primary" id="btnCopyShareUrl" style="margin-top: 6px; width: 100%;">
-            Salin Tautan Publik
+            Copy Public Link
           </button>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-secondary" id="btnShareModalCancel">Tutup</button>
+        <button type="button" class="btn-secondary" id="btnShareModalCancel">Close</button>
       </div>
     </div>
   </div>
@@ -429,25 +437,25 @@
       <div class="modal-header">
         <div class="modal-title-wrap">
           <span class="modal-badge" style="color: var(--accent-color); border-color: var(--accent-color);">[ ON-DEVICE WEBGPU AI ]</span>
-          <h3 id="webgpuModalTitle">Inisialisasi Model AI Lokal</h3>
+          <h3 id="webgpuModalTitle">Initialize On-Device AI Model</h3>
         </div>
-        <button class="modal-close-btn" id="btnWebgpuModalClose" type="button" aria-label="Tutup">&times;</button>
+        <button class="modal-close-btn" id="btnWebgpuModalClose" type="button" aria-label="Close">&times;</button>
       </div>
       <div class="modal-body">
         <p style="font-size: 0.84rem; color: var(--text-main); line-height: 1.5; margin-bottom: 0.75rem;">
-          Anda akan mengaktifkan <strong>Neural Network LLM Lokal</strong> yang berjalan 100% di kartu grafis (GPU) browser Anda tanpa koneksi server backend.
+          You are activating a <strong>Local Neural Network LLM</strong> running 100% on your browser GPU without server connectivity.
         </p>
         
         <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.8rem; line-height: 1.5; margin-bottom: 0.75rem;">
-          <div style="font-weight: 600; color: var(--accent-color); margin-bottom: 0.25rem;">[ SPESIFIKASI &amp; DAMPAK ]</div>
-          <div>&bull; <strong>Ukuran Bobot Model:</strong> ~185 MB (Diunduh 1x &amp; disimpan di IndexedDB browser).</div>
-          <div>&bull; <strong>Kebutuhan Sistem:</strong> Browser dengan WebGPU aktif (Chrome/Edge/Brave).</div>
-          <div>&bull; <strong>Privasi:</strong> 100% Offline, Zero Tracking, Zero Server Cost.</div>
+          <div style="font-weight: 600; color: var(--accent-color); margin-bottom: 0.25rem;">[ SPECS &amp; PRIVACY ]</div>
+          <div>&bull; <strong>Model Weights:</strong> ~185 MB (Downloaded once &amp; cached in IndexedDB).</div>
+          <div>&bull; <strong>System Requirements:</strong> WebGPU-enabled browser (Chrome, Edge, Brave).</div>
+          <div>&bull; <strong>Privacy:</strong> 100% Offline, Zero Telemetry, Zero Server Cost.</div>
         </div>
 
         <div id="webgpuProgressWrap" style="display: none; margin-top: 0.5rem;">
           <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 4px;">
-            <span id="webgpuProgressStatus">Mengunduh bobot model...</span>
+            <span id="webgpuProgressStatus">Downloading model weights...</span>
             <span id="webgpuProgressPercent">0%</span>
           </div>
           <div style="width: 100%; height: 6px; background: var(--bg-hover); border-radius: 3px; overflow: hidden;">
@@ -456,12 +464,12 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-secondary" id="btnWebgpuModalCancel">Batal (Gunakan Cloud)</button>
-        <button type="button" class="btn-primary" id="btnWebgpuModalConfirm">Unduh &amp; Aktifkan</button>
+        <button type="button" class="btn-secondary" id="btnWebgpuModalCancel">Cancel (Use Cloud)</button>
+        <button type="button" class="btn-primary" id="btnWebgpuModalConfirm">Download &amp; Activate</button>
       </div>
     </div>
   </div>
 
-  <script src="./assets/js/app.js?v=20260821_v441"></script>
+  <script src="./assets/js/app.js?v=20260821_v442"></script>
 </body>
 </html>

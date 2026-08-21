@@ -69,7 +69,7 @@
     {
       id: 'webgpu-on-device',
       name: 'WebGPU On-Device 0.5B',
-      description: 'Inferensi murni di GPU/NPU lokal browser (Zero server cost & 100% offline)',
+      description: 'Pure in-browser local GPU inference (Zero server cost & 100% offline)',
       provider: 'On-Device',
       badge: 'Offline / 0 Cost',
       isDefault: false,
@@ -258,7 +258,7 @@
       const newId = 'sess_' + Date.now();
       const newSess = {
         id: newId,
-        title: 'Obrolan Baru',
+        title: 'New Chat',
         createdAt: new Date().toISOString(),
         messages: []
       };
@@ -269,19 +269,19 @@
       loadSessionToView(newId);
       closeSidebar();
       focusChatInputIfDesktop();
-      showToast('[ INFO ] Sesi obrolan baru siap digunakan');
+      showToast('[ INFO ] New conversation ready');
     });
 
-    // Event: Bersihkan Obrolan Aktif
+    // Event: Clear Active Chat
     btnClearChat?.addEventListener('click', () => {
       const sess = getSession(currentSessionId);
       if (sess && sess.messages.length > 0) {
         sess.messages = [];
-        sess.title = 'Obrolan Baru';
+        sess.title = 'New Chat';
         saveSessions();
         renderHistoryList();
         loadSessionToView(currentSessionId);
-        showToast('[ INFO ] Riwayat obrolan aktif telah dibersihkan');
+        showToast('[ INFO ] Active conversation cleared');
       }
     });
 
@@ -488,7 +488,7 @@
 
   async function initializeWebGPUEngine() {
     if (!navigator.gpu) {
-      showToast('[ ERROR ] Browser tidak mendukung WebGPU. Gunakan Chrome/Edge desktop.');
+      showToast('[ ERROR ] WebGPU is not supported in this browser. Please use Chrome or Edge desktop.');
       return;
     }
 
@@ -500,7 +500,7 @@
     if (btnWebgpuModalCancel) btnWebgpuModalCancel.disabled = true;
 
     try {
-      if (webgpuProgressStatus) webgpuProgressStatus.textContent = 'Menghubungkan ke WebLLM Edge CDN...';
+      if (webgpuProgressStatus) webgpuProgressStatus.textContent = 'Connecting to WebLLM Edge CDN...';
       const webllm = await import('https://esm.run/@mlc-ai/web-llm');
       
       const selectedModel = 'SmolLM2-360M-Instruct-q4f16_1-MLC';
@@ -509,7 +509,7 @@
         {
           initProgressCallback: (report) => {
             const pct = Math.min(100, Math.max(0, Math.round((report.progress || 0) * 100)));
-            if (webgpuProgressStatus) webgpuProgressStatus.textContent = report.text || 'Memuat bobot tensor GPU...';
+            if (webgpuProgressStatus) webgpuProgressStatus.textContent = report.text || 'Loading GPU tensor weights...';
             if (webgpuProgressPercent) webgpuProgressPercent.textContent = `${pct}%`;
             if (webgpuProgressBar) webgpuProgressBar.style.width = `${pct}%`;
           }
@@ -521,10 +521,10 @@
       localStorage.setItem(ACTIVE_MODEL_KEY, activeModelId);
       updateActiveModelUI();
       renderModelDropdown();
-      showToast('[ VERIFIED ] Neural Network WebGPU 0.5B aktif 100% Offline!');
+      showToast('[ VERIFIED ] Neural Network WebGPU 0.5B active & 100% Offline');
     } catch (err) {
       console.error('[WEBGPU INIT ERROR]', err);
-      showToast(`[ ERROR ] Gagal memuat WebGPU: ${err.message}`);
+      showToast(`[ ERROR ] Failed to load WebGPU: ${err.message}`);
       if (webgpuProgressWrap) webgpuProgressWrap.style.display = 'none';
       if (btnWebgpuModalConfirm) btnWebgpuModalConfirm.disabled = false;
       if (btnWebgpuModalCancel) btnWebgpuModalCancel.disabled = false;
@@ -540,7 +540,7 @@
         localStorage.setItem(ACTIVE_MODEL_KEY, id);
         updateActiveModelUI();
         renderModelDropdown();
-        showToast('[ MODEL ] Beralih ke WebGPU On-Device 0.5B (Offline)');
+        showToast('[ MODEL ] Switched to WebGPU On-Device 0.5B (Offline)');
       } else {
         openWebgpuModal();
       }
@@ -552,7 +552,7 @@
     updateActiveModelUI();
     renderModelDropdown();
     const model = availableModels.find(m => m.id === id);
-    showToast(`[ MODEL ] Beralih ke ${model?.name || id}`);
+    showToast(`[ MODEL ] Switched to ${model?.name || id}`);
   }
 
   function openModelDropdown() {
@@ -716,7 +716,7 @@
     if (!file) return;
 
     if (file.size > 2 * 1024 * 1024) {
-      showToast('[ ERROR ] Ukuran file maksimal 2MB');
+      showToast('[ ERROR ] Max file size is 2MB');
       return;
     }
 
@@ -726,7 +726,7 @@
       if (typeof base64 === 'string') {
         userProfile.avatarValue = base64;
         updateAvatarPreview('url', base64);
-        if (fileUploadHint) fileUploadHint.textContent = `File siap: ${file.name}`;
+        if (fileUploadHint) fileUploadHint.textContent = `Ready: ${file.name}`;
       }
     };
     reader.readAsDataURL(file);
@@ -756,7 +756,7 @@
     closeProfileModal();
     // Re-render current chat to update avatars in conversation
     loadSessionToView(currentSessionId);
-    showToast('[ VERIFIED ] Pengaturan profil berhasil disimpan');
+    showToast('[ VERIFIED ] Profile settings saved');
   }
 
   // === Widget Integration Modal Handlers ===
@@ -785,9 +785,9 @@
     const snippet = widgetCodeSnippet?.textContent || '';
     if (!snippet) return;
     navigator.clipboard.writeText(snippet).then(() => {
-      showToast('[ VERIFIED ] Kode semat widget berhasil disalin ke clipboard');
+      showToast('[ VERIFIED ] Widget embed code copied to clipboard');
     }).catch(() => {
-      showToast('[ ERROR ] Gagal menyalin kode semat');
+      showToast('[ ERROR ] Failed to copy embed code');
     });
   }
 
@@ -795,7 +795,7 @@
   async function handleShareChat() {
     const sess = getSession(currentSessionId);
     if (!sess || !sess.messages || sess.messages.length === 0) {
-      showToast('[ WARN ] Sesi obrolan masih kosong');
+      showToast('[ WARN ] Conversation is empty');
       return;
     }
 
@@ -808,7 +808,7 @@
       return;
     }
 
-    if (shareUrlPreview) shareUrlPreview.textContent = 'Menyimpan snapshot percakapan...';
+    if (shareUrlPreview) shareUrlPreview.textContent = 'Generating conversation snapshot...';
 
     try {
       const res = await fetch(`${API_BASE}/api/share`, {
@@ -816,20 +816,20 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           shareId: sess.shareId || undefined,
-          title: sess.title || 'Percakapan Zyekh AI',
+          title: sess.title || 'Zyekh AI Conversation',
           messages: sess.messages,
           modelUsed: activeModelId,
-          authorName: userProfile.name || 'Pengguna'
+          authorName: userProfile.name || 'User'
         })
       });
 
       if (!res.ok) {
-        throw new Error(`HTTP ${res.status}: Gagal memproses share.`);
+        throw new Error(`HTTP ${res.status}: Failed to process share snapshot.`);
       }
 
       const cType = res.headers.get('content-type') || '';
       if (!cType.includes('application/json')) {
-        throw new Error('Respon server bukan JSON. Pastikan container produksi telah diperbarui.');
+        throw new Error('Server response was not JSON. Please verify backend container.');
       }
 
       const data = await res.json();
@@ -843,9 +843,9 @@
         sess.lastSharedMessageCount = sess.messages.length;
         saveSessions();
 
-        showToast('[ VERIFIED ] Tautan publik berhasil dibuat');
+        showToast('[ VERIFIED ] Public share link generated');
       } else {
-        throw new Error(data.error || 'Gagal membuat tautan');
+        throw new Error(data.error || 'Failed to generate link');
       }
     } catch (err) {
       if (shareUrlPreview) shareUrlPreview.textContent = `[ ERROR ] ${err.message}`;
@@ -863,14 +863,14 @@
 
   function copyShareUrl() {
     const url = shareUrlPreview?.textContent || '';
-    if (!url || url.includes('[ ERROR ]') || url.includes('Menyimpan') || url.includes('Membuat')) {
-      showToast('[ WARN ] Belum ada tautan valid untuk disalin');
+    if (!url || url.includes('[ ERROR ]') || url.includes('Generating') || url.includes('Saving')) {
+      showToast('[ WARN ] No valid link to copy');
       return;
     }
     navigator.clipboard.writeText(url).then(() => {
-      showToast('[ VERIFIED ] Tautan publik berhasil disalin ke clipboard');
+      showToast('[ VERIFIED ] Public link copied to clipboard');
     }).catch(() => {
-      showToast('[ ERROR ] Gagal menyalin tautan');
+      showToast('[ ERROR ] Failed to copy link');
     });
   }
 
@@ -889,7 +889,7 @@
           const newSessionId = 'sess_' + Date.now();
           const importedSession = {
             id: newSessionId,
-            title: `[Impor] ${data.title || 'Percakapan Publik'}`,
+            title: `[Imported] ${data.title || 'Public Conversation'}`,
             createdAt: new Date().toISOString(),
             messages: data.messages
           };
@@ -897,7 +897,7 @@
           saveSessions();
           renderHistoryList();
           loadSessionToView(newSessionId);
-          showToast('[ VERIFIED ] Percakapan publik berhasil diimpor ke sesi Anda');
+          showToast('[ VERIFIED ] Public conversation imported into your sessions');
           window.history.replaceState({}, document.title, window.location.pathname);
         }
       } catch (err) {
@@ -924,7 +924,7 @@
       localStorage.setItem(THEME_KEY, 'dark');
     }
     updateThemeUI(next);
-    showToast(`[ THEME ] Mode diubah ke ${next === 'light' ? 'Terang (Light)' : 'Gelap (Dark)'}`);
+    showToast(`[ THEME ] Switched to ${next === 'light' ? 'Light Mode' : 'Dark Mode'}`);
   }
 
   function updateThemeUI(theme) {
@@ -954,7 +954,7 @@
     const id = 'sess_' + Date.now();
     const newSess = {
       id,
-      title: 'Obrolan Baru',
+      title: 'New Chat',
       createdAt: new Date().toISOString(),
       messages: []
     };
@@ -978,7 +978,7 @@
     if (filtered.length === 0) {
       const empty = document.createElement('div');
       empty.className = 'history-empty';
-      empty.textContent = searchQuery ? '[ INFO ] Tidak ada riwayat yang cocok' : '[ INFO ] Belum ada riwayat obrolan';
+      empty.textContent = searchQuery ? '[ INFO ] No matching conversations found' : '[ INFO ] No conversation history yet';
       historyList.appendChild(empty);
       return;
     }
@@ -988,7 +988,7 @@
       item.className = `history-item ${sess.id === currentSessionId ? 'active' : ''}`;
       item.innerHTML = `
         <span style="overflow:hidden; text-overflow:ellipsis; flex:1;">${escapeHtml(sess.title)}</span>
-        <button class="btn-del-sess" title="Hapus Obrolan" aria-label="Hapus">&times;</button>
+        <button class="btn-del-sess" title="Delete Conversation" aria-label="Delete">&times;</button>
       `;
 
       item.addEventListener('click', (e) => {
@@ -1015,7 +1015,7 @@
     saveSessions();
     renderHistoryList();
     loadSessionToView(currentSessionId);
-    showToast('[ INFO ] Sesi obrolan dihapus');
+    showToast('[ INFO ] Conversation deleted');
   }
 
   function loadSessionToView(sessionId) {
@@ -1044,40 +1044,40 @@
     welcome.className = 'chat-welcome';
     welcome.innerHTML = `
       <span class="welcome-badge">ZYEKH AI COMPANION</span>
-      <h2 class="welcome-title">Hai ${escapeHtml(userProfile.name || 'Sobat')}! Mau bahas apa hari ini?</h2>
-      <p class="welcome-subtitle">AI Companion siap berdiskusi, brainstorming arsitektur, riset teknis, dan refleksi harian dengan 6 model AI pilihan.</p>
+      <h2 class="welcome-title">Hello ${escapeHtml(userProfile.name || 'Friend')}! What shall we build today?</h2>
+      <p class="welcome-subtitle">High-speed AI companion ready for architectural design, code review, technical research, and strategic brainstorming.</p>
       <div class="suggestions-grid">
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('Hai! Kenalin kemampuan kamu dan model apa saja yang bisa digunakan?')">
+        <div class="suggestion-card" onclick="sendSuggestedPrompt('Hello! Introduce your multi-model capabilities and explain what each model is best suited for.')">
           <div>
-            <span class="suggestion-cat">[ PERKENALAN ]</span>
-            <h3 class="suggestion-title">Fitur &amp; Multi-Model</h3>
-            <p class="suggestion-desc">Eksplorasi kemampuan model Gemini 3.7, Claude Sonnet/Opus, dan GPT OSS.</p>
+            <span class="suggestion-cat">[ OVERVIEW ]</span>
+            <h3 class="suggestion-title">Multi-Model Capabilities</h3>
+            <p class="suggestion-desc">Explore Gemini 3.7 Flash, Claude 3.7 Sonnet/Opus, and GPT OSS capabilities.</p>
           </div>
-          <span class="suggestion-action">Mulai Diskusi &rarr;</span>
+          <span class="suggestion-action">Start Discussion &rarr;</span>
         </div>
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('Gw lagi punya ide proyek software baru, bantu susun arsitektur teknisnya yuk!')">
+        <div class="suggestion-card" onclick="sendSuggestedPrompt('I have an idea for a software project. Help me design a clean, resilient technical architecture.')">
           <div>
-            <span class="suggestion-cat">[ ARSITEKTUR ]</span>
-            <h3 class="suggestion-title">Brainstorming Arsitektur</h3>
-            <p class="suggestion-desc">Desain sistem monorepo, zero-dependency engine, dan validasi skala.</p>
+            <span class="suggestion-cat">[ ARCHITECTURE ]</span>
+            <h3 class="suggestion-title">System &amp; Architecture Design</h3>
+            <p class="suggestion-desc">Design zero-dependency systems, monorepo architectures, and scalable APIs.</p>
           </div>
-          <span class="suggestion-action">Mulai Diskusi &rarr;</span>
+          <span class="suggestion-action">Start Discussion &rarr;</span>
         </div>
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('Bantu audit performa web dan strategi Core Web Vitals LCP < 1s!')">
+        <div class="suggestion-card" onclick="sendSuggestedPrompt('Help me audit code performance, optimize algorithms, and achieve sub-second latency.')">
           <div>
-            <span class="suggestion-cat">[ CODING ]</span>
-            <h3 class="suggestion-title">Optimasi &amp; Deep Coding</h3>
-            <p class="suggestion-desc">Analisis kode presisi, algoritma efisien, dan debugging bebas bloat.</p>
+            <span class="suggestion-cat">[ PERFORMANCE ]</span>
+            <h3 class="suggestion-title">Code Review &amp; Optimization</h3>
+            <p class="suggestion-desc">Deep algorithm analysis, Core Web Vitals audit, and zero-bloat debugging.</p>
           </div>
-          <span class="suggestion-action">Mulai Diskusi &rarr;</span>
+          <span class="suggestion-action">Start Discussion &rarr;</span>
         </div>
-        <div class="suggestion-card" onclick="sendSuggestedPrompt('Gimana tips produktivitas dan fokus ngoding jangka panjang?')">
+        <div class="suggestion-card" onclick="sendSuggestedPrompt('What are the best strategies for building and scaling an open-source developer tool globally?')">
           <div>
-            <span class="suggestion-cat">[ REFLEKSI ]</span>
-            <h3 class="suggestion-title">Refleksi &amp; Produktivitas</h3>
-            <p class="suggestion-desc">Manajemen fokus, konsistensi kerja, dan ritme rekayasa berkelanjutan.</p>
+            <span class="suggestion-cat">[ STRATEGY ]</span>
+            <h3 class="suggestion-title">Engineering Strategy &amp; Growth</h3>
+            <p class="suggestion-desc">Open-source distribution, developer productivity, and long-term engineering rhythm.</p>
           </div>
-          <span class="suggestion-action">Mulai Diskusi &rarr;</span>
+          <span class="suggestion-action">Start Discussion &rarr;</span>
         </div>
       </div>
     `;
@@ -1253,16 +1253,16 @@
       metaBar.innerHTML = `
         <span class="model-used-tag">[ ${escapeHtml(modelLabel)} ]</span>
         <div class="message-actions-bar">
-          <button class="btn-msg-action btn-copy-msg" type="button" title="Salin Pesan">Salin</button>
+          <button class="btn-msg-action btn-copy-msg" type="button" title="Copy Message">Copy</button>
         </div>
       `;
 
       metaBar.querySelector('.btn-copy-msg')?.addEventListener('click', (e) => {
         navigator.clipboard.writeText(text);
         const btn = e.target;
-        btn.textContent = 'Tersalin!';
-        showToast('[ VERIFIED ] Pesan berhasil disalin ke clipboard');
-        setTimeout(() => (btn.textContent = 'Salin'), 2000);
+        btn.textContent = 'Copied!';
+        showToast('[ VERIFIED ] Message copied to clipboard');
+        setTimeout(() => (btn.textContent = 'Copy'), 2000);
       });
 
       content.appendChild(metaBar);
@@ -1281,7 +1281,7 @@
         if (code) {
           navigator.clipboard.writeText(code);
           btn.textContent = 'Copied!';
-          showToast('[ VERIFIED ] Kode berhasil disalin ke clipboard');
+          showToast('[ VERIFIED ] Code copied to clipboard');
           setTimeout(() => (btn.textContent = 'Copy'), 2000);
         }
       });
@@ -1313,7 +1313,7 @@
   function exportChatSession() {
     const sess = getSession(currentSessionId);
     if (!sess || sess.messages.length === 0) {
-      showToast('[ INFO ] Tidak ada riwayat obrolan untuk diekspor');
+      showToast('[ INFO ] No conversation history to export');
       return;
     }
 
@@ -1337,7 +1337,7 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 
-    showToast('[ VERIFIED ] Riwayat obrolan berhasil diekspor ke Markdown');
+    showToast('[ VERIFIED ] Conversation exported to Markdown');
   }
 
   // Utilities
