@@ -318,21 +318,46 @@
 
 ## Phase 15: Fluid Clamp Subtitle & Mobile Screen Vertical Optimization (`[ IN_PROGRESS ]`)
 
-### Chunk 15.1: Apply Responsive clamp() to Welcome Subtitle & Spacing
+## Phase 15: Fluid Clamp Subtitle & Mobile Screen Vertical Optimization (`[ DONE ]`)
+
+### Chunk 15.1: Apply Responsive clamp() to Welcome Subtitle & Spacing (`[ DONE ]`)
 - **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
 - **Scope**:
-  - Set `.welcome-subtitle` to `font-size: clamp(0.76rem, 2.2vw, 0.88rem); line-height: 1.48; margin-bottom: clamp(1rem, 2.5vw, 1.4rem); max-width: 480px;`.
-  - Set `@media (max-width: 520px)` adjustments for `.chat-welcome`, `.welcome-title`, and `.welcome-subtitle` to prevent excessive line breaks and save mobile vertical space.
-- **DoD**: Subtitle shrinks dynamically on mobile viewports without crowding.
+  - Set `.welcome-subtitle` clamp sizing.
+- **DoD**: Clamp styles written.
 
-### Chunk 15.2: Cache Version Bumping
+### Chunk 15.2: Cache Version Bumping (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - Bump stylesheet query to `app.css?v=20260821_v414`.
-  - Bump script query to `app.js?v=20260821_v453`.
+  - Bumped to `app.css?v=20260821_v414` and `app.js?v=20260821_v453`.
 - **DoD**: Cache versions incremented.
 
-### Chunk 15.3: Empirical Verification, Docker Rebuild & Remote Push
+### Chunk 15.3: Empirical Verification, Docker Rebuild & Remote Push (`[ DONE ]`)
+- **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
+- **Scope**:
+  - Verified and pushed commit `5966202`.
+- **DoD**: Verified live on Cloudflare edge.
+
+---
+
+## Phase 16: Explicit Mobile Subtitle Shrink & Enhanced Visual Subordination (`[ IN_PROGRESS ]`)
+
+### Chunk 16.1: Substantially Shrink Mobile Subtitle & Refine Hierarchy
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
+- **Scope**:
+  - Base desktop `.welcome-subtitle`: `font-size: 0.84rem; line-height: 1.5; color: var(--text-muted); max-width: 460px; margin-bottom: 1.15rem;`.
+  - In `@media (max-width: 520px)`: Explicitly set `.welcome-subtitle` to `font-size: 0.70rem; line-height: 1.36; color: var(--text-faint); max-width: 320px; margin-bottom: 0.85rem;` (Shrinks to ~11px on phone, with soft faint color and narrow column width for immediate visual subordination).
+  - In `@media (max-width: 360px)`: Explicitly set `.welcome-subtitle` to `font-size: 0.65rem; line-height: 1.3; max-width: 280px; margin-bottom: 0.75rem;`.
+- **DoD**: Subtitle visibly and distinctly shrinks on mobile devices.
+
+### Chunk 16.2: Cache Version Bumping
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Bump stylesheet query to `app.css?v=20260822_v415`.
+  - Bump script query to `app.js?v=20260822_v454`.
+- **DoD**: Cache versions incremented.
+
+### Chunk 16.3: Empirical Verification, Docker Rebuild & Remote Push
 - **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
 - **Scope**:
   - Verify 0 emojis and 0 JS syntax errors.
