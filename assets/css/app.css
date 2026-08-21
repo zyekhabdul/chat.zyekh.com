@@ -715,7 +715,6 @@
     display: flex;
     gap: 12px;
     max-width: 100%;
-    overflow-x: hidden;
     animation: fadeIn 0.2s ease;
   }
 
@@ -758,6 +757,7 @@
     object-fit: cover !important;
     display: block;
     border-radius: inherit;
+    pointer-events: none;
   }
 
   .avatar.bot {
@@ -780,6 +780,7 @@
     line-height: 1.65;
     position: relative;
     word-break: break-word;
+    overflow-wrap: anywhere;
     min-width: 0;
   }
 
