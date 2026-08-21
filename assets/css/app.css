@@ -335,73 +335,104 @@
     color: var(--text-main);
   }
 
-  /* Sidebar Footer */
+  /* Sidebar Footer — Integrated Linear/Vercel Style */
   .sidebar-footer {
-    padding: 0.85rem 1rem;
+    padding: 0.65rem 0.75rem;
     border-top: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    background-color: var(--bg-secondary);
-  }
-
-  .sidebar-links-row {
-    display: flex;
-    gap: 6px;
-    margin-top: 2px;
-  }
-
-  .sidebar-ext-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1;
-    padding: 0.35rem 0.6rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    font-size: 0.72rem;
-    font-family: var(--font-mono);
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: background-color var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
-  }
-
-  .sidebar-ext-link:hover {
-    background-color: var(--bg-dark);
-    border-color: var(--border-hover);
-    color: var(--text-main);
-    text-decoration: none;
-    transform: translateY(-1px);
-  }
-
-  .sidebar-ext-link svg {
-    color: var(--text-faint);
-    transition: color var(--transition), transform var(--transition);
     flex-shrink: 0;
   }
 
-  .sidebar-ext-link:hover svg {
-    color: var(--text-main);
-    transform: translate(1px, -1px);
-  }
-
-  .sidebar-brand-meta {
+  .sidebar-user-row {
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.7rem;
+    justify-content: space-between;
+    padding: 0.45rem 0.65rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    transition: background-color var(--transition), border-color var(--transition), transform var(--transition);
+  }
+
+  .sidebar-user-row:hover {
+    background-color: var(--bg-dark);
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+  }
+
+  .sidebar-user-row:active {
+    transform: scale(0.98);
+  }
+
+  .sidebar-user-info {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .sidebar-user-info .profile-thumb {
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    min-height: 28px;
+    border-radius: 50%;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+
+  .sidebar-user-meta {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .sidebar-user-meta strong {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.25;
+  }
+
+  .sidebar-user-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.68rem;
+    font-family: var(--font-mono);
     color: var(--text-faint);
+    line-height: 1.2;
     margin-top: 2px;
   }
 
-  .sidebar-meta-dot {
+  .status-indicator-dot {
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: #10b981;
-    box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
     flex-shrink: 0;
+  }
+
+  .sidebar-user-icon {
+    color: var(--text-faint);
+    flex-shrink: 0;
+    transition: color var(--transition), transform var(--transition);
+  }
+
+  .sidebar-user-row:hover .sidebar-user-icon {
+    color: var(--text-main);
+    transform: rotate(30deg);
   }
 
   /* Main Chat Area */
@@ -412,7 +443,8 @@
     height: 100vh;
     background-color: var(--bg-main);
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
 
   /* Chat Navbar */
@@ -565,13 +597,15 @@
   .chat-messages {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 1.5rem 1.25rem;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    max-width: 900px;
+    max-width: 860px;
     width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
   }
 
   /* Welcome Screen */
@@ -681,6 +715,7 @@
     display: flex;
     gap: 12px;
     max-width: 100%;
+    overflow-x: hidden;
     animation: fadeIn 0.2s ease;
   }
 
@@ -695,7 +730,11 @@
 
   .avatar {
     width: 32px;
+    min-width: 32px;
+    max-width: 32px;
     height: 32px;
+    min-height: 32px;
+    max-height: 32px;
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
@@ -707,14 +746,18 @@
     user-select: none;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
   }
 
   .avatar img,
   .avatar svg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover !important;
     display: block;
+    border-radius: inherit;
   }
 
   .avatar.bot {
@@ -730,11 +773,11 @@
   }
 
   .message-content {
-    max-width: calc(100% - 44px);
-    padding: 0.75rem 1rem;
+    max-width: min(calc(100% - 44px), 760px);
+    padding: 0.85rem 1.15rem;
     border-radius: var(--radius-md);
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 0.92rem;
+    line-height: 1.65;
     position: relative;
     word-break: break-word;
     min-width: 0;
@@ -1209,64 +1252,6 @@
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-
-  .sidebar-profile-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 0.6rem 0.75rem;
-    border-radius: var(--radius-md);
-  }
-
-  .sidebar-profile-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    overflow: hidden;
-  }
-
-  .sidebar-profile-info .profile-thumb {
-    width: 30px;
-    height: 30px;
-    font-size: 0.85rem;
-  }
-
-  .sidebar-profile-meta {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .sidebar-profile-meta strong {
-    font-size: 0.82rem;
-    color: var(--text-main);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .sidebar-profile-meta span {
-    font-size: 0.68rem;
-    color: var(--text-faint);
-  }
-
-  .btn-sidebar-edit-profile {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
-    font-size: 0.72rem;
-    padding: 2px 7px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: border-color var(--transition), color var(--transition);
-  }
-
-  .btn-sidebar-edit-profile:hover {
-    border-color: var(--text-main);
-    color: var(--text-main);
   }
 
   /* === Profile Customization Modal === */

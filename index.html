@@ -52,7 +52,7 @@
   <link as="font" crossorigin="" href="./assets/fonts/outfit-700-normal.woff2" rel="preload" type="font/woff2" />
   <link as="font" crossorigin="" href="./assets/fonts/inter-variable-latin.woff2" rel="preload" type="font/woff2" />
   <link rel="stylesheet" href="./assets/fonts/fonts.min.css?v=20260821_v315" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v340" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v350" />
 </head>
 <body>
   <div class="app-container">
@@ -93,41 +93,22 @@
       </div>
 
       <div class="sidebar-footer">
-        <div class="sidebar-profile-card" id="sidebarProfileCard">
-          <div class="sidebar-profile-info">
+        <button class="sidebar-user-row" id="btnSidebarEditProfile" type="button" aria-label="Buka Pengaturan Profil">
+          <div class="sidebar-user-info">
             <div class="profile-thumb" id="sidebarProfileThumb">U</div>
-            <div class="sidebar-profile-meta">
+            <div class="sidebar-user-meta">
               <strong id="sidebarProfileName">User</strong>
-              <span id="sidebarProfileStatus">Profil Kustom</span>
+              <span class="sidebar-user-status">
+                <span class="status-indicator-dot"></span>
+                <span>Gateway Active</span>
+              </span>
             </div>
           </div>
-          <button class="btn-sidebar-edit-profile" id="btnSidebarEditProfile" type="button" aria-label="Edit Profil">
-            Edit
-          </button>
-        </div>
-
-        <div class="sidebar-links-row">
-          <a href="https://zyekh.com" target="_blank" rel="noopener" class="sidebar-ext-link">
-            <span>zyekh.com</span>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-          </a>
-          <a href="https://shop.zyekh.com" target="_blank" rel="noopener" class="sidebar-ext-link">
-            <span>shop.zyekh.com</span>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-          </a>
-        </div>
-        <div class="sidebar-brand-meta">
-          <span class="sidebar-meta-dot"></span>
-          <span>Zyekh Private AI &bull; Multi-Model Gateway</span>
-        </div>
+          <svg class="sidebar-user-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
       </div>
     </aside>
 
@@ -166,11 +147,6 @@
         </div>
 
         <div class="navbar-actions">
-          <button class="btn-action btn-profile" id="btnProfileToggle" type="button" title="Pengaturan Profil &amp; PP" aria-label="Profil Pengguna">
-            <span class="profile-thumb" id="navProfileThumb">U</span>
-            <span class="btn-text" id="navProfileName">Profil</span>
-          </button>
-
           <button class="btn-action" id="btnExportChat" type="button" title="Ekspor Obrolan ke Markdown" aria-label="Ekspor Obrolan">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
