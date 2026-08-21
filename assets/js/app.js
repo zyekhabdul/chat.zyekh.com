@@ -2,10 +2,8 @@
   'use strict';
 
   // Config & State
-  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const API_BASE = isLocal 
-    ? (window.location.port === '3000' ? '' : (window.location.port === '3001' ? '' : 'http://localhost:3000'))
-    : 'https://api.zyekh.com';
+  const isChatDomain = window.location.hostname === 'chat.zyekh.com' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const API_BASE = isChatDomain ? '' : 'https://api.zyekh.com';
   const SESSIONS_KEY = 'zyekh_companion_sessions';
   const ACTIVE_SESSION_KEY = 'zyekh_active_companion_session_id';
   const ACTIVE_MODEL_KEY = 'zyekh_active_model';
@@ -377,7 +375,8 @@
         </div>
       `;
 
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
         setActiveModel(model.id);
         closeModelDropdown();
       });
