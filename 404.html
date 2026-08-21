@@ -193,6 +193,14 @@
         </div>
 
         <div class="navbar-actions">
+          <button class="btn-action" id="btnEmbedModal" type="button" title="Sematkan Widget di Website Anda" aria-label="Sematkan Widget">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            <span class="btn-text">Widget</span>
+          </button>
+
           <button class="btn-action" id="btnExportChat" type="button" title="Ekspor Obrolan ke Markdown" aria-label="Ekspor Obrolan">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -311,6 +319,71 @@
     </div>
   </div>
 
-  <script src="./assets/js/app.js?v=20260821_v330"></script>
+  <!-- Widget Integration Modal -->
+  <div class="modal-backdrop" id="widgetModalBackdrop" aria-hidden="true">
+    <div class="modal-card" id="widgetModal" role="dialog" aria-modal="true" aria-labelledby="widgetModalTitle">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge">[ INTEGRASI EMBED ]</span>
+          <h3 id="widgetModalTitle">Sematkan Widget AI di Website Anda</h3>
+        </div>
+        <button class="modal-close-btn" id="btnWidgetModalClose" type="button" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Pilih Persona AI</label>
+          <div class="avatar-type-selector">
+            <label class="radio-label"><input type="radio" name="widgetPersona" value="tech_mentor" checked /> Tech Mentor</label>
+            <label class="radio-label"><input type="radio" name="widgetPersona" value="cs_store" /> CS &amp; Store</label>
+            <label class="radio-label"><input type="radio" name="widgetPersona" value="companion" /> Companion</label>
+            <label class="radio-label"><input type="radio" name="widgetPersona" value="cloud_assistant" /> Cloud Assistant</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Kode Script 1-Baris (Salin &amp; Tempel di HTML Website)</label>
+          <div class="widget-code-preview" id="widgetCodeSnippet">&lt;script src="https://chat.zyekh.com/chat-widget.js" data-persona="tech_mentor" defer&gt;&lt;/script&gt;</div>
+          <button type="button" class="btn-primary" id="btnCopyWidgetCode" style="margin-top: 6px; width: 100%;">
+            Salin Kode Semat
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label>Parameter Kustomisasi Atribut Data</label>
+          <table class="widget-attr-table">
+            <thead>
+              <tr>
+                <th>Atribut</th>
+                <th>Nilai Default</th>
+                <th>Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>data-persona</code></td>
+                <td><code>cs_store</code></td>
+                <td>tech_mentor, cs_store, companion, cloud_assistant</td>
+              </tr>
+              <tr>
+                <td><code>data-title</code></td>
+                <td>Otomatis</td>
+                <td>Judul header widget</td>
+              </tr>
+              <tr>
+                <td><code>data-api</code></td>
+                <td><code>https://api.zyekh.com</code></td>
+                <td>Endpoint gateway inferensi AI backend</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="btnWidgetModalCancel">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/app.js?v=20260821_v370"></script>
 </body>
 </html>

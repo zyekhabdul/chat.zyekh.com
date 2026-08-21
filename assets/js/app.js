@@ -138,6 +138,14 @@
   const sidebarProfileThumb = document.getElementById('sidebarProfileThumb');
   const sidebarProfileName = document.getElementById('sidebarProfileName');
 
+  // Widget Modal Elements
+  const btnEmbedModal = document.getElementById('btnEmbedModal');
+  const widgetModalBackdrop = document.getElementById('widgetModalBackdrop');
+  const btnWidgetModalClose = document.getElementById('btnWidgetModalClose');
+  const btnWidgetModalCancel = document.getElementById('btnWidgetModalCancel');
+  const widgetCodeSnippet = document.getElementById('widgetCodeSnippet');
+  const btnCopyWidgetCode = document.getElementById('btnCopyWidgetCode');
+
   // Sidebar Controls
   function openSidebar() {
     sidebar?.classList.add('open');
@@ -257,6 +265,18 @@
     btnProfileModalClose?.addEventListener('click', closeProfileModal);
     btnProfileModalCancel?.addEventListener('click', closeProfileModal);
     profileForm?.addEventListener('submit', handleProfileSave);
+
+    // Event: Widget Integration Modal
+    btnEmbedModal?.addEventListener('click', openWidgetModal);
+    btnWidgetModalClose?.addEventListener('click', closeWidgetModal);
+    btnWidgetModalCancel?.addEventListener('click', closeWidgetModal);
+    widgetModalBackdrop?.addEventListener('click', (e) => {
+      if (e.target === widgetModalBackdrop) closeWidgetModal();
+    });
+    btnCopyWidgetCode?.addEventListener('click', copyWidgetCode);
+    document.querySelectorAll('input[name="widgetPersona"]').forEach((radio) => {
+      radio.addEventListener('change', updateWidgetCodeSnippet);
+    });
 
     // Event: Avatar Type Radio Changes
     document.querySelectorAll('input[name="avatarType"]').forEach((radio) => {
@@ -595,6 +615,33 @@
     // Re-render current chat to update avatars in conversation
     loadSessionToView(currentSessionId);
     showToast('[ VERIFIED ] Pengaturan profil berhasil disimpan');
+  }
+
+  // === Widget Integration Modal Handlers ===
+  function openWidgetModal() {
+    widgetModalBackdrop?.classList.add('open');
+    updateWidgetCodeSnippet();
+  }
+
+  function closeWidgetModal() {
+    widgetModalBackdrop?.classList.remove('open');
+  }
+
+  function updateWidgetCodeSnippet() {
+    const selected = document.querySelector('input[name="widgetPersona"]:checked')?.value || 'tech_mentor';
+    if (widgetCodeSnippet) {
+      widgetCodeSnippet.textContent = `<script src="https://chat.zyekh.com/chat-widget.js" data-persona="${selected}" defer><\/script>`;
+    }
+  }
+
+  function copyWidgetCode() {
+    const snippet = widgetCodeSnippet?.textContent || '';
+    if (!snippet) return;
+    navigator.clipboard.writeText(snippet).then(() => {
+      showToast('[ VERIFIED ] Kode semat widget berhasil disalin ke clipboard');
+    }).catch(() => {
+      showToast('[ ERROR ] Gagal menyalin kode semat');
+    });
   }
 
   // Theme Management

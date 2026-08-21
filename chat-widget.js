@@ -242,14 +242,49 @@
       transition: all 0.15s;
       display: flex;
       align-items: center;
+    .zyekh-chat-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .zyekh-chat-action-btn {
+      background: transparent;
+      border: none;
+      color: #71717a;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
       justify-content: center;
+      transition: color 0.15s;
+      text-decoration: none;
     }
-    .zyekh-chat-send:hover {
-      background: #e4e4e7;
+    .zyekh-chat-action-btn:hover {
+      color: #fafafa;
     }
-    .zyekh-chat-send:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
+    .zyekh-chat-footer-attr {
+      padding: 6px 12px 7px 12px;
+      background: #09090b;
+      border-top: 1px solid #18181b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 10.5px;
+      color: #71717a;
+      letter-spacing: 0.01em;
+      flex-shrink: 0;
+    }
+    .zyekh-chat-footer-attr a {
+      color: #a1a1aa;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .zyekh-chat-footer-attr a:hover {
+      color: #fafafa;
+      text-decoration: underline;
     }
   `;
   document.head.appendChild(style);
@@ -334,18 +369,33 @@
         <div class="zyekh-chat-header-title">${CHAT_TITLE}</div>
         <div class="zyekh-chat-header-status">${CHAT_SUBTITLE}</div>
       </div>
-      <button class="zyekh-chat-close" aria-label="Close Chat">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
+      <div class="zyekh-chat-header-actions">
+        <a href="https://chat.zyekh.com/?utm_source=widget_expand&utm_medium=referral" target="_blank" rel="noopener" class="zyekh-chat-action-btn" title="Buka Aplikasi Penuh" aria-label="Buka Aplikasi Penuh">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+        <button class="zyekh-chat-action-btn zyekh-chat-close" aria-label="Tutup Obrolan">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
     <div class="zyekh-chat-messages" id="zyekhChatMessages"></div>
     <form class="zyekh-chat-input-area" id="zyekhChatForm">
       <input type="text" class="zyekh-chat-input" id="zyekhChatInput" placeholder="Ketik pesan..." autocomplete="off" />
       <button type="submit" class="zyekh-chat-send" id="zyekhChatSend">Kirim</button>
     </form>
+    <div class="zyekh-chat-footer-attr">
+      <span>Powered by</span>
+      <a href="https://chat.zyekh.com/?utm_source=widget&utm_medium=referral&utm_campaign=ecosystem" target="_blank" rel="noopener">
+        Zyekh AI Companion
+      </a>
+    </div>
   `;
 
   document.body.appendChild(toggleBtn);

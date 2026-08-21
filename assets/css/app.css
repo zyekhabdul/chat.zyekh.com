@@ -1533,6 +1533,45 @@
     color: var(--text-main);
   }
 
+  /* === Widget Integration Modal === */
+  .widget-code-preview {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-main);
+    word-break: break-all;
+    user-select: all;
+    line-height: 1.5;
+  }
+
+  .widget-attr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.76rem;
+    margin-top: 6px;
+  }
+
+  .widget-attr-table th, .widget-attr-table td {
+    padding: 6px 8px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+  }
+
+  .widget-attr-table th {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .widget-attr-table code {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-main);
+  }
+
   /* === Thought Reasoning Accordion === */
   .thought-box {
     margin: 0.5rem 0 0.85rem;
