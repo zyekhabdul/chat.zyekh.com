@@ -44,9 +44,13 @@
       welcome_title: 'Hello {name}! What would you like to explore today?',
       welcome_subtitle: 'High-speed AI ready for deep research, strategic brainstorming, creative writing, and technical problem solving.',
       tab_general: 'General',
+      tab_general_short: 'General',
       tab_creative: 'Creative & Writing',
+      tab_creative_short: 'Creative',
       tab_research: 'Research & Logic',
+      tab_research_short: 'Research',
       tab_dev: 'Developer & Code',
+      tab_dev_short: 'Code',
       starters: {
         general: [
           { label: 'Critical Idea Roast', prompt: 'Roast and critically pressure-test this concept: [paste your idea/plan]. Point out flawed assumptions, blind spots, and realistic execution risks.' },
@@ -147,9 +151,13 @@
       welcome_title: 'Hai {name}! Mau eksplorasi apa hari ini?',
       welcome_subtitle: 'AI berkecepatan tinggi untuk riset mendalam, brainstorming strategis, penulisan kreatif, dan pemecahan masalah teknis.',
       tab_general: 'Umum',
+      tab_general_short: 'Umum',
       tab_creative: 'Kreatif & Tulis',
+      tab_creative_short: 'Kreatif',
       tab_research: 'Riset & Logika',
+      tab_research_short: 'Riset',
       tab_dev: 'Developer & Kode',
+      tab_dev_short: 'Kode',
       starters: {
         general: [
           { label: 'Kritik & Uji Ide', prompt: 'Beri kritik tajam dan uji ketahanan ide ini: [tulis ide/rencanamu]. Tunjukkan asumsi yang keliru, blind spot, dan risiko eksekusi nyata.' },
@@ -1396,9 +1404,15 @@
 
     const categoryKeys = ['general', 'creative', 'research', 'dev'];
     const tabsHtml = categoryKeys.map((catKey) => {
-      const label = dict[`tab_${catKey}`] || catKey;
+      const fullLabel = dict[`tab_${catKey}`] || catKey;
+      const shortLabel = dict[`tab_${catKey}_short`] || fullLabel;
       const isActive = activeStarterCategory === catKey;
-      return `<button type="button" class="starter-tab-btn ${isActive ? 'active' : ''}" onclick="switchStarterCategory('${catKey}')">${escapeHtml(label)}</button>`;
+      return `
+        <button type="button" class="starter-tab-btn ${isActive ? 'active' : ''}" onclick="switchStarterCategory('${catKey}')">
+          <span class="tab-label-full">${escapeHtml(fullLabel)}</span>
+          <span class="tab-label-short">${escapeHtml(shortLabel)}</span>
+        </button>
+      `;
     }).join('');
 
     const startersList = dict.starters?.[activeStarterCategory] || dict.starters?.general || [];

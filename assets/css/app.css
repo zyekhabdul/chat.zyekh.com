@@ -679,13 +679,15 @@
     padding: 3px;
     gap: 3px;
     margin: 0 auto 1.35rem auto;
-    max-width: 90%;
-    overflow-x: auto;
-    scrollbar-width: none;
+    max-width: 100%;
   }
 
-  .starter-tabs-nav::-webkit-scrollbar {
+  .tab-label-short {
     display: none;
+  }
+
+  .tab-label-full {
+    display: inline;
   }
 
   .starter-tab-btn {
@@ -1856,6 +1858,36 @@
   }
 
   @media (max-width: 520px) {
+    .tab-label-full {
+      display: none;
+    }
+
+    .tab-label-short {
+      display: inline;
+    }
+
+    .starter-tabs-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      width: 100%;
+      max-width: 100%;
+      padding: 3px;
+      gap: 2px;
+      margin: 0 auto 1.15rem auto;
+      border-radius: var(--radius-full);
+      box-sizing: border-box;
+    }
+
+    .starter-tab-btn {
+      padding: 0.35rem 0.15rem;
+      font-size: 0.72rem;
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .chat-navbar {
       padding: 0 0.5rem;
       gap: 4px;

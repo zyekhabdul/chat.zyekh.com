@@ -208,35 +208,62 @@
 
 ---
 
-## Phase 11: Elimination of Terminal Bracket Syntax & Consumer Polish Standard (`[ IN_PROGRESS ]`)
+## Phase 11: Elimination of Terminal Bracket Syntax & Consumer Polish Standard (`[ DONE ]`)
 
-### Chunk 11.1: Removal of Brackets in Prompt Starters & Toasts (JS Layer)
+### Chunk 11.1: Removal of Brackets in Prompt Starters & Toasts (JS Layer) (`[ DONE ]`)
 - **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
 - **Scope**:
-  - Remove all bracket prefixes (`[ ? ]`, `[ ! ]`, `[ > ]`, `[ * ]`, `[ + ]`, `[ ~ ]`, `[ & ]`, `[ $ ]`, `[ / ]`, `[ # ]`) from `I18N_DICT.en.starters` and `I18N_DICT.id.starters`.
-  - Remove CLI-style prefixes (`[ INFO ]`, `[ VERIFIED ]`, `[ ERROR ]`, `[ WARN ]`, `[ MODEL ]`, `[ THEME ]`) from all toast notifications and inline messages, replacing them with clean, natural sentences.
-  - Simplify `renderWelcomeScreen()` markup to pure typography cards without bracket prefix spans.
-- **DoD**: 0 bracket tokens in starter cards and toast messages.
+  - Removed bracket prefixes from starter prompts and all toast messages.
+- **DoD**: 0 bracket tokens in starter cards and toasts.
 
-### Chunk 11.2: Modal Header Badges & Keyboard Hints HTML Standardization
+### Chunk 11.2: Modal Header Badges & Keyboard Hints HTML Standardization (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html), [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
 - **Scope**:
-  - Convert modal badges from `[ MODAL TITLE ]` to clean uppercase tags `MODAL TITLE` (`PROFILE & SETTINGS`, `EXPORT CONVERSATION`, `EMBED AI WIDGET`, `SHARE CONVERSATION`, `WEBGPU NEURAL ENGINE`).
-  - Convert `[ GATEWAY 8317 ]` in model dropdown header to `GATEWAY 8317`.
-  - Convert `[ Enter ] Send • [ Shift + Enter ] New line` in input footer to standard `<kbd>Enter</kbd> Send • <kbd>Shift + Enter</kbd> New line` with crisp CSS styling.
-- **DoD**: Clean typography and `<kbd>` semantics across all HTML views.
+  - Converted modal badges to clean uppercase and input hints to `<kbd>`.
+- **DoD**: Semantics and styling updated.
 
-### Chunk 11.3: Cache Version Bumping
+### Chunk 11.3: Cache Version Bumping (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - Bump stylesheet query to `app.css?v=20260821_v410`.
-  - Bump script query to `app.js?v=20260821_v449`.
-- **DoD**: Cache strings incremented cleanly.
+  - Bumped to `app.css?v=20260821_v410` and `app.js?v=20260821_v449`.
+- **DoD**: Cache strings incremented.
 
-### Chunk 11.4: Empirical Verification, Docker Rebuild & Remote Push
+### Chunk 11.4: Empirical Verification, Docker Rebuild & Remote Push (`[ DONE ]`)
 - **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
 - **Scope**:
-  - Validate 0 emojis and 0 JS syntax errors via terminal.
-  - Rebuild docker image and verify container convergence.
-  - Create local commit and push to remotes.
-- **DoD**: Remote push completed with 0 errors.
+  - Verified 0 errors and pushed commit `3b39f1d`.
+- **DoD**: Live on Cloudflare edge.
+
+---
+
+## Phase 12: Responsive Mobile 1-Row Category Dock with Compact Labels (Option A) (`[ IN_PROGRESS ]`)
+
+### Chunk 12.1: Dual-Label Dictionary & Template Update in JS
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
+- **Scope**:
+  - Add compact label keys to `I18N_DICT.en` (`tab_general_short: 'General'`, `tab_creative_short: 'Creative'`, `tab_research_short: 'Research'`, `tab_dev_short: 'Code'`) and `I18N_DICT.id` (`tab_general_short: 'Umum'`, `tab_creative_short: 'Kreatif'`, `tab_research_short: 'Riset'`, `tab_dev_short: 'Kode'`).
+  - Update `renderWelcomeScreen()` to render both `<span class="tab-label-full">` and `<span class="tab-label-short">` inside `.starter-tab-btn`.
+- **DoD**: Markup supports responsive label switching.
+
+### Chunk 12.2: Responsive Dock CSS (Desktop Inline-Flex vs Mobile 4-Column Grid)
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
+- **Scope**:
+  - Desktop (> 520px): Show `.tab-label-full`, hide `.tab-label-short`, `.starter-tabs-nav` as centered `inline-flex`.
+  - Mobile (<= 520px): Show `.tab-label-short`, hide `.tab-label-full`, `.starter-tabs-nav` as `display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; max-width: 100%; box-sizing: border-box;`.
+  - Tab button padding adjusted to `0.35rem 0.2rem` with `text-align: center` so 4 tabs fit 100% horizontally on any mobile viewport (360px - 440px) with 0 horizontal scroll.
+- **DoD**: 0 horizontal scrolling on mobile viewports.
+
+### Chunk 12.3: Cache Version Bumping
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Bump stylesheet query to `app.css?v=20260821_v411`.
+  - Bump script query to `app.js?v=20260821_v450`.
+- **DoD**: Cache versions incremented cleanly.
+
+### Chunk 12.4: Empirical Verification, Docker Rebuild & Direct Remote Push
+- **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
+- **Scope**:
+  - Verify syntax and 0 emoji.
+  - Rebuild docker image and update service.
+  - Commit and push to remotes.
+- **DoD**: Remote push completed, verified on live edge.
