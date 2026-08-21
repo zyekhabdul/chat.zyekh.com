@@ -12,6 +12,7 @@
 
   let sessions = loadSessions();
   let currentSessionId = localStorage.getItem(ACTIVE_SESSION_KEY);
+  let searchQuery = '';
 
   if (!currentSessionId || !sessions.find((s) => s.id === currentSessionId)) {
     currentSessionId = getOrCreateActiveSession();
@@ -19,6 +20,7 @@
 
   // DOM Elements
   const historyList = document.getElementById('historyList');
+  const sessionSearchInput = document.getElementById('sessionSearchInput');
   const chatMessages = document.getElementById('chatMessages');
   const chatForm = document.getElementById('chatForm');
   const chatInput = document.getElementById('chatInput');
@@ -50,6 +52,32 @@
     }
   }
 
+  // Toast Notification System (Monochrome Parity)
+  function showToast(message) {
+    let container = document.getElementById('toastContainer');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'toastContainer';
+      container.className = 'toast-container';
+      document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    container.appendChild(toast);
+
+    // Trigger enter animation
+    requestAnimationFrame(() => {
+      toast.classList.add('show');
+    });
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 250);
+    }, 2200);
+  }
+
   // Initialization
   function init() {
     initTheme();
@@ -59,11 +87,17 @@
     // Event: Theme Toggle
     btnThemeToggle?.addEventListener('click', toggleTheme);
 
+    // Event: Search Filter Riwayat Sesi
+    sessionSearchInput?.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      renderHistoryList();
+    });
+
     // Event: Obrolan Baru
     btnNewChat?.addEventListener('click', () => {
       const activeSess = getSession(currentSessionId);
       if (activeSess && activeSess.messages.length === 0) {
-        chatInput.focus();
+        chatInput?.focus();
         closeSidebar();
         return;
       }
@@ -77,9 +111,12 @@
       };
       sessions.unshift(newSess);
       saveSessions();
+      searchQuery = '';
+      if (sessionSearchInput) sessionSearchInput.value = '';
       loadSessionToView(newId);
       closeSidebar();
-      chatInput.focus();
+      chatInput?.focus();
+      showToast('[ INFO ] Sesi obrolan baru siap digunakan');
     });
 
     // Event: Bersihkan Obrolan Aktif
@@ -91,6 +128,7 @@
         saveSessions();
         renderHistoryList();
         loadSessionToView(currentSessionId);
+        showToast('[ INFO ] Riwayat obrolan aktif telah dibersihkan');
       }
     });
 
@@ -149,6 +187,7 @@
       localStorage.setItem(THEME_KEY, 'dark');
     }
     updateThemeUI(next);
+    showToast(`[ THEME ] Mode diubah ke ${next === 'light' ? 'Terang (Light)' : 'Gelap (Dark)'}`);
   }
 
   function updateThemeUI(theme) {
@@ -194,7 +233,20 @@
   function renderHistoryList() {
     if (!historyList) return;
     historyList.innerHTML = '';
-    sessions.forEach((sess) => {
+
+    const filtered = searchQuery 
+      ? sessions.filter((s) => s.title.toLowerCase().includes(searchQuery))
+      : sessions;
+
+    if (filtered.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'history-empty';
+      empty.textContent = searchQuery ? '[ INFO ] Tidak ada riwayat yang cocok' : '[ INFO ] Belum ada riwayat obrolan';
+      historyList.appendChild(empty);
+      return;
+    }
+
+    filtered.forEach((sess) => {
       const item = document.createElement('div');
       item.className = `history-item ${sess.id === currentSessionId ? 'active' : ''}`;
       item.innerHTML = `
@@ -226,6 +278,7 @@
     saveSessions();
     renderHistoryList();
     loadSessionToView(currentSessionId);
+    showToast('[ INFO ] Sesi obrolan dihapus');
   }
 
   function loadSessionToView(sessionId) {
@@ -358,7 +411,7 @@
       appendMessageElement('bot', `[ ERROR ] Gagal terhubung ke Zyekh AI Core API (${err.message}). Pastikan server aktif.`);
     } finally {
       btnSend.disabled = false;
-      chatInput.focus();
+      chatInput?.focus();
     }
   }
 
@@ -380,17 +433,17 @@
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
     // Attach copy button to code blocks
-    content.querySelectorAll('pre').forEach((pre) => {
-      const btn = document.createElement('button');
-      btn.className = 'copy-code-btn';
-      btn.textContent = 'Copy';
+    content.querySelectorAll('.copy-code-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const code = pre.querySelector('code')?.innerText || pre.innerText;
-        navigator.clipboard.writeText(code);
-        btn.textContent = 'Copied!';
-        setTimeout(() => (btn.textContent = 'Copy'), 2000);
+        const wrapper = btn.closest('.code-block-wrapper') || btn.closest('pre');
+        const code = wrapper?.querySelector('code')?.innerText || '';
+        if (code) {
+          navigator.clipboard.writeText(code);
+          btn.textContent = 'Copied!';
+          showToast('[ VERIFIED ] Kode berhasil disalin ke clipboard');
+          setTimeout(() => (btn.textContent = 'Copy'), 2000);
+        }
       });
-      pre.appendChild(btn);
     });
   }
 
@@ -425,23 +478,72 @@
       .replace(/'/g, '&#039;');
   }
 
+  // Rich Markdown Engine (Tables, Callouts, Headings, Code Headers)
   function formatMarkdown(text) {
     if (!text) return '';
     let html = escapeHtml(text);
-    // Code blocks
-    html = html.replace(/```([a-zA-Z]*)\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>');
-    // Inline code
+
+    // 1. Code blocks with language detection and header
+    html = html.replace(/```([a-zA-Z0-9_\-#+]*)\n([\s\S]*?)```/g, (match, lang, code) => {
+      const displayLang = (lang || 'CODE').toUpperCase();
+      return `<div class="code-block-wrapper">` +
+             `<div class="code-block-header">` +
+               `<span class="code-lang">${displayLang}</span>` +
+               `<button class="copy-code-btn" type="button" aria-label="Copy Code">Copy</button>` +
+             `</div>` +
+             `<pre><code class="language-${lang || 'plaintext'}">${code}</code></pre>` +
+             `</div>`;
+    });
+
+    // 2. Blockquotes / Callouts (> text)
+    html = html.replace(/^(?:&gt;|>)[ \t]?(.*)$/gm, '<div class="callout"><p>$1</p></div>');
+
+    // 3. Headings (###, ##, #)
+    html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+    html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+    html = html.replace(/^# (.*$)/gm, '<h4>$1</h4>');
+
+    // 4. Tables (| Header | Header |)
+    html = html.replace(/((?:\|[^\n]+\|\r?\n?){2,})/g, (tableMatch) => {
+      const lines = tableMatch.trim().split('\n').map(l => l.trim()).filter(Boolean);
+      if (lines.length < 2) return tableMatch;
+      
+      let tableHtml = '<table>';
+      let isHeaderDone = false;
+
+      lines.forEach((line, idx) => {
+        if (/^\|[-:\s|]+\|$/.test(line)) {
+          isHeaderDone = true;
+          return;
+        }
+        const cells = line.split('|').slice(1, -1).map(c => c.trim());
+        if (!isHeaderDone && idx === 0) {
+          tableHtml += '<thead><tr>' + cells.map(c => `<th>${c}</th>`).join('') + '</tr></thead><tbody>';
+        } else {
+          tableHtml += '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
+        }
+      });
+      tableHtml += '</tbody></table>';
+      return tableHtml;
+    });
+
+    // 5. Inline code
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-    // Bold
+
+    // 6. Bold & Italic
     html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
-    // Links
+
+    // 7. Links
     html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-    // Lists
+
+    // 8. Lists
     html = html.replace(/^\s*•\s*(.*)$/gm, '<li>$1</li>');
     html = html.replace(/^\s*-\s*(.*)$/gm, '<li>$1</li>');
-    // Newlines
-    html = html.replace(/\n/g, '<br>');
+
+    // 9. Newlines (avoiding breaking table/pre tags)
+    html = html.replace(/(?<!<\/li>|<\/h[1-6]>|<\/table>|<\/tbody>|<\/tr>|<\/thead>|<\/div>|<\/p>)\n/g, '<br>');
+
     return html;
   }
 
