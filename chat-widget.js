@@ -242,6 +242,8 @@
       transition: all 0.15s;
       display: flex;
       align-items: center;
+      justify-content: center;
+    }
     .zyekh-chat-header-actions {
       display: flex;
       align-items: center;
