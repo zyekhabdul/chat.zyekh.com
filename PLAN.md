@@ -124,33 +124,69 @@
 
 ---
 
-## Phase 8: Industry Standard Capsule Starter Pills & Clean Hero Evolution (`[ IN_PROGRESS ]`)
+## Phase 8: Industry Standard Capsule Starter Pills & Clean Hero Evolution (`[ DONE ]`)
 
-### Chunk 8.1: Clean Capsule Starter Pills CSS Architecture
-- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css) (lines ~670-730)
+### Chunk 8.1: Clean Capsule Starter Pills CSS Architecture (`[ DONE ]`)
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
 - **Scope**:
-  - Replace heavy `.suggestions-grid` and multi-line `.suggestion-card` with clean, responsive horizontal capsule pills (`.starter-pills-wrap` & `.starter-pill`).
-  - Style specs: `display: inline-flex`, `padding: 6px 14px`, `border-radius: var(--radius-full)`, `border: 1px solid var(--border-color)`, `background: var(--bg-card)`, `font-size: 0.82rem`, `font-weight: 600`, monochrome subtle hover lift.
-- **DoD**: Vertical space reduced by 75%, sleek single/dual-row flex capsule alignment on all viewports.
+  - Replaced heavy bento cards with responsive horizontal capsule pills.
+- **DoD**: 0 CSS errors, vertical space reduced by 75%.
 
-### Chunk 8.2: Streamlined Starter Pills Rendering & I18N Schema
-- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js) (lines ~45-65, ~135-155, ~1365-1415)
+### Chunk 8.2: Streamlined Starter Pills Rendering & I18N Schema (`[ DONE ]`)
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
 - **Scope**:
-  - Refactor `I18N_DICT` to concise action labels (`pill_roast`, `pill_ascii`, `pill_zerobloat`, `pill_benchmark`).
-  - Refactor `renderWelcomeScreen()` in `app.js` to render `.starter-pills-wrap` with 4 interactive pill buttons with 1-click prompt dispatch.
-- **DoD**: Prompt execution intact upon clicking any capsule pill, seamless bilingual EN/ID support.
+  - Implemented sleek capsule buttons and prompt dispatch.
+- **DoD**: 1-click prompt execution functional.
 
-### Chunk 8.3: Cache Query String Bumping
+### Chunk 8.3: Cache Query String Bumping (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - Bump stylesheet query to `app.css?v=20260821_v407`.
-  - Bump script query to `app.js?v=20260821_v446`.
-- **DoD**: Cache-busting references updated cleanly across entrypoints.
+  - Bumped stylesheet query to `app.css?v=20260821_v407` and script query to `app.js?v=20260821_v446`.
+- **DoD**: Cache strings updated.
 
-### Chunk 8.4: Empirical Verification, Docker Rebuild & RAG Checkpoint
+### Chunk 8.4: Empirical Verification, Docker Rebuild & RAG Checkpoint (`[ DONE ]`)
 - **Target Files**: Local Git Tree, Obsidian Vault Memory
 - **Scope**:
-  - Silent terminal validation: syntax check, 0 emojis check.
-  - Rebuild docker service and verify live container convergence.
-  - Create git commit and sync `STATE.md` + `INDEX.md`.
-- **DoD**: Exit code 0 on all verification commands, container converged, commit hash recorded.
+  - Verified 0 emoji, 0 syntax error, container converged, commit `a420db9` pushed.
+- **DoD**: Exit code 0 on all commands.
+
+---
+
+## Phase 9: Multi-Category Interactive Starter Tabs & Universal Onboarding Architecture (`[ IN_PROGRESS ]`)
+
+### Chunk 9.1: Multi-Category Segment Tabs CSS Architecture
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css) (lines ~670-725)
+- **Scope**:
+  - Implement `.starter-tabs-nav` segmented control container (flex horizontal, gap 6px, justify-center, margin-bottom 14px).
+  - Implement `.starter-tab-btn` (padding 5px 12px, font-size 0.78rem, font-weight 600, border 1px solid var(--border-color), border-radius var(--radius-full), background var(--bg-card), color var(--text-muted)).
+  - Implement active tab state `.starter-tab-btn.active` (solid monochrome fill: background var(--text-main), color var(--bg-dark), border-color var(--text-main)).
+  - Add smooth fade transition `.starter-pills-wrap` with animation keyframes `fadeInPills`.
+- **DoD**: Pixel-perfect responsive segment tab bar with crisp monochrome contrast.
+
+### Chunk 9.2: Multi-Category Schema & Interactive Tab Switcher Engine
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
+- **Scope**:
+  - Expand `I18N_DICT` (both EN and ID) with 4 structured categories:
+    1. `general`: Critical Idea Roast, Problem Solver, Explain Like I'm 5, Productivity Plan.
+    2. `creative`: Catchy Hook & Copy, Article Draft, Polish Tone, Viral Angle.
+    3. `research`: Debate Counter-Argument, Logic Synthesis, Reasoning Puzzle, Paper Deep Dive.
+    4. `dev`: Roast Tech Stack, ASCII Blueprint, Zero-Bloat Refactor, Concurrency Benchmark.
+  - Implement state `activeStarterCategory = 'general'`.
+  - Implement `switchStarterCategory(categoryKey)` with immediate DOM rendering.
+  - Update `renderWelcomeScreen()` to render the category tabs navigation + dynamic capsule pills.
+- **DoD**: Instant 0ms category switching across 4 segments in both English and Indonesian.
+
+### Chunk 9.3: Cache Version Bumping & HTML Verification
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Bump stylesheet query to `app.css?v=20260821_v408`.
+  - Bump script query to `app.js?v=20260821_v447`.
+- **DoD**: Cache strings incremented cleanly.
+
+### Chunk 9.4: Empirical Verification, Docker Rebuild & Local Commit Checkpoint
+- **Target Files**: Local Git Tree, Obsidian Vault Memory
+- **Scope**:
+  - Verify syntax with `node -c` and emojis with `check_emojis.py`.
+  - Rebuild docker image and verify container convergence.
+  - Create local commit and synchronize `STATE.md` + `INDEX.md`.
+- **DoD**: Exit code 0 on all tests, container running, commit hash documented.

@@ -41,16 +41,38 @@
       hint_shift_enter: '[ Shift + Enter ] New line',
       hint_model_prefix: 'Model: ',
       welcome_badge: 'ZYEKH AI',
-      welcome_title: 'Hello {name}! What shall we build today?',
-      welcome_subtitle: 'High-speed AI ready for architectural design, code review, technical research, and strategic brainstorming.',
-      pill_roast: 'Roast Tech Stack',
-      pill_roast_prompt: 'Roast my tech stack and system architecture: Node.js, Express, Docker Swarm, Vanilla JS client. Be brutally honest and highlight potential bottlenecks.',
-      pill_ascii: 'ASCII Architecture',
-      pill_ascii_prompt: 'Draw a complete ASCII system architecture diagram for a zero-trust microservice gateway with edge CDN caching and local-first client storage.',
-      pill_zerobloat: 'Zero-Bloat Refactor',
-      pill_zerobloat_prompt: 'Help me audit and strip third-party NPM bloat. Give me a strategy to replace heavy libraries with clean, zero-dependency native APIs.',
-      pill_benchmark: 'Logic Benchmark',
-      pill_benchmark_prompt: 'Solve this concurrency challenge: Implement a lock-free sliding window rate limiter in memory with sub-millisecond execution overhead.',
+      welcome_title: 'Hello {name}! What would you like to explore today?',
+      welcome_subtitle: 'High-speed AI ready for deep research, strategic brainstorming, creative writing, and technical problem solving.',
+      tab_general: 'General',
+      tab_creative: 'Creative & Writing',
+      tab_research: 'Research & Logic',
+      tab_dev: 'Developer & Code',
+      starters: {
+        general: [
+          { prefix: '[ ? ]', label: 'Critical Idea Roast', prompt: 'Roast and critically pressure-test this concept: [paste your idea/plan]. Point out flawed assumptions, blind spots, and realistic execution risks.' },
+          { prefix: '[ ! ]', label: 'Complex Problem Solver', prompt: 'I am facing this specific complex challenge: [describe situation]. Break down the root cause and provide 3 structured, actionable solutions.' },
+          { prefix: '[ > ]', label: "Explain Like I'm 5", prompt: 'Explain the core principles of quantum entanglement and quantum computing in simple, intuitive analogies that anyone can understand.' },
+          { prefix: '[ * ]', label: 'Productivity Blueprint', prompt: 'Help me design a hyper-focused, distraction-free daily routine and time-blocking workflow to accomplish 3 high-impact priorities.' }
+        ],
+        creative: [
+          { prefix: '[ + ]', label: 'Catchy Hook & Copy', prompt: 'Generate 5 high-converting, attention-grabbing opening hooks and copy angles for: [insert topic/product]. Avoid generic AI cliches.' },
+          { prefix: '[ ~ ]', label: 'Compelling Article Draft', prompt: 'Write an engaging, insightful, and well-structured deep dive article on: [topic]. Use conversational tone and strong storytelling.' },
+          { prefix: '[ & ]', label: 'Polish & Elevate Tone', prompt: 'Rewrite and elevate the tone of the following draft to make it punchy, authoritative, and memorable: [paste text]' },
+          { prefix: '[ $ ]', label: 'Viral Content Angle', prompt: 'Brainstorm 4 viral content formats (threads, carousels, short video scripts) around: [topic] that encourage comments and shares.' }
+        ],
+        research: [
+          { prefix: '[ @ ]', label: 'Counter-Argument Debate', prompt: 'Take the strongest opposing view against this premise: [state opinion]. Present compelling counter-arguments, historical precedents, and data.' },
+          { prefix: '[ % ]', label: 'Data & Logic Synthesis', prompt: 'Analyze and synthesize the logical connections, trade-offs, and second-order consequences of: [situation/trend].' },
+          { prefix: '[ * ]', label: 'Hard Reasoning Puzzle', prompt: 'Test your reasoning capabilities: Give me a sophisticated lateral thinking riddle or mathematical logic puzzle and guide me through the solution step-by-step.' },
+          { prefix: '[ ^ ]', label: 'Deep Topic Breakdown', prompt: 'Provide an exhaustive, academic-grade conceptual breakdown of: [topic], including fundamental axioms, key theorists, and real-world implications.' }
+        ],
+        dev: [
+          { prefix: '[ / ]', label: 'Roast Tech Stack', prompt: 'Roast my tech stack and system architecture: Node.js, Express, Docker Swarm, Vanilla JS client. Be brutally honest and highlight potential bottlenecks.' },
+          { prefix: '[ > ]', label: 'ASCII Architecture', prompt: 'Draw a complete ASCII system architecture diagram for a zero-trust microservice gateway with edge CDN caching and local-first client storage.' },
+          { prefix: '[ # ]', label: 'Zero-Bloat Refactor', prompt: 'Help me audit and strip third-party NPM bloat. Give me a strategy to replace heavy libraries with clean, zero-dependency native APIs.' },
+          { prefix: '[ * ]', label: 'Concurrency Benchmark', prompt: 'Solve this concurrency challenge: Implement a lock-free sliding window rate limiter in memory with sub-millisecond execution overhead.' }
+        ]
+      },
       toast_new_chat: '[ INFO ] New conversation ready',
       toast_clear_chat: '[ INFO ] Active conversation cleared',
       toast_webgpu_unsupported: '[ ERROR ] WebGPU is not supported in this browser. Please use Chrome or Edge desktop.',
@@ -122,16 +144,38 @@
       hint_shift_enter: '[ Shift + Enter ] Baris baru',
       hint_model_prefix: 'Model: ',
       welcome_badge: 'ZYEKH AI',
-      welcome_title: 'Hai {name}! Mau bahas apa hari ini?',
-      welcome_subtitle: 'AI siap berdiskusi, brainstorming arsitektur, riset teknis, dan refleksi harian dengan 6 model AI pilihan.',
-      pill_roast: 'Roast Tech Stack',
-      pill_roast_prompt: 'Roast arsitektur tech stack gw: Node.js, Docker, Nginx, Vanilla JS. Kasih kritik tajam dan tunjukkan mana bagian yang boros atau rentan!',
-      pill_ascii: 'Diagram ASCII',
-      pill_ascii_prompt: 'Buatkan diagram ASCII lengkap untuk alur microservice gateway AI dengan edge caching dan penyimpanan local-first.',
-      pill_zerobloat: 'Refactor Zero-Bloat',
-      pill_zerobloat_prompt: 'Bantu audit dan pangkas dependency berat. Berikan strategi mengganti framework/library besar dengan vanilla Web API.',
-      pill_benchmark: 'Uji Logika & Benchmark',
-      pill_benchmark_prompt: 'Selesaikan tantangan ini: Buatkan algoritma sliding window rate limiter in-memory tanpa lock dengan latensi eksekusi sub-milidetik.',
+      welcome_title: 'Hai {name}! Mau eksplorasi apa hari ini?',
+      welcome_subtitle: 'AI berkecepatan tinggi untuk riset mendalam, brainstorming strategis, penulisan kreatif, dan pemecahan masalah teknis.',
+      tab_general: 'Umum',
+      tab_creative: 'Kreatif & Tulis',
+      tab_research: 'Riset & Logika',
+      tab_dev: 'Developer & Kode',
+      starters: {
+        general: [
+          { prefix: '[ ? ]', label: 'Kritik & Uji Ide', prompt: 'Beri kritik tajam dan uji ketahanan ide ini: [tulis ide/rencanamu]. Tunjukkan asumsi yang keliru, blind spot, dan risiko eksekusi nyata.' },
+          { prefix: '[ ! ]', label: 'Solusi Masalah Rumit', prompt: 'Gw menghadapi masalah rumit ini: [jelaskan situasi]. Bedah akar masalahnya dan berikan 3 solusi terstruktur yang bisa langsung dieksekusi.' },
+          { prefix: '[ > ]', label: 'Jelaskan Super Simpel', prompt: 'Jelaskan konsep komputasi kuantum dan entanglement secara sederhana dengan analogi sehari-hari yang mudah dipahami siapa saja.' },
+          { prefix: '[ * ]', label: 'Rencana Kerja Produktif', prompt: 'Bantu susun rencana kerja harian bebas distraksi dengan sistem time-blocking untuk menuntaskan 3 prioritas penting.' }
+        ],
+        creative: [
+          { prefix: '[ + ]', label: 'Hook & Copy Menarik', prompt: 'Buatkan 5 hook pembuka dan sudut copy yang memikat dan berkonversi tinggi untuk: [topik/produk]. Hindari klise AI yang generik.' },
+          { prefix: '[ ~ ]', label: 'Draf Artikel Lengkap', prompt: 'Tulis draf artikel mendalam yang berbobot dan mengalir nyaman tentang: [topik]. Gunakan gaya bercerita yang kuat dan enak dibaca.' },
+          { prefix: '[ & ]', label: 'Perhalus Gaya Bahasa', prompt: 'Tulis ulang dan tingkatkan bobot teks berikut agar lebih berwibawa, padat, dan berkarakter kuat: [tempel teks]' },
+          { prefix: '[ $ ]', label: 'Ide Konten Viral', prompt: 'Brainstorm 4 sudut konten yang berpotensi viral (thread, carousel, skrip video) untuk topik: [topik] yang memicu diskusi dan share.' }
+        ],
+        research: [
+          { prefix: '[ @ ]', label: 'Debat Argumen Kritis', prompt: 'Ambil sudut pandang paling kontra terhadap pernyataan ini: [sebutkan opini]. Sajikan argumen tandingan yang kuat, fakta, dan preseden historis.' },
+          { prefix: '[ % ]', label: 'Sintesis Logika & Data', prompt: 'Analisis dan sintesiskan korelasi logika, trade-off, dan konsekuensi tingkat kedua dari: [situasi/tren].' },
+          { prefix: '[ * ]', label: 'Teka-Teki Logika Sulit', prompt: 'Uji kemampuan penalaranmu: Berikan teka-teki logika berpikir lateral tingkat lanjut dan pandu pemecahannya langkah demi langkah.' },
+          { prefix: '[ ^ ]', label: 'Riset & Bedah Konsep', prompt: 'Sajikan bedah konseptual mendalam berstandar akademik tentang: [topik], mencakup aksioma dasar, teori kunci, dan implikasi praktis.' }
+        ],
+        dev: [
+          { prefix: '[ / ]', label: 'Roast Tech Stack', prompt: 'Roast arsitektur tech stack gw: Node.js, Docker, Nginx, Vanilla JS. Kasih kritik tajam dan tunjukkan mana bagian yang boros atau rentan!' },
+          { prefix: '[ > ]', label: 'Diagram ASCII', prompt: 'Buatkan diagram ASCII lengkap untuk alur microservice gateway AI dengan edge caching dan penyimpanan local-first.' },
+          { prefix: '[ # ]', label: 'Refactor Zero-Bloat', prompt: 'Bantu audit dan pangkas dependency berat. Berikan strategi mengganti framework/library besar dengan vanilla Web API.' },
+          { prefix: '[ * ]', label: 'Uji Logika Konkurensi', prompt: 'Selesaikan tantangan ini: Buatkan algoritma sliding window rate limiter in-memory tanpa lock dengan latensi eksekusi sub-milidetik.' }
+        ]
+      },
       toast_new_chat: '[ INFO ] Sesi obrolan baru siap digunakan',
       toast_clear_chat: '[ INFO ] Riwayat obrolan aktif telah dibersihkan',
       toast_webgpu_unsupported: '[ ERROR ] Browser tidak mendukung WebGPU. Gunakan Chrome/Edge desktop.',
@@ -286,6 +330,7 @@
   const btnLangToggle = document.getElementById('btnLangToggle');
   const activeLangTag = document.getElementById('activeLangTag');
   let currentLang = 'en';
+  let activeStarterCategory = 'general';
   const sidebar = document.getElementById('sidebar');
   const sidebarBackdrop = document.getElementById('sidebarBackdrop');
 
@@ -1349,31 +1394,46 @@
     const defaultName = currentLang === 'id' ? 'Sobat' : 'Friend';
     const titleText = dict.welcome_title.replace('{name}', escapeHtml(userProfile.name || defaultName));
 
+    const categoryKeys = ['general', 'creative', 'research', 'dev'];
+    const tabsHtml = categoryKeys.map((catKey) => {
+      const label = dict[`tab_${catKey}`] || catKey;
+      const isActive = activeStarterCategory === catKey;
+      return `<button type="button" class="starter-tab-btn ${isActive ? 'active' : ''}" onclick="switchStarterCategory('${catKey}')">${escapeHtml(label)}</button>`;
+    }).join('');
+
+    const startersList = dict.starters?.[activeStarterCategory] || dict.starters?.general || [];
+    const pillsHtml = startersList.map((item) => {
+      const safePrompt = item.prompt.replace(/'/g, "\\'");
+      return `
+        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${safePrompt}')">
+          <span class="starter-pill-prefix">${escapeHtml(item.prefix)}</span>
+          <span>${escapeHtml(item.label)}</span>
+        </button>
+      `;
+    }).join('');
+
     welcome.innerHTML = `
       <span class="welcome-badge">${dict.welcome_badge}</span>
       <h2 class="welcome-title">${titleText}</h2>
       <p class="welcome-subtitle">${dict.welcome_subtitle}</p>
-      <div class="starter-pills-wrap">
-        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${dict.pill_roast_prompt.replace(/'/g, "\\'")}')">
-          <span class="starter-pill-prefix">[ / ]</span>
-          <span>${dict.pill_roast}</span>
-        </button>
-        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${dict.pill_ascii_prompt.replace(/'/g, "\\'")}')">
-          <span class="starter-pill-prefix">[ &gt; ]</span>
-          <span>${dict.pill_ascii}</span>
-        </button>
-        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${dict.pill_zerobloat_prompt.replace(/'/g, "\\'")}')">
-          <span class="starter-pill-prefix">[ # ]</span>
-          <span>${dict.pill_zerobloat}</span>
-        </button>
-        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${dict.pill_benchmark_prompt.replace(/'/g, "\\'")}')">
-          <span class="starter-pill-prefix">[ * ]</span>
-          <span>${dict.pill_benchmark}</span>
-        </button>
+      <nav class="starter-tabs-nav" aria-label="Starter Categories">
+        ${tabsHtml}
+      </nav>
+      <div class="starter-pills-wrap" id="starterPillsWrap">
+        ${pillsHtml}
       </div>
     `;
     chatMessages.appendChild(welcome);
   }
+
+  window.switchStarterCategory = function (categoryKey) {
+    activeStarterCategory = categoryKey;
+    const activeSession = getSession(currentSessionId);
+    if (activeSession && activeSession.messages.length === 0) {
+      chatMessages.innerHTML = '';
+      renderWelcomeScreen();
+    }
+  };
 
   window.sendSuggestedPrompt = function (text) {
     if (chatInput && chatForm) {
