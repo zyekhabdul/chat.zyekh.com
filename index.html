@@ -101,7 +101,7 @@
   <link as="font" crossorigin="" href="./assets/fonts/outfit-700-normal.woff2" rel="preload" type="font/woff2" />
   <link as="font" crossorigin="" href="./assets/fonts/inter-variable-latin.woff2" rel="preload" type="font/woff2" />
   <link rel="stylesheet" href="./assets/fonts/fonts.min.css?v=20260821_v315" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v405" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v406" />
 </head>
 <body>
   <div class="app-container">
@@ -484,7 +484,7 @@
     <div class="modal-card" id="webgpuModal" role="dialog" aria-modal="true" aria-labelledby="webgpuModalTitle">
       <div class="modal-header">
         <div class="modal-title-wrap">
-          <span class="modal-badge" style="color: var(--accent-color); border-color: var(--accent-color);">[ ON-DEVICE WEBGPU AI ]</span>
+          <span class="modal-badge" style="color: var(--text-main); border-color: var(--border-color);">[ ON-DEVICE WEBGPU AI ]</span>
           <h3 id="webgpuModalTitle">Initialize On-Device AI Model</h3>
         </div>
         <button class="modal-close-btn" id="btnWebgpuModalClose" type="button" aria-label="Close">&times;</button>
@@ -495,7 +495,7 @@
         </p>
         
         <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.8rem; line-height: 1.5; margin-bottom: 0.75rem;">
-          <div style="font-weight: 600; color: var(--accent-color); margin-bottom: 0.25rem;">[ SPECS &amp; PRIVACY ]</div>
+          <div style="font-weight: 600; color: var(--text-main); margin-bottom: 0.25rem;">[ SPECS &amp; PRIVACY ]</div>
           <div>&bull; <strong>Model Weights:</strong> ~185 MB (Downloaded once &amp; cached in IndexedDB).</div>
           <div>&bull; <strong>System Requirements:</strong> WebGPU-enabled browser (Chrome, Edge, Brave).</div>
           <div>&bull; <strong>Privacy:</strong> 100% Offline, Zero Telemetry, Zero Server Cost.</div>
@@ -507,7 +507,7 @@
             <span id="webgpuProgressPercent">0%</span>
           </div>
           <div style="width: 100%; height: 6px; background: var(--bg-hover); border-radius: 3px; overflow: hidden;">
-            <div id="webgpuProgressBar" style="width: 0%; height: 100%; background: var(--accent-color); transition: width 0.2s ease;"></div>
+            <div id="webgpuProgressBar" style="width: 0%; height: 100%; background: var(--accent); transition: width 0.2s ease;"></div>
           </div>
         </div>
       </div>
@@ -518,6 +518,6 @@
     </div>
   </div>
 
-  <script src="./assets/js/app.js?v=20260821_v444"></script>
+  <script src="./assets/js/app.js?v=20260821_v445"></script>
 </body>
 </html>

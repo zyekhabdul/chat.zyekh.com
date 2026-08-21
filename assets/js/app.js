@@ -265,15 +265,15 @@
 
   const ON_DEVICE_MODEL = DEFAULT_MODELS[DEFAULT_MODELS.length - 1];
 
-  // Cyberpunk Preset Avatars (8 Crisp Geometric SVGs)
+  // Cyberpunk Preset Avatars (8 Crisp Geometric SVGs - Monochrome Aesthetic)
   const CYBER_AVATARS = [
-    { id: 'cyber_neon', name: 'Cyber Neon', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#10b981" stroke-width="2"/><path d="M12 20 L20 12 L28 20 L20 28 Z" fill="#10b981"/><circle cx="20" cy="20" r="3" fill="#09090b"/></svg>' },
-    { id: 'visor_core', name: 'Visor Core', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#3b82f6" stroke-width="2"/><rect x="10" y="16" width="20" height="8" rx="2" fill="#3b82f6"/><line x1="6" y1="20" x2="34" y2="20" stroke="#60a5fa" stroke-width="1.5"/></svg>' },
+    { id: 'cyber_neon', name: 'Cyber Minimal', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#e4e4e7" stroke-width="2"/><path d="M12 20 L20 12 L28 20 L20 28 Z" fill="#fafafa"/><circle cx="20" cy="20" r="3" fill="#09090b"/></svg>' },
+    { id: 'visor_core', name: 'Visor Core', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#d4d4d8" stroke-width="2"/><rect x="10" y="16" width="20" height="8" rx="2" fill="#fafafa"/><line x1="6" y1="20" x2="34" y2="20" stroke="#a1a1aa" stroke-width="1.5"/></svg>' },
     { id: 'terminal_mono', name: 'Monolith', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#fafafa" stroke-width="2"/><path d="M14 15 L20 20 L14 25" stroke="#fafafa" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="22" y1="25" x2="27" y2="25" stroke="#fafafa" stroke-width="2.5"/></svg>' },
-    { id: 'quantum_orb', name: 'Quantum', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#a855f7" stroke-width="2"/><circle cx="20" cy="20" r="7" fill="none" stroke="#c084fc" stroke-width="2"/><ellipse cx="20" cy="20" rx="14" ry="5" fill="none" stroke="#a855f7" stroke-width="1" transform="rotate(30 20 20)"/></svg>' },
-    { id: 'grid_pulse', name: 'Pulse', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#f59e0b" stroke-width="2"/><polyline points="10,20 16,20 19,13 23,27 26,20 30,20" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
-    { id: 'neural_hex', name: 'Hex Core', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#ec4899" stroke-width="2"/><polygon points="20,11 28,16 28,24 20,29 12,24 12,16" fill="none" stroke="#f472b6" stroke-width="2"/><circle cx="20" cy="20" r="2.5" fill="#f472b6"/></svg>' },
-    { id: 'shield_matrix', name: 'Shield', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#06b6d4" stroke-width="2"/><path d="M20 12 L28 15 V22 C28 26 20 29 20 29 C20 29 12 26 12 22 V15 Z" fill="none" stroke="#22d3ee" stroke-width="2"/></svg>' },
+    { id: 'quantum_orb', name: 'Quantum', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#e4e4e7" stroke-width="2"/><circle cx="20" cy="20" r="7" fill="none" stroke="#fafafa" stroke-width="2"/><ellipse cx="20" cy="20" rx="14" ry="5" fill="none" stroke="#71717a" stroke-width="1" transform="rotate(30 20 20)"/></svg>' },
+    { id: 'grid_pulse', name: 'Pulse', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#d4d4d8" stroke-width="2"/><polyline points="10,20 16,20 19,13 23,27 26,20 30,20" fill="none" stroke="#fafafa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+    { id: 'neural_hex', name: 'Hex Core', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#e4e4e7" stroke-width="2"/><polygon points="20,11 28,16 28,24 20,29 12,24 12,16" fill="none" stroke="#fafafa" stroke-width="2"/><circle cx="20" cy="20" r="2.5" fill="#fafafa"/></svg>' },
+    { id: 'shield_matrix', name: 'Shield', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#d4d4d8" stroke-width="2"/><path d="M20 12 L28 15 V22 C28 26 20 29 20 29 C20 29 12 26 12 22 V15 Z" fill="none" stroke="#fafafa" stroke-width="2"/></svg>' },
     { id: 'zenith_star', name: 'Zenith', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#18181b" stroke="#e4e4e7" stroke-width="2"/><polygon points="20,10 23,17 30,20 23,23 20,30 17,23 10,20 17,17" fill="#fafafa"/></svg>' }
   ];
 
@@ -1720,27 +1720,27 @@
     ctx.strokeStyle = '#27272a';
     ctx.strokeRect(36, 36, width - 72, 60);
 
-    // Header Terminal Dots
-    ctx.fillStyle = '#ef4444';
+    // Header Terminal Dots (Monochrome)
+    ctx.fillStyle = '#52525b';
     ctx.beginPath();
-    ctx.arc(64, 66, 7, 0, Math.PI * 2);
+    ctx.arc(64, 66, 6, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.fillStyle = '#eab308';
+    ctx.fillStyle = '#3f3f46';
     ctx.beginPath();
-    ctx.arc(88, 66, 7, 0, Math.PI * 2);
+    ctx.arc(84, 66, 6, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.fillStyle = '#22c55e';
+    ctx.fillStyle = '#27272a';
     ctx.beginPath();
-    ctx.arc(112, 66, 7, 0, Math.PI * 2);
+    ctx.arc(104, 66, 6, 0, Math.PI * 2);
     ctx.fill();
 
     // Header Title
     ctx.fillStyle = '#a1a1aa';
     ctx.font = '600 18px monospace';
     ctx.textAlign = 'left';
-    ctx.fillText('chat.zyekh.com / ai-companion', 140, 72);
+    ctx.fillText('chat.zyekh.com / zyekh-ai', 130, 72);
 
     // Model Tag Badge
     const modelTag = `[ ${modelName || activeModelId} ]`;

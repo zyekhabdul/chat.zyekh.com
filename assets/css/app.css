@@ -434,8 +434,8 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+    background: var(--text-main);
+    box-shadow: 0 0 6px var(--accent-glow);
     flex-shrink: 0;
   }
 
@@ -1113,8 +1113,8 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    background: var(--text-main);
+    box-shadow: 0 0 8px var(--accent-glow);
     flex-shrink: 0;
   }
 
@@ -1183,7 +1183,7 @@
   }
 
   .model-gateway-tag {
-    color: #10b981;
+    color: var(--text-main);
     font-weight: 600;
   }
 
