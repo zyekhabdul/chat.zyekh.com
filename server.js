@@ -13,13 +13,14 @@ const CANDIDATE_TARGETS = [
   'http://zyekh-ai-core-nblqvy:3000',
   'http://zyekh-ai-core:3000',
   'http://172.17.0.1:3000',
-  'http://127.0.0.1:3000'
+  'http://127.0.0.1:3000',
+  'https://api.zyekh.com'
 ].filter(Boolean);
 
 app.use(express.json({ limit: '10mb' }));
 
 // API Reverse Proxy ke zyekh-ai-core (Port 3000)
-// Mendukung Swarm service discovery, bridge docker host, dan localhost dev
+// Mendukung Swarm discovery, bridge docker host, localhost dev, dan production fallback
 app.all('/api/*', async (req, res) => {
   const fetchOptions = {
     method: req.method,
@@ -48,7 +49,7 @@ app.all('/api/*', async (req, res) => {
   console.error('[PROXY ERROR] Seluruh target AI Core tidak dapat dihubungi:', lastError?.message);
   res.status(502).json({
     success: false,
-    error: 'Gateway error: Tidak dapat terhubung ke Zyekh AI Core API (Port 3000).'
+    error: 'Gateway error: Tidak dapat terhubung ke Zyekh AI Core API.'
   });
 });
 
@@ -62,5 +63,5 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`[CHAT-ZYEKH-COM] [ VERIFIED ] Web App aktif di http://localhost:${PORT}`);
-  console.log(`[CHAT-ZYEKH-COM] [ PROXY ] Reverse Proxy /api -> ${CANDIDATE_TARGETS[0]}/api`);
+  console.log(`[CHAT-ZYEKH-COM] [ PROXY ] Candidate Targets: ${CANDIDATE_TARGETS.join(', ')}`);
 });
