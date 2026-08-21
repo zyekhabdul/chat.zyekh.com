@@ -8,37 +8,48 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const API_TARGET = process.env.CORE_API_URL ? process.env.CORE_API_URL.replace('/api/chat', '').replace('/api', '') : 'http://127.0.0.1:3000';
+const CANDIDATE_TARGETS = [
+  process.env.CORE_API_URL ? process.env.CORE_API_URL.replace('/api/chat', '').replace('/api', '') : null,
+  'http://zyekh-ai-core-nblqvy:3000',
+  'http://zyekh-ai-core:3000',
+  'http://172.17.0.1:3000',
+  'http://127.0.0.1:3000'
+].filter(Boolean);
 
 app.use(express.json({ limit: '10mb' }));
 
 // API Reverse Proxy ke zyekh-ai-core (Port 3000)
-// Mendukung SSH Port Forwarding (hanya butuh forward 1 port 3001)
+// Mendukung Swarm service discovery, bridge docker host, dan localhost dev
 app.all('/api/*', async (req, res) => {
-  const targetUrl = `${API_TARGET}${req.originalUrl}`;
-  try {
-    const fetchOptions = {
-      method: req.method,
-      headers: {
-        'Content-Type': req.headers['content-type'] || 'application/json',
-        'Accept': req.headers['accept'] || 'application/json'
-      }
-    };
-
-    if (['POST', 'PUT', 'PATCH'].includes(req.method) && req.body) {
-      fetchOptions.body = JSON.stringify(req.body);
+  const fetchOptions = {
+    method: req.method,
+    headers: {
+      'Content-Type': req.headers['content-type'] || 'application/json',
+      'Accept': req.headers['accept'] || 'application/json'
     }
+  };
 
-    const response = await fetch(targetUrl, fetchOptions);
-    const data = await response.text();
-    res.status(response.status).set('Content-Type', response.headers.get('content-type') || 'application/json').send(data);
-  } catch (err) {
-    console.error(`[PROXY ERROR] Gagal meneruskan ke ${targetUrl}:`, err.message);
-    res.status(502).json({
-      success: false,
-      error: 'Gateway error: Tidak dapat terhubung ke Zyekh AI Core API (Port 3000).'
-    });
+  if (['POST', 'PUT', 'PATCH'].includes(req.method) && req.body) {
+    fetchOptions.body = JSON.stringify(req.body);
   }
+
+  let lastError = null;
+  for (const baseTarget of CANDIDATE_TARGETS) {
+    const targetUrl = `${baseTarget}${req.originalUrl}`;
+    try {
+      const response = await fetch(targetUrl, { ...fetchOptions, signal: AbortSignal.timeout(35000) });
+      const data = await response.text();
+      return res.status(response.status).set('Content-Type', response.headers.get('content-type') || 'application/json').send(data);
+    } catch (err) {
+      lastError = err;
+    }
+  }
+
+  console.error('[PROXY ERROR] Seluruh target AI Core tidak dapat dihubungi:', lastError?.message);
+  res.status(502).json({
+    success: false,
+    error: 'Gateway error: Tidak dapat terhubung ke Zyekh AI Core API (Port 3000).'
+  });
 });
 
 // Serve static assets
@@ -51,5 +62,5 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`[CHAT-ZYEKH-COM] [ VERIFIED ] Web App aktif di http://localhost:${PORT}`);
-  console.log(`[CHAT-ZYEKH-COM] [ PROXY ] Reverse Proxy /api -> ${API_TARGET}/api`);
+  console.log(`[CHAT-ZYEKH-COM] [ PROXY ] Reverse Proxy /api -> ${CANDIDATE_TARGETS[0]}/api`);
 });
