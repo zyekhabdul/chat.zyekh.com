@@ -6,7 +6,11 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "lint": "python3 scripts/lint_design_rules.py",
+    "bump": "node scripts/bump_assets.js",
+    "snap": "python3 scripts/snap_viewports.py",
+    "release": "bash scripts/release.sh"
   },
   "dependencies": {
     "express": "^4.21.2"

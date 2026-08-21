@@ -340,27 +340,50 @@
 
 ---
 
-## Phase 16: Explicit Mobile Subtitle Shrink & Enhanced Visual Subordination (`[ IN_PROGRESS ]`)
+## Phase 16: Explicit Mobile Subtitle Shrink & Enhanced Visual Subordination (`[ DONE ]`)
 
-### Chunk 16.1: Substantially Shrink Mobile Subtitle & Refine Hierarchy
+### Chunk 16.1: Substantially Shrink Mobile Subtitle & Refine Hierarchy (`[ DONE ]`)
 - **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
 - **Scope**:
-  - Base desktop `.welcome-subtitle`: `font-size: 0.84rem; line-height: 1.5; color: var(--text-muted); max-width: 460px; margin-bottom: 1.15rem;`.
-  - In `@media (max-width: 520px)`: Explicitly set `.welcome-subtitle` to `font-size: 0.70rem; line-height: 1.36; color: var(--text-faint); max-width: 320px; margin-bottom: 0.85rem;` (Shrinks to ~11px on phone, with soft faint color and narrow column width for immediate visual subordination).
-  - In `@media (max-width: 360px)`: Explicitly set `.welcome-subtitle` to `font-size: 0.65rem; line-height: 1.3; max-width: 280px; margin-bottom: 0.75rem;`.
-- **DoD**: Subtitle visibly and distinctly shrinks on mobile devices.
+  - Set explicit mobile font-size to `0.70rem` (~11px) with `var(--text-faint)` and `max-width: 320px`.
+- **DoD**: Subtitle visibly shrinks.
 
-### Chunk 16.2: Cache Version Bumping
+### Chunk 16.2: Cache Version Bumping (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - Bump stylesheet query to `app.css?v=20260822_v415`.
-  - Bump script query to `app.js?v=20260822_v454`.
+  - Bumped to `app.css?v=20260822_v415` and `app.js?v=20260822_v454`.
 - **DoD**: Cache versions incremented.
 
-### Chunk 16.3: Empirical Verification, Docker Rebuild & Remote Push
+### Chunk 16.3: Empirical Verification, Docker Rebuild & Remote Push (`[ DONE ]`)
 - **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
 - **Scope**:
-  - Verify 0 emojis and 0 JS syntax errors.
-  - Rebuild docker image and update swarm service.
-  - Commit and push to remotes.
+  - Verified and pushed commit `fafc309`.
 - **DoD**: Verified live on Cloudflare edge.
+
+---
+
+## Phase 17: Developer Automation & Quality Gate Tooling Suite (`[ IN_PROGRESS ]`)
+
+### Chunk 17.1: Build Deterministic Asset Cache Bumper (`[ DONE ]`)
+- **Target Files**: [scripts/bump_assets.js](file:///home/fuckadmin/Projects/chat.zyekh.com/scripts/bump_assets.js)
+- **Scope**:
+  - Automate timestamp/hash query updates across all HTML files in 2ms.
+- **DoD**: `node scripts/bump_assets.js` updates `index.html` and `404.html`.
+
+### Chunk 17.2: Build Design Rule & Syntax Linter (`[ DONE ]`)
+- **Target Files**: [scripts/lint_design_rules.py](file:///home/fuckadmin/Projects/chat.zyekh.com/scripts/lint_design_rules.py)
+- **Scope**:
+  - Enforce zero-emoji, clean consumer dictionary strings (no bracket prefix), and node syntax checks.
+- **DoD**: `python3 scripts/lint_design_rules.py` returns exit code 0.
+
+### Chunk 17.3: Build Multi-Viewport Playwright Overflow Auditor (`[ DONE ]`)
+- **Target Files**: [scripts/snap_viewports.py](file:///home/fuckadmin/Projects/chat.zyekh.com/scripts/snap_viewports.py)
+- **Scope**:
+  - Audit 4 viewports (348px, 390px, 768px, 1440px) automatically for horizontal overflow and element clippings.
+- **DoD**: `python3 scripts/snap_viewports.py` passes with zero overflow.
+
+### Chunk 17.4: Build Unified Auto-Release Pipeline (`[ DONE ]`)
+- **Target Files**: [scripts/release.sh](file:///home/fuckadmin/Projects/chat.zyekh.com/scripts/release.sh), [package.json](file:///home/fuckadmin/Projects/chat.zyekh.com/package.json)
+- **Scope**:
+  - Single-command pipeline executing linter, cache bumper, docker build/update, git commit, Obsidian RAG sync, and git push.
+- **DoD**: `./scripts/release.sh` executes all 7 steps end-to-end.
