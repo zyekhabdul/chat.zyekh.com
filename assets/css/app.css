@@ -342,17 +342,67 @@
     border-top: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     background-color: var(--bg-secondary);
   }
 
-  .sidebar-footer a {
-    font-size: 0.76rem;
-    color: var(--text-faint);
+  .sidebar-links-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 2px;
   }
 
-  .sidebar-footer a:hover {
+  .sidebar-ext-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    padding: 0.35rem 0.6rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: background-color var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+  }
+
+  .sidebar-ext-link:hover {
+    background-color: var(--bg-dark);
+    border-color: var(--border-hover);
     color: var(--text-main);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .sidebar-ext-link svg {
+    color: var(--text-faint);
+    transition: color var(--transition), transform var(--transition);
+    flex-shrink: 0;
+  }
+
+  .sidebar-ext-link:hover svg {
+    color: var(--text-main);
+    transform: translate(1px, -1px);
+  }
+
+  .sidebar-brand-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--text-faint);
+    margin-top: 2px;
+  }
+
+  .sidebar-meta-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+    flex-shrink: 0;
   }
 
   /* Main Chat Area */
@@ -735,6 +785,20 @@
   .message-content em {
     font-style: italic;
     color: var(--text-main);
+  }
+
+  .message-content a {
+    color: var(--text-main);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--border-color-hover);
+    transition: text-decoration-color var(--transition), color var(--transition);
+  }
+
+  .message-content a:hover {
+    color: var(--text-main);
+    text-decoration-color: var(--text-main);
   }
 
   .message-content hr {

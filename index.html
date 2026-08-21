@@ -52,7 +52,7 @@
   <link as="font" crossorigin="" href="./assets/fonts/outfit-700-normal.woff2" rel="preload" type="font/woff2" />
   <link as="font" crossorigin="" href="./assets/fonts/inter-variable-latin.woff2" rel="preload" type="font/woff2" />
   <link rel="stylesheet" href="./assets/fonts/fonts.min.css?v=20260821_v315" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v330" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v335" />
 </head>
 <body>
   <div class="app-container">
@@ -106,12 +106,27 @@
           </button>
         </div>
 
-        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-          <a href="https://zyekh.com" target="_blank" rel="noopener">zyekh.com</a>
-          <a href="https://shop.zyekh.com" target="_blank" rel="noopener">shop.zyekh.com</a>
+        <div class="sidebar-links-row">
+          <a href="https://zyekh.com" target="_blank" rel="noopener" class="sidebar-ext-link">
+            <span>zyekh.com</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+          <a href="https://shop.zyekh.com" target="_blank" rel="noopener" class="sidebar-ext-link">
+            <span>shop.zyekh.com</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
         </div>
-        <div style="font-size: 0.72rem; color: var(--text-faint); margin-top: 2px;">
-          Zyekh Private AI • Multi-Model Gateway
+        <div class="sidebar-brand-meta">
+          <span class="sidebar-meta-dot"></span>
+          <span>Zyekh Private AI &bull; Multi-Model Gateway</span>
         </div>
       </div>
     </aside>
