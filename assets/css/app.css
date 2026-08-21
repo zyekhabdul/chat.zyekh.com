@@ -1061,6 +1061,8 @@
     position: relative;
     display: inline-flex;
     align-items: center;
+    min-width: 0;
+    flex-shrink: 1;
     z-index: 200;
   }
 
@@ -1071,12 +1073,14 @@
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     color: var(--text-main);
-    padding: 0.4rem 0.75rem;
+    padding: 0.35rem 0.65rem;
     border-radius: var(--radius-md);
     font-family: var(--font-sans);
     font-size: 0.82rem;
     font-weight: 500;
     cursor: pointer;
+    max-width: 100%;
+    min-width: 0;
     transition: border-color var(--transition), background-color var(--transition);
   }
 
@@ -1097,6 +1101,10 @@
   .model-name {
     font-weight: 600;
     letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
   }
 
   .model-badge-tag {
@@ -1663,9 +1671,36 @@
 
 /* ===================== LAYER 4: UTILITIES & RESPONSIVE ===================== */
 @layer utilities {
+  @media (max-width: 1024px) {
+    .navbar-actions .btn-text {
+      display: none;
+    }
+
+    .btn-action, .theme-toggle-btn {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .model-badge-tag {
+      display: none;
+    }
+
+    .model-name {
+      max-width: 140px;
+    }
+  }
+
   @media (max-width: 768px) {
     .btn-menu-toggle {
       display: inline-flex;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
     }
 
     .navbar-title-wrap span {
@@ -1699,11 +1734,6 @@
       pointer-events: auto;
     }
 
-    .btn-action, .theme-toggle-btn {
-      padding: 0.35rem 0.55rem;
-      font-size: 0.75rem;
-    }
-
     .chat-messages {
       padding: 1rem 0.75rem;
     }
@@ -1728,40 +1758,82 @@
 
     .model-dropdown {
       width: min(320px, calc(100vw - 24px));
-      left: -10px;
+      left: 0;
+    }
+
+    .model-name {
+      max-width: 115px;
     }
   }
 
   @media (max-width: 520px) {
     .chat-navbar {
-      padding: 0 0.6rem;
-      gap: 6px;
+      padding: 0 0.5rem;
+      gap: 4px;
     }
 
     .navbar-left {
-      gap: 6px;
+      gap: 4px;
     }
 
-    .navbar-actions .btn-text {
-      display: none;
+    .navbar-actions {
+      gap: 4px;
     }
 
     .btn-action, .theme-toggle-btn {
-      padding: 0.4rem 0.5rem;
-      gap: 0;
+      width: 28px;
+      height: 28px;
+      padding: 0;
     }
 
-    .model-badge-tag {
-      display: none;
+    .btn-menu-toggle {
+      width: 28px;
+      height: 28px;
     }
 
     .model-select-btn {
-      padding: 0.35rem 0.55rem;
-      font-size: 0.76rem;
+      padding: 0.25rem 0.45rem;
+      font-size: 0.74rem;
+      gap: 4px;
+    }
+
+    .model-name {
+      max-width: 90px;
     }
 
     .avatar-presets-grid {
       grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 360px) {
+    .chat-navbar {
+      padding: 0 0.3rem;
+      gap: 2px;
+    }
+
+    .navbar-actions {
+      gap: 2px;
+    }
+
+    .btn-action, .theme-toggle-btn, .btn-menu-toggle {
+      width: 26px;
+      height: 26px;
+    }
+
+    .btn-action svg, .theme-toggle-btn svg, .btn-menu-toggle svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .model-select-btn {
+      padding: 0.2rem 0.35rem;
+      font-size: 0.7rem;
+      gap: 3px;
+    }
+
+    .model-name {
+      max-width: 70px;
     }
   }
 }
