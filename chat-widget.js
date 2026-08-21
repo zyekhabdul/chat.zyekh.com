@@ -254,23 +254,66 @@
   `;
   document.head.appendChild(style);
 
-  // Helper Markdown formatter
+  // Helper Markdown formatter (Tokenized Architecture)
   function formatMarkdown(text) {
     if (!text) return '';
-    let html = text
+    let str = text
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-    // Bold
-    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
-    // Inline code
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+
+    const codeBlocks = [];
+    const inlineCodes = [];
+
+    // Extract Code blocks
+    str = str.replace(/```([a-zA-Z0-9_\-#+]*)\n([\s\S]*?)```/g, (match, lang, code) => {
+      const idx = codeBlocks.length;
+      codeBlocks.push(`<pre style="background:#000;border:1px solid #27272a;border-radius:4px;padding:8px 10px;margin:6px 0;overflow-x:auto;font-family:monospace;font-size:12px;"><code>${code.trimEnd()}</code></pre>`);
+      return `___CODEBLOCK_${idx}___`;
+    });
+
+    // Extract Inline code
+    str = str.replace(/`([^`]+)`/g, (match, code) => {
+      const idx = inlineCodes.length;
+      inlineCodes.push(`<code style="background:#000;border:1px solid #27272a;border-radius:3px;padding:2px 4px;font-family:monospace;font-size:12px;">${code}</code>`);
+      return `___INLINECODE_${idx}___`;
+    });
+
+    // Blockquotes / Callouts
+    str = str.replace(/^&gt;\s?(.*)$/gm, '<div style="border-left:3px solid #fafafa;background:#18181b;padding:6px 10px;margin:6px 0;border-radius:0 3px 3px 0;"><p style="margin:0;">$1</p></div>');
+
+    // Headings
+    str = str.replace(/^### (.*$)/gm, '<h3 style="font-size:14px;margin:6px 0 2px 0;color:#fafafa;">$1</h3>');
+    str = str.replace(/^## (.*$)/gm, '<h2 style="font-size:15px;margin:8px 0 3px 0;color:#fafafa;">$1</h2>');
+
+    // Bold & Italic
+    str = str.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    str = str.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
     // Links
-    html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    str = str.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#fafafa;text-decoration:underline;">$1</a>');
+
+    // Lists
+    str = str.replace(/((?:^[ \t]*(?:[•\-\*]|\d+\.)[ \t]+[^\n]+\r?\n?)+)/gm, (listMatch) => {
+      const lines = listMatch.trim().split('\n');
+      const isOrdered = /^[ \t]*\d+\./.test(lines[0]);
+      const items = lines.map(line => {
+        const content = line.replace(/^[ \t]*(?:[•\-\*]|\d+\.)[ \t]+/, '');
+        return `<li style="margin-bottom:2px;">${content}</li>`;
+      }).join('');
+      return isOrdered ? `<ol style="margin:4px 0 6px 16px;">${items}</ol>` : `<ul style="margin:4px 0 6px 16px;">${items}</ul>`;
+    });
+
     // Newlines
-    html = html.replace(/\n/g, '<br>');
-    return html;
+    str = str.replace(/(?<!<\/li>|<\/ul>|<\/ol>|<\/h[1-6]>|<\/div>|<\/p>)\n/g, '<br>');
+
+    // Restore code tokens
+    str = str.replace(/___CODEBLOCK_(\d+)___/g, (_, idx) => codeBlocks[Number(idx)] || '');
+    str = str.replace(/___INLINECODE_(\d+)___/g, (_, idx) => inlineCodes[Number(idx)] || '');
+
+    return str;
   }
 
   // Create UI Elements

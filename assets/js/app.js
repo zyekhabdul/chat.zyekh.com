@@ -478,33 +478,41 @@
       .replace(/'/g, '&#039;');
   }
 
-  // Rich Markdown Engine (Tables, Callouts, Headings, Code Headers)
+  // Rich Markdown Engine (Tokenized Architecture: Code Safe, Tables, Callouts, Lists)
   function formatMarkdown(text) {
     if (!text) return '';
-    let html = escapeHtml(text);
 
-    // 1. Code blocks with language detection and header
-    html = html.replace(/```([a-zA-Z0-9_\-#+]*)\n([\s\S]*?)```/g, (match, lang, code) => {
+    // 1. Escape HTML
+    let str = escapeHtml(text);
+
+    const codeBlocks = [];
+    const inlineCodes = [];
+
+    // 2. Extract Code blocks (protect contents from markdown rules)
+    str = str.replace(/```([a-zA-Z0-9_\-#+]*)\n([\s\S]*?)```/g, (match, lang, code) => {
+      const idx = codeBlocks.length;
       const displayLang = (lang || 'CODE').toUpperCase();
-      return `<div class="code-block-wrapper">` +
-             `<div class="code-block-header">` +
-               `<span class="code-lang">${displayLang}</span>` +
-               `<button class="copy-code-btn" type="button" aria-label="Copy Code">Copy</button>` +
-             `</div>` +
-             `<pre><code class="language-${lang || 'plaintext'}">${code}</code></pre>` +
-             `</div>`;
+      codeBlocks.push(
+        `<div class="code-block-wrapper">` +
+        `<div class="code-block-header">` +
+          `<span class="code-lang">${displayLang}</span>` +
+          `<button class="copy-code-btn" type="button" aria-label="Copy Code">Copy</button>` +
+        `</div>` +
+        `<pre><code class="language-${lang || 'plaintext'}">${code.trimEnd()}</code></pre>` +
+        `</div>`
+      );
+      return `___CODEBLOCK_${idx}___`;
     });
 
-    // 2. Blockquotes / Callouts (> text)
-    html = html.replace(/^(?:&gt;|>)[ \t]?(.*)$/gm, '<div class="callout"><p>$1</p></div>');
-
-    // 3. Headings (###, ##, #)
-    html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
-    html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
-    html = html.replace(/^# (.*$)/gm, '<h4>$1</h4>');
+    // 3. Extract Inline code (protect contents from bold/italic/links)
+    str = str.replace(/`([^`]+)`/g, (match, code) => {
+      const idx = inlineCodes.length;
+      inlineCodes.push(`<code>${code}</code>`);
+      return `___INLINECODE_${idx}___`;
+    });
 
     // 4. Tables (| Header | Header |)
-    html = html.replace(/((?:\|[^\n]+\|\r?\n?){2,})/g, (tableMatch) => {
+    str = str.replace(/((?:\|[^\n]+\|\r?\n?){2,})/g, (tableMatch) => {
       const lines = tableMatch.trim().split('\n').map(l => l.trim()).filter(Boolean);
       if (lines.length < 2) return tableMatch;
       
@@ -527,24 +535,43 @@
       return tableHtml;
     });
 
-    // 5. Inline code
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    // 5. Horizontal rules
+    str = str.replace(/^(?:---|___|\*\*\*)$/gm, '<hr />');
 
-    // 6. Bold & Italic
-    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+    // 6. Blockquotes / Callouts (> text)
+    str = str.replace(/^&gt;\s?(.*)$/gm, '<div class="callout"><p>$1</p></div>');
 
-    // 7. Links
-    html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    // 7. Headings (###, ##, #)
+    str = str.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+    str = str.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+    str = str.replace(/^# (.*$)/gm, '<h4>$1</h4>');
 
-    // 8. Lists
-    html = html.replace(/^\s*•\s*(.*)$/gm, '<li>$1</li>');
-    html = html.replace(/^\s*-\s*(.*)$/gm, '<li>$1</li>');
+    // 8. Bold & Italic
+    str = str.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    str = str.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
-    // 9. Newlines (avoiding breaking table/pre tags)
-    html = html.replace(/(?<!<\/li>|<\/h[1-6]>|<\/table>|<\/tbody>|<\/tr>|<\/thead>|<\/div>|<\/p>)\n/g, '<br>');
+    // 9. Links
+    str = str.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
 
-    return html;
+    // 10. Lists (group consecutive list items into ul/ol)
+    str = str.replace(/((?:^[ \t]*(?:[•\-\*]|\d+\.)[ \t]+[^\n]+\r?\n?)+)/gm, (listMatch) => {
+      const lines = listMatch.trim().split('\n');
+      const isOrdered = /^[ \t]*\d+\./.test(lines[0]);
+      const items = lines.map(line => {
+        const content = line.replace(/^[ \t]*(?:[•\-\*]|\d+\.)[ \t]+/, '');
+        return `<li>${content}</li>`;
+      }).join('');
+      return isOrdered ? `<ol>${items}</ol>` : `<ul>${items}</ul>`;
+    });
+
+    // 11. Newlines (avoiding breaking container tags)
+    str = str.replace(/(?<!<\/li>|<\/ul>|<\/ol>|<\/h[1-6]>|<\/table>|<\/tbody>|<\/tr>|<\/thead>|<\/div>|<\/p>|<hr \/>)\n/g, '<br>');
+
+    // 12. Restore Code blocks & Inline codes
+    str = str.replace(/___CODEBLOCK_(\d+)___/g, (_, idx) => codeBlocks[Number(idx)] || '');
+    str = str.replace(/___INLINECODE_(\d+)___/g, (_, idx) => inlineCodes[Number(idx)] || '');
+
+    return str;
   }
 
   // Run
