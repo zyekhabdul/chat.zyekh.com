@@ -126,17 +126,21 @@
       transform: translateY(0) scale(1);
     }
     .zyekh-chat-header {
-      padding: 14px 16px;
+      padding: 12px 14px;
       background: var(--zw-bg-header);
       border-bottom: 1px solid var(--zw-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
+      box-sizing: border-box;
+      min-height: 52px;
     }
     .zyekh-chat-header-info {
       display: flex;
       flex-direction: column;
       gap: 2px;
+      min-width: 0;
     }
     .zyekh-chat-header-title {
       font-size: 14px;
@@ -162,24 +166,37 @@
     .zyekh-chat-header-actions {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 2px;
+      flex-shrink: 0;
     }
     .zyekh-chat-action-btn {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      margin: 0;
       background: transparent;
       border: none;
       color: var(--zw-text-faint);
       cursor: pointer;
-      padding: 4px;
-      border-radius: 4px;
-      display: flex;
+      border-radius: 6px;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: color 0.15s, background-color 0.15s;
+      box-sizing: border-box;
       text-decoration: none;
+      transition: color 0.15s, background-color 0.15s;
+      flex-shrink: 0;
+      line-height: 1;
     }
     .zyekh-chat-action-btn:hover {
       color: var(--zw-text);
       background-color: var(--zw-border);
+    }
+    .zyekh-chat-action-btn svg {
+      width: 15px;
+      height: 15px;
+      display: block;
+      flex-shrink: 0;
     }
     .zyekh-chat-messages {
       flex: 1;
@@ -411,7 +428,7 @@
       </div>
       <div class="zyekh-chat-header-actions">
         <button class="zyekh-chat-action-btn zyekh-chat-reset" id="zyekhChatReset" aria-label="Bersihkan Percakapan" title="Bersihkan Percakapan">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
             <path d="M21 3v5h-5"></path>
             <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
@@ -419,14 +436,14 @@
           </svg>
         </button>
         <a href="https://chat.zyekh.com/?utm_source=widget_expand&utm_medium=referral" target="_blank" rel="noopener" class="zyekh-chat-action-btn" title="Buka Aplikasi Penuh" aria-label="Buka Aplikasi Penuh">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
             <polyline points="15 3 21 3 21 9"></polyline>
             <line x1="10" y1="14" x2="21" y2="3"></line>
           </svg>
         </a>
-        <button class="zyekh-chat-action-btn zyekh-chat-close" aria-label="Tutup Obrolan">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="zyekh-chat-action-btn zyekh-chat-close" aria-label="Tutup Obrolan" title="Tutup Obrolan">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
