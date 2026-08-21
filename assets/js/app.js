@@ -685,6 +685,15 @@
         })
       });
 
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: Gagal memproses share.`);
+      }
+
+      const cType = res.headers.get('content-type') || '';
+      if (!cType.includes('application/json')) {
+        throw new Error('Respon server bukan JSON. Pastikan container produksi telah diperbarui.');
+      }
+
       const data = await res.json();
       if (data && data.success && (data.fullUrl || data.url)) {
         const fullLink = data.fullUrl || (window.location.origin + data.url);
@@ -705,7 +714,10 @@
 
   function copyShareUrl() {
     const url = shareUrlPreview?.textContent || '';
-    if (!url || url.includes('[ ERROR ]') || url.includes('Menyimpan')) return;
+    if (!url || url.includes('[ ERROR ]') || url.includes('Menyimpan') || url.includes('Membuat')) {
+      showToast('[ WARN ] Belum ada tautan valid untuk disalin');
+      return;
+    }
     navigator.clipboard.writeText(url).then(() => {
       showToast('[ VERIFIED ] Tautan publik berhasil disalin ke clipboard');
     }).catch(() => {
@@ -721,6 +733,8 @@
         const cleanId = importShareId.replace(/[^a-zA-Z0-9_-]/g, '');
         const res = await fetch(`${API_BASE}/api/share/${cleanId}`);
         if (!res.ok) return;
+        const cType = res.headers.get('content-type') || '';
+        if (!cType.includes('application/json')) return;
         const data = await res.json();
         if (data && data.messages && Array.isArray(data.messages) && data.messages.length > 0) {
           const newSessionId = 'sess_' + Date.now();
