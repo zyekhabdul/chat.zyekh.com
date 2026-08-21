@@ -83,7 +83,12 @@
     overflow: hidden;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
   body {
+    overscroll-behavior: none;
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: var(--font-sans);
@@ -102,6 +107,16 @@
   :focus-visible {
     outline: 2px solid var(--text-main);
     outline-offset: 2px;
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.2s;
+    animation-timing-function: ease;
   }
 }
 
