@@ -152,41 +152,62 @@
 
 ---
 
-## Phase 9: Multi-Category Interactive Starter Tabs & Universal Onboarding Architecture (`[ IN_PROGRESS ]`)
+## Phase 9: Multi-Category Interactive Starter Tabs & Universal Onboarding Architecture (`[ DONE ]`)
 
-### Chunk 9.1: Multi-Category Segment Tabs CSS Architecture
-- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css) (lines ~670-725)
+### Chunk 9.1: Multi-Category Segment Tabs CSS Architecture (`[ DONE ]`)
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
 - **Scope**:
-  - Implement `.starter-tabs-nav` segmented control container (flex horizontal, gap 6px, justify-center, margin-bottom 14px).
-  - Implement `.starter-tab-btn` (padding 5px 12px, font-size 0.78rem, font-weight 600, border 1px solid var(--border-color), border-radius var(--radius-full), background var(--bg-card), color var(--text-muted)).
-  - Implement active tab state `.starter-tab-btn.active` (solid monochrome fill: background var(--text-main), color var(--bg-dark), border-color var(--text-main)).
-  - Add smooth fade transition `.starter-pills-wrap` with animation keyframes `fadeInPills`.
-- **DoD**: Pixel-perfect responsive segment tab bar with crisp monochrome contrast.
+  - Implemented `.starter-tabs-nav` segmented control container.
+- **DoD**: Responsive tab bar functional.
 
-### Chunk 9.2: Multi-Category Schema & Interactive Tab Switcher Engine
+### Chunk 9.2: Multi-Category Schema & Interactive Tab Switcher Engine (`[ DONE ]`)
 - **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
 - **Scope**:
-  - Expand `I18N_DICT` (both EN and ID) with 4 structured categories:
-    1. `general`: Critical Idea Roast, Problem Solver, Explain Like I'm 5, Productivity Plan.
-    2. `creative`: Catchy Hook & Copy, Article Draft, Polish Tone, Viral Angle.
-    3. `research`: Debate Counter-Argument, Logic Synthesis, Reasoning Puzzle, Paper Deep Dive.
-    4. `dev`: Roast Tech Stack, ASCII Blueprint, Zero-Bloat Refactor, Concurrency Benchmark.
-  - Implement state `activeStarterCategory = 'general'`.
-  - Implement `switchStarterCategory(categoryKey)` with immediate DOM rendering.
-  - Update `renderWelcomeScreen()` to render the category tabs navigation + dynamic capsule pills.
-- **DoD**: Instant 0ms category switching across 4 segments in both English and Indonesian.
+  - Expanded `I18N_DICT` with 4 structured categories (General, Creative, Research, Dev).
+- **DoD**: Instant 0ms category switching across 4 segments.
 
-### Chunk 9.3: Cache Version Bumping & HTML Verification
+### Chunk 9.3: Cache Version Bumping & HTML Verification (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - Bump stylesheet query to `app.css?v=20260821_v408`.
-  - Bump script query to `app.js?v=20260821_v447`.
+  - Bumped stylesheet query to `app.css?v=20260821_v408` and script query to `app.js?v=20260821_v447`.
+- **DoD**: Cache strings incremented.
+
+### Chunk 9.4: Empirical Verification, Docker Rebuild & Local Commit Checkpoint (`[ DONE ]`)
+- **Target Files**: Local Git Tree, Obsidian Vault Memory
+- **Scope**:
+  - Verified 0 emoji, 0 syntax error, container converged, commit `3ae7980` pushed.
+- **DoD**: Exit code 0 on all tests.
+
+---
+
+## Phase 10: Segmented Control Dock vs Interactive Action Cards Distinction (`[ IN_PROGRESS ]`)
+
+### Chunk 10.1: Segmented Dock & Action Card Grid CSS Overhaul
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css) (lines ~670-765)
+- **Scope**:
+  - Refactor `.starter-tabs-nav` into a single cohesive pill dock container (`display: inline-flex`, `background: var(--bg-card)`, `border: 1px solid var(--border-color)`, `padding: 3px`, `border-radius: var(--radius-full)`, `gap: 2px`).
+  - Refactor `.starter-tab-btn` into borderless tab buttons with smooth active pill slider fill (`.starter-tab-btn.active`).
+  - Refactor `.starter-pills-wrap` into a clean 2x2 responsive action card grid (`display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))`).
+  - Refactor `.starter-pill` into distinct interactive prompt cards with badge tag (`.starter-pill-prefix`), strong title (`.starter-pill-label`), and directional indicator (`.starter-pill-arrow`).
+- **DoD**: 100% visual differentiation between category switcher dock and prompt action cards.
+
+### Chunk 10.2: Prompt Card Markup & Template Alignment in JS
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js) (lines ~1390-1430)
+- **Scope**:
+  - Update `renderWelcomeScreen()` to render `.starter-pill` with `.starter-pill-content` (`.starter-pill-prefix`, `.starter-pill-label`) and `.starter-pill-arrow`.
+- **DoD**: Prompt cards render cleanly with distinct badge, label, and arrow across all categories and languages.
+
+### Chunk 10.3: Cache Query String Bumping
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Bump stylesheet query to `app.css?v=20260821_v409`.
+  - Bump script query to `app.js?v=20260821_v448`.
 - **DoD**: Cache strings incremented cleanly.
 
-### Chunk 9.4: Empirical Verification, Docker Rebuild & Local Commit Checkpoint
-- **Target Files**: Local Git Tree, Obsidian Vault Memory
+### Chunk 10.4: Empirical Verification, Docker Rebuild & Direct Remote Push
+- **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
 - **Scope**:
   - Verify syntax with `node -c` and emojis with `check_emojis.py`.
   - Rebuild docker image and verify container convergence.
-  - Create local commit and synchronize `STATE.md` + `INDEX.md`.
-- **DoD**: Exit code 0 on all tests, container running, commit hash documented.
+  - Create local commit and push directly to remotes as requested.
+- **DoD**: Remote git push successful, live production verified.

@@ -668,96 +668,138 @@
     line-height: 1.5;
   }
 
-  /* Category Segment Tabs Navigation */
+  /* Category Segmented Control Dock */
   .starter-tabs-nav {
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    width: 100%;
-    max-width: 680px;
-    margin: 0 auto 0.85rem auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    padding: 3px;
+    gap: 3px;
+    margin: 0 auto 1.35rem auto;
+    max-width: 90%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .starter-tabs-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .starter-tab-btn {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    justify-content: center;
+    background: transparent;
+    border: none;
     border-radius: var(--radius-full);
-    padding: 0.28rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 600;
+    padding: 0.32rem 0.85rem;
+    font-size: 0.76rem;
+    font-weight: 500;
     color: var(--text-muted);
     cursor: pointer;
     text-decoration: none;
-    transition: background-color var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+    transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
+    white-space: nowrap;
   }
 
-  .starter-tab-btn:hover {
-    border-color: var(--border-hover);
+  .starter-tab-btn:hover:not(.active) {
     color: var(--text-main);
+    background: var(--bg-secondary);
   }
 
   .starter-tab-btn.active {
     background: var(--text-main);
     color: var(--bg-dark);
-    border-color: var(--text-main);
+    font-weight: 700;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   }
 
-  /* Modern Capsule Starter Pills */
+  /* Interactive Prompt Action Cards Grid */
   .starter-pills-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
     width: 100%;
-    max-width: 720px;
+    max-width: 680px;
     margin: 0 auto;
     animation: fadeInPills 0.18s ease;
   }
 
   @keyframes fadeInPills {
-    from { opacity: 0; transform: translateY(3px); }
+    from { opacity: 0; transform: translateY(4px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   .starter-pill {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: space-between;
+    gap: 10px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-full);
-    padding: 0.42rem 0.95rem;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--text-muted);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
     cursor: pointer;
+    text-align: left;
     text-decoration: none;
-    transition: background-color var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
-    white-space: nowrap;
+    transition: background-color var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .starter-pill:hover {
     background: var(--bg-secondary);
     border-color: var(--border-hover);
-    color: var(--text-main);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px var(--accent-glow);
   }
 
   .starter-pill:active {
-    transform: scale(0.98);
+    transform: scale(0.99);
+  }
+
+  .starter-pill-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
   }
 
   .starter-pill-prefix {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-faint);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-main);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+  }
+
+  .starter-pill-label {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .starter-pill-arrow {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .starter-pill:hover .starter-pill-arrow {
+    color: var(--text-main);
+    transform: translateX(3px);
   }
 
   /* Message Rows */

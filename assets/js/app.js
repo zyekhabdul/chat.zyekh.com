@@ -1406,8 +1406,11 @@
       const safePrompt = item.prompt.replace(/'/g, "\\'");
       return `
         <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${safePrompt}')">
-          <span class="starter-pill-prefix">${escapeHtml(item.prefix)}</span>
-          <span>${escapeHtml(item.label)}</span>
+          <div class="starter-pill-content">
+            <span class="starter-pill-prefix">${escapeHtml(item.prefix)}</span>
+            <span class="starter-pill-label">${escapeHtml(item.label)}</span>
+          </div>
+          <span class="starter-pill-arrow">&rarr;</span>
         </button>
       `;
     }).join('');
