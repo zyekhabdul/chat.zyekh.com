@@ -694,21 +694,21 @@
   }
 
   .welcome-title {
-    font-size: clamp(1.55rem, 4.5vw, 2.25rem);
+    font-size: clamp(1.4rem, 4.5vw, 2.25rem);
     font-weight: 800;
     letter-spacing: -0.025em;
     line-height: 1.22;
-    margin-bottom: 0.65rem;
+    margin-bottom: 0.5rem;
     color: var(--text-main);
   }
 
   .welcome-subtitle {
-    font-size: 0.86rem;
+    font-size: clamp(0.75rem, 2.2vw, 0.88rem);
     font-weight: 400;
     color: var(--text-muted);
-    max-width: 490px;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+    max-width: 480px;
+    margin-bottom: clamp(1rem, 2.5vw, 1.4rem);
+    line-height: 1.48;
   }
 
   /* Category Segmented Control Dock */
@@ -1901,6 +1901,20 @@
   }
 
   @media (max-width: 520px) {
+    .chat-welcome {
+      padding: 0.5rem 0.5rem 0.75rem 0.5rem;
+    }
+
+    .welcome-title {
+      padding: 0 0.25rem;
+    }
+
+    .welcome-subtitle {
+      max-width: 92%;
+      padding: 0 0.25rem;
+      line-height: 1.42;
+    }
+
     .tab-label-full {
       display: none;
     }

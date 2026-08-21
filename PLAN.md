@@ -288,30 +288,51 @@
 
 ## Phase 14: Top Navbar De-Cluttering & Welcome Typography Hierarchy (Option 1) (`[ IN_PROGRESS ]`)
 
-### Chunk 14.1: Relocate Utility Buttons to Sidebar Footer & Streamline Top Navbar
+## Phase 14: Top Navbar De-Cluttering & Welcome Typography Hierarchy (Option 1) (`[ DONE ]`)
+
+### Chunk 14.1: Relocate Utility Buttons to Sidebar Footer & Streamline Top Navbar (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - In top navbar: Retain only context-relevant conversation actions (`Share`, `Export`, `Clear`).
-  - In sidebar footer: Add dedicated utility toolbar (`Theme`, `Language EN/ID`, `Embed Widget`, `GitHub Repo`).
-  - Maintain all DOM element IDs so existing JS event listeners continue operating flawlessly.
+  - Relocated 4 utility buttons to sidebar footer and streamlined top navbar to 3 actions.
 - **DoD**: Top navbar has only 3 clean actions, sidebar footer houses 4 global utilities.
 
-### Chunk 14.2: Typography Hierarchy Enhancement & Sidebar Actions CSS
+### Chunk 14.2: Typography Hierarchy Enhancement & Sidebar Actions CSS (`[ DONE ]`)
 - **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
 - **Scope**:
-  - Boost `.welcome-title` font-size to `clamp(1.55rem, 4.5vw, 2.25rem)` with `font-weight: 800` and tight tracking (`-0.025em`).
-  - Soften `.welcome-subtitle` font-size to `0.86rem` with `font-weight: 400`, `line-height: 1.6`, and `max-width: 500px`.
-  - Add styling for `.sidebar-actions-row` and `.sidebar-action-btn`.
-- **DoD**: Clear visual distinction between primary heading and secondary guidance, beautiful sidebar actions.
+  - Boosted title weight/size and added sidebar actions row styling.
+- **DoD**: Visual hierarchy enhanced.
 
-### Chunk 14.3: Cache Version Bumping
+### Chunk 14.3: Cache Version Bumping (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - Bump stylesheet query to `app.css?v=20260821_v413`.
-  - Bump script query to `app.js?v=20260821_v452`.
+  - Bumped to `app.css?v=20260821_v413` and `app.js?v=20260821_v452`.
 - **DoD**: Cache versions incremented.
 
-### Chunk 14.4: Empirical Verification, Docker Rebuild & Remote Push
+### Chunk 14.4: Empirical Verification, Docker Rebuild & Remote Push (`[ DONE ]`)
+- **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
+- **Scope**:
+  - Verified and pushed commit `65f8830`.
+- **DoD**: Verified live on Cloudflare edge.
+
+---
+
+## Phase 15: Fluid Clamp Subtitle & Mobile Screen Vertical Optimization (`[ IN_PROGRESS ]`)
+
+### Chunk 15.1: Apply Responsive clamp() to Welcome Subtitle & Spacing
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
+- **Scope**:
+  - Set `.welcome-subtitle` to `font-size: clamp(0.76rem, 2.2vw, 0.88rem); line-height: 1.48; margin-bottom: clamp(1rem, 2.5vw, 1.4rem); max-width: 480px;`.
+  - Set `@media (max-width: 520px)` adjustments for `.chat-welcome`, `.welcome-title`, and `.welcome-subtitle` to prevent excessive line breaks and save mobile vertical space.
+- **DoD**: Subtitle shrinks dynamically on mobile viewports without crowding.
+
+### Chunk 15.2: Cache Version Bumping
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Bump stylesheet query to `app.css?v=20260821_v414`.
+  - Bump script query to `app.js?v=20260821_v453`.
+- **DoD**: Cache versions incremented.
+
+### Chunk 15.3: Empirical Verification, Docker Rebuild & Remote Push
 - **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
 - **Scope**:
   - Verify 0 emojis and 0 JS syntax errors.
