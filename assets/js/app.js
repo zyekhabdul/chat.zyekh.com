@@ -40,9 +40,9 @@
       hint_enter: '[ Enter ] Send',
       hint_shift_enter: '[ Shift + Enter ] New line',
       hint_model_prefix: 'Model: ',
-      welcome_badge: 'ZYEKH AI COMPANION',
+      welcome_badge: 'ZYEKH AI',
       welcome_title: 'Hello {name}! What shall we build today?',
-      welcome_subtitle: 'High-speed AI companion ready for architectural design, code review, technical research, and strategic brainstorming.',
+      welcome_subtitle: 'High-speed AI ready for architectural design, code review, technical research, and strategic brainstorming.',
       sug_1_cat: '[ ROAST MODE ]',
       sug_1_title: 'Roast My Architecture / Stack',
       sug_1_desc: 'Deep architecture roast: uncover performance bottlenecks, bloat, and anti-patterns.',
@@ -130,9 +130,9 @@
       hint_enter: '[ Enter ] Kirim',
       hint_shift_enter: '[ Shift + Enter ] Baris baru',
       hint_model_prefix: 'Model: ',
-      welcome_badge: 'ZYEKH AI COMPANION',
+      welcome_badge: 'ZYEKH AI',
       welcome_title: 'Hai {name}! Mau bahas apa hari ini?',
-      welcome_subtitle: 'AI Companion siap berdiskusi, brainstorming arsitektur, riset teknis, dan refleksi harian dengan 6 model AI pilihan.',
+      welcome_subtitle: 'AI siap berdiskusi, brainstorming arsitektur, riset teknis, dan refleksi harian dengan 6 model AI pilihan.',
       sug_1_cat: '[ ROAST MODE ]',
       sug_1_title: 'Roast Arsitektur & Stack',
       sug_1_desc: 'Roasting tajam dan jujur: temukan bottleneck, bloat, dan anti-pattern dalam sistem.',
@@ -1102,7 +1102,7 @@
 
   function updateSocialShareLinks(link) {
     if (!link) return;
-    const shareText = encodeURIComponent('Check out this conversation on Zyekh AI Companion:');
+    const shareText = encodeURIComponent('Check out this conversation on Zyekh AI:');
     const shareLinkEncoded = encodeURIComponent(link);
 
     if (shareToX) shareToX.href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareLinkEncoded}`;
@@ -1421,7 +1421,7 @@
     // 1. If WebGPU Neural Engine is active, perform authentic token generation
     if (webgpuEngine) {
       try {
-        const sysMsg = `You are Zyekh AI Companion, an objective, concise, and highly efficient AI coding mentor. User Name: ${profile?.name || 'User'}. Instructions: ${profile?.instructions || 'Be direct, objective, accurate, and concise.'}`;
+        const sysMsg = `You are Zyekh AI, an objective, concise, and highly efficient AI coding mentor. User Name: ${profile?.name || 'User'}. Instructions: ${profile?.instructions || 'Be direct, objective, accurate, and concise.'}`;
         const chatHistory = [
           { role: 'system', content: sysMsg },
           ...history.slice(-8).map((m) => ({
@@ -1463,7 +1463,7 @@
     let replyBody = '';
 
     if (p.includes('halo') || p.includes('hai') || p.includes('hi') || p.includes('siapa')) {
-      replyBody = `Halo ${userName}! Saya adalah **Zyekh AI Companion (Mode On-Device)** yang berjalan 100% langsung di perangkat Anda via **${hardwareTag}**.\n\nKeunggulan mode ini:\n1. **Zero Server Load**: Server VPS tidak menerima trafik data sama sekali.\n2. **100% Offline**: Tetap dapat digunakan saat koneksi internet terputus.\n3. **Privasi Absolut**: Seluruh percakapan diproses di memori browser Anda.\n\nAda yang bisa saya bantu analisis hari ini?`;
+      replyBody = `Halo ${userName}! Saya adalah **Zyekh AI (Mode On-Device)** yang berjalan 100% langsung di perangkat Anda via **${hardwareTag}**.\n\nKeunggulan mode ini:\n1. **Zero Server Load**: Server VPS tidak menerima trafik data sama sekali.\n2. **100% Offline**: Tetap dapat digunakan saat koneksi internet terputus.\n3. **Privasi Absolut**: Seluruh percakapan diproses di memori browser Anda.\n\nAda yang bisa saya bantu analisis hari ini?`;
     } else if (p.includes('arsitektur') || p.includes('server') || p.includes('cloud') || p.includes('vps')) {
       replyBody = `Berikut ringkasan prinsip **Arsitektur Minimalis & Zero-Load**:\n\n1. **Edge Offloading**: Pindahkan aset statis dan cache ke Cloudflare Anycast CDN (TTFB < 20ms).\n2. **Decoupled Gateway**: Pisahkan UI klien dari inferensi backend untuk skalabilitas independen.\n3. **Local-First Persistence**: Simpan riwayat di \`localStorage\` atau IndexedDB lokal untuk privasi dan latensi instan.\n4. **Client-Side AI**: Gunakan WebGPU untuk tugas ringan guna menghemat biaya token API cloud.`;
     } else if (p.includes('kode') || p.includes('coding') || p.includes('javascript') || p.includes('python')) {
@@ -1649,7 +1649,7 @@
 
     let md = `# ${sess.title}\n\n`;
     md += `- **Date**: ${sess.createdAt || new Date().toISOString()}\n`;
-    md += `- **Platform**: Zyekh AI Companion (chat.zyekh.com)\n`;
+    md += `- **Platform**: Zyekh AI (chat.zyekh.com)\n`;
     md += `- **User**: ${userProfile.name || 'User'}\n\n---\n\n`;
 
     sess.messages.forEach((msg) => {
@@ -1803,7 +1803,7 @@
     ctx.fillStyle = '#a1a1aa';
     ctx.font = '600 17px monospace';
     ctx.textAlign = 'left';
-    ctx.fillText('> Zyekh AI Companion -- Free, Fast & Private Multi-Model AI', 64, height - 60);
+    ctx.fillText('> Zyekh AI -- Free, Fast & Private Multi-Model AI', 64, height - 60);
 
     ctx.fillStyle = '#71717a';
     ctx.font = '500 16px monospace';

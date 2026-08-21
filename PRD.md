@@ -1,7 +1,7 @@
-# PRODUCT REQUIREMENT DOCUMENT (PRD) — CHAT.ZYEKH.COM (AI COMPANION)
+# PRODUCT REQUIREMENT DOCUMENT (PRD) — CHAT.ZYEKH.COM (ZYEKH AI)
 
 ## 1. Executive Summary & Problem Statement
-- **Product Name**: Zyekh AI Companion Web App (`chat.zyekh.com`)
+- **Product Name**: Zyekh AI Web App (`chat.zyekh.com`)
 - **Target Audience**: Pengguna individu, pengembang software, dan kreator yang membutuhkan teman diskusi interaktif, refleksi harian, brainstorming konsep, dan asisten riset AI berkecepatan tinggi.
 - **Core Problem**: Bot chat konvensional umumnya kaku, terikat konteks transaksi toko, membebani browser dengan bundle framework SPA yang lambat (>1MB), serta membocorkan data/telemetri ke pihak ketiga.
 - **Value Proposition**: Web app percakapan AI mandiri yang ringan (*zero-framework vanilla HTML5/CSS/JS*), berfokus pada privasi (*local-first multi-session history*), dan didukung engine AI lokal berkecepatan tinggi tanpa ketergantungan API pihak ketiga yang berbayar.
@@ -76,8 +76,8 @@
   - [ ] Sitemap XML W3C standard (`sitemap.xml`) dan panduan crawler (`robots.txt`) tersedia di root domain.
   - [ ] Schema.org JSON-LD lengkap (`WebApplication`, `SoftwareApplication`, `FAQPage`, `Author`) terpasang di `index.html` dan `404.html`.
   - [ ] Open Graph & Twitter Social Card tags beresolusi tinggi dengan judul dan deskripsi konversi tinggi.
-  - [ ] Atribusi backlink kontekstual pada `chat-widget.js` (`Powered by Zyekh AI Companion`).
-  - [ ] Fitur *Share Chat Snapshot* publik ber-schema `QAPage` untuk programmatic SEO.
+  - [x] Atribusi backlink kontekstual pada `chat-widget.js` (`Powered by Zyekh AI`).
+  - [x] Fitur *Share Chat Snapshot* publik ber-schema `QAPage` untuk programmatic SEO.
 
 ---
 

@@ -224,7 +224,7 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
 
     const renderedMessages = data.messages.map((m) => {
       const isUser = m.role === 'user';
-      const roleLabel = isUser ? escapeHtml(data.authorName || 'User') : 'Zyekh AI Companion';
+      const roleLabel = isUser ? escapeHtml(data.authorName || 'User') : 'Zyekh AI';
       const avatarLabel = isUser ? (data.authorName ? data.authorName.charAt(0).toUpperCase() : 'U') : 'Z';
       const escapedText = escapeHtml(m.content).replace(/\n/g, '<br>');
 
@@ -254,7 +254,7 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
   <meta property="og:description" content="${desc}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="${shareUrl}" />
-  <meta property="og:site_name" content="Zyekh AI Companion" />
+  <meta property="og:site_name" content="Zyekh AI" />
   <meta property="og:image" content="https://chat.zyekh.com/assets/icons/apple-icon-180x180.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="${title} — Zyekh AI" />
@@ -284,7 +284,7 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
           "url": "${shareUrl}#answer",
           "author": {
             "@type": "Organization",
-            "name": "Zyekh AI Companion",
+            "name": "Zyekh AI",
             "url": "https://chat.zyekh.com/"
           }
         }
@@ -323,7 +323,7 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
   <main class="shared-container">
     <header class="shared-header-bar">
       <a href="/" class="shared-brand">
-        <span>ZYEKH AI COMPANION</span>
+        <span>ZYEKH AI</span>
       </a>
       <a href="/?import_share=${shareId}" class="shared-btn-cta">
         Continue This Chat &rarr;
@@ -341,8 +341,8 @@ app.get(['/s/:id', '/share/:id'], async (req, res) => {
 
     <div class="shared-footer-cta">
       <h4>Start Your Own Conversation</h4>
-      <p>High-speed, private multi-model AI companion for coding, research, and system design.</p>
-      <a href="/" class="shared-btn-cta">Open Zyekh AI Companion</a>
+      <p>High-speed, private multi-model AI for coding, research, and system design.</p>
+      <a href="/" class="shared-btn-cta">Open Zyekh AI</a>
     </div>
   </main>
 </body>

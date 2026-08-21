@@ -1,6 +1,6 @@
 # COMMUNITY LAUNCH KIT & VIRAL DISTRIBUTION ASSETS (CHAT.ZYEKH.COM)
 
-- **Target Application**: [Zyekh AI Companion](https://chat.zyekh.com/)
+- **Target Application**: [Zyekh AI](https://chat.zyekh.com/)
 - **Repository**: `zyekhabdul/chat.zyekh.com`
 - **Architecture**: Zero-Framework Vanilla ESNext, 100/100 Lighthouse, Multi-Model AI Routing, Local-First Multi-Session Storage.
 
@@ -8,13 +8,13 @@
 
 ## 1. Hacker News (Show HN) Package
 
-- **Title**: `Show HN: Zyekh AI – Zero-framework, multi-model AI companion and embeddable widget`
+- **Title**: `Show HN: Zyekh AI – Zero-framework, multi-model AI assistant and embeddable widget`
 - **URL**: `https://chat.zyekh.com/`
 - **Body / Pitch**:
 ```markdown
 Hey HN,
 
-I built Zyekh AI Companion (https://chat.zyekh.com/) because modern AI chat web applications have become excessively bloated with client-side JavaScript, telemetry scripts, hydration delays, and heavy subscription paywalls.
+I built Zyekh AI (https://chat.zyekh.com/) because modern AI chat web applications have become excessively bloated with client-side JavaScript, telemetry scripts, hydration delays, and heavy subscription paywalls.
 
 What we built:
 1. Zero-Framework Architecture: Pure native HTML5, modern CSS Custom Properties, and Vanilla ESNext. Zero React/Vue/Svelte dependencies. Initial page weight is ~14KB, achieving a 100/100 Google Lighthouse score.
@@ -35,20 +35,20 @@ Would love feedback on performance, UI polish, and feature ideas!
 ## 2. Technical Engineering Case Study (Dev.to / Hashnode / Medium)
 
 - **Target Platforms**: Dev.to, Hashnode, Medium (Better Programming)
-- **Title**: *"Why I Built a Zero-Framework AI Companion: 100/100 Lighthouse, Multi-Model Routing, and 14KB Footprint"*
+- **Title**: *"Why I Built a Zero-Framework AI: 100/100 Lighthouse, Multi-Model Routing, and 14KB Footprint"*
 - **Tags**: `#webdev`, `#javascript`, `#ai`, `#architecture`, `#performance`
 
 ### Article Draft
 
 ```markdown
-# Why I Built a Zero-Framework AI Companion: 100/100 Lighthouse, Multi-Model Routing, and 14KB Footprint
+# Why I Built a Zero-Framework AI: 100/100 Lighthouse, Multi-Model Routing, and 14KB Footprint
 
 When building AI web applications in 2026, the default reflex is often to reach for heavy full-stack frameworks (Next.js, Remix, Vite+React). But for conversational AI interfaces, this standard approach introduces distinct bottlenecks:
 - Heavy client-side JavaScript bundles (often 200KB - 500KB+ before the first message is sent).
 - Hydration latency and main-thread blocking during real-time token streaming.
 - Unnecessary server-side state tracking when conversation histories naturally belong to the user.
 
-To solve this, I designed **Zyekh AI Companion** (https://chat.zyekh.com/) using a strict **Zero-Framework Architecture**. Here is what I learned and how it works.
+To solve this, I designed **Zyekh AI** (https://chat.zyekh.com/) using a strict **Zero-Framework Architecture**. Here is what I learned and how it works.
 
 ---
 

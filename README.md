@@ -1,6 +1,6 @@
-# chat.zyekh.com — Zyekh AI Companion Web App
+# chat.zyekh.com — Zyekh AI Web App
 
-Antarmuka web interaktif mandiri (*Full-Screen Standalone Web App*) untuk **Zyekh AI Companion**, teman ngobrol cerdas, diskusi ide, refleksi harian, dan asisten digital.
+Antarmuka web interaktif mandiri (*Full-Screen Standalone Web App*) untuk **Zyekh AI**, platform percakapan cerdas, diskusi arsitektur, riset teknis, dan asisten coding.
 
 ---
 
