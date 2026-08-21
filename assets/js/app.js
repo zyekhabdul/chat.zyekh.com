@@ -222,6 +222,13 @@
     }, 2200);
   }
 
+  // Safe Desktop Focus Helper (Prevents virtual keyboard jump & mobile viewport clipping)
+  function focusChatInputIfDesktop() {
+    if (window.matchMedia && window.matchMedia('(min-width: 769px) and (pointer: fine)').matches) {
+      chatInput?.focus();
+    }
+  }
+
   // Initialization
   function init() {
     initTheme();
@@ -243,7 +250,7 @@
     btnNewChat?.addEventListener('click', () => {
       const activeSess = getSession(currentSessionId);
       if (activeSess && activeSess.messages.length === 0) {
-        chatInput?.focus();
+        focusChatInputIfDesktop();
         closeSidebar();
         return;
       }
@@ -261,7 +268,7 @@
       if (sessionSearchInput) sessionSearchInput.value = '';
       loadSessionToView(newId);
       closeSidebar();
-      chatInput?.focus();
+      focusChatInputIfDesktop();
       showToast('[ INFO ] Sesi obrolan baru siap digunakan');
     });
 
@@ -1028,7 +1035,7 @@
         appendMessageElement(msg.role, msg.content, msg.modelUsed);
       });
     }
-    chatInput?.focus();
+    focusChatInputIfDesktop();
   }
 
   // Welcome Screen
@@ -1217,7 +1224,7 @@
       appendMessageElement('bot', `[ ERROR ] Gagal terhubung ke Zyekh AI Core API (${err.message}). Pastikan server aktif.`);
     } finally {
       btnSend.disabled = false;
-      chatInput?.focus();
+      focusChatInputIfDesktop();
     }
   }
 

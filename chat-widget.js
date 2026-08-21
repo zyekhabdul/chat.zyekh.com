@@ -106,6 +106,7 @@
       height: 540px;
       max-width: calc(100vw - 32px);
       max-height: calc(100vh - 110px);
+      max-height: calc(100dvh - 110px);
       background: var(--zw-bg);
       border: 1px solid var(--zw-border);
       border-radius: 8px;
