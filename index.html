@@ -10,11 +10,14 @@
   <!-- Self-hosted Fonts & Styles -->
   <link as="font" crossorigin="" href="./assets/fonts/outfit-700-normal.woff2" rel="preload" type="font/woff2" />
   <link as="font" crossorigin="" href="./assets/fonts/inter-variable-latin.woff2" rel="preload" type="font/woff2" />
-  <link rel="stylesheet" href="./assets/fonts/fonts.min.css?v=20260821_v300" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v300" />
+  <link rel="stylesheet" href="./assets/fonts/fonts.min.css?v=20260821_v301" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260821_v301" />
 </head>
 <body>
   <div class="app-container">
+    <!-- Backdrop Overlay for Mobile Sidebar -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
@@ -51,7 +54,7 @@
     <main class="main-chat">
       <header class="chat-navbar">
         <div class="navbar-left">
-          <button class="btn-menu-toggle" id="btnMenuToggle" type="button" aria-label="Toggle Sidebar">
+          <button class="btn-menu-toggle" id="btnMenuToggle" type="button" aria-label="Buka Sidebar Riwayat">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -59,17 +62,15 @@
             </svg>
           </button>
 
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div class="status-dot"></div>
-            <div class="navbar-title-wrap">
-              <h1>Zyekh AI Companion</h1>
-              <span>Teman diskusi cerdas, interaktif &amp; reflektif</span>
-            </div>
+          <div class="status-dot"></div>
+          <div class="navbar-title-wrap">
+            <h1>Zyekh AI Companion</h1>
+            <span>Teman diskusi cerdas, interaktif &amp; reflektif</span>
           </div>
         </div>
 
         <div class="navbar-actions">
-          <button class="theme-toggle-btn" id="btnThemeToggle" type="button" title="Toggle Dark/Light Mode">
+          <button class="theme-toggle-btn" id="btnThemeToggle" type="button" title="Ganti Tema (Dark / Light)" aria-label="Ganti Tema">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -81,15 +82,15 @@
               <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
               <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
-            <span id="themeLabel">Mode</span>
+            <span class="btn-text" id="themeLabel">Mode</span>
           </button>
 
-          <button class="btn-action" id="btnClearChat" type="button" title="Bersihkan Obrolan Ini">
+          <button class="btn-action" id="btnClearChat" type="button" title="Bersihkan Obrolan Ini" aria-label="Bersihkan Obrolan">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="3 6 5 6 21 6"></polyline>
               <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
             </svg>
-            Bersihkan
+            <span class="btn-text">Bersihkan</span>
           </button>
         </div>
       </header>
@@ -118,6 +119,6 @@
     </main>
   </div>
 
-  <script src="./assets/js/app.js?v=20260821_v300"></script>
+  <script src="./assets/js/app.js?v=20260821_v301"></script>
 </body>
 </html>

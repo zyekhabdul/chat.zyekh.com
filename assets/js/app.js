@@ -29,6 +29,26 @@
   const btnThemeToggle = document.getElementById('btnThemeToggle');
   const themeLabel = document.getElementById('themeLabel');
   const sidebar = document.getElementById('sidebar');
+  const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+  // Sidebar Controls
+  function openSidebar() {
+    sidebar?.classList.add('open');
+    sidebarBackdrop?.classList.add('open');
+  }
+
+  function closeSidebar() {
+    sidebar?.classList.remove('open');
+    sidebarBackdrop?.classList.remove('open');
+  }
+
+  function toggleSidebar() {
+    if (sidebar?.classList.contains('open')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  }
 
   // Initialization
   function init() {
@@ -40,11 +60,11 @@
     btnThemeToggle?.addEventListener('click', toggleTheme);
 
     // Event: Obrolan Baru
-    btnNewChat.addEventListener('click', () => {
+    btnNewChat?.addEventListener('click', () => {
       const activeSess = getSession(currentSessionId);
       if (activeSess && activeSess.messages.length === 0) {
         chatInput.focus();
-        if (window.innerWidth <= 768) sidebar.classList.remove('open');
+        closeSidebar();
         return;
       }
 
@@ -58,7 +78,7 @@
       sessions.unshift(newSess);
       saveSessions();
       loadSessionToView(newId);
-      if (window.innerWidth <= 768) sidebar.classList.remove('open');
+      closeSidebar();
       chatInput.focus();
     });
 
@@ -74,15 +94,30 @@
       }
     });
 
-    // Event: Sidebar Mobile Toggle
-    btnMenuToggle?.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
+    // Event: Sidebar Mobile Toggle & Backdrop Dismiss
+    btnMenuToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleSidebar();
+    });
+
+    sidebarBackdrop?.addEventListener('click', closeSidebar);
+
+    document.addEventListener('click', (e) => {
+      if (sidebar?.classList.contains('open') && !sidebar.contains(e.target) && !btnMenuToggle?.contains(e.target)) {
+        closeSidebar();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSidebar();
+      }
     });
 
     // Event: Submit Pesan
-    chatForm.addEventListener('submit', handleSendMessage);
+    chatForm?.addEventListener('submit', handleSendMessage);
 
-    chatInput.addEventListener('keydown', (e) => {
+    chatInput?.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         chatForm.requestSubmit();
@@ -90,7 +125,7 @@
     });
 
     // Event: Auto-resize Textarea
-    chatInput.addEventListener('input', () => {
+    chatInput?.addEventListener('input', () => {
       chatInput.style.height = 'auto';
       chatInput.style.height = Math.min(chatInput.scrollHeight, 140) + 'px';
     });
@@ -157,6 +192,7 @@
   }
 
   function renderHistoryList() {
+    if (!historyList) return;
     historyList.innerHTML = '';
     sessions.forEach((sess) => {
       const item = document.createElement('div');
@@ -173,7 +209,7 @@
           return;
         }
         loadSessionToView(sess.id);
-        if (window.innerWidth <= 768) sidebar.classList.remove('open');
+        closeSidebar();
       });
 
       historyList.appendChild(item);
@@ -209,7 +245,7 @@
         appendMessageElement(msg.role, msg.content);
       });
     }
-    chatInput.focus();
+    chatInput?.focus();
   }
 
   // Welcome Screen (Standard B Card Architecture from zyekh.com)
@@ -259,8 +295,10 @@
   }
 
   window.sendSuggestedPrompt = function (text) {
-    chatInput.value = text;
-    chatForm.requestSubmit();
+    if (chatInput && chatForm) {
+      chatInput.value = text;
+      chatForm.requestSubmit();
+    }
   };
 
   // Message Handling
