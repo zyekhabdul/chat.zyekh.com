@@ -15,9 +15,19 @@ Buka browser di `http://localhost:3001`.
 
 ---
 
-## 2. API Proxy Routing
+## 2. API Proxy Routing & Multi-Model Contract
 * Seluruh request ke `/api/*` secara otomatis diproxy oleh `server.js` ke `http://127.0.0.1:3000/api/*`.
 * Pada environment production GitHub Pages (`chat.zyekh.com`), `API_BASE` secara default mengarah ke `https://api.zyekh.com`.
+
+### Multi-Model Endpoints Contract:
+1. **GET `/api/models`**:
+   - Mengambil daftar model AI aktif (`gemini-3.7-flash-high`, `gemini-3.1-flash-lite`, `claude-sonnet-4-6`, `claude-opus-4-6-thinking`, `gemini-pro-agent`, `gpt-oss-120b-medium`).
+2. **POST `/api/chat`**:
+   - Payload: `{ "message": "...", "chatId": "...", "persona": "companion", "model": "gemini-3.1-flash-lite" }`
+   - Response: `{ "success": true, "reply": "...", "modelUsed": "gemini-3.1-flash-lite", "persona": "companion" }`
+3. **POST `/api/chat/reset`**:
+   - Payload: `{ "chatId": "...", "channel": "web", "persona": "companion" }`
+
 
 ---
 

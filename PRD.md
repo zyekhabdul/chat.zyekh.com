@@ -47,6 +47,29 @@
   - [x] Reverse proxy internal `/api/*` di `server.js` meneruskan request ke `http://127.0.0.1:3000`.
   - [x] Script mandiri `chat-widget.js` dapat disematkan di halaman web eksternal dengan konfigurasi multi-persona (`companion`, `tech_mentor`, `cloud_assistant`, `cs_store`).
 
+### Feature Group 5: Dynamic Multi-Model Switching
+- **User Story**: Sebagai pengguna, saya ingin dapat memilih model AI yang berbeda (Gemini Flash, Claude Sonnet, Claude Opus, Gemini Pro, GPT OSS) sesuai kebutuhan tugas saya (kecepatan, coding, reasoning mendalam).
+- **Acceptance Criteria**:
+  - [ ] Dropdown/Pill selector model di antarmuka obrolan yang mengambil daftar model aktif via `GET /api/models`.
+  - [ ] Parameter `model` dikirimkan secara dinamis pada setiap request `POST /api/chat`.
+  - [ ] Badge model aktif dan indikator kapabilitas (`[ Reasoning ]`, `[ Fast ]`, `[ Coding ]`) ditampilkan di status bar chat.
+  - [ ] Pilihan model tersimpan di preferensi pengguna (localStorage / user profile).
+
+### Feature Group 6: User Authentication & Profile Customization (PP / Avatar)
+- **User Story**: Sebagai pengguna, saya ingin memiliki profil akun (nama, foto profil / avatar kustom, custom prompt instruksi) agar interaksi AI lebih personal.
+- **Acceptance Criteria**:
+  - [ ] Modal Login & Registrasi dengan autentikasi berbasis session/JWT.
+  - [ ] Panel Profile & Settings: Ganti Foto Profil (Upload gambar / URL avatar / DiceBear avatar generator), ganti Nama Tampilan.
+  - [ ] Custom System Instructions per user (e.g. instruksi gaya respons khusus yang otomatis disematkan).
+  - [ ] Mode Tamu (*Guest Mode*) tetap tersedia tanpa wajib login untuk akses instan.
+
+### Feature Group 7: Modern Glassmorphic Chat Canvas & Transparent Reasoning Trace
+- **User Story**: Sebagai pengguna, saya ingin antarmuka modern setara Claude/ChatGPT dengan Thought Reasoning Drawer dan Artifacts Canvas.
+- **Acceptance Criteria**:
+  - [ ] Tata letak modern glassmorphic slate dark mode dengan sidebar riwayat obrolan yang dapat dilipat (*collapsible*).
+  - [ ] Thought Accordion: Rantai penalaran AI ditampilkan transparan dalam blok yang dapat dibuka/tutup.
+  - [ ] Export obrolan ke format Markdown / Obsidian Vault.
+
 ---
 
 ## 4. Non-Functional Requirements & Security Rails
