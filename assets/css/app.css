@@ -450,6 +450,46 @@
     transform: rotate(30deg);
   }
 
+  .sidebar-actions-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .sidebar-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 0.4rem 0.2rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .sidebar-action-btn:hover {
+    color: var(--text-main);
+    border-color: var(--border-hover);
+    background: var(--bg-dark);
+  }
+
+  .sidebar-action-btn svg {
+    flex-shrink: 0;
+  }
+
+  .sidebar-action-btn .btn-text {
+    font-size: 0.7rem;
+  }
+
   /* Main Chat Area */
   .main-chat {
     flex: 1;
@@ -641,11 +681,11 @@
   }
 
   .welcome-badge {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 3px 8px;
+    padding: 3px 9px;
     background: var(--bg-card);
     color: var(--text-muted);
     border: 1px solid var(--border-color);
@@ -654,18 +694,21 @@
   }
 
   .welcome-title {
-    font-size: clamp(1.35rem, 3.5vw, 1.85rem);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.55rem, 4.5vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.22;
+    margin-bottom: 0.65rem;
     color: var(--text-main);
   }
 
   .welcome-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.86rem;
+    font-weight: 400;
     color: var(--text-muted);
-    max-width: 580px;
+    max-width: 490px;
     margin-bottom: 1.5rem;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   /* Category Segmented Control Dock */
@@ -1853,7 +1896,7 @@
     }
 
     .model-name {
-      max-width: 115px;
+      max-width: 160px;
     }
   }
 
@@ -1890,36 +1933,36 @@
 
     .chat-navbar {
       padding: 0 0.5rem;
-      gap: 4px;
+      gap: 6px;
     }
 
     .navbar-left {
-      gap: 4px;
+      gap: 6px;
     }
 
     .navbar-actions {
-      gap: 4px;
+      gap: 5px;
     }
 
-    .btn-action, .theme-toggle-btn {
-      width: 28px;
-      height: 28px;
+    .btn-action {
+      width: 30px;
+      height: 30px;
       padding: 0;
     }
 
     .btn-menu-toggle {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
     }
 
     .model-select-btn {
-      padding: 0.25rem 0.45rem;
-      font-size: 0.74rem;
-      gap: 4px;
+      padding: 0.28rem 0.55rem;
+      font-size: 0.76rem;
+      gap: 5px;
     }
 
     .model-name {
-      max-width: 90px;
+      max-width: 140px;
     }
 
     .avatar-presets-grid {
@@ -1929,32 +1972,32 @@
 
   @media (max-width: 360px) {
     .chat-navbar {
-      padding: 0 0.3rem;
-      gap: 2px;
+      padding: 0 0.35rem;
+      gap: 4px;
     }
 
     .navbar-actions {
-      gap: 2px;
-    }
-
-    .btn-action, .theme-toggle-btn, .btn-menu-toggle {
-      width: 26px;
-      height: 26px;
-    }
-
-    .btn-action svg, .theme-toggle-btn svg, .btn-menu-toggle svg {
-      width: 12px;
-      height: 12px;
-    }
-
-    .model-select-btn {
-      padding: 0.2rem 0.35rem;
-      font-size: 0.7rem;
       gap: 3px;
     }
 
+    .btn-action, .btn-menu-toggle {
+      width: 28px;
+      height: 28px;
+    }
+
+    .btn-action svg, .btn-menu-toggle svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .model-select-btn {
+      padding: 0.25rem 0.45rem;
+      font-size: 0.72rem;
+      gap: 4px;
+    }
+
     .model-name {
-      max-width: 70px;
+      max-width: 110px;
     }
   }
 }

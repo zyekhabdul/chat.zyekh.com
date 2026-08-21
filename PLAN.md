@@ -264,27 +264,57 @@
 
 ---
 
-## Phase 13: Category Dock Border-Radius Harmonization (Geometric Corner Rhythm) (`[ IN_PROGRESS ]`)
+## Phase 13: Category Dock Border-Radius Harmonization (Geometric Corner Rhythm) (`[ DONE ]`)
 
-### Chunk 13.1: Harmonize Dock and Tab Button Border Radii
+### Chunk 13.1: Harmonize Dock and Tab Button Border Radii (`[ DONE ]`)
 - **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
 - **Scope**:
-  - Change `.starter-tabs-nav` from `border-radius: var(--radius-full)` to `border-radius: var(--radius-md)` (8px).
-  - Change `.starter-tab-btn` from `border-radius: var(--radius-full)` to `border-radius: var(--radius-sm)` (6px).
-  - Update mobile `@media (max-width: 520px)` to use `border-radius: var(--radius-md)`.
-- **DoD**: 100% geometric corner harmony with prompt cards (8px), navbar buttons (8px), and input bar (12px).
+  - Changed `.starter-tabs-nav` to `border-radius: var(--radius-md)` (8px) and tab buttons to `border-radius: var(--radius-sm)` (6px).
+- **DoD**: Geometric nesting rhythm harmonized.
 
-### Chunk 13.2: Cache Version Bumping
+### Chunk 13.2: Cache Version Bumping (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - Bump stylesheet query to `app.css?v=20260821_v412`.
-  - Bump script query to `app.js?v=20260821_v451`.
-- **DoD**: Cache versions incremented cleanly.
+  - Bumped to `app.css?v=20260821_v412` and `app.js?v=20260821_v451`.
+- **DoD**: Cache strings incremented.
 
-### Chunk 13.3: Empirical Verification, Docker Rebuild & Direct Remote Push
+### Chunk 13.3: Empirical Verification, Docker Rebuild & Direct Remote Push (`[ DONE ]`)
 - **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
 - **Scope**:
-  - Verify syntax and 0 emoji.
-  - Rebuild docker image and update service.
+  - Verified and pushed commit `4b75c27`.
+- **DoD**: Live on Cloudflare edge.
+
+---
+
+## Phase 14: Top Navbar De-Cluttering & Welcome Typography Hierarchy (Option 1) (`[ IN_PROGRESS ]`)
+
+### Chunk 14.1: Relocate Utility Buttons to Sidebar Footer & Streamline Top Navbar
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - In top navbar: Retain only context-relevant conversation actions (`Share`, `Export`, `Clear`).
+  - In sidebar footer: Add dedicated utility toolbar (`Theme`, `Language EN/ID`, `Embed Widget`, `GitHub Repo`).
+  - Maintain all DOM element IDs so existing JS event listeners continue operating flawlessly.
+- **DoD**: Top navbar has only 3 clean actions, sidebar footer houses 4 global utilities.
+
+### Chunk 14.2: Typography Hierarchy Enhancement & Sidebar Actions CSS
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
+- **Scope**:
+  - Boost `.welcome-title` font-size to `clamp(1.55rem, 4.5vw, 2.25rem)` with `font-weight: 800` and tight tracking (`-0.025em`).
+  - Soften `.welcome-subtitle` font-size to `0.86rem` with `font-weight: 400`, `line-height: 1.6`, and `max-width: 500px`.
+  - Add styling for `.sidebar-actions-row` and `.sidebar-action-btn`.
+- **DoD**: Clear visual distinction between primary heading and secondary guidance, beautiful sidebar actions.
+
+### Chunk 14.3: Cache Version Bumping
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Bump stylesheet query to `app.css?v=20260821_v413`.
+  - Bump script query to `app.js?v=20260821_v452`.
+- **DoD**: Cache versions incremented.
+
+### Chunk 14.4: Empirical Verification, Docker Rebuild & Remote Push
+- **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
+- **Scope**:
+  - Verify 0 emojis and 0 JS syntax errors.
+  - Rebuild docker image and update swarm service.
   - Commit and push to remotes.
-- **DoD**: Remote push completed, verified on live edge.
+- **DoD**: Verified live on Cloudflare edge.
