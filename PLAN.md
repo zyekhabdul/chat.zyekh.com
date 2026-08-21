@@ -236,31 +236,52 @@
 
 ---
 
-## Phase 12: Responsive Mobile 1-Row Category Dock with Compact Labels (Option A) (`[ IN_PROGRESS ]`)
+## Phase 12: Responsive Mobile 1-Row Category Dock with Compact Labels (Option A) (`[ DONE ]`)
 
-### Chunk 12.1: Dual-Label Dictionary & Template Update in JS
+### Chunk 12.1: Dual-Label Dictionary & Template Update in JS (`[ DONE ]`)
 - **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
 - **Scope**:
-  - Add compact label keys to `I18N_DICT.en` (`tab_general_short: 'General'`, `tab_creative_short: 'Creative'`, `tab_research_short: 'Research'`, `tab_dev_short: 'Code'`) and `I18N_DICT.id` (`tab_general_short: 'Umum'`, `tab_creative_short: 'Kreatif'`, `tab_research_short: 'Riset'`, `tab_dev_short: 'Kode'`).
-  - Update `renderWelcomeScreen()` to render both `<span class="tab-label-full">` and `<span class="tab-label-short">` inside `.starter-tab-btn`.
-- **DoD**: Markup supports responsive label switching.
+  - Added short label keys and updated `renderWelcomeScreen()` markup.
+- **DoD**: Dual labels rendered cleanly.
 
-### Chunk 12.2: Responsive Dock CSS (Desktop Inline-Flex vs Mobile 4-Column Grid)
+### Chunk 12.2: Responsive Dock CSS (Desktop Inline-Flex vs Mobile 4-Column Grid) (`[ DONE ]`)
 - **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
 - **Scope**:
-  - Desktop (> 520px): Show `.tab-label-full`, hide `.tab-label-short`, `.starter-tabs-nav` as centered `inline-flex`.
-  - Mobile (<= 520px): Show `.tab-label-short`, hide `.tab-label-full`, `.starter-tabs-nav` as `display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; max-width: 100%; box-sizing: border-box;`.
-  - Tab button padding adjusted to `0.35rem 0.2rem` with `text-align: center` so 4 tabs fit 100% horizontally on any mobile viewport (360px - 440px) with 0 horizontal scroll.
+  - Configured 4-column responsive grid on mobile viewports.
 - **DoD**: 0 horizontal scrolling on mobile viewports.
 
-### Chunk 12.3: Cache Version Bumping
+### Chunk 12.3: Cache Version Bumping (`[ DONE ]`)
 - **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
 - **Scope**:
-  - Bump stylesheet query to `app.css?v=20260821_v411`.
-  - Bump script query to `app.js?v=20260821_v450`.
+  - Bumped to `app.css?v=20260821_v411` and `app.js?v=20260821_v450`.
+- **DoD**: Cache versions incremented.
+
+### Chunk 12.4: Empirical Verification, Docker Rebuild & Direct Remote Push (`[ DONE ]`)
+- **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
+- **Scope**:
+  - Verified and pushed commit `a9d6d65`.
+- **DoD**: Live on Cloudflare edge.
+
+---
+
+## Phase 13: Category Dock Border-Radius Harmonization (Geometric Corner Rhythm) (`[ IN_PROGRESS ]`)
+
+### Chunk 13.1: Harmonize Dock and Tab Button Border Radii
+- **Target Files**: [assets/css/app.css](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/css/app.css)
+- **Scope**:
+  - Change `.starter-tabs-nav` from `border-radius: var(--radius-full)` to `border-radius: var(--radius-md)` (8px).
+  - Change `.starter-tab-btn` from `border-radius: var(--radius-full)` to `border-radius: var(--radius-sm)` (6px).
+  - Update mobile `@media (max-width: 520px)` to use `border-radius: var(--radius-md)`.
+- **DoD**: 100% geometric corner harmony with prompt cards (8px), navbar buttons (8px), and input bar (12px).
+
+### Chunk 13.2: Cache Version Bumping
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html)
+- **Scope**:
+  - Bump stylesheet query to `app.css?v=20260821_v412`.
+  - Bump script query to `app.js?v=20260821_v451`.
 - **DoD**: Cache versions incremented cleanly.
 
-### Chunk 12.4: Empirical Verification, Docker Rebuild & Direct Remote Push
+### Chunk 13.3: Empirical Verification, Docker Rebuild & Direct Remote Push
 - **Target Files**: Local Git Tree, Remote Repositories (`origin`, `gitlab`)
 - **Scope**:
   - Verify syntax and 0 emoji.
