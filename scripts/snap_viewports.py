@@ -46,7 +46,7 @@ def audit_url(target_url, save_shots=False, output_dir="/tmp/snapshots"):
                 page.goto(target_url, wait_until="networkidle", timeout=10000)
                 time.sleep(0.5) # Wait for animations
                 
-                # Check for horizontal overflow
+                # Check for horizontal overflow & subtitle typography density
                 overflow_info = page.evaluate("""() => {
                     const docWidth = document.documentElement.clientWidth;
                     const scrollWidth = document.documentElement.scrollWidth;
@@ -65,11 +65,25 @@ def audit_url(target_url, save_shots=False, output_dir="/tmp/snapshots"):
                             });
                         }
                     });
+
+                    let subtitleMetrics = null;
+                    const subEl = document.querySelector('.welcome-subtitle');
+                    if (subEl) {
+                        const style = window.getComputedStyle(subEl);
+                        const rect = subEl.getBoundingClientRect();
+                        subtitleMetrics = {
+                            fontSize: style.fontSize,
+                            height: Math.round(rect.height),
+                            lineHeight: style.lineHeight,
+                            color: style.color
+                        };
+                    }
                     
                     return {
                         hasDocOverflow,
                         docWidth,
                         scrollWidth,
+                        subtitleMetrics,
                         overflowingElements: overflowingElements.slice(0, 5)
                     };
                 }""")
@@ -79,7 +93,12 @@ def audit_url(target_url, save_shots=False, output_dir="/tmp/snapshots"):
                     status = "[ OVERFLOW DETECTED ]"
                     has_overflow = True
                 
-                print(f"{status} {vp['name']} ({vp['width']}x{vp['height']}): scrollWidth={overflow_info['scrollWidth']}px (docWidth={overflow_info['docWidth']}px)")
+                sub_info = ""
+                if overflow_info.get("subtitleMetrics"):
+                    sm = overflow_info["subtitleMetrics"]
+                    sub_info = f" | Subtitle: {sm['fontSize']}, H={sm['height']}px"
+
+                print(f"{status} {vp['name']} ({vp['width']}x{vp['height']}): scrollWidth={overflow_info['scrollWidth']}px (docWidth={overflow_info['docWidth']}px){sub_info}")
                 
                 if overflow_info["overflowingElements"]:
                     for item in overflow_info["overflowingElements"]:

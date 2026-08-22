@@ -50,14 +50,19 @@ RAGEOF
   echo "[ PASSED ] Obsidian RAG updated to commit: $COMMIT_HASH"
 fi
 
-echo "=== STEP 6: GIT PUSH TO ALL REMOTES (SSH) ==="
-ALLOW_GIT_PUSH=1 git push all main
-ALLOW_GIT_PUSH=1 git push origin main
+echo "=== STEP 6: GIT PUSH GUARD (git-push-restriction.md) ==="
+if [[ "$*" == *"--push"* ]] || [ "$ALLOW_GIT_PUSH" = "1" ]; then
+  echo "[ PUSH ] Pushing to remote repositories via SSH..."
+  ALLOW_GIT_PUSH=1 git push all main
+  ALLOW_GIT_PUSH=1 git push origin main
+  
+  echo "=== STEP 7: LIVE EDGE VERIFICATION ==="
+  EDGE_CSS=$(curl -s https://chat.zyekh.com/ | grep -o 'assets/css/app.css?v=[^"'\'' ]*' || true)
+  EDGE_JS=$(curl -s https://chat.zyekh.com/ | grep -o 'assets/js/app.js?v=[^"'\'' ]*' || true)
+  echo "[ LIVE EDGE CSS ] $EDGE_CSS"
+  echo "[ LIVE EDGE JS  ] $EDGE_JS"
+else
+  echo "[ LOCAL ONLY ] Remote push skipped. To push to remotes, provide --push or set ALLOW_GIT_PUSH=1."
+fi
 
-echo "=== STEP 7: LIVE EDGE VERIFICATION ==="
-EDGE_CSS=$(curl -s https://chat.zyekh.com/ | grep -o 'assets/css/app.css?v=[^"'\'' ]*')
-EDGE_JS=$(curl -s https://chat.zyekh.com/ | grep -o 'assets/js/app.js?v=[^"'\'' ]*')
-
-echo "[ LIVE EDGE CSS ] $EDGE_CSS"
-echo "[ LIVE EDGE JS  ] $EDGE_JS"
 echo "=== RELEASE COMPLETE ($COMMIT_HASH) ==="
