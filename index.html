@@ -101,7 +101,7 @@
   <link as="font" crossorigin="" href="./assets/fonts/outfit-700-normal.woff2" rel="preload" type="font/woff2" />
   <link as="font" crossorigin="" href="./assets/fonts/inter-variable-latin.woff2" rel="preload" type="font/woff2" />
   <link rel="stylesheet" href="./assets/fonts/fonts.min.css?v=20260821_v315" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=20260822_082650" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=20260822_084621" />
 </head>
 <body>
   <div class="app-container">
@@ -127,6 +127,7 @@
 
       <!-- Sidebar Search Filter -->
       <div class="sidebar-search-wrap">
+        <label for="sessionSearchInput" class="sr-only">Search conversations</label>
         <input 
           type="text" 
           class="sidebar-search-input" 
@@ -272,12 +273,14 @@
 
       <footer class="chat-input-wrapper">
         <form class="chat-form" id="chatForm">
+          <label for="chatInput" class="sr-only">Type a message</label>
           <textarea
             class="chat-input"
             id="chatInput"
             rows="1"
             placeholder="Type a message or ask anything..."
             autocomplete="off"
+            aria-label="Type a message or ask anything"
           ></textarea>
           <button type="submit" class="btn-send" id="btnSend" aria-label="Send Message">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -314,9 +317,9 @@
           <div class="avatar-preview-wrap">
             <div class="avatar-large" id="profileAvatarPreview">U</div>
             <div class="avatar-type-selector">
-              <label class="radio-label"><input type="radio" name="avatarType" value="initial" checked /> Initial Letter</label>
-              <label class="radio-label"><input type="radio" name="avatarType" value="preset" /> Cyberpunk Preset</label>
-              <label class="radio-label"><input type="radio" name="avatarType" value="url" /> Custom URL / Upload</label>
+              <label class="radio-label" for="avatarTypeInitial"><input type="radio" name="avatarType" id="avatarTypeInitial" value="initial" checked /> Initial Letter</label>
+              <label class="radio-label" for="avatarTypePreset"><input type="radio" name="avatarType" id="avatarTypePreset" value="preset" /> Cyberpunk Preset</label>
+              <label class="radio-label" for="avatarTypeUrl"><input type="radio" name="avatarType" id="avatarTypeUrl" value="url" /> Custom URL / Upload</label>
             </div>
           </div>
 
@@ -327,10 +330,11 @@
 
           <!-- Custom URL / Upload Box -->
           <div class="avatar-custom-box" id="avatarCustomBox" style="display:none;">
-            <input type="url" id="profileAvatarUrlInput" class="form-input" placeholder="https://example.com/avatar.png" />
+            <label for="profileAvatarUrlInput" class="sr-only">Avatar Image URL</label>
+            <input type="url" id="profileAvatarUrlInput" class="form-input" placeholder="https://example.com/avatar.png" aria-label="Avatar Image URL" />
             <div class="file-upload-wrap">
               <label for="profileAvatarFileInput" class="btn-file-upload">Upload Image from Device</label>
-              <input type="file" id="profileAvatarFileInput" accept="image/*" style="display:none;" />
+              <input type="file" id="profileAvatarFileInput" accept="image/*" style="display:none;" aria-label="Upload Image from Device" />
               <span class="file-upload-hint" id="fileUploadHint">Max 2MB (stored locally in browser)</span>
             </div>
           </div>
@@ -364,10 +368,10 @@
         <div class="form-group">
           <label>Select AI Persona</label>
           <div class="avatar-type-selector">
-            <label class="radio-label"><input type="radio" name="widgetPersona" value="tech_mentor" checked /> Tech Mentor</label>
-            <label class="radio-label"><input type="radio" name="widgetPersona" value="cs_store" /> CS &amp; Store</label>
-            <label class="radio-label"><input type="radio" name="widgetPersona" value="companion" /> Companion</label>
-            <label class="radio-label"><input type="radio" name="widgetPersona" value="cloud_assistant" /> Cloud Assistant</label>
+            <label class="radio-label" for="widgetPersonaTechMentor"><input type="radio" name="widgetPersona" id="widgetPersonaTechMentor" value="tech_mentor" checked /> Tech Mentor</label>
+            <label class="radio-label" for="widgetPersonaCsStore"><input type="radio" name="widgetPersona" id="widgetPersonaCsStore" value="cs_store" /> CS &amp; Store</label>
+            <label class="radio-label" for="widgetPersonaCompanion"><input type="radio" name="widgetPersona" id="widgetPersonaCompanion" value="companion" /> Companion</label>
+            <label class="radio-label" for="widgetPersonaCloudAssistant"><input type="radio" name="widgetPersona" id="widgetPersonaCloudAssistant" value="cloud_assistant" /> Cloud Assistant</label>
           </div>
         </div>
 
@@ -519,6 +523,6 @@
     </div>
   </div>
 
-  <script src="./assets/js/app.js?v=20260822_082650"></script>
+  <script src="./assets/js/app.js?v=20260822_084621"></script>
 </body>
 </html>

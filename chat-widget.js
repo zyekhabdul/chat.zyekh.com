@@ -199,6 +199,17 @@
       display: block;
       flex-shrink: 0;
     }
+    .zyekh-sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
     .zyekh-chat-messages {
       flex: 1;
       padding: 14px;
@@ -453,7 +464,8 @@
     </div>
     <div class="zyekh-chat-messages" id="zyekhChatMessages"></div>
     <form class="zyekh-chat-input-area" id="zyekhChatForm">
-      <input type="text" class="zyekh-chat-input" id="zyekhChatInput" placeholder="Ketik pesan..." autocomplete="off" />
+      <label for="zyekhChatInput" class="zyekh-sr-only">Ketik pesan</label>
+      <input type="text" class="zyekh-chat-input" id="zyekhChatInput" placeholder="Ketik pesan..." autocomplete="off" aria-label="Ketik pesan" />
       <button type="submit" class="zyekh-chat-send" id="zyekhChatSend">Kirim</button>
     </form>
     <div class="zyekh-chat-footer-attr">
