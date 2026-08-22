@@ -118,7 +118,8 @@
       toast_card_downloaded: 'Visual card downloaded',
       share_x_btn: 'Post to X',
       share_telegram_btn: 'Telegram',
-      share_threads_btn: 'Threads'
+      share_threads_btn: 'Threads',
+      thought_process: 'Thought Process'
     },
     id: {
       new_chat_btn: 'Obrolan Baru',
@@ -148,11 +149,11 @@
       hint_shift_enter: 'Shift + Enter baris baru',
       hint_model_prefix: 'Model: ',
       welcome_badge: 'ZYEKH AI',
-      welcome_title: 'Hai {name}! Mau eksplorasi apa hari ini?',
-      welcome_subtitle: 'AI berkecepatan tinggi untuk riset mendalam, brainstorming strategis, penulisan kreatif, dan pemecahan masalah teknis.',
+      welcome_title: 'Halo {name}! Ada yang ingin kita diskusikan hari ini?',
+      welcome_subtitle: 'AI berkecepatan tinggi untuk riset mendalam, brainstorming strategi, penulisan kreatif, dan pemecahan masalah teknis.',
       tab_general: 'Umum',
       tab_general_short: 'Umum',
-      tab_creative: 'Kreatif & Tulis',
+      tab_creative: 'Kreatif & Penulisan',
       tab_creative_short: 'Kreatif',
       tab_research: 'Riset & Logika',
       tab_research_short: 'Riset',
@@ -160,37 +161,37 @@
       tab_dev_short: 'Kode',
       starters: {
         general: [
-          { label: 'Kritik & Uji Ide', prompt: 'Beri kritik tajam dan uji ketahanan ide ini: [tulis ide/rencanamu]. Tunjukkan asumsi yang keliru, blind spot, dan risiko eksekusi nyata.' },
-          { label: 'Solusi Masalah Rumit', prompt: 'Gw menghadapi masalah rumit ini: [jelaskan situasi]. Bedah akar masalahnya dan berikan 3 solusi terstruktur yang bisa langsung dieksekusi.' },
-          { label: 'Jelaskan Super Simpel', prompt: 'Jelaskan konsep komputasi kuantum dan entanglement secara sederhana dengan analogi sehari-hari yang mudah dipahami siapa saja.' },
-          { label: 'Rencana Kerja Produktif', prompt: 'Bantu susun rencana kerja harian bebas distraksi dengan sistem time-blocking untuk menuntaskan 3 prioritas penting.' }
+          { label: 'Critical Idea Roast', prompt: 'Roast dan uji secara kritis konsep ini: [masukkan ide/rencana Anda]. Tunjukkan asumsi yang keliru, titik buta (blind spots), dan risiko eksekusi realistis.' },
+          { label: 'Complex Problem Solver', prompt: 'Saya sedang menghadapi tantangan kompleks ini: [jelaskan situasi]. Bedah akar masalahnya dan berikan 3 opsi solusi terstruktur dan terukur.' },
+          { label: "Explain Like I'm 5", prompt: 'Jelaskan prinsip inti dari quantum entanglement dan komputasi kuantum dengan analogi intuitif sederhana yang mudah dipahami siapa saja.' },
+          { label: 'Productivity Blueprint', prompt: 'Bantu saya menyusun rutinitas harian dan alur kerja time-blocking yang bebas distraksi untuk menuntaskan 3 prioritas berdampak tinggi.' }
         ],
         creative: [
-          { label: 'Hook & Copy Menarik', prompt: 'Buatkan 5 hook pembuka dan sudut copy yang memikat dan berkonversi tinggi untuk: [topik/produk]. Hindari klise AI yang generik.' },
-          { label: 'Draf Artikel Lengkap', prompt: 'Tulis draf artikel mendalam yang berbobot dan mengalir nyaman tentang: [topik]. Gunakan gaya bercerita yang kuat dan enak dibaca.' },
-          { label: 'Perhalus Gaya Bahasa', prompt: 'Tulis ulang dan tingkatkan bobot teks berikut agar lebih berwibawa, padat, dan berkarakter kuat: [tempel teks]' },
-          { label: 'Ide Konten Viral', prompt: 'Brainstorm 4 sudut konten yang berpotensi viral (thread, carousel, skrip video) untuk topik: [topik] yang memicu diskusi dan share.' }
+          { label: 'Catchy Hook & Copy', prompt: 'Buatkan 5 variasi kalimat pembuka (hook) dan sudut pandang copywriting dengan konversi tinggi untuk: [topik/produk]. Hindari klise AI generik.' },
+          { label: 'Compelling Article Draft', prompt: 'Tulis draf artikel mendalam yang memikat, berwawasan luas, dan terstruktur rapi tentang: [topik]. Gunakan gaya bahasa mengalir dan analogi kuat.' },
+          { label: 'Polish & Elevate Tone', prompt: 'Tulis ulang dan tingkatkan wibawa bahasa dari draf berikut agar terdengar lugas, tajam, profesional, dan berbobot: [tempel teks]' },
+          { label: 'Viral Content Angle', prompt: 'Brainstorming 4 format konten viral (utas Twitter/X, carousel ringkas, video pendek) seputar: [topik] yang mendorong interaksi audiens.' }
         ],
         research: [
-          { label: 'Debat Argumen Kritis', prompt: 'Ambil sudut pandang paling kontra terhadap pernyataan ini: [sebutkan opini]. Sajikan argumen tandingan yang kuat, fakta, dan preseden historis.' },
-          { label: 'Sintesis Logika & Data', prompt: 'Analisis dan sintesiskan korelasi logika, trade-off, dan konsekuensi tingkat kedua dari: [situasi/tren].' },
-          { label: 'Teka-Teki Logika Sulit', prompt: 'Uji kemampuan penalaranmu: Berikan teka-teki logika berpikir lateral tingkat lanjut dan pandu pemecahannya langkah demi langkah.' },
-          { label: 'Riset & Bedah Konsep', prompt: 'Sajikan bedah konseptual mendalam berstandar akademik tentang: [topik], mencakup aksioma dasar, teori kunci, dan implikasi praktis.' }
+          { label: 'Counter-Argument Debate', prompt: 'Ambil sudut pandang oposisi terkuat terhadap premis ini: [tulis opini/hipotesis]. Sajikan argumen pembanding yang valid, preseden historis, dan data logis.' },
+          { label: 'Data & Logic Synthesis', prompt: 'Analisis dan sintesiskan keterkaitan logis, trade-off, dan konsekuensi tingkat kedua (second-order effects) dari: [situasi/tren].' },
+          { label: 'Hard Reasoning Puzzle', prompt: 'Uji kemampuan penalaranmu: Berikan saya teka-teki logika tingkat lanjut atau puzzle matematika lateral, lalu pandu saya memecahkannya langkah demi langkah.' },
+          { label: 'Deep Topic Breakdown', prompt: 'Sajikan pembedahan konseptual tingkat akademis yang komprehensif mengenai: [topik], mencakup aksioma fundamental, tokoh pencetus, dan implikasi nyata.' }
         ],
         dev: [
-          { label: 'Roast Tech Stack', prompt: 'Roast arsitektur tech stack gw: Node.js, Docker, Nginx, Vanilla JS. Kasih kritik tajam dan tunjukkan mana bagian yang boros atau rentan!' },
-          { label: 'Diagram ASCII', prompt: 'Buatkan diagram ASCII lengkap untuk alur microservice gateway AI dengan edge caching dan penyimpanan local-first.' },
-          { label: 'Refactor Zero-Bloat', prompt: 'Bantu audit dan pangkas dependency berat. Berikan strategi mengganti framework/library besar dengan vanilla Web API.' },
-          { label: 'Uji Logika Konkurensi', prompt: 'Selesaikan tantangan ini: Buatkan algoritma sliding window rate limiter in-memory tanpa lock dengan latensi eksekusi sub-milidetik.' }
+          { label: 'Roast Tech Stack', prompt: 'Roast arsitektur sistem dan pilihan tech stack saya: Node.js, Express, Docker Swarm, Vanilla JS client. Bersikaplah jujur dan sorot potensi bottleneck sistem.' },
+          { label: 'ASCII Architecture', prompt: 'Gambarkan diagram arsitektur sistem dalam bentuk teks ASCII lengkap untuk zero-trust microservice gateway dengan caching edge dan local storage.' },
+          { label: 'Zero-Bloat Refactor', prompt: 'Bantu saya mengaudit dan memangkas dependensi NPM pihak ketiga. Berikan strategi mengganti library berat dengan native Web APIs tanpa bloatware.' },
+          { label: 'Concurrency Benchmark', prompt: 'Selesaikan tantangan konkurensi ini: Implementasikan rate limiter sliding window lock-free dalam memori dengan overhead eksekusi sub-milidetik.' }
         ]
       },
-      toast_new_chat: 'Sesi obrolan baru siap digunakan',
-      toast_clear_chat: 'Riwayat obrolan aktif telah dibersihkan',
-      toast_webgpu_unsupported: 'Browser tidak mendukung WebGPU. Gunakan Chrome/Edge desktop.',
-      toast_webgpu_active: 'Neural Network WebGPU aktif dan berjalan offline',
+      toast_new_chat: 'Sesi obrolan baru dimulai',
+      toast_clear_chat: 'Riwayat percakapan dibersihkan',
+      toast_webgpu_unsupported: 'WebGPU tidak didukung browser ini. Gunakan Chrome atau Edge desktop.',
+      toast_webgpu_active: 'WebGPU Neural Network aktif berjalan offline',
       toast_webgpu_fail: 'Gagal memuat WebGPU: {err}',
       toast_model_switch_webgpu: 'Beralih ke WebGPU On-Device 0.5B (Offline)',
-      toast_model_switch: 'Beralih ke {model}',
+      toast_model_switch: 'Beralih ke model {model}',
       toast_max_file_size: 'Ukuran file maksimal 2MB',
       toast_profile_saved: 'Pengaturan profil berhasil disimpan',
       toast_widget_copied: 'Kode semat widget berhasil disalin ke clipboard',
@@ -225,7 +226,8 @@
       toast_card_downloaded: 'Kartu visual berhasil diunduh',
       share_x_btn: 'Bagikan ke X',
       share_telegram_btn: 'Telegram',
-      share_threads_btn: 'Threads'
+      share_threads_btn: 'Threads',
+      thought_process: 'Rantai Penalaran'
     }
   };
 
@@ -739,10 +741,61 @@
       }
     });
 
-    // Event: Auto-resize Textarea
-    chatInput?.addEventListener('input', () => {
-      chatInput.style.height = 'auto';
-      chatInput.style.height = Math.min(chatInput.scrollHeight, 140) + 'px';
+    // Centralized Event Delegation for Chat Messages & Interactive Cards (Chunk 18.1 & 18.3)
+    chatMessages?.addEventListener('click', (e) => {
+      // 1. Copy message text
+      const btnCopy = e.target.closest('.btn-copy-msg');
+      if (btnCopy) {
+        const row = btnCopy.closest('.message-row');
+        const rawText = row?.dataset?.rawText;
+        if (rawText) {
+          navigator.clipboard.writeText(rawText);
+          btnCopy.textContent = t('copied_btn');
+          showToast(t('toast_msg_copied'));
+          setTimeout(() => (btnCopy.textContent = t('copy_btn')), 2000);
+        }
+        return;
+      }
+
+      // 2. Export visual card modal
+      const btnCard = e.target.closest('.btn-card-export');
+      if (btnCard) {
+        const row = btnCard.closest('.message-row');
+        const rawText = row?.dataset?.rawText;
+        const modelLabel = btnCard.getAttribute('data-model') || activeModelId;
+        if (rawText) {
+          openVisualCardModal(rawText, modelLabel);
+        }
+        return;
+      }
+
+      // 3. Copy code block snippet
+      const btnCode = e.target.closest('.copy-code-btn');
+      if (btnCode) {
+        const wrapper = btnCode.closest('.code-block-wrapper') || btnCode.closest('pre');
+        const code = wrapper?.querySelector('code')?.innerText || '';
+        if (code) {
+          navigator.clipboard.writeText(code);
+          btnCode.textContent = t('copied_btn');
+          showToast(t('toast_code_copied'));
+          setTimeout(() => (btnCode.textContent = t('copy_btn')), 2000);
+        }
+        return;
+      }
+
+      // 4. Starter category tab switch
+      const tabBtn = e.target.closest('.starter-tab-btn');
+      if (tabBtn && tabBtn.dataset.cat) {
+        switchStarterCategory(tabBtn.dataset.cat);
+        return;
+      }
+
+      // 5. Starter pill prompt execution
+      const pillBtn = e.target.closest('.starter-pill');
+      if (pillBtn && pillBtn.dataset.prompt) {
+        sendSuggestedPrompt(pillBtn.dataset.prompt);
+        return;
+      }
     });
 
     loadSessionToView(currentSessionId);
@@ -1408,7 +1461,7 @@
       const shortLabel = dict[`tab_${catKey}_short`] || fullLabel;
       const isActive = activeStarterCategory === catKey;
       return `
-        <button type="button" class="starter-tab-btn ${isActive ? 'active' : ''}" onclick="switchStarterCategory('${catKey}')">
+        <button type="button" class="starter-tab-btn ${isActive ? 'active' : ''}" data-cat="${escapeHtml(catKey)}">
           <span class="tab-label-full">${escapeHtml(fullLabel)}</span>
           <span class="tab-label-short">${escapeHtml(shortLabel)}</span>
         </button>
@@ -1417,9 +1470,8 @@
 
     const startersList = dict.starters?.[activeStarterCategory] || dict.starters?.general || [];
     const pillsHtml = startersList.map((item) => {
-      const safePrompt = item.prompt.replace(/'/g, "\\'");
       return `
-        <button type="button" class="starter-pill" onclick="sendSuggestedPrompt('${safePrompt}')">
+        <button type="button" class="starter-pill" data-prompt="${escapeHtml(item.prompt)}">
           <span class="starter-pill-label">${escapeHtml(item.label)}</span>
           <span class="starter-pill-arrow">&rarr;</span>
         </button>
@@ -1440,21 +1492,21 @@
     chatMessages.appendChild(welcome);
   }
 
-  window.switchStarterCategory = function (categoryKey) {
+  function switchStarterCategory(categoryKey) {
     activeStarterCategory = categoryKey;
     const activeSession = getSession(currentSessionId);
     if (activeSession && activeSession.messages.length === 0) {
       chatMessages.innerHTML = '';
       renderWelcomeScreen();
     }
-  };
+  }
 
-  window.sendSuggestedPrompt = function (text) {
+  function sendSuggestedPrompt(text) {
     if (chatInput && chatForm) {
       chatInput.value = text;
       chatForm.requestSubmit();
     }
-  };
+  }
 
   // Client-Side Intelligent On-Device Engine (WebGPU Ready - Tahap 5.3)
   async function executeLocalClientInference(prompt, history, profile) {
@@ -1611,6 +1663,7 @@
     content.innerHTML = role === 'user' ? escapeHtml(text).replace(/\n/g, '<br>') : formatMarkdown(text);
 
     if (role === 'bot' || role === 'assistant') {
+      row.dataset.rawText = text;
       const metaBar = document.createElement('div');
       metaBar.className = 'message-meta-bar';
 
@@ -1619,22 +1672,9 @@
         <span class="model-used-tag">${escapeHtml(modelLabel)}</span>
         <div class="message-actions-bar">
           <button class="btn-msg-action btn-copy-msg" type="button" title="${t('copy_btn')}">${t('copy_btn')}</button>
-          <button class="btn-msg-action btn-card-export" type="button" title="${t('export_card_title')}">${t('export_card_btn')}</button>
+          <button class="btn-msg-action btn-card-export" type="button" title="${t('export_card_title')}" data-model="${escapeHtml(modelLabel)}">${t('export_card_btn')}</button>
         </div>
       `;
-
-      metaBar.querySelector('.btn-copy-msg')?.addEventListener('click', (e) => {
-        navigator.clipboard.writeText(text);
-        const btn = e.target;
-        btn.textContent = t('copied_btn');
-        showToast(t('toast_msg_copied'));
-        setTimeout(() => (btn.textContent = t('copy_btn')), 2000);
-      });
-
-      metaBar.querySelector('.btn-card-export')?.addEventListener('click', () => {
-        openVisualCardModal(text, modelLabel);
-      });
-
       content.appendChild(metaBar);
     }
 
@@ -1642,20 +1682,6 @@
     row.appendChild(content);
     chatMessages.appendChild(row);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-
-    // Attach copy button to code blocks
-    content.querySelectorAll('.copy-code-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const wrapper = btn.closest('.code-block-wrapper') || btn.closest('pre');
-        const code = wrapper?.querySelector('code')?.innerText || '';
-        if (code) {
-          navigator.clipboard.writeText(code);
-          btn.textContent = t('copied_btn');
-          showToast(t('toast_code_copied'));
-          setTimeout(() => (btn.textContent = t('copy_btn')), 2000);
-        }
-      });
-    });
   }
 
   function showTypingIndicator() {
@@ -1908,9 +1934,10 @@
     let str = escapeHtml(text);
 
     // 2. Extract Thought Blocks (<thought>...</thought> or :::thought ... :::)
+    const thoughtLabel = t('thought_process') || (currentLang === 'id' ? 'Rantai Penalaran' : 'Thought Process');
     str = str.replace(/(?:&lt;thought&gt;([\s\S]*?)&lt;\/thought&gt;|:::thought\s*([\s\S]*?):::)/gi, (_, t1, t2) => {
       const thoughtText = (t1 || t2 || '').trim();
-      return `<details class="thought-box"><summary class="thought-summary">Rantai Penalaran (Thought Process)</summary><div class="thought-content">${thoughtText.replace(/\n/g, '<br>')}</div></details>`;
+      return `<details class="thought-box"><summary class="thought-summary">${escapeHtml(thoughtLabel)}</summary><div class="thought-content">${thoughtText.replace(/\n/g, '<br>')}</div></details>`;
     });
 
     const codeBlocks = [];

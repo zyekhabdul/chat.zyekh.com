@@ -362,7 +362,7 @@
 
 ---
 
-## Phase 17: Developer Automation & Quality Gate Tooling Suite (`[ IN_PROGRESS ]`)
+## Phase 17: Developer Automation & Quality Gate Tooling Suite (`[ DONE ]`)
 
 ### Chunk 17.1: Build Deterministic Asset Cache Bumper (`[ DONE ]`)
 - **Target Files**: [scripts/bump_assets.js](file:///home/fuckadmin/Projects/chat.zyekh.com/scripts/bump_assets.js)
@@ -387,3 +387,44 @@
 - **Scope**:
   - Single-command pipeline executing linter, cache bumper, docker build/update, git commit, Obsidian RAG sync, and git push.
 - **DoD**: `./scripts/release.sh` executes all 7 steps end-to-end.
+
+---
+
+## Phase 18: Core Code Refactoring, Memory Optimization & Linter Unification (`[ DONE ]`)
+
+### Chunk 18.1: Centralized Event Delegation for Chat Messages & Code Blocks (`[ DONE ]`)
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
+- **Scope**:
+  - Eliminate individual event listener attachments inside `appendMessageElement()`.
+  - Attach a single event delegation listener on `#chatMessages` to handle `.btn-copy-msg`, `.btn-card-export`, and `.copy-code-btn`.
+- **DoD**: 0 closures per message element, memory footprint reduced, copy & export actions verified.
+
+### Chunk 18.2: Dynamic Localization for Markdown Thought Process (`[ DONE ]`)
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
+- **Scope**:
+  - Add `thought_process: 'Thought Process'` to `I18N_DICT.en` and `thought_process: 'Rantai Penalaran'` to `I18N_DICT.id`.
+  - Update `formatMarkdown()` to use `t('thought_process')` instead of hardcoded strings.
+- **DoD**: Thought summary renders dynamically in English or Indonesian based on active language setting.
+
+### Chunk 18.3: Clean Data-Attribute Prompt Dispatch on Starter Cards (`[ DONE ]`)
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
+- **Scope**:
+  - Replace inline `onclick` string interpolation with `data-cat` and `data-prompt` attributes.
+  - Remove global window scope attachment for `switchStarterCategory` and `sendSuggestedPrompt`.
+- **DoD**: 0 inline `onclick` attributes, 0 global window pollution, 1-click starter prompts verified.
+
+### Chunk 18.4: Single Source of Truth for Linter Scripts (`[ DONE ]`)
+- **Target Files**: [check_emojis.py](file:///home/fuckadmin/Projects/chat.zyekh.com/check_emojis.py)
+- **Scope**:
+  - Refactor root `check_emojis.py` to import and execute `run_emoji_check()` from `scripts/lint_design_rules.py`.
+- **DoD**: Zero duplicated emoji scanning code across root and `scripts/`.
+
+### Chunk 18.5: Empirical Verification, Docker Rebuild & RAG Checkpoint (`[ DONE ]`)
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html), Obsidian Vault
+- **Scope**:
+  - Bumped asset cache versions (`v=20260822_070956`).
+  - Verified zero syntax errors (`npm run lint`), zero emojis (`check_emojis.py`), and zero horizontal overflow (`npm run snap`).
+  - Created local git commit and synchronized Obsidian RAG memory.
+- **DoD**: All tests passing, working tree clean, Obsidian RAG updated.
+
+
