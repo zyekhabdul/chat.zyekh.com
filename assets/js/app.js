@@ -590,6 +590,11 @@
 
   // Initialization
   function init() {
+    // Proactive Storage Persistence Guard (Prevents mobile OS eviction)
+    if (navigator.storage && navigator.storage.persist) {
+      navigator.storage.persist().catch(() => {});
+    }
+
     initTheme();
     initLanguage();
     initUserProfileUI();
