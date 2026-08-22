@@ -11,8 +11,8 @@ PROJECT_DIR="/home/fuckadmin/Projects/chat.zyekh.com"
 OBSIDIAN_DIR="/home/fuckadmin/Documents/Obsidian Vault/00-AGY-Memory/chat-zyekh-com"
 cd "$PROJECT_DIR"
 
-echo "=== STEP 1: RUNNING DESIGN & SYNTAX LINTER ==="
-python3 "$PROJECT_DIR/scripts/lint_design_rules.py"
+echo "=== STEP 1: RUNNING FULL TEST & QUALITY GATE SUITE ==="
+npm test
 
 echo "=== STEP 2: BUMPING ASSET CACHE VERSIONS ==="
 node "$PROJECT_DIR/scripts/bump_assets.js"

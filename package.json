@@ -8,8 +8,13 @@
     "start": "node server.js",
     "dev": "node server.js",
     "lint": "python3 scripts/lint_design_rules.py",
-    "bump": "node scripts/bump_assets.js",
+    "lint:i18n": "python3 scripts/lint_i18n_parity.py",
+    "test:seo": "python3 scripts/validate_schema_seo.py",
+    "test:budget": "python3 scripts/check_asset_budgets.py",
+    "test:e2e": "python3 scripts/test_e2e_flow.py",
     "snap": "python3 scripts/snap_viewports.py",
+    "test": "npm run lint && npm run lint:i18n && npm run test:seo && npm run test:budget && npm run snap && npm run test:e2e",
+    "bump": "node scripts/bump_assets.js",
     "release": "bash scripts/release.sh"
   },
   "dependencies": {
