@@ -16,7 +16,9 @@ BUDGETS = {
     'chat-widget.js': 25 * 1024,                 # 25 KB Cap
     'assets/js/chat-widget.min.js': 20 * 1024,   # 20 KB Cap
     'index.html': 35 * 1024,                     # 35 KB Cap
-    '404.html': 35 * 1024                        # 35 KB Cap
+    '404.html': 35 * 1024,                       # 35 KB Cap
+    'sw.js': 6 * 1024,                           # 6 KB Cap
+    'offline.html': 10 * 1024                    # 10 KB Cap
 }
 
 def format_size(bytes_val):

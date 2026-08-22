@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>var s=localStorage.getItem('theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.setAttribute('data-theme','light');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#09090b" />
+  <title>Offline Mode — Zyekh AI</title>
+  <meta name="description" content="Zyekh AI offline mode shell and connection retry screen." />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --bg-dark: #09090b;
+      --bg-card: #141417;
+      --border-color: #27272a;
+      --text-main: #fafafa;
+      --text-muted: #a1a1aa;
+      --accent: #ffffff;
+      --btn-bg: #fafafa;
+      --btn-text: #09090b;
+    }
+    [data-theme="light"] {
+      --bg-dark: #ffffff;
+      --bg-card: #f4f4f5;
+      --border-color: #e4e4e7;
+      --text-main: #09090b;
+      --text-muted: #52525b;
+      --accent: #09090b;
+      --btn-bg: #09090b;
+      --btn-text: #fafafa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .offline-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      max-width: 460px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .offline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .offline-badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #a1a1aa;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .btn-primary {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      border-radius: 6px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.15s ease;
+    }
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    [data-theme="light"] .btn-secondary:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+  <main class="offline-card">
+    <div class="offline-badge">Connection Offline</div>
+    <h1>You are currently offline</h1>
+    <p>
+      Internet connection is unavailable. Your conversation sessions remain safely stored locally in your browser storage.
+    </p>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="window.location.reload();">Retry Connection</button>
+      <a href="/" class="btn-secondary">Open Local Workspace</a>
+    </div>
+  </main>
+</body>
+</html>

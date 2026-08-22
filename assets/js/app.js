@@ -595,6 +595,11 @@
       navigator.storage.persist().catch(() => {});
     }
 
+    // Service Worker Registration for PWA & Offline Shell
+    if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+
     initTheme();
     initLanguage();
     initUserProfileUI();

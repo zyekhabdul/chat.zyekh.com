@@ -1,0 +1,49 @@
+# Global Security Headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://cdn.jsdelivr.net https://esm.run; script-src-elem 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://cdn.jsdelivr.net https://esm.run; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://api.zyekh.com https://chat.zyekh.com https://shop.zyekh.com https://cloudflareinsights.com https://static.cloudflareinsights.com https://huggingface.co https://raw.githubusercontent.com https://cdn.jsdelivr.net https://esm.run; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self';
+
+# HTML & Root Documents (Always Fresh Shell)
+/*.html
+  Cache-Control: public, no-cache, must-revalidate
+
+/
+  Cache-Control: public, no-cache, must-revalidate
+
+# Service Worker (Strict No-Store)
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Static Assets (Immutable 1-Year Edge Cache)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Omnichannel Embeddable Script
+/chat-widget.js
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Manifests, Sitemaps & Machine-Readable Declarations
+/manifest.json
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/robots.txt
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/llms.txt
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/.well-known/llms.txt
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/security.txt
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/.well-known/security.txt
+  Cache-Control: public, max-age=3600, must-revalidate

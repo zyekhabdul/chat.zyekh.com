@@ -1,0 +1,12 @@
+# Canonical Security Policy & Contact Standard (RFC 9116)
+# https://chat.zyekh.com/security.txt
+
+Contact: mailto:zyekhabdulqadirjailani@zyekh.com
+Encryption: https://zyekh.com/gpg-key.asc
+Canonical: https://chat.zyekh.com/.well-known/security.txt
+Preferred-Languages: en, id
+Policy: https://zyekh.com/security.txt
+Expires: 2027-12-31T23:59:59.000Z
+
+# Public Encryption Fingerprint:
+# FEB2 E478 8FF9 7BE6 DE42 C055 2976 A87B 6EBA F1E5
