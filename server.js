@@ -135,6 +135,8 @@ async function getSnapshot(shareId) {
   const cached = SHARE_SNAPSHOT_CACHE.get(shareId);
   if (cached && cached.expiresAt > Date.now()) {
     return cached.data;
+  } else if (cached) {
+    SHARE_SNAPSHOT_CACHE.delete(shareId);
   }
 
   // 2. Check Cloudflare KV Remote Edge (If Configured)
@@ -369,6 +371,8 @@ app.all('/api/*', async (req, res) => {
         .set('cf-aig-cache-status', 'HIT')
         .set('X-Cache-Lookup', 'MEMORY-EDGE-HIT')
         .send(cached.data);
+    } else if (cached) {
+      AI_RESPONSE_CACHE.delete(cacheKey);
     }
   }
 

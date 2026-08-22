@@ -119,7 +119,8 @@
       share_x_btn: 'Post to X',
       share_telegram_btn: 'Telegram',
       share_threads_btn: 'Threads',
-      thought_process: 'Thought Process'
+      thought_process: 'Thought Process',
+      toast_storage_err: 'Storage limit reached. Profile saved in memory only.'
     },
     id: {
       new_chat_btn: 'Obrolan Baru',
@@ -227,7 +228,8 @@
       share_x_btn: 'Bagikan ke X',
       share_telegram_btn: 'Telegram',
       share_threads_btn: 'Threads',
-      thought_process: 'Rantai Penalaran'
+      thought_process: 'Rantai Penalaran',
+      toast_storage_err: 'Batas penyimpanan browser tercapai. Profil tersimpan di memori.'
     }
   };
 
@@ -463,6 +465,34 @@
   function focusChatInputIfDesktop() {
     if (window.matchMedia && window.matchMedia('(min-width: 769px) and (pointer: fine)').matches) {
       chatInput?.focus();
+    }
+  }
+
+  // Safe & Resilient Clipboard Copy Helper with Legacy Fallback
+  async function safeCopyToClipboard(text) {
+    if (!text) return false;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (_) {}
+
+    try {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      textarea.style.top = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(textarea);
+      return success;
+    } catch (err) {
+      console.warn('[CLIPBOARD WARN] Copy fallback failed:', err);
+      return false;
     }
   }
 
@@ -749,10 +779,13 @@
         const row = btnCopy.closest('.message-row');
         const rawText = row?.dataset?.rawText;
         if (rawText) {
-          navigator.clipboard.writeText(rawText);
-          btnCopy.textContent = t('copied_btn');
-          showToast(t('toast_msg_copied'));
-          setTimeout(() => (btnCopy.textContent = t('copy_btn')), 2000);
+          safeCopyToClipboard(rawText).then((ok) => {
+            if (ok) {
+              btnCopy.textContent = t('copied_btn');
+              showToast(t('toast_msg_copied'));
+              setTimeout(() => (btnCopy.textContent = t('copy_btn')), 2000);
+            }
+          });
         }
         return;
       }
@@ -775,10 +808,13 @@
         const wrapper = btnCode.closest('.code-block-wrapper') || btnCode.closest('pre');
         const code = wrapper?.querySelector('code')?.innerText || '';
         if (code) {
-          navigator.clipboard.writeText(code);
-          btnCode.textContent = t('copied_btn');
-          showToast(t('toast_code_copied'));
-          setTimeout(() => (btnCode.textContent = t('copy_btn')), 2000);
+          safeCopyToClipboard(code).then((ok) => {
+            if (ok) {
+              btnCode.textContent = t('copied_btn');
+              showToast(t('toast_code_copied'));
+              setTimeout(() => (btnCode.textContent = t('copy_btn')), 2000);
+            }
+          });
         }
         return;
       }
@@ -995,7 +1031,12 @@
 
   function saveUserProfile(profile) {
     userProfile = profile;
-    localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+    try {
+      localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+    } catch (e) {
+      console.warn('[STORAGE WARN] Failed to save profile to localStorage:', e);
+      showToast(t('toast_storage_err'));
+    }
     initUserProfileUI();
   }
 
@@ -1181,10 +1222,12 @@
   function copyWidgetCode() {
     const snippet = widgetCodeSnippet?.textContent || '';
     if (!snippet) return;
-    navigator.clipboard.writeText(snippet).then(() => {
-      showToast(t('toast_widget_copied'));
-    }).catch(() => {
-      showToast(t('toast_widget_copy_err'));
+    safeCopyToClipboard(snippet).then((ok) => {
+      if (ok) {
+        showToast(t('toast_widget_copied'));
+      } else {
+        showToast(t('toast_widget_copy_err'));
+      }
     });
   }
 
@@ -1276,10 +1319,14 @@
       showToast(t('toast_share_no_link'));
       return;
     }
-    navigator.clipboard.writeText(url).then(() => {
-      showToast(t('toast_share_copied'));
-    }).catch(() => {
-      showToast(t('toast_share_copy_err'));
+    safeCopyToClipboard(url).then((ok) => {
+      if (ok) {
+        btnCopyShareUrl.textContent = t('copied_btn');
+        showToast(t('toast_share_copied'));
+        setTimeout(() => (btnCopyShareUrl.textContent = t('copy_btn')), 2000);
+      } else {
+        showToast(t('toast_share_copy_err'));
+      }
     });
   }
 

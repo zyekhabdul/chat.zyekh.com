@@ -467,6 +467,40 @@
   - Executed full test suite, created local commit, and synchronized Obsidian RAG memory.
 - **DoD**: 100% tests passing, Obsidian RAG synchronized.
 
+---
+
+## Phase 20: Resilience Hardening & Defensive Engineering (`[ DONE ]`)
+
+### Chunk 20.1: Resilient Clipboard Copy Helper with Legacy Fallback (`[ DONE ]`)
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
+- **Scope**:
+  - Implemented `safeCopyToClipboard(text)` combining modern Async Clipboard API with legacy `document.execCommand('copy')` fallback for restricted/iframe contexts.
+  - Wired all copy actions (`.btn-copy-msg`, `.copy-code-btn`, `copyWidgetCode`, `copyShareUrl`) to use the resilient helper.
+- **DoD**: 0 unhandled promise rejections on copy operations across all contexts.
+
+### Chunk 20.2: LocalStorage Quota Defensive Guards & I18N Error Toast (`[ DONE ]`)
+- **Target Files**: [assets/js/app.js](file:///home/fuckadmin/Projects/chat.zyekh.com/assets/js/app.js)
+- **Scope**:
+  - Wrapped `saveUserProfile()` in `try/catch` with graceful memory-only fallback.
+  - Added `toast_storage_err` to `I18N_DICT.en` and `I18N_DICT.id`.
+- **DoD**: 0 `QuotaExceededError` crashes when saving large profile assets.
+
+### Chunk 20.3: Active Expired Cache Eviction on Reverse Proxy & Snapshot Retrieval (`[ DONE ]`)
+- **Target Files**: [server.js](file:///home/fuckadmin/Projects/chat.zyekh.com/server.js)
+- **Scope**:
+  - Explicitly evict expired entries from `AI_RESPONSE_CACHE` and `SHARE_SNAPSHOT_CACHE` during cache lookup misses.
+- **DoD**: Stale memory entries actively purged without waiting for FIFO eviction.
+
+### Chunk 20.4: Asset Cache Bumping & Full Empirical Quality Gate (`[ DONE ]`)
+- **Target Files**: [index.html](file:///home/fuckadmin/Projects/chat.zyekh.com/index.html), [404.html](file:///home/fuckadmin/Projects/chat.zyekh.com/404.html), Obsidian Vault
+- **Scope**:
+  - Bumped asset cache query strings (`v=20260822_072207`).
+  - Executed full test suite `npm test` with 100% pass rate.
+  - Recorded local git commit and synchronized Obsidian RAG memory.
+- **DoD**: `npm test` exit code 0, Obsidian RAG synchronized.
+
+
+
 
 
 
