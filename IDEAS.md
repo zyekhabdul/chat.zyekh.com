@@ -100,3 +100,15 @@ Berdasarkan arsitektur `chat.zyekh.com` (Zero-Framework, Vanilla JS, Local-First
     • Publikasi artikel arsitektur teknis di Dev.to, Hashnode, Medium.
     • Peluncuran di Product Hunt, Show HN, Reddit (`r/webdev`, `r/SelfHosted`).
 
+---
+
+## 12. Bisnis AI Chatbot Widget Embeddable (B2B SaaS / White-Label)
+- [ PROPOSED ] **Embeddable AI Widget (`<script>` embed / snippet)**:
+  - Layanan bisnis penyediaan widget AI chatbot interaktif siap pasang untuk website bisnis, landing page, UMKM, dan toko online.
+  - **Core Monetization & Value Proposition**:
+    • Model langganan B2B / SaaS (Pay-per-token atau monthly active widget fee).
+    • White-label widget: Brand custom logo, warna tema, salam pembuka, dan persona sesuai kebutuhan klien.
+    • Custom Knowledge Base Ingestion: Klien upload FAQ, SOP, dan katalog produk untuk dilatihkan ke chatbot.
+    • Lead capture, automated customer support closing, dan handover ke WhatsApp/CS tim klien.
+    • Backend terintegrasi dengan multi-tenant engine `zyekh-ai-core`.
+
