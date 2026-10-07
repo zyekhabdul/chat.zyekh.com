@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import http from 'http';
 import { fileURLToPath } from 'url';
+import { ObservabilityClient } from './src/telemetry/observabilityClient.js';
 
 import fs from 'fs/promises';
 import fsSync from 'fs';
@@ -450,6 +451,16 @@ app.all('/api/*', async (req, res) => {
   });
 });
 
+// Health endpoint
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'chat-zyekh',
+    uptime: process.uptime(),
+    activeUpstream: activeUpstream || null,
+  });
+});
+
 // Serve static assets
 app.use(express.static(__dirname));
 
@@ -458,7 +469,23 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, '0.0.0.0', () => {
+const obsClient = ObservabilityClient.fromEnv('chat_zyekh', () => (activeUpstream ? 'UPSTREAM_READY' : 'LISTENING_ACTIVE'));
+
+const serverInstance = app.listen(PORT, '0.0.0.0', () => {
   console.log(`[CHAT-ZYEKH-COM] [ VERIFIED ] Web App aktif di http://localhost:${PORT}`);
   console.log(`[CHAT-ZYEKH-COM] [ PROXY ] Candidate Targets: ${CANDIDATE_TARGETS.join(', ')}`);
+  obsClient.start();
 });
+
+function gracefulShutdown(signal) {
+  console.log(`[CHAT-ZYEKH-COM] Sinyal ${signal} diterima. Menutup server...`);
+  obsClient.stop();
+  if (serverInstance) {
+    serverInstance.close(() => process.exit(0));
+  } else {
+    process.exit(0);
+  }
+}
+
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));

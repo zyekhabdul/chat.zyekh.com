@@ -19,6 +19,6 @@ ENV NODE_ENV=production
 ENV PORT=3001
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD curl -fs http://localhost:3001/ || exit 1
+  CMD curl -fs http://localhost:3001/api/health || exit 1
 
 CMD ["node", "server.js"]
