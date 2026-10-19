@@ -21,7 +21,6 @@ const PORT = process.env.PORT || 3001;
 let activeUpstream = null;
 const CANDIDATE_TARGETS = [
   process.env.CLOUDFLARE_AI_GATEWAY_URL,
-  'http://zyekh-ai-core-nblqvy:3000',
   process.env.CORE_API_URL ? process.env.CORE_API_URL.replace('/api/chat', '').replace('/api', '') : null,
   'http://zyekh-ai-core:3000',
   'http://172.17.0.1:3000',
