@@ -7,8 +7,8 @@ if [ -z "$MSG" ]; then
   exit 1
 fi
 
-PROJECT_DIR="/home/fuckadmin/Projects/chat.zyekh.com"
-OBSIDIAN_DIR="/home/fuckadmin/Documents/Obsidian Vault/00-AGY-Memory/chat-zyekh-com"
+PROJECT_DIR="${PROJECT_DIR:-$HOME/Projects/chat.zyekh.com}"
+OBSIDIAN_DIR="${OBSIDIAN_DIR:-$HOME/Documents/Obsidian Vault/00-AGY-Memory/chat-zyekh-com}"
 cd "$PROJECT_DIR"
 
 echo "=== STEP 1: RUNNING FULL TEST & QUALITY GATE SUITE ==="
@@ -43,7 +43,7 @@ RAGEOF
 # INDEX.md — chat-zyekh-com
 
 - **Project Name**: \`chat-zyekh-com\`
-- **Repository Path**: \`/home/fuckadmin/Projects/chat.zyekh.com\`
+- **Repository Path**: \`$PROJECT_DIR\`
 - **Latest Git Commit Hash**: \`$COMMIT_HASH\`
 - **Last Memory Sync**: $TIMESTAMP
 RAGEOF
