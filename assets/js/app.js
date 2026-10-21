@@ -2,8 +2,8 @@
   'use strict';
 
   // Config & State
-  const isChatDomain = window.location.hostname === 'chat.zyekh.com' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const API_BASE = isChatDomain ? '' : 'https://api.zyekh.com';
+  const isChatDomain = window.location.hostname === 'chat.jagataut.com' || window.location.hostname === 'chat.zyekh.com' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const API_BASE = isChatDomain ? '' : 'https://chat.jagataut.com';
   const SESSIONS_KEY = 'zyekh_companion_sessions';
   const ACTIVE_SESSION_KEY = 'zyekh_active_companion_session_id';
   const ACTIVE_MODEL_KEY = 'zyekh_active_model';
@@ -1225,7 +1225,7 @@
   function updateWidgetCodeSnippet() {
     const selected = document.querySelector('input[name="widgetPersona"]:checked')?.value || 'tech_mentor';
     if (widgetCodeSnippet) {
-      widgetCodeSnippet.textContent = `<script src="https://chat.zyekh.com/chat-widget.js" data-persona="${selected}" defer><\/script>`;
+      widgetCodeSnippet.textContent = `<script src="https://chat.jagataut.com/chat-widget.js" data-persona="${selected}" defer><\/script>`;
     }
   }
 
@@ -1674,7 +1674,7 @@
             message: messagePayload,
             chatId: currentSessionId,
             persona: 'companion',
-            channel: 'chat.zyekh.com',
+            channel: 'chat.jagataut.com',
             model: activeModelId
           })
         });
@@ -1695,7 +1695,7 @@
       appendMessageElement('bot', botReply, usedModel);
     } catch (err) {
       removeTypingIndicator();
-      appendMessageElement('bot', `Gagal terhubung ke Zyekh AI Core API (${err.message}). Pastikan server aktif.`);
+      appendMessageElement('bot', `Gagal terhubung ke AI Core API (${err.message}). Pastikan server aktif.`);
     } finally {
       btnSend.disabled = false;
       focusChatInputIfDesktop();
@@ -1772,11 +1772,11 @@
 
     let md = `# ${sess.title}\n\n`;
     md += `- **Date**: ${sess.createdAt || new Date().toISOString()}\n`;
-    md += `- **Platform**: Zyekh AI (chat.zyekh.com)\n`;
+    md += `- **Platform**: Jagat Aut AI (chat.jagataut.com)\n`;
     md += `- **User**: ${userProfile.name || 'User'}\n\n---\n\n`;
 
     sess.messages.forEach((msg) => {
-      const speaker = msg.role === 'user' ? `### ${userProfile.name || 'User'}` : `### Zyekh AI (${msg.modelUsed || 'Assistant'})`;
+      const speaker = msg.role === 'user' ? `### ${userProfile.name || 'User'}` : `### Jagat Aut AI (${msg.modelUsed || 'Assistant'})`;
       md += `${speaker}\n\n${msg.content}\n\n---\n\n`;
     });
 
@@ -1784,7 +1784,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `zyekh-chat-${sess.id}.md`;
+    a.download = `jagataut-chat-${sess.id}.md`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -1863,7 +1863,7 @@
     ctx.fillStyle = '#a1a1aa';
     ctx.font = '600 18px monospace';
     ctx.textAlign = 'left';
-    ctx.fillText('chat.zyekh.com / zyekh-ai', 130, 72);
+    ctx.fillText('chat.jagataut.com / jagataut-ai', 130, 72);
 
     // Model Tag Badge
     const modelTag = `${modelName || activeModelId}`;
@@ -1926,7 +1926,7 @@
     ctx.fillStyle = '#a1a1aa';
     ctx.font = '600 17px monospace';
     ctx.textAlign = 'left';
-    ctx.fillText('> Zyekh AI -- Free, Fast & Private Multi-Model AI', 64, height - 60);
+    ctx.fillText('> Jagat Aut AI -- Sovereign High-Speed Assistant', 64, height - 60);
 
     ctx.fillStyle = '#71717a';
     ctx.font = '500 16px monospace';
@@ -1940,7 +1940,7 @@
     const canvas = document.getElementById('visualCardCanvas');
     if (!canvas) return;
     const a = document.createElement('a');
-    a.download = `zyekh-ai-card-${Date.now()}.png`;
+    a.download = `jagataut-ai-card-${Date.now()}.png`;
     a.href = canvas.toDataURL('image/png');
     document.body.appendChild(a);
     a.click();

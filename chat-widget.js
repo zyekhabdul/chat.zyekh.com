@@ -7,9 +7,9 @@
 
   // Baca konfigurasi dari script tag saat ini
   const currentScript = document.currentScript || document.querySelector('script[src*="chat-widget"]');
-  const API_BASE = currentScript?.getAttribute('data-api') || (window.location.origin.includes('localhost') ? 'http://localhost:3000' : 'https://api.zyekh.com');
+  const API_BASE = currentScript?.getAttribute('data-api') || (window.location.origin.includes('localhost') ? 'http://localhost:3000' : 'https://chat.jagataut.com');
   const PERSONA = currentScript?.getAttribute('data-persona') || 'cs_store';
-  const CHAT_TITLE = currentScript?.getAttribute('data-title') || (PERSONA === 'tech_mentor' ? 'Zyekh AI Mentor' : PERSONA === 'cloud_assistant' ? 'Zyekh Cloud AI' : 'Zyekh Assistant');
+  const CHAT_TITLE = currentScript?.getAttribute('data-title') || (PERSONA === 'tech_mentor' ? 'Jagat Aut AI Mentor' : PERSONA === 'cloud_assistant' ? 'Jagat Aut Cloud AI' : 'Jagat Aut Assistant');
   const CHAT_SUBTITLE = currentScript?.getAttribute('data-subtitle') || 'Online • High-Speed AI Brain';
 
   const STORAGE_KEY = `zyekh_chat_${PERSONA}_history`;
@@ -447,7 +447,7 @@
             <path d="M8 16H3v5"></path>
           </svg>
         </button>
-        <a href="https://chat.zyekh.com/?utm_source=widget_expand&utm_medium=referral" target="_blank" rel="noopener" class="zyekh-chat-action-btn" title="Buka Aplikasi Penuh" aria-label="Buka Aplikasi Penuh">
+        <a href="https://chat.jagataut.com/?utm_source=widget_expand&utm_medium=referral" target="_blank" rel="noopener" class="zyekh-chat-action-btn" title="Buka Aplikasi Penuh" aria-label="Buka Aplikasi Penuh">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
             <polyline points="15 3 21 3 21 9"></polyline>
@@ -470,8 +470,8 @@
     </form>
     <div class="zyekh-chat-footer-attr">
       <span>Powered by</span>
-      <a href="https://chat.zyekh.com/?utm_source=embed_widget&utm_medium=viral_referral&utm_campaign=open_source" target="_blank" rel="noopener" title="Zyekh AI - Free & Open Source Multi-Model AI">
-        Zyekh AI (Free &amp; Open Source)
+      <a href="https://chat.jagataut.com/?utm_source=embed_widget&utm_medium=viral_referral&utm_campaign=open_source" target="_blank" rel="noopener" title="Jagat Aut AI - High-Speed Sovereign Conversational Assistant">
+        Jagat Aut AI
       </a>
     </div>
   `;
