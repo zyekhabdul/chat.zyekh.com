@@ -1,20 +1,20 @@
-# chat.zyekh.com — Zyekh AI Machine-Readable Manifest
+# chat.jagataut.com — Jagat Aut AI Machine-Readable Manifest
 # For AI Agents, LLMs, and Web Crawlers (Perplexity, ChatGPT, Claude, Gemini)
-# Canonical URL: https://chat.zyekh.com/llms.txt
+# Canonical URL: https://chat.jagataut.com/llms.txt
 
 ---
 
 ## 1. Product Summary
-- **Product Name**: Zyekh AI
-- **Domain**: https://chat.zyekh.com
-- **Author**: Zyekh Abdul Qadir Jailani (https://zyekh.com)
+- **Product Name**: Jagat Aut AI
+- **Domain**: https://chat.jagataut.com
+- **Author**: Jagat Aut (https://jagataut.com)
 - **Architecture**: Zero-Framework Vanilla HTML5, Baseline CSS, ESNext JavaScript, Local-First Multi-Session Storage.
 - **Core Purpose**: High-speed conversational AI companion, developer research assistant, and omnichannel embeddable chat widget.
 
 ---
 
 ## 2. Multi-Model Inference Gateway
-Zyekh AI provides dynamic switching across multiple high-performance LLM engines:
+Jagat Aut AI provides dynamic switching across multiple high-performance LLM engines:
 - **gemini-3.7-flash-high**: Ultra-fast general assistant with low latency.
 - **gemini-3.1-flash-lite**: High-efficiency lightweight companion.
 - **claude-sonnet-4-6**: Advanced software engineering, code synthesis, and architectural design.
@@ -25,9 +25,9 @@ Zyekh AI provides dynamic switching across multiple high-performance LLM engines
 ---
 
 ## 3. Omnichannel Embeddable Widget Integration
-Third-party websites can embed the Zyekh AI chat assistant by including a single script tag:
+Third-party websites can embed the Jagat Aut AI chat assistant by including a single script tag:
 ```html
-<script src="https://chat.zyekh.com/chat-widget.js" data-persona="tech_mentor" defer></script>
+<script src="https://chat.jagataut.com/chat-widget.js" data-persona="tech_mentor" defer></script>
 ```
 
 ### Supported Personas:
@@ -40,7 +40,7 @@ Third-party websites can embed the Zyekh AI chat assistant by including a single
 
 ## 4. Programmatic SEO & Shared Snapshots
 Users can share discussion transcripts as permanent public snapshots:
-- **URL Pattern**: `https://chat.zyekh.com/s/<share_id>`
+- **URL Pattern**: `https://chat.jagataut.com/s/<share_id>`
 - **Structured Data**: Rendered with Schema.org `QAPage` JSON-LD format.
 - **Data Portability**: Visitors can import shared chats directly into their local browser session with one click.
 
@@ -49,5 +49,5 @@ Users can share discussion transcripts as permanent public snapshots:
 ## 5. Security & Privacy Standard
 - **Local-First**: All conversation histories are stored directly in the user's browser `localStorage`.
 - **Zero Telemetry**: No third-party behavioral trackers or client-side telemetry.
-- **Security Disclosure**: https://chat.zyekh.com/.well-known/security.txt
-- **Open Source Repository**: https://github.com/zyekhabdul/chat.zyekh.com
+- **Security Disclosure**: https://chat.jagataut.com/.well-known/security.txt
+- **Ecosystem Portal**: https://jagataut.com

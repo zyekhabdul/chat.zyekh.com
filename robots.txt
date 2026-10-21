@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chat.zyekh.com/sitemap.xml
+Sitemap: https://chat.jagataut.com/sitemap.xml
