@@ -22,6 +22,7 @@ let activeUpstream = null;
 const CANDIDATE_TARGETS = [
   process.env.CLOUDFLARE_AI_GATEWAY_URL,
   process.env.CORE_API_URL ? process.env.CORE_API_URL.replace('/api/chat', '').replace('/api', '') : null,
+  'http://sovereign-core:3000',
   'http://zyekh-ai-core:3000',
   'http://172.17.0.1:3000',
   'http://127.0.0.1:3000',
